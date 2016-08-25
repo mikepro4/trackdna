@@ -9,7 +9,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <header>
-          <Link to='/'><img src={logo} role='presentation' /></Link>
+          <Link to='/' className="logo"><img src={logo} role='presentation' /></Link>
           <Link to='/home'>Home</Link>
           <Link to='/browse'>Browse</Link>
           <Link to='/trends'>Trends</Link>

@@ -1,9 +1,9 @@
-$color: #F6F6F6;
+@import "./styles/vars";
 
 body {
   margin: 0;
   padding: 0;
-  background: $color;
+  background: $bgColor;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
