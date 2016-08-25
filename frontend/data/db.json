@@ -1,0 +1,62 @@
+{
+  "tracks": [
+    {
+      "id": 1,
+      "artist": "Cirez D",
+      "name:": "In The Reds",
+      "type": "Original Mix",
+      "label": "Mouseville",
+      "videoId": "dQXzMR_gCsc",
+      "duration": "9:01",
+      "author": "Mikhail",
+      "channels:": [
+        {
+          "id": 1,
+          "name": "Main Bass",
+          "type": "Bass",
+          "author": "Mikhail",
+          "clips": [
+            {
+              "id": 1,
+              "type": "Variation",
+              "customClipName": "Filtered Bass",
+              "clipStart": "0:00",
+              "clipEnd": "1:00",
+              "effects": [
+                {
+                  "id": 1,
+                  "effectType:": "Filter"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 52,
+      "userName": "mikhailp",
+      "firstName": "Mikhail",
+      "lastName": "Pro"
+    },
+    {
+      "id": 12,
+      "userName": "johnd",
+      "firstName": "John",
+      "lastName": "Doe"
+    }
+  ],
+  "folders": [
+    {
+      "folderName": "New Folder 1",
+      "id": 1
+    },
+    {
+      "folderName": "New Folder 2",
+      "id": 2
+    }
+  ],
+  "saved_searches": []
+}

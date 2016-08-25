@@ -1,0 +1,104 @@
+{
+  "name": "trackdna_frontend",
+  "version": "0.0.1",
+  "description": "Track DNA Front-end Server",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "better-npm-run start",
+    "start:ssr": "better-npm-run start:ssr",
+    "build:dev": "webpack --config scripts/webpack.config.dev.js",
+    "build:prod": "webpack --config scripts/webpack.config.prod.js",
+    "api": "better-npm-run api",
+    "hot": "better-npm-run hot-server",
+    "dev": "better-npm-run dev-server"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "concurrent --kill-others \"better-npm-run hot-server\" \"better-npm-run dev-server\" \"better-npm-run api\" --names \"hot-server,dev-server,api\" --prefix name",
+      "env": {
+        "hot": true,
+        "NODE_ENV": "development",
+        "SSR": true,
+        "SERVER_LOAD_DATA": true
+      }
+    },
+    "dev-server": {
+      "command": "node server/index.js",
+      "env": {
+        "PORT": 3000
+      }
+    },
+    "hot-server": {
+      "command": "node scripts/hot-server.js",
+      "env": {
+        "HOT_PORT": 3001
+      }
+    },
+    "api": {
+      "command": "json-server data/db.json --port 3002 --watch --delay 300"
+    }
+  },
+  "keywords": [
+    "trackdna"
+  ],
+  "author": "Mikhail Proniushkin",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.3.4",
+    "babel-core": "^6.7.4",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "better-npm-run": "0.0.8",
+    "bootstrap-sass": "^3.3.6",
+    "clean-webpack-plugin": "^0.1.8",
+    "concurrently": "^2.0.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-react": "^4.3.0",
+    "express": "^4.13.4",
+    "file-loader": "^0.8.5",
+    "json-loader": "^0.5.4",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.9.1",
+    "postcss-loader": "^0.8.2",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.0",
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-isomorphic-tools": "^2.2.50"
+  },
+  "dependencies": {
+    "autobind-decorator": "^1.3.3",
+    "classnames": "^2.2.5",
+    "isomorphic-fetch": "^2.2.1",
+    "json-server": "0.8.10",
+    "lodash": "^4.12.0",
+    "normalize.css": "^4.1.1",
+    "react": "^15.1.0",
+    "react-bootstrap": "^0.30.0",
+    "react-dom": "^15.1.0",
+    "react-helmet": "^3.1.0",
+    "react-redux": "^4.4.1",
+    "react-redux-notifications": "^0.2.1",
+    "react-router": "^2.0.1",
+    "react-router-bootstrap": "^0.23.0",
+    "react-router-redux": "^4.0.0",
+    "readable-fractions": "0.0.3",
+    "redbox-react": "^1.2.2",
+    "redux": "^3.3.1",
+    "redux-connect": "^2.4.0",
+    "redux-form": "^6.0.0-alpha.10",
+    "redux-thunk": "^2.0.1",
+    "serialize-javascript": "^1.2.0"
+  }
+}
