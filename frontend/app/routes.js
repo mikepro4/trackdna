@@ -1,5 +1,5 @@
 import React from 'react'
-import AppContainer from './pages/app/app-container'
+import AppContainer from './pages/application'
 import Home from './pages/home'
 import Browse from './pages/browse'
 import Trends from './pages/trends'

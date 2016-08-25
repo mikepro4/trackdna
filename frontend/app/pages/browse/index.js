@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-connect'
 import { loadTracks } from '../../actions';
-import TrackList from './track_list'
+import TrackList from '../../components/track/track_list'
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([
