@@ -1,0 +1,21 @@
+<!doctype html>
+<html >
+<head>
+  <%= headTitle %>
+  <link rel='shortcut icon' href='/favicon.ico' />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <meta charSet='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+  <meta httpEquiv='x-ua-compatible' content='ie=edge' />
+  <%= finalStylesheets %>
+  <%= finalInlineStyles %>
+  </head>
+<body>
+  <div id="app"><%= serverRender %></div>
+  <%= serverState %>
+  <%= bundleScriptFile %>
+</body>
+</html>

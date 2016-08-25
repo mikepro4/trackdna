@@ -2,6 +2,7 @@
 
 import express from 'express'
 import path from 'path'
+import fs from 'fs'
 import thunk from 'redux-thunk'
 import { match } from 'react-router'
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -15,12 +16,17 @@ import serialize from 'serialize-javascript'
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect'
 import 'isomorphic-fetch'
 import Helmet from "react-helmet";
+import _ from 'lodash'
 
 const app = express()
 
 app.use(express.static(path.join(__dirname, '..', 'dist')))
+app.use(express.static(path.join(__dirname, '..', 'static')));
 console.log('SSR', process.env.SSR)
 console.log('SERVER_LOAD_DATA', process.env.SERVER_LOAD_DATA)
+const templatePath = path.join(__dirname, 'index.html');
+const templateSource = fs.readFileSync(templatePath, { encoding: 'utf-8' });
+const template = _.template(templateSource);
 // Create redux store
 const middleware = [thunk]
 let finalCreateStore
@@ -56,8 +62,8 @@ app.use((req, res) => {
         let inlineStyles = []
 
         let bundleScriptFile
-        const assets = global.webpack_isomorphic_tools.assets()
         let headTitle
+        const assets = global.webpack_isomorphic_tools.assets()
 
         if (process.env.SSR === 'true') {
           // You can also check renderProps.components or renderProps.routes for
@@ -70,7 +76,6 @@ app.use((req, res) => {
           )
           let head = Helmet.rewind();
           headTitle = head.title.toString()
-          console.log(head.title.toString())
           /* styles (will be present only in production with webpack extract text plugin) */
           stylesheets = Object.keys(assets.styles).map((style) =>
             `<link href='${assets.styles[style]}' media="screen, projection" rel="stylesheet" type="text/css"/>`)
@@ -86,25 +91,19 @@ app.use((req, res) => {
           bundleScriptFile = `<script src=${assets.javascript.main} charSet='UTF-8'></script>`
         }
 
-        res.set('content-type', 'text/html')
-        res.status(200).send(`<!doctype html>
-  <html >
-    <head>
-      <link rel='shortcut icon' href='/favicon.ico' />
-      <meta charSet='utf-8' />
-      <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-      <meta httpEquiv='x-ua-compatible' content='ie=edge' />
-      ${headTitle}
+        const finalStylesheets = stylesheets.join('\r\n')
+        const finalInlineStyles = inlineStyles.join('\r\n')
 
-      ${stylesheets.join('\r\n')}
-      ${inlineStyles.join('\r\n')}
-    </head>
-    <body>
-      <div id="app">${serverRender}</div>
-      ${serverState}
-      ${bundleScriptFile}
-    </body>
-  </html>`)
+        res.set('content-type', 'text/html')
+        // IMPORTANT – Website is rendering through this function 
+        res.status(200).send(template({
+          headTitle,
+          serverRender,
+          serverState,
+          bundleScriptFile,
+          finalStylesheets,
+          finalInlineStyles
+        }))
         res.end()
       })
     } else {
