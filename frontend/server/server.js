@@ -13,7 +13,7 @@ import React from 'react'
 import serialize from 'serialize-javascript'
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect'
 import 'isomorphic-fetch'
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet';
 import _ from 'lodash'
 
 const app = express()

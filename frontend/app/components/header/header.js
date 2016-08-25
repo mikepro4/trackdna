@@ -1,8 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router'
-
 import logo from '../../assets/logo.svg'
-import './header.scss'
 
 export default class Header extends React.Component {
   render() {
