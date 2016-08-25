@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 import express from 'express'
 import path from 'path'
 import fs from 'fs'
@@ -95,7 +93,7 @@ app.use((req, res) => {
         const finalInlineStyles = inlineStyles.join('\r\n')
 
         res.set('content-type', 'text/html')
-        // IMPORTANT – Website is rendering through this function 
+        // IMPORTANT – Website is rendering through this function
         res.status(200).send(template({
           headTitle,
           serverRender,
