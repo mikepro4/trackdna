@@ -18,7 +18,7 @@ export default class Browse extends React.Component {
 		console.log(this.props.tracks)
 		return (
 			<div>
-			 	<Helmet title="Browse" />
+			 	<Helmet title="Browse – Track DNA" />
 				Browse Tracks
 				<TrackList {...this.props} />
 			</div>

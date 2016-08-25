@@ -5,7 +5,7 @@ export default class Home extends React.Component {
 	render() {
 		return (
 			<div>
-			 	<Helmet title="Home" />
+			 	<Helmet title="Home – Track DNA" />
 				Home
 			</div>
 		)

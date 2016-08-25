@@ -5,7 +5,7 @@ export default class Landing extends React.Component {
 	render() {
 		return (
 			<div>
-			 	<Helmet title="Landing" />
+			 	<Helmet title="Track DNA – Music Analysis Platform" />
 				Landing
 			</div>
 		)

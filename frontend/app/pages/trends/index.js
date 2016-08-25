@@ -5,7 +5,7 @@ export default class Trends extends React.Component {
 	render() {
 		return (
 			<div>
-			 	<Helmet title="Trends" />
+			 	<Helmet title="Trends – Track DNA" />
 				Trends
 			</div>
 		)
