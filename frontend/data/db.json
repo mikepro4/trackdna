@@ -9,27 +9,42 @@
       "videoId": "dQXzMR_gCsc",
       "duration": "9:01",
       "author": "Mikhail",
-      "channels:": [
+      "channels": [
         {
           "id": 1,
           "name": "Main Bass",
           "type": "Bass",
-          "author": "Mikhail",
-          "clips": [
-            {
-              "id": 1,
-              "type": "Variation",
-              "customClipName": "Filtered Bass",
-              "clipStart": "0:00",
-              "clipEnd": "1:00",
-              "effects": [
-                {
-                  "id": 1,
-                  "effectType:": "Filter"
-                }
-              ]
-            }
-          ]
+          "author": "Mikhail"
+        },
+        {
+          "id": 2,
+          "name": "Lead",
+          "type": "Lead",
+          "author": "John"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "artist": "Adam Beyer",
+      "name": "You Know",
+      "type": "Original Mix",
+      "label": "Drumcode",
+      "videoId": "323",
+      "duration": "1:01",
+      "author": "Mikhail",
+      "channels": [
+        {
+          "id": 1,
+          "name": "Main Bass",
+          "type": "Bass",
+          "author": "Mikhail"
+        },
+        {
+          "id": 2,
+          "name": "Lead",
+          "type": "Lead",
+          "author": "John"
         }
       ]
     }

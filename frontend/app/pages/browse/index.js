@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-connect'
 import { loadTracks } from '../../reducers'
+import TrackList from './track_list'
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([
@@ -13,24 +14,13 @@ import { loadTracks } from '../../reducers'
 }))
 export default class Browse extends React.Component {
 
-	renderTrack(trackData) {
-		const id = trackData.id;
-    const name = trackData.name;
-
-    return (
-      <div key={id}>
-        <h1>{trackData.artist} - {trackData.name}</h1>
-      </div>
-    );
-  }
-
 	render() {
 		console.log(this.props.tracks)
 		return (
 			<div>
 			 	<Helmet title="Browse" />
 				Browse Tracks
-				{this.props.tracks.map(this.renderTrack)}
+				<TrackList {...this.props} />
 			</div>
 		)
 	}
