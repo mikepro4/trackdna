@@ -1,24 +1,5 @@
 {
-  "tracks": [
-    {
-      "id": 1,
-      "artist": "Adam Beyer ",
-      "name": "You Know (Edited)",
-      "channels": []
-    },
-    {
-      "id": 2,
-      "artist": "Cirez D",
-      "name": "In The Reds (Edited(",
-      "channels": []
-    },
-    {
-      "id": 3,
-      "artist": "sdfsdf",
-      "name": "sdfsdf",
-      "channels": []
-    }
-  ],
+  "tracks": [],
   "folders": [
     {
       "folderName": "New Folder 1",

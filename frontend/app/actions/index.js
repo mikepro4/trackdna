@@ -12,7 +12,7 @@ import {
   EDIT_TRACK_SUCCESS
 } from './types';
 
-const ROOT_URL = 'http://localhost:3002';
+const ROOT_URL = 'http://192.241.217.109/:3002';
 
 export function loadTracks() {
   console.log('load tracks')
