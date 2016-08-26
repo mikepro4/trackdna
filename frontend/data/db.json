@@ -49,20 +49,6 @@
       ]
     }
   ],
-  "users": [
-    {
-      "id": 52,
-      "userName": "mikhailp",
-      "firstName": "Mikhail",
-      "lastName": "Pro"
-    },
-    {
-      "id": 12,
-      "userName": "johnd",
-      "firstName": "John",
-      "lastName": "Doe"
-    }
-  ],
   "folders": [
     {
       "folderName": "New Folder 1",

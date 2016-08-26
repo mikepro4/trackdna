@@ -25,20 +25,21 @@ console.log('SERVER_LOAD_DATA', process.env.SERVER_LOAD_DATA)
 const templatePath = path.join(__dirname, 'index.html');
 const templateSource = fs.readFileSync(templatePath, { encoding: 'utf-8' });
 const template = _.template(templateSource);
-// Create redux store
-const middleware = [thunk]
-let finalCreateStore
-if (global.__DEV__) {
-  finalCreateStore = compose(
-    applyMiddleware(...middleware)
-  )(createStore)
-} else {
-  finalCreateStore = applyMiddleware(...middleware)(createStore)
-}
-const store = finalCreateStore(reducers)
 
-app.use((req, res) => {
+
+app.get('*',(req, res) => {
   const history = createHistory(req.originalUr)
+  // Create redux store
+  const middleware = [thunk]
+  let finalCreateStore
+  if (global.__DEV__) {
+    finalCreateStore = compose(
+      applyMiddleware(...middleware)
+    )(createStore)
+  } else {
+    finalCreateStore = applyMiddleware(...middleware)(createStore)
+  }
+  const store = finalCreateStore(reducers)
 
   match({ history, routes, location: req.originalUrl }, (error, redirectLocation, renderProps) => {
     if (error) {
