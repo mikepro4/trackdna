@@ -23,7 +23,7 @@ export default class Header extends React.Component {
           <Link to='/home'>Home</Link>
           <Link to='/browse'>Browse</Link>
           <Link to='/trends'>Trends</Link>
-          <span>Global Loading Indicator: {this.renderLoading()}</span>
+          <span className="loading">Global Loading Indicator: {this.renderLoading()}</span>
         </header>
       </div>
     );

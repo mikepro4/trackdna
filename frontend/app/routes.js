@@ -3,10 +3,15 @@ import AppContainer from './pages/application'
 import Home from './pages/home'
 import Browse from './pages/browse'
 import Trends from './pages/trends'
-import Track from './pages/track'
+
 import Landing from './pages/landing'
 import NotFound from './pages/404'
 import { Route, IndexRoute } from 'react-router'
+
+import TrackContainer from './pages/track/track_container'
+import Track from './pages/track'
+import TrackNew from './pages/track/new'
+import TrackEdit from './pages/track/edit'
 
 export default (
   <Route path='/' component={AppContainer}>
@@ -17,7 +22,12 @@ export default (
     <Route path='home' component={Home} />
     <Route path='browse' component={Browse} />
     <Route path='trends' component={Trends} />
-    <Route path='track/:id' component={Track} />
+
+    <Route path='/track' component={TrackContainer}>
+      <Route path='new' component={TrackNew} />
+      <Route path=':id' component={Track} />
+      <Route path='edit/:id' component={TrackEdit} />
+    </Route>
 
     { /* Catch all route */ }
     <Route path='*' component={NotFound} status={404} />

@@ -7,7 +7,9 @@ import {
   ADD_TRACK,
   ADD_TRACK_SUCCESS,
   DELETE_TRACK,
-  DELETE_TRACK_SUCCESS
+  DELETE_TRACK_SUCCESS,
+  EDIT_TRACK,
+  EDIT_TRACK_SUCCESS
 } from './types';
 
 const ROOT_URL = 'http://localhost:3002';
@@ -80,6 +82,29 @@ export function addTrack(props) {
       .then(response => {
           dispatch({
             type: ADD_TRACK_SUCCESS,
+            meta: {
+              loading: false
+            }
+          })
+        }
+      )
+      .catch(error => console.log(error));
+    }
+}
+
+export function editTrack(track) {
+  console.log('Edit')
+  return dispatch => {
+    dispatch({
+      type: EDIT_TRACK,
+      meta: {
+        loading: true
+      }
+    })
+    return axios.post(`${ROOT_URL}/tracks`, track)
+      .then(response => {
+          dispatch({
+            type: EDIT_TRACK_SUCCESS,
             meta: {
               loading: false
             }

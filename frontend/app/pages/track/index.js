@@ -21,7 +21,7 @@ import { loadTrack } from '../../actions';
 export default class Track extends React.Component {
 
 	render() {
-		const { currentTrack,  } = this.props
+		const { currentTrack } = this.props
     const { name, artist } = currentTrack
 		return (
 			<div>

@@ -17,10 +17,6 @@ export default class TrackListItem extends React.Component {
       });
   }
 
-  onEdit() {
-    console.log('on edit')
-  }
-
   render() {
     const id = this.props.track.id;
     const name = this.props.track.name;
@@ -31,7 +27,7 @@ export default class TrackListItem extends React.Component {
         <h1>{artist} – {name} </h1>
         <TrackChannelsList channels={this.props.track.channels} />
         <button onClick={this.onDelete.bind(this)}>Delete post</button>
-        <button onClick={this.onEdit.bind(this)}>Edit post</button>
+        <Link to={`/track/edit/${id}`}>Edit</Link>
         <Link to={`/track/${id}`}>View</Link>
       </div>
     );
