@@ -99,6 +99,7 @@
     "redux": "^3.3.1",
     "redux-connect": "^2.4.0",
     "redux-form": "6.0.1",
+    "redux-loading": "^1.0.2",
     "redux-thunk": "^2.0.1",
     "serialize-javascript": "^1.2.0"
   }

@@ -17,7 +17,10 @@ export function loadTracks() {
         .then(response => {
             dispatch({
               type: LOAD_TRACKS_SUCCESS,
-              result: response.data
+              result: response.data,
+              meta: {
+                loading: false
+              }
             })
           }
         )
@@ -31,7 +34,12 @@ export function loadTracks() {
 
 export function addTrack(props) {
   return dispatch => {
-    dispatch({ type: ADD_TRACK })
+    dispatch({
+      type: ADD_TRACK,
+      meta: {
+        loading: true
+      }
+    })
     return axios.post(`${ROOT_URL}/tracks`, props)
   }
 }
@@ -39,6 +47,12 @@ export function addTrack(props) {
 export function deleteTrack(id) {
   return dispatch => {
     console.log('actions id:', id)
+    dispatch({
+      type: DELETE_TRACK,
+      meta: {
+        loading: true
+      }
+    })
     return axios.delete(`${ROOT_URL}/tracks/${id.id}`)
   }
 }

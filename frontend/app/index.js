@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducers from './reducers'
+import {loadingMiddleware} from 'redux-loading'
 
 const dest = document.getElementById('app')
 
@@ -14,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Create redux store
-const middleware = [thunk]
+const middleware = [thunk, loadingMiddleware]
 
 let finalCreateStore
 if (__DEV__) {

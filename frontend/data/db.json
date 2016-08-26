@@ -1,52 +1,16 @@
 {
   "tracks": [
     {
-      "id": 1,
-      "artist": "Cirez D",
-      "name": "In The Reds",
-      "type": "Original Mix",
-      "label": "Mouseville",
-      "videoId": "dQXzMR_gCsc",
-      "duration": "9:01",
-      "author": "Mikhail",
-      "channels": [
-        {
-          "id": 1,
-          "name": "Main Bass",
-          "type": "Bass",
-          "author": "Mikhail"
-        },
-        {
-          "id": 2,
-          "name": "Lead",
-          "type": "Lead",
-          "author": "John"
-        }
-      ]
+      "artist": "sdfsdf",
+      "name": "sdfsf",
+      "channels": [],
+      "id": 24
     },
     {
-      "id": 2,
-      "artist": "Adam Beyer",
-      "name": "You Know",
-      "type": "Original Mix",
-      "label": "Drumcode",
-      "videoId": "323",
-      "duration": "1:01",
-      "author": "Mikhail",
-      "channels": [
-        {
-          "id": 1,
-          "name": "Main Bass",
-          "type": "Bass",
-          "author": "Mikhail"
-        },
-        {
-          "id": 2,
-          "name": "Lead",
-          "type": "Lead",
-          "author": "John"
-        }
-      ]
+      "artist": "sdfsdfsdfdsf",
+      "name": "sdfsf",
+      "channels": [],
+      "id": 25
     }
   ],
   "folders": [
