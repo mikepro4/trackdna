@@ -10,7 +10,6 @@ class AddTrack extends React.Component {
         "channels": []
       }))
       .then((response) => {
-        console.log('yay', response.data)
         this.props.dispatch(loadTracks())
       });
   }

@@ -2,8 +2,12 @@ import axios from 'axios';
 import {
   LOAD_TRACKS,
   LOAD_TRACKS_SUCCESS,
+  LOAD_SINGLE_TRACK,
+  LOAD_SINGLE_TRACK_SUCCESS,
   ADD_TRACK,
-  DELETE_TRACK
+  ADD_TRACK_SUCCESS,
+  DELETE_TRACK,
+  DELETE_TRACK_SUCCESS
 } from './types';
 
 const ROOT_URL = 'http://localhost:3002';
@@ -11,7 +15,12 @@ const ROOT_URL = 'http://localhost:3002';
 export function loadTracks() {
   console.log('load tracks')
   return dispatch => {
-
+    dispatch({
+      type: LOAD_TRACKS,
+      meta: {
+        loading: true
+      }
+    })
     try {
       return axios.get(`${ROOT_URL}/tracks`)
         .then(response => {
@@ -29,7 +38,34 @@ export function loadTracks() {
       console.log('Error', err)
     }
   }
+}
 
+export function loadTrack(id) {
+  console.log('load track')
+  return dispatch => {
+    dispatch({
+      type: LOAD_SINGLE_TRACK,
+      meta: {
+        loading: true
+      }
+    })
+    try {
+      return axios.get(`${ROOT_URL}/tracks/${id}`)
+        .then(response => {
+            dispatch({
+              type: LOAD_SINGLE_TRACK_SUCCESS,
+              result: response.data,
+              meta: {
+                loading: false
+              }
+            })
+          }
+        )
+        .catch(error => console.log(error));
+    } catch (err) {
+      console.log('Error', err)
+    }
+  }
 }
 
 export function addTrack(props) {
@@ -41,7 +77,17 @@ export function addTrack(props) {
       }
     })
     return axios.post(`${ROOT_URL}/tracks`, props)
-  }
+      .then(response => {
+          dispatch({
+            type: ADD_TRACK_SUCCESS,
+            meta: {
+              loading: false
+            }
+          })
+        }
+      )
+      .catch(error => console.log(error));
+    }
 }
 
 export function deleteTrack(id) {
@@ -54,5 +100,15 @@ export function deleteTrack(id) {
       }
     })
     return axios.delete(`${ROOT_URL}/tracks/${id.id}`)
+      .then(response => {
+          dispatch({
+            type: DELETE_TRACK_SUCCESS,
+            meta: {
+              loading: false
+            }
+          })
+        }
+      )
+      .catch(error => console.log(error));
   }
 }

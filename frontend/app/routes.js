@@ -17,7 +17,7 @@ export default (
     <Route path='home' component={Home} />
     <Route path='browse' component={Browse} />
     <Route path='trends' component={Trends} />
-    <Route path='track:id' component={Track} />
+    <Route path='track/:id' component={Track} />
 
     { /* Catch all route */ }
     <Route path='*' component={NotFound} status={404} />

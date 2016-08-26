@@ -1,5 +1,6 @@
 import {
-  LOAD_TRACKS_SUCCESS
+  LOAD_TRACKS_SUCCESS,
+  LOAD_SINGLE_TRACK_SUCCESS
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -10,6 +11,11 @@ export default (state = {}, action) => {
         tracks: action.result,
         tracksLoaded: true
       })
+      case LOAD_SINGLE_TRACK_SUCCESS:
+        return Object.assign({}, state, {
+          currentTrack: action.result,
+          singleTrackLoaded: true
+        })
     default:
       return state
   }

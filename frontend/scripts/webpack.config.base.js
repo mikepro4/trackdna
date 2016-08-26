@@ -8,6 +8,7 @@ var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 var webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools-config')
 
 module.exports = {
+  devtools: 'eval-source-map',
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
