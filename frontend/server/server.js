@@ -28,23 +28,7 @@ const template = _.template(templateSource);
 
 
 app.get('*',(req, res) => {
-  const history = createHistory(req.originalUr)
-  // Create redux store
-  const middleware = [thunk]
-  let finalCreateStore
-  if (global.__DEV__) {
-    finalCreateStore = compose(
-      applyMiddleware(...middleware)
-    )(createStore)
-  } else {
-    finalCreateStore = applyMiddleware(...middleware)(createStore)
-  }
-  const store = finalCreateStore(reducers)
-
-  match({ history, routes, location: req.originalUrl }, (error, redirectLocation, renderProps) => {
-
-        res.status(200).send('Hi')
-      })
+    res.status(200).send('Hi')
 })
 
 app.listen(3000, 'localhost', function (err) {
