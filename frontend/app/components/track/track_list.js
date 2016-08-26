@@ -35,11 +35,10 @@ export default class TrackList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state', state)
   return {
     loading: state.loading,
     tracks: state.app.tracks
   };
 }
 
-export default connect(mapStateToProps,  {})(TrackList);
+export default connect(mapStateToProps, {})(TrackList);
