@@ -17,6 +17,12 @@ export default class TrackList extends React.Component {
 
   render() {
 
+    if(this.props.tracks.length === 0) {
+      return (
+        <div>No Tracks Added</div>
+      )
+    }
+
     return (
       <div>
         Loading Indicator: {this.renderLoading()}

@@ -24,7 +24,7 @@ export default class Browse extends React.Component {
 
         ----
         <div>
-  				Browse Tracks
+  				<h3>Browse Tracks</h3>
   				<TrackList {...this.props} />
         </div>
 			</div>
