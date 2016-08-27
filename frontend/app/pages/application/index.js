@@ -5,12 +5,7 @@ import Header from '../../components/header/header'
 import { asyncConnect } from 'redux-connect'
 import { loadTracks } from '../../actions';
 
-@asyncConnect([{
-  promise: ({ store }) => Promise.all([
-    store.getState().app.tracksLoaded ? Promise.resolve() : store.dispatch(loadTracks())
-  ])
-}], state => ({
-  tracks: state.app.tracks,
+@asyncConnect([], state => ({
   loading: state.loading,
   auth: state.auth
 }))

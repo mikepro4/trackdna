@@ -18,7 +18,7 @@ export default class SignUp extends React.Component {
     return (
       <div>
         <Link to='/' className="logo"><img src={logo} role='presentation' /></Link>
-        <SignUpForm onSubmit={this.handleFormSubmit.bind(this)} />
+        <SignUpForm errorMessage={this.props.auth.error} onSubmit={this.handleFormSubmit.bind(this)} />
       </div>
     );
   }

@@ -5,7 +5,11 @@ import { loadTracks } from '../../actions';
 import TrackList from '../../components/track/track_list'
 import AddTrack from "./add_track"
 
-@asyncConnect([], state => ({
+@asyncConnect([{
+  promise: ({ store }) => Promise.all([
+    store.getState().app.tracksLoaded ? Promise.resolve() : store.dispatch(loadTracks())
+  ])
+}], state => ({
   auth: state.auth,
 	tracks: state.app.tracks,
 	loading: state.loading
@@ -16,7 +20,7 @@ export default class Browse extends React.Component {
 			<div>
 			 	<Helmet title="Browse – Track DNA" />
 
-        <AddTrack />
+        <AddTrack {...this.props}/>
 
         ----
         <div>
