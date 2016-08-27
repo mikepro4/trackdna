@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
 import { reducer as reduxAsyncConnect } from 'redux-connect'
 import appReducer from './app_reducer'
+import authReducer from './auth_reducer'
 import {loadingReducer} from 'redux-loading'
 
 const reducers = combineReducers({
@@ -10,6 +11,7 @@ const reducers = combineReducers({
   app: appReducer,
   form: formReducer,
   loading: loadingReducer,
+  auth: authReducer,
   reduxAsyncConnect
 })
 export default reducers

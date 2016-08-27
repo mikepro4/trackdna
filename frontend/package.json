@@ -19,6 +19,15 @@
       "env": {
         "hot": true,
         "NODE_ENV": "development",
+        "SSR": false,
+        "SERVER_LOAD_DATA": true
+      }
+    },
+    "start:ssr": {
+      "command": "concurrent --kill-others \"better-npm-run hot-server\" \"better-npm-run dev-server\" \"better-npm-run api\" --names \"hot-server,dev-server,api\" --prefix name",
+      "env": {
+        "hot": true,
+        "NODE_ENV": "development",
         "SSR": true,
         "SERVER_LOAD_DATA": true
       }

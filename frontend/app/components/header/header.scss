@@ -21,4 +21,12 @@ header {
   .loading {
     margin: 0 0 0 50px;
   }
+
+  .nav {
+    list-style: none;
+    
+    li {
+      float: left;
+    }
+  }
 }

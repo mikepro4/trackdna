@@ -11,22 +11,8 @@ export default class Header extends React.Component {
     this.props.dispatch(loadTracks())
   }
 
-  renderLinks() {
-    if(this.props.auth.authenticated) {
-      return (
-        <li key="SignOut"><Link to='/auth/signout'>Sign Out</Link></li>
-      )
-    } else {
-      return [
-        <li key="Signin"><Link to='/auth/signin'>Sign In</Link></li>,
-        <li key="SignUp"><Link to='/auth/signup'>Sign Up</Link></li>
-      ]
-    }
-  }
-
   render() {
     const path = this.props.location.pathname
-    console.log('auth from header', this.props.auth)
     // if(path === '/auth/signin' || path === '/auth/signup') {
     //   return (<div></div>)
     // }
@@ -35,13 +21,12 @@ export default class Header extends React.Component {
       <div>
         <header>
           <Link to='/' className="logo"><img src={logo} role='presentation' /></Link>
-
-          <ul className="nav">
-            <li><Link to='/home'>Home</Link></li>
-            <li><Link to='/browse'>Browse</Link></li>
-            <li><Link to='/trends'>Trends</Link></li>
-            {this.renderLinks()}
-          </ul>
+          <Link to='/home'>Home</Link>
+          <Link to='/browse'>Browse</Link>
+          <Link to='/trends'>Trends</Link>
+          <Link to='/auth/signin'>Sign In</Link>
+          <Link to='/auth/signup'>Sign Up</Link>
+          <Link to='/auth/signout'>Sign Out</Link>
           <span className="loading">Global Loading Indicator: <Loader loading={this.props.loading}/></span>
           <button onClick={this.test.bind(this)}>Dispatch Test</button>
         </header>

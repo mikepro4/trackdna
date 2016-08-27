@@ -15,6 +15,9 @@ import TrackEdit from './pages/track/edit'
 
 import SignIn from './pages/auth/signin'
 import SignUp from './pages/auth/signup'
+import SignOut from './pages/auth/signout'
+
+import RequireAuth from './pages/auth/require_auth'
 
 export default (
   <Route path='/' component={AppContainer}>
@@ -22,7 +25,7 @@ export default (
     <IndexRoute component={Landing} />
 
     { /* Routes */ }
-    <Route path='home' component={Home} />
+    <Route path='home' component={RequireAuth(Home)} />
     <Route path='browse' component={Browse} />
     <Route path='trends' component={Trends} />
 
@@ -33,7 +36,8 @@ export default (
     </Route>
 
     <Route path='/auth/signin' component={SignIn} />
-    <Route path='/auth/signup' component={SignIn} />
+    <Route path='/auth/signup' component={SignUp} />
+    <Route path='/auth/signout' component={SignOut} />
 
     { /* Catch all route */ }
     <Route path='*' component={NotFound} status={404} />

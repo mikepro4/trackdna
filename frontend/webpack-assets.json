@@ -9,7 +9,7 @@
       "_style": "body {\n  margin: 0;\n  padding: 0;\n  background: #F6F6F6;\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n\nh1,\nh2,\nh3 {\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 400;\n}\n\n* {\n  box-sizing: border-box;\n}"
     },
     "./app/styles/modules.scss": {
-      "_style": "header {\n  background: #fff;\n  width: 100%;\n  border-bottom: 1px solid #D1D1D1;\n  height: 50px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 10px;\n}\n\nheader a {\n  margin: 0 20px 0 0;\n}\n\nheader .logo {\n  display: block;\n  height: 26px;\n}\n\nheader .loading {\n  margin: 0 0 0 50px;\n}"
+      "_style": "header {\n  background: #fff;\n  width: 100%;\n  border-bottom: 1px solid #D1D1D1;\n  height: 50px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0 10px;\n}\n\nheader a {\n  margin: 0 20px 0 0;\n}\n\nheader .logo {\n  display: block;\n  height: 26px;\n}\n\nheader .loading {\n  margin: 0 0 0 50px;\n}\n\nheader .nav {\n  list-style: none;\n}\n\nheader .nav li {\n  float: left;\n}"
     },
     "./app/styles/utilities.scss": {
       "_style": ".clearfix {\n  clear: both;\n}"

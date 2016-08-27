@@ -12,16 +12,16 @@ import { loadTracks } from '../../actions';
 }], state => ({
   tracks: state.app.tracks,
   loading: state.loading,
-  currentTrack: state.app.currentTrack
+  auth: state.auth
 }))
 class AppContainer extends React.Component {
   render() {
-    const { children, loading, location } = this.props
+    const { children } = this.props
 
     return (
       <div>
         <Helmet title="App" />
-        <Header loading={loading} location={location} />
+        <Header {...this.props} />
 
         <div className='container'>
           {children}
