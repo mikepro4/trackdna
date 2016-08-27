@@ -3,16 +3,6 @@ import { Field, reduxForm } from 'redux-form'
 import { editTrack } from '../../actions';
 
 class TrackEditForm extends React.Component {
-  // handleFormSubmit({ artist, name}) {
-  //   const id = this.props.trackId;
-  //   console.log({id, artist, name})
-  //   console.log(this.props)
-  //   this.props.dispatch(editTrack({id, artist, name}))
-  //     .then((response) => {
-  //       console.log('yay')
-  //     });
-  // }
-
   render() {
     const { handleSubmit } = this.props
     return (

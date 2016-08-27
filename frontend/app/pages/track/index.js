@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
 import Helmet from "react-helmet";
 import { Link } from 'react-router';
-import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-connect'
-import { loadTrack } from '../../actions';
+import { loadTrack} from '../../actions'
 
 @asyncConnect([{
   promise: (props) => {
@@ -13,9 +12,12 @@ import { loadTrack } from '../../actions';
   currentTrack: state.app.currentTrack
 }))
 export default class Track extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
 	render() {
-		const { currentTrack } = this.props
-    const { name, artist } = currentTrack
+    const { name, artist } = this.props.currentTrack
 		return (
 			<div>
 			 	<Helmet title="Track – Track DNA" />

@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { signinUser } from '../../../actions/auth_actions'
 import { asyncConnect } from 'redux-connect'
 import SignInForm from './signin_form'
+import logo from '../../../assets/logo.svg'
 
 @asyncConnect([], state => ({
   auth: state.auth
@@ -16,6 +17,7 @@ export default class SignIn extends React.Component {
   render() {
     return (
       <div>
+        <Link to='/' className="logo"><img src={logo} role='presentation' /></Link>
         <SignInForm errorMessage={this.props.auth.error} onSubmit={this.handleFormSubmit.bind(this)} />
       </div>
     );

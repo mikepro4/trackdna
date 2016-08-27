@@ -38,21 +38,6 @@ class AddTrack extends React.Component {
   }
 }
 
-// function validate(values) {
-//   const errors = {};
-//
-//   if (!values.artist) {
-//     errors.artist = 'Enter artist';
-//   }
-//   if (!values.name) {
-//     errors.name = 'Enter name';
-//   }
-//
-//   return errors;
-// }
-
-// connect: first argument is mapStateToProps, 2nd is mapDispatchToProps
-// reduxForm: 1st is form config, 2nd is mapStateToProps, 3rd is mapDispatchToProps
 export default reduxForm({
   form: 'TrackForm'
 })(AddTrack)

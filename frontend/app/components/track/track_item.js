@@ -1,10 +1,8 @@
 import React, {PropTypes} from 'react';
 import TrackChannelsList from './track_channels_list'
 import { deleteTrack, loadTracks} from '../../actions/'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
-@connect(() => ({}))
 export default class TrackListItem extends React.Component {
   onDelete() {
     const id = this.props.track.id

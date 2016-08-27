@@ -5,7 +5,6 @@ import Loader from '../loader'
 import { connect } from 'react-redux'
 import { loadTracks} from '../../actions/'
 
-@connect(() => ({}))
 export default class Header extends React.Component {
   test() {
     this.props.dispatch(loadTracks())
@@ -26,10 +25,9 @@ export default class Header extends React.Component {
 
   render() {
     const path = this.props.location.pathname
-    console.log('auth from header', this.props.auth)
-    // if(path === '/auth/signin' || path === '/auth/signup') {
-    //   return (<div></div>)
-    // }
+    if(path === '/auth/signin' || path === '/auth/signup') {
+      return (<div></div>)
+    }
 
     return (
       <div>
@@ -37,7 +35,7 @@ export default class Header extends React.Component {
           <Link to='/' className="logo"><img src={logo} role='presentation' /></Link>
 
           <ul className="nav">
-            <li><Link to='/home'>Home</Link></li>
+            {this.props.auth.authenticated ? <li><Link to='/home'>Home</Link></li> : ''}
             <li><Link to='/browse'>Browse</Link></li>
             <li><Link to='/trends'>Trends</Link></li>
             {this.renderLinks()}

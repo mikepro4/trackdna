@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet';
 import { Link } from 'react-router';
-import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-connect'
 import { loadTrack, loadTracks, editTrack } from '../../actions';
 import TrackEditForm from './edit-form'
@@ -34,8 +33,7 @@ export default class TrackEdit extends React.Component {
   }
 
 	render() {
-		const { currentTrack } = this.props
-    const { name, artist, id } = currentTrack
+    const { name, artist, id } = this.props.currentTrack
 
     const myInitialValues = {
       initialValues: {
@@ -47,7 +45,7 @@ export default class TrackEdit extends React.Component {
 			<div>
 			 	<Helmet title="Track – Track DNA" />
 				<h1>Edit - {name} - {artist}</h1>
-        <TrackEditForm {...myInitialValues} onSubmit={this.handleFormSubmit.bind(this)} trackId={id} />
+        <TrackEditForm {...myInitialValues} onSubmit={this.handleFormSubmit.bind(this)} />
 			</div>
 		)
 	}
