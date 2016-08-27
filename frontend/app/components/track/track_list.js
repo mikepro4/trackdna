@@ -1,22 +1,10 @@
 import React, {PropTypes} from 'react';
 import TrackListItem from './track_item'
 import { connect } from 'react-redux'
+import Loader from '../loader'
 
 export default class TrackList extends React.Component {
-
-  renderLoading() {
-    const loading = this.props.loading.pending
-    if(loading) {
-      return (
-        <span>Loading...</span>
-      )
-    } return (
-      <span> Content Loaded.</span>
-    )
-  }
-
   render() {
-
     if(this.props.tracks.length === 0) {
       return (
         <div>No Tracks Added</div>
@@ -25,7 +13,7 @@ export default class TrackList extends React.Component {
 
     return (
       <div>
-        Loading Indicator: {this.renderLoading()}
+        Loading Indicator: <Loader loading={this.props.loading}/>
         {this.props.tracks.map(track => (
           <TrackListItem track={track} {...this.props} key={track.id}/>
         ))}

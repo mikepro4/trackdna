@@ -1,5 +1,12 @@
 {
-  "tracks": [],
+  "tracks": [
+    {
+      "artist": "sdf",
+      "name": "sdf",
+      "channels": [],
+      "id": 1
+    }
+  ],
   "folders": [
     {
       "folderName": "New Folder 1",

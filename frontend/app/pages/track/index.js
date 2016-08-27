@@ -7,19 +7,12 @@ import { loadTrack } from '../../actions';
 
 @asyncConnect([{
   promise: (props) => {
-    const promises = []
-    const appState = props.store.getState()
-    const currentTrack = appState.app.currentTrack
-    if (!currentTrack || currentTrack.id !== props.params.id) {
-      promises.push(props.store.dispatch(loadTrack(props.params.id)))
-    }
-    return Promise.all(promises)
+    return Promise.resolve(props.store.dispatch(loadTrack(props.params.id)))
   }
 }], state => ({
   currentTrack: state.app.currentTrack
 }))
 export default class Track extends React.Component {
-
 	render() {
 		const { currentTrack } = this.props
     const { name, artist } = currentTrack

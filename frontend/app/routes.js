@@ -13,6 +13,9 @@ import Track from './pages/track'
 import TrackNew from './pages/track/new'
 import TrackEdit from './pages/track/edit'
 
+import SignIn from './pages/auth/signin'
+import SignUp from './pages/auth/signup'
+
 export default (
   <Route path='/' component={AppContainer}>
     { /* Home (main) route */ }
@@ -28,6 +31,9 @@ export default (
       <Route path=':id' component={Track} />
       <Route path='edit/:id' component={TrackEdit} />
     </Route>
+
+    <Route path='/auth/signin' component={SignIn} />
+    <Route path='/auth/signup' component={SignIn} />
 
     { /* Catch all route */ }
     <Route path='*' component={NotFound} status={404} />

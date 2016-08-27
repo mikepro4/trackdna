@@ -18,10 +18,7 @@ export default class TrackListItem extends React.Component {
   }
 
   render() {
-    const id = this.props.track.id;
-    const name = this.props.track.name;
-    const artist = this.props.track.artist;
-
+    const {id, name, artist, channels} = this.props.track
     return (
       <div>
         <h1>{artist} – {name} </h1>

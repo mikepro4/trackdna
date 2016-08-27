@@ -8,13 +8,7 @@ import TrackEditForm from './edit-form'
 
 @asyncConnect([{
   promise: (props) => {
-    const promises = []
-    const appState = props.store.getState()
-    const currentTrack = appState.app.currentTrack
-    if (!currentTrack || currentTrack.id !== props.params.id) {
-      promises.push(props.store.dispatch(loadTrack(props.params.id)))
-    }
-    return Promise.all(promises)
+    return Promise.resolve(props.store.dispatch(loadTrack(props.params.id)))
   }
 }], state => ({
   currentTrack: state.app.currentTrack
@@ -23,6 +17,7 @@ export default class TrackEdit extends React.Component {
   static contextTypes = {
     router: PropTypes.object
   };
+
   handleFormSubmit({ artist, name}) {
     const id = this.props.currentTrack.id;
     console.log('from edit', {id, artist, name})
