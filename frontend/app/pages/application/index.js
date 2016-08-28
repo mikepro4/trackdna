@@ -14,7 +14,7 @@ class AppContainer extends React.Component {
     const { children } = this.props
 
     return (
-      <div>
+      <div className='app_wrapper'>
         <Helmet title="App" />
         <Header {...this.props} />
 

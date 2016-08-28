@@ -1,7 +1,7 @@
 @import "../../styles/vars";
 @import "../../styles/transitions";
 
-header.header_container {
+header.app_header {
   background: $white;
   width: 100%;
   border-bottom: 1px solid $strokeColor;
@@ -10,6 +10,7 @@ header.header_container {
   position: relative;
   align-items: stretch;
   justify-content: space-between;
+  flex-direction: row;
   padding: 0 10px;
 
   .header_left_section {
@@ -128,13 +129,9 @@ header.header_container {
 
       li {
         float: left;
-        margin: 0 0 0 15px;
+        margin: 0 0 0 10px;
         display: flex;
         align-items: center;
-
-        a {
-
-        }
       }
     }
   }

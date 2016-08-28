@@ -38,34 +38,36 @@ export default class Header extends React.Component {
     })
 
     return (
-      <header className='header_container'>
-        <div className='header_left_section'>
-          <Link to='/' className='logo'>
-            <div className='logo_container'>
-              <img src={logoStatic} className='logo_static' />
-              <img src={logoSpinning} className={spinnerClassname}/>
-              <span className='logo_title'>
-                TRACK <br/>
-                DNA
-              </span>
-            </div>
-          </Link>
+      <div className='header_container'>  
+        <header className="app_header">
+          <div className='header_left_section'>
+            <Link to='/' className='logo'>
+              <div className='logo_container'>
+                <img src={logoStatic} className='logo_static' />
+                <img src={logoSpinning} className={spinnerClassname}/>
+                <span className='logo_title'>
+                  TRACK <br/>
+                  DNA
+                </span>
+              </div>
+            </Link>
 
-          <ul className='nav'>
-            {this.props.auth.authenticated ? <li><Link to='/home' activeClassName='active'>Home</Link></li> : ''}
-            <li><Link to='/browse' activeClassName='active'>Browse</Link></li>
-            <li><Link to='/trends' activeClassName='active'>Trends</Link></li>
-            <li><Link to='/track/new' activeClassName='active'>New Track</Link></li>
-          </ul>
-        </div>
+            <ul className='nav'>
+              {this.props.auth.authenticated ? <li><Link to='/home' activeClassName='active'>Home</Link></li> : ''}
+              <li><Link to='/browse' activeClassName='active'>Browse</Link></li>
+              <li><Link to='/trends' activeClassName='active'>Trends</Link></li>
+              <li><Link to='/track/new' activeClassName='active'>New Track</Link></li>
+            </ul>
+          </div>
 
-        <div className='header_right_section'>
-          <ul className="nav_auth">
-            {this.renderLinks()}
-          </ul>
-        </div>
-          {/* <button onClick={this.test.bind(this)}>Dispatch Test</button> */}
-      </header>
+          <div className='header_right_section'>
+            <ul className="nav_auth">
+              {this.renderLinks()}
+            </ul>
+          </div>
+            {/* <button onClick={this.test.bind(this)}>Dispatch Test</button> */}
+        </header>
+      </div>
     );
   }
 }
