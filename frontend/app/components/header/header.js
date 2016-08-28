@@ -1,17 +1,9 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router'
-import classNames from 'classnames'
-import logo from '../../assets/logo.svg'
-import logoStatic from '../../assets/logo_static.svg'
-import logoSpinning from '../../assets/logo_spinning.svg'
 import { connect } from 'react-redux'
-import { loadTracks} from '../../actions/'
+import Logo from '../logo/logo'
 
 export default class Header extends React.Component {
-  test() {
-    this.props.dispatch(loadTracks())
-  }
-
   renderLinks() {
     if(this.props.auth.authenticated) {
       return (
@@ -20,7 +12,7 @@ export default class Header extends React.Component {
     } else {
       return [
         <li key="Signin"><Link to='/auth/signin' className="button">Sign In</Link></li>,
-        <li key="SignUp"><Link to='/auth/signup' className="button button-primary">Sign Up</Link></li>
+        <li key="SignUp"><Link to='/auth/signup' className="button button_primary">Sign Up</Link></li>
       ]
     }
   }
@@ -32,25 +24,11 @@ export default class Header extends React.Component {
       return (<div></div>)
     }
 
-    let spinnerClassname = classNames({
-      'logo_spinning': true,
-      'show': this.props.loading.pending
-    })
-
     return (
-      <div className='header_container'>  
+      <div className='header_container'>
         <header className="app_header">
           <div className='header_left_section'>
-            <Link to='/' className='logo'>
-              <div className='logo_container'>
-                <img src={logoStatic} className='logo_static' />
-                <img src={logoSpinning} className={spinnerClassname}/>
-                <span className='logo_title'>
-                  TRACK <br/>
-                  DNA
-                </span>
-              </div>
-            </Link>
+            <Logo {...this.props} />
 
             <ul className='nav'>
               {this.props.auth.authenticated ? <li><Link to='/home' activeClassName='active'>Home</Link></li> : ''}
@@ -65,7 +43,6 @@ export default class Header extends React.Component {
               {this.renderLinks()}
             </ul>
           </div>
-            {/* <button onClick={this.test.bind(this)}>Dispatch Test</button> */}
         </header>
       </div>
     );

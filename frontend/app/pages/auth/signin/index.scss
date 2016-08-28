@@ -1,0 +1,136 @@
+@import "../../../styles/vars";
+
+.page_signin {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  .form_container {
+    width: 460px;
+    height: 430px;
+    background: $white;
+    padding: 45px;
+    margin-top: -100px;
+    position: relative;
+
+    .form_header {
+      display: flex;
+      height: 30px;
+      justify-content: space-between;
+      margin: 0 0 30px 0;
+
+      h2 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 13px;
+      }
+    }
+
+    .form_top_section {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 0 0 20px 0;
+
+
+      h1.form_title {
+        display: block;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 23px;
+      }
+
+      .form_error {
+        display: block;
+        font-size: 13px;
+        color: $red;
+        font-weight: 400;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+
+        &.show {
+          opacity: 1
+        }
+      }
+    }
+
+    .input_container {
+      display: block;
+      position: relative;
+      margin: 0 0 15px 0;
+
+      .input_valid {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 0;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+      }
+
+      .input_error {
+        display: block;
+        position: absolute;
+        font-size: 11px;
+        top: 42px;
+        left: 0;
+        color: $red;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+      }
+
+      &.input_container_valid {
+        .input_valid {
+          opacity: 1
+        }
+      }
+      &.input_container_error {
+        .input_error {
+          opacity: 1
+        }
+
+        input.input {
+          border-bottom: 1px solid $red;
+        }
+      }
+    }
+
+    .button_submit {
+      margin: 25px 0 25px 0;
+    }
+
+    .forgot_link {
+      display: block;
+      text-align: right;
+      color: $black;
+      font-size: 11px;
+      margin: 20px 0 0 0;
+    }
+
+    .footer_link {
+      display: block;
+      font-size: 11px;
+      text-align: center;
+
+      span {
+        display: inline-block;
+        float: left;
+        position: relative;
+        margin: 6px 0 0 90px;
+        left: -5px;
+      }
+
+      .button {width: 70px;}
+    }
+  }
+}

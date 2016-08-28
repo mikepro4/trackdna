@@ -2,15 +2,9 @@
   "tracks": [
     {
       "id": 1,
-      "artist": "Adam Beyersdf",
-      "name": "You Knosdfw",
+      "artist": "Adam Beyer",
+      "name": "You Know",
       "channels": []
-    },
-    {
-      "artist": "sdf",
-      "name": "sdf",
-      "channels": [],
-      "id": 2
     }
   ],
   "folders": [

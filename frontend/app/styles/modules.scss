@@ -1,10 +1,13 @@
 // Elements
 @import "./elements/button";
+@import "./elements/input";
 
 // Components
 @import "../components/header/header";
+@import "../components/logo/logo";
 
 //Pages
 @import "../pages/landing/index";
 @import "../pages/browse/index";
 @import "../pages/track/index";
+@import "../pages/auth/signin/index";

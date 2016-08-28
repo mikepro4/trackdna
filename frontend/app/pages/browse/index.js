@@ -4,7 +4,6 @@ import { asyncConnect } from 'redux-connect'
 import { addTrack, loadTracks } from '../../actions';
 import TrackList from '../../components/track/track_list'
 import AddTrack from "../../components/track/add_track"
-import Loader from '../../components/loader'
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import TrackListItem from './track_item'
 import { connect } from 'react-redux'
-import classNames from 'classnames'
+import classNames from 'classNames'
 
 export default class TrackList extends React.Component {
   render() {

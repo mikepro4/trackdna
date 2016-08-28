@@ -1,0 +1,38 @@
+@import "../vars";
+
+input.input {
+  display: block;
+  position: relative;
+  box-shadow: none;
+  width: 100%;
+  transition: border 0.2s ease-in-out;
+  z-index: 1;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  color: $black;
+  letter-spacing: .5px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  height: 40px;
+  border-bottom: 1px solid rgba($black, .1);
+
+  &:focus {
+    border-bottom: 1px solid rgba($black, 1);
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    color: #cacaca;
+  }
+
+  &.input_big {
+    font-size: 16px;
+    height: 42px;
+  }
+}

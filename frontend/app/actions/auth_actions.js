@@ -6,8 +6,7 @@ import {
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
   UNAUTH_USER,
-  AUTH_ERROR,
-  FETCH_MESSAGE
+  AUTH_ERROR
 } from './types';
 
 const ROOT_URL = 'http://localhost:3090';

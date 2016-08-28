@@ -32,7 +32,7 @@ export default class Landing extends React.Component {
             <p>Yo! It's Working. Some cool stuff over here...</p>
             <ul className='welcome_nav'>
               <li key="Signin"><Link to='/auth/signin' className="button">Sign In</Link></li>
-              <li key="SignUp"><Link to='/auth/signup' className="button button-primary">Sign Up</Link></li>
+              <li key="SignUp"><Link to='/auth/signup' className="button button_primary">Sign Up</Link></li>
             </ul>
           </div>
 

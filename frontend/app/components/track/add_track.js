@@ -19,7 +19,7 @@ class AddTrack extends React.Component {
             <Field  name="name" type="text" component="input" className="form-control" />
           </div>
 
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="button">Add Track</button>
         </form>
       </div>
     )
