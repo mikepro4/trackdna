@@ -26,7 +26,7 @@ class AddTrack extends React.Component {
           <Field name="artist"  component={this.renderField} label="Artist"/>
           <Field name="name"  component={this.renderField} label="Name"/>
           <Field name="youtubeUrl"  component={this.renderField} label="Youtube Video Id"/>
-          <button type="submit" className="button">Add Track</button>
+          <button type="submit" className="button button_primary">Add Track</button>
         </form>
       </div>
     )
