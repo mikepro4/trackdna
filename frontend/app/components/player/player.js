@@ -31,9 +31,9 @@ export default class YoutubePlayer extends React.Component {
       this.state.player.stopVideo();
     }else if (this.props.videoId.playerAction === 'seek') {
       console.log('seconds:', this.props.videoId.seconds)
-      this.state.player.seekTo(this.props.videoId.seconds);
-      setTimeout(() => this.state.player.playVideo(), 500);
-      this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'idle'))
+      this.state.player.playVideo()
+
+      setTimeout(() => {this.state.player.seekTo(this.props.videoId.seconds);}, 1);
     }
   }
 
