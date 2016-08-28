@@ -25,7 +25,15 @@ export default class YoutubePlayer extends React.Component {
       this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'idle'))
     } else if (this.props.videoId.playerAction === 'pause') {
       this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'idle'))
+      this.state.player.pauseVideo();
+    } else if (this.props.videoId.playerAction === 'stop') {
+      this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'idle'))
       this.state.player.stopVideo();
+    }else if (this.props.videoId.playerAction === 'seek') {
+      console.log('seconds:', this.props.videoId.seconds)
+      this.state.player.seekTo(this.props.videoId.seconds);
+      this.state.player.playVideo(),
+      this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'idle'))
     }
   }
 

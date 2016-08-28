@@ -9,7 +9,8 @@ export default (state = {}, action) => {
       return  Object.assign({}, state, {
         currentVideo: action.payload,
         playerAction: action.playerAction,
-        videoLoaded: true
+        videoLoaded: true,
+        seconds: action.seconds
       })
     default:
       return state

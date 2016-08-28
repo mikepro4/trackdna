@@ -25,11 +25,12 @@ export function authError(error) {
   };
 }
 
-export function updateTrack(id, action) {
+export function updateTrack(id, action, seconds) {
   return {
     type: CURRENT_TRACK_UPDATE,
     payload: id,
-    playerAction: action
+    playerAction: action,
+    seconds: seconds
   };
 }
 

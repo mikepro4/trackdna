@@ -19,33 +19,6 @@ import YoutubePlayer from "../../components/player/player"
   playerAction: state.currentVideo.playerAction
 }))
 export default class Browse extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //
-  //   this.onReady = this.onReady.bind(this);
-  //   this.onPlayVideo = this.onPlayVideo.bind(this);
-  //   this.onStopVideo = this.onStopVideo.bind(this);
-  //   this.onPauseVideo = this.onPauseVideo.bind(this);
-  //   this.onSeekTo = this.onSeekTo.bind(this);
-  // }
-
-
-
-  // onPlayVideo() {
-  //   this.state.player.playVideo();
-  // }
-  //
-  // onStopVideo() {
-  //   this.state.player.stopVideo();
-  // }
-  //
-  // onPauseVideo() {
-  //   this.state.player.pauseVideo();
-  // }
-  //
-  // onSeekTo() {
-  //   this.state.player.seekTo(30);
-  // }
 
   handleFormSubmit({ artist, name, youtubeUrl}) {
     this.props.dispatch(addTrack({
