@@ -1,18 +1,18 @@
 {
   "tracks": [
     {
+      "id": 4,
       "artist": "Cirez D ",
       "name": "In The Reds",
       "youtubeUrl": "dQXzMR_gCsc",
-      "channels": [],
-      "id": 4
+      "channels": []
     },
     {
+      "id": 5,
       "artist": "Ian O’Donovan",
       "name": "Crucible",
       "youtubeUrl": "naUY9buixKY",
-      "channels": [],
-      "id": 5
+      "channels": []
     },
     {
       "artist": "Enrico Sangiuliano",

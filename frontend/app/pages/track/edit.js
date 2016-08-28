@@ -17,10 +17,10 @@ export default class TrackEdit extends React.Component {
     router: PropTypes.object
   };
 
-  handleFormSubmit({ artist, name}) {
+  handleFormSubmit({ artist, name, youtubeUrl}) {
     const id = this.props.currentTrack.id;
     console.log('from edit', {id, artist, name})
-    const track =  {id, artist, name, channels: []}
+    const track =  {id, artist, name, youtubeUrl, channels: []}
     this.updateTrack(track)
   }
 
@@ -34,12 +34,13 @@ export default class TrackEdit extends React.Component {
   }
 
 	render() {
-    const { name, artist, id } = this.props.currentTrack
+    const { name, artist, id, youtubeUrl } = this.props.currentTrack
 
     const myInitialValues = {
       initialValues: {
         name: name,
-        artist: artist
+        artist: artist,
+        youtubeUrl: youtubeUrl
       }
     }
 		return (
