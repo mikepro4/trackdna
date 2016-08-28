@@ -25,6 +25,14 @@
       width: 300px;
       background: $white;
       border-right: 1px solid $strokeColor;
+
+      .video-container {
+        display: none;
+
+        &.video-loaded {
+          display: block;
+        }
+      }
     }
 
     .filters_section_2 {
