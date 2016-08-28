@@ -7,6 +7,9 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducers from './reducers'
 import {loadingMiddleware} from 'redux-loading'
+import {
+  AUTH_USER_SUCCESS
+} from './actions/types';
 
 const dest = document.getElementById('app')
 
@@ -30,6 +33,12 @@ if (__DEV__) {
 const store = finalCreateStore(reducers, window.__data)
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
+
+const token = localStorage.getItem('token');
+if (token) {
+  store.dispatch({ type: AUTH_USER_SUCCESS });
+}
+
 
 // Render app function
 let render = () => {

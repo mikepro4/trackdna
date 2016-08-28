@@ -15,7 +15,7 @@ export default class Header extends React.Component {
   renderLinks() {
     if(this.props.auth.authenticated) {
       return (
-        <li key="SignOut"><Link to='/auth/signout'>Sign Out</Link></li>
+        <li key="SignOut"><Link to='/auth/signout' className="button">Sign Out</Link></li>
       )
     } else {
       return [
