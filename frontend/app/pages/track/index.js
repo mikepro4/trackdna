@@ -3,7 +3,8 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect'
 import classNames from 'classNames'
-import { loadTrack, deleteTrack, loadTracks} from '../../actions'
+import { loadTrack, deleteTrack, loadTracks, updateTrack} from '../../actions'
+import YoutubePlayer from "../../components/player/player"
 
 @asyncConnect([{
   promise: (props) => {
@@ -11,7 +12,9 @@ import { loadTrack, deleteTrack, loadTracks} from '../../actions'
   }
 }], state => ({
   currentTrack: state.app.currentTrack,
-  loading: state.loading.pending
+  loading: state.loading.pending,
+  videoId: state.currentVideo,
+  playerAction: state.currentVideo.playerAction
 }))
 export default class Track extends React.Component {
   static contextTypes = {
@@ -28,6 +31,14 @@ export default class Track extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  onPlay() {
+    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'play'))
+  }
+
+  onPause() {
+    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'pause'))
   }
 
 	render() {
@@ -47,6 +58,8 @@ export default class Track extends React.Component {
             <ul className='track_actions'>
               <li><a className='button' onClick={this.onDelete.bind(this)}>Delete Track</a></li>
               <li><Link to={`/track/edit/${id}`} className='button'>Edit Track</Link></li>
+              <li><button onClick={this.onPlay.bind(this)} className='button'>Play</button></li>
+              <li><button onClick={this.onPause.bind(this)} className='button'>Pause</button></li>
             </ul>
           </div>
         </div>
@@ -62,6 +75,10 @@ export default class Track extends React.Component {
               <div className='meta_block'>
                Track Name: <h1>{name}</h1>
               </div>
+            </div>
+
+            <div className='track_player'>
+              <YoutubePlayer {...this.props} />
             </div>
           </div>
           <div className='track_content'>

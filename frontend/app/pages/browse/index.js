@@ -4,9 +4,8 @@ import { asyncConnect } from 'redux-connect'
 import { addTrack, loadTracks } from '../../actions';
 import TrackList from '../../components/track/track_list'
 import AddTrack from "../../components/track/add_track"
-import YouTube from 'react-youtube';
-import classNames from 'classNames'
 import {reset} from 'redux-form';
+import YoutubePlayer from "../../components/player/player"
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([
@@ -30,30 +29,7 @@ export default class Browse extends React.Component {
   //   this.onSeekTo = this.onSeekTo.bind(this);
   // }
 
-  constructor(props) {
-   super(props);
 
-   this.state = {
-     player: null
-   }
-  }
-
-  onReady(event) {
-   this.setState({
-      player: event.target
-    });
-  }
-
-  componentDidUpdate(event) {
-    console.log('state change')
-    if(this.props.videoId.playerAction === 'play') {
-      setTimeout(() => this.state.player.playVideo(), 500);
-      console.log('play here')
-    } else if (this.props.videoId.playerAction === 'pause') {
-      this.state.player.stopVideo();
-    }
-  //  event.target.playVideo()
-  }
 
   // onPlayVideo() {
   //   this.state.player.playVideo();
@@ -85,19 +61,7 @@ export default class Browse extends React.Component {
       });
   }
 
-
 	render() {
-    console.log('here', this.props.videoId.playerAction)
-    const opts = {
-      height: '200',
-      width: '280'
-    };
-
-    let videoClasses = classNames({
-      'video-container': true,
-      'video-loaded': this.props.videoId.currentVideo
-    })
-
 		return (
 			<div className='page_container page_browse'>
 			 	<Helmet title="Browse – Track DNA" />
@@ -107,13 +71,7 @@ export default class Browse extends React.Component {
             <h1>Track Filters</h1>
             <div className='add_track_test'>
               <AddTrack {...this.props} onSubmit={this.handleFormSubmit.bind(this)} />
-              <div className={videoClasses}>
-                <YouTube
-                  videoId={this.props.videoId.currentVideo}
-                  opts={opts}
-                  onReady={this.onReady.bind(this)}
-                />
-              </div>
+              <YoutubePlayer {...this.props} />
             </div>
           </div>
 
