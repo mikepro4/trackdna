@@ -5,6 +5,22 @@ $headerSize: 50px;
 $white: #ffffff;
 $black: #000000;
 $yellow: #FEFE45;
+$grey: #E8E8E8;
 
 $bgColor: #F6F6F6;
 $strokeColor: #D1D1D1;
+
+// Default Button
+$buttonBg: #F3F3F3;
+$buttonHoverBg: $grey;
+$buttonActiveBg: #E4E4E4;
+
+// Seconday Button
+$buttonSecondaryBg: $grey;
+$buttonSecondaryHoverBg: $grey;
+$buttonSecondaryActiveBg: $grey;
+
+// Primary Button
+$buttonPrimaryBg: $black;
+$buttonPrimaryHoverBg: $black;
+$buttonPrimaryActiveBg: $black;

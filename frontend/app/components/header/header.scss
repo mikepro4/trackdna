@@ -8,107 +8,133 @@ header.header_container {
   height: $headerSize;
   display: flex;
   position: relative;
-  align-items: center;
+  align-items: stretch;
+  justify-content: space-between;
   padding: 0 10px;
 
-  .nav {
-    display: block;
-    list-style: none;
-    position: relative;
-    margin: 0 0 0 30px;
-    padding: 0;
-    height: $headerSize;
+  .header_left_section {
+    display: flex;
+    align-items: center;
 
-    li {
-      float: left;
-      margin: 0 25px 0 0;
+    .nav {
+      display: block;
+      list-style: none;
+      position: relative;
+      margin: 0 0 0 30px;
       height: $headerSize;
-      display: flex;
-      align-items: stretch;
 
-      a {
+      li {
+        float: left;
+        margin: 0 25px 0 0;
+        height: $headerSize;
         display: flex;
-        align-items: center;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        font-size: 13px;
-        line-height: 13px;
-        text-transform: uppercase;
-        color: rgba($black, .3);
-        position: relative;
-        transition: color .2s ease-in-out;
+        align-items: stretch;
 
-        &:before {
-          content:'';
+        a {
+          display: flex;
+          align-items: center;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+          font-size: 13px;
+          line-height: 13px;
+          text-transform: uppercase;
+          color: rgba($black, .3);
+          position: relative;
+          transition: color .2s ease-in-out;
+
+          &:before {
+            content:'';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 0;
+            top: 0;
+            left: 0;
+            background: $black;
+            transition: height .1s ease-in-out;
+          }
+
+          &:hover {
+            color: rgba($black, 1);
+          }
+
+          &.active {
+            color: $black;
+            &:before {
+              height: 3px;
+            }
+          }
+        }
+      }
+    }
+
+    .logo {
+      display: block;
+      width: 80px;
+
+      .logo_container {
+        display: block;
+        position: relative;
+        width: 26px;
+        height: 26px;
+
+        .logo_static {
           display: block;
           position: absolute;
-          width: 100%;
-          height: 0;
           top: 0;
           left: 0;
-          background: $black;
-          transition: height .1s ease-in-out;
+          z-index: 1;
         }
 
-        &:hover {
-          color: rgba($black, 1);
-        }
+        .logo_spinning  {
+          display: block;
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          transform-origin: center;
+          animation: spinning 500ms linear infinite;
+          transition: opacity .2s ease-in-out;
 
-        &.active {
-          color: $black;
-          &:before {
-            height: 3px;
+          &.show {
+            opacity: 1;
           }
+        }
+
+        .logo_title {
+          display: block;
+          position: absolute;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          color: $black;
+          left: 30px;
+          top: -1px;
+          font-size: 13px;
+          line-height: 14px;
+          letter-spacing: .3px;
         }
       }
     }
   }
 
-  .logo {
-    display: block;
-    width: 80px;
+  .header_right_section {
+    display: flex;
+    align-items: stretch;
 
-    .logo_container {
-      display: block;
-      position: relative;
-      width: 26px;
-      height: 26px;
+    .nav_auth {
+      display: flex;
+      align-items: stretch;
 
-      .logo_static {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-      }
+      li {
+        float: left;
+        margin: 0 0 0 15px;
+        display: flex;
+        align-items: center;
 
-      .logo_spinning  {
-        display: block;
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        transform-origin: center;
-        animation: spinning 500ms linear infinite;
-        transition: opacity .2s ease-in-out;
+        a {
 
-        &.show {
-          opacity: 1;
         }
-      }
-
-      .logo_title {
-        display: block;
-        position: absolute;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        color: $black;
-        left: 30px;
-        top: -1px;
-        font-size: 13px;
-        line-height: 14px;
-        letter-spacing: .3px;
       }
     }
   }

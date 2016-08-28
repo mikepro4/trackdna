@@ -19,27 +19,27 @@ export default class Header extends React.Component {
       )
     } else {
       return [
-        <li key="Signin"><Link to='/auth/signin'>Sign In</Link></li>,
-        <li key="SignUp"><Link to='/auth/signup'>Sign Up</Link></li>
+        <li key="Signin"><Link to='/auth/signin' className="button">Sign In</Link></li>,
+        <li key="SignUp"><Link to='/auth/signup' className="button button-primary">Sign Up</Link></li>
       ]
     }
   }
 
   render() {
     const path = this.props.location.pathname
+    // Don't render header for Signin and Signup pages
     if(path === '/auth/signin' || path === '/auth/signup') {
       return (<div></div>)
     }
-    const show = this.props.loading.pending
 
     let spinnerClassname = classNames({
       'logo_spinning': true,
       'show': this.props.loading.pending
     })
 
-
     return (
       <header className='header_container'>
+        <div className='header_left_section'>
           <Link to='/' className='logo'>
             <div className='logo_container'>
               <img src={logoStatic} className='logo_static' />
@@ -51,16 +51,19 @@ export default class Header extends React.Component {
             </div>
           </Link>
 
-          <ul className="nav">
-            {this.props.auth.authenticated ? <li><Link to='/home' activeClassName="active">Home</Link></li> : ''}
-            <li><Link to='/browse' activeClassName="active">Browse</Link></li>
-            <li><Link to='/trends' activeClassName="active">Trends</Link></li>
-            <li><Link to='/track/new' activeClassName="active">New Track</Link></li>
+          <ul className='nav'>
+            {this.props.auth.authenticated ? <li><Link to='/home' activeClassName='active'>Home</Link></li> : ''}
+            <li><Link to='/browse' activeClassName='active'>Browse</Link></li>
+            <li><Link to='/trends' activeClassName='active'>Trends</Link></li>
+            <li><Link to='/track/new' activeClassName='active'>New Track</Link></li>
           </ul>
+        </div>
 
+        <div className='header_right_section'>
           <ul className="nav_auth">
             {this.renderLinks()}
           </ul>
+        </div>
           {/* <button onClick={this.test.bind(this)}>Dispatch Test</button> */}
       </header>
     );

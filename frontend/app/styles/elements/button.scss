@@ -1,0 +1,46 @@
+@import "../vars";
+
+.button {
+  background: $buttonBg;
+  height: 30px;
+  padding: 0 20px;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  line-height: 1em;
+  position: relative;
+  color: $black;
+  transition: background .25s ease-in-out;
+  white-space: nowrap;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: $black;
+    transition: height .1s ease-in-out;
+  }
+
+  &:hover {
+    background: $buttonHoverBg;
+
+    &:after {
+      background: $black;
+      height: 2px;
+    }
+  }
+
+  &:active {
+    background: $buttonActiveBg
+  }
+
+  &.button-primary {
+    background: $black;
+    color: $white;
+  }
+}

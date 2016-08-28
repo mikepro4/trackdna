@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect'
 import { loadTrack} from '../../actions'
