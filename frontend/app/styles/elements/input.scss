@@ -36,3 +36,45 @@ input.input {
     height: 42px;
   }
 }
+
+.input_container {
+  display: block;
+  position: relative;
+  margin: 0 0 15px 0;
+
+  .input_valid {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+
+  .input_error {
+    display: block;
+    position: absolute;
+    font-size: 11px;
+    top: 42px;
+    left: 0;
+    color: $red;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+
+  &.input_container_valid {
+    .input_valid {
+      opacity: 1
+    }
+  }
+  &.input_container_error {
+    .input_error {
+      opacity: 1
+    }
+
+    input.input {
+      border-bottom: 1px solid $red;
+    }
+  }
+}

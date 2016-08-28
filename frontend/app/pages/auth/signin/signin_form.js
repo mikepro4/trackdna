@@ -27,7 +27,7 @@ class SignInForm extends React.Component {
         <Field name="email"  component={this.renderField} label="Email" ref="email" />
         <Field name="password"  component={this.renderField} label="Password" />
         <Link to='/auth/forgot_password' className='forgot_link'>Forgot password?</Link>
-        <button action="submit" className='button button_primary button_big button_submit'>Sign in</button>
+        <button action="submit" className='button button_primary button_big button_submit'>Sign In</button>
       </form>
     );
   }
