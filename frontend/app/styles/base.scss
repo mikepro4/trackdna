@@ -51,6 +51,12 @@ a {
     .app_container {
       flex-grow: 1;
       overflow-y: scroll;
+      display: flex;
+      align-items: stretch;
+      position: relative;
+
+      .page_container {
+      }
     }
   }
 }

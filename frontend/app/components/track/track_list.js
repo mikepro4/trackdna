@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import TrackListItem from './track_item'
 import { connect } from 'react-redux'
-import Loader from '../loader'
+import classNames from 'classnames'
 
 export default class TrackList extends React.Component {
   render() {
@@ -11,9 +11,13 @@ export default class TrackList extends React.Component {
       )
     }
 
+    let classes = classNames({
+      'track_list_container': true,
+      'loading': this.props.loading.pending
+    })
+
     return (
-      <div>
-        Loading Indicator: <Loader loading={this.props.loading}/>
+      <div className={classes}>
         {this.props.tracks.map(track => (
           <TrackListItem track={track} {...this.props} key={track.id}/>
         ))}

@@ -1,0 +1,96 @@
+@import "../../styles/vars";
+
+.page_browse {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+
+  .filters_container {
+    width: 600px;
+    background: $white;
+    border-right: 1px solid $strokeColor;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    h1 {
+      font-size: 16px;
+      margin: 20px 10px 20px 10px;
+    }
+
+    .filters_section_1 {
+      width: 300px;
+      background: $white;
+      border-right: 1px solid $strokeColor;
+    }
+
+    .filters_section_2 {
+      width: 300px;
+      background: $white;
+      border-right: 1px solid $strokeColor;
+    }
+
+    .add_track_test {
+      margin: 10px;
+    }
+  }
+
+  .results_container {
+    height: 100%;
+    overflow-y: scroll;
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+
+    .track_list_container {
+      display: block;
+      margin: 20px 0 20px 0;
+
+      &.loading {
+        &:before {
+          content:'';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba($white, .5);
+          z-index: 10000;
+        }
+        &:after {
+          content:'Loading...';
+          background: $black;
+          color: $white;
+          z-index: 10001;
+          position: absolute;
+          bottom: 30px;
+          right: 30px;
+          padding: 10px 20px;
+        }
+      }
+
+      .track_list_item {
+        width: 100%;
+        background: $white;
+        padding: 20px;
+        margin: 0 0 20px 0;
+        position: relative;
+        z-index: 1;
+
+        .track_actions {
+          height: 30px;
+          margin: 10px 0 0 0;
+
+          li {
+            float: left;
+            margin: 0 20px 0 0;
+          }
+        }
+      }
+    }
+  }
+}

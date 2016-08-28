@@ -4,6 +4,7 @@ import { asyncConnect } from 'redux-connect'
 import { addTrack, loadTracks } from '../../actions';
 import TrackList from '../../components/track/track_list'
 import AddTrack from "../../components/track/add_track"
+import Loader from '../../components/loader'
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([
@@ -27,16 +28,27 @@ export default class Browse extends React.Component {
   }
 	render() {
 		return (
-			<div>
+			<div className='page_container page_browse'>
 			 	<Helmet title="Browse – Track DNA" />
 
-        <AddTrack {...this.props} onSubmit={this.handleFormSubmit.bind(this)} />
+        <div className='filters_container'>
+          <div className='filters_section_1'>
+            <h1>Track Filters</h1>
+            <div className='add_track_test'>
+              <AddTrack {...this.props} onSubmit={this.handleFormSubmit.bind(this)} />
+            </div>
+          </div>
 
-        ----
-        <div>
-  				<h3>Browse Tracks</h3>
-  				<TrackList {...this.props} />
+          <div className='filters_setion_2'>
+            <h1>Sounds Filters</h1>
+          </div>
         </div>
+
+        <div className='results_container'>
+          <h3>Browse Tracks</h3>
+          <TrackList {...this.props} />
+        </div>
+
 			</div>
 		)
 	}

@@ -18,12 +18,14 @@ export default class TrackListItem extends React.Component {
   render() {
     const {id, name, artist, channels} = this.props.track
     return (
-      <div>
+      <div className='track_list_item'>
         <h1>{artist} – {name} </h1>
         <TrackChannelsList channels={this.props.track.channels} />
-        <button onClick={this.onDelete.bind(this)}>Delete post</button>
-        <Link to={`/track/edit/${id}`}>Edit</Link>
-        <Link to={`/track/${id}`}>View</Link>
+        <ul className='track_actions'>
+          <li><a className='button' onClick={this.onDelete.bind(this)}>Delete</a></li>
+          <li><Link to={`/track/edit/${id}`} className='button'>Edit</Link></li>
+          <li><Link to={`/track/${id}`} className='button'>View</Link></li>
+        </ul>
       </div>
     );
   }

@@ -1,3 +1,9 @@
+// Elements
+@import "./elements/button";
+
+// Components
 @import "../components/header/header";
 
-@import "./elements/button";
+//Pages
+@import "../pages/landing/index";
+@import "../pages/browse/index";

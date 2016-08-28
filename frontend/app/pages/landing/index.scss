@@ -1,0 +1,54 @@
+@import "../../styles/vars";
+
+.page_landing {
+  display: block;
+  margin: 0 auto;
+  width: 1100px;
+
+  .page_content {
+    display: block;
+
+    .block-welcome {
+      display: block;
+      margin: 50px 0;
+      background: $white;
+      padding: 50px;
+
+      h1 {
+        font-size: 30px;
+        display: block;
+        margin: 0 0 10px 0;
+      }
+
+      ul.welcome_nav {
+        display: block;
+        margin: 20px 0 50px 0;
+
+        li {
+          float: left;
+          margin: 0 20px 0 0;
+        }
+      }
+    }
+
+    .block-content {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: space-between;
+      margin: 0 0 50px;
+
+      .block {
+        background: $white;
+        height: 200px;
+        min-width: 350px;
+        padding: 25px;
+
+        h2 {
+          font-size: 24px;
+          margin: 10px 0 10px 0;
+        }
+      }
+    }
+  }
+}
