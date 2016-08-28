@@ -16,18 +16,6 @@ export default class SignIn extends React.Component {
     this.props.dispatch(signinUser({ email, password }))
   }
 
-  renderField({ input, label, type, meta: { touched, error } }) {
-    return (
-      <div>
-        <label>{label}</label>
-        <div>
-          <input {...input} placeholder={label} type={type}/>
-          {touched && error && <span>{error}</span>}
-        </div>
-      </div>
-    )
-  }
-
   renderAlert() {
     if (this.props.auth.error) {
       return (

@@ -6,6 +6,7 @@ import TrackList from '../../components/track/track_list'
 import AddTrack from "../../components/track/add_track"
 import YouTube from 'react-youtube';
 import classNames from 'classNames'
+import {reset} from 'redux-form';
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([
@@ -79,6 +80,8 @@ export default class Browse extends React.Component {
       }))
       .then((response) => {
         this.props.dispatch(loadTracks())
+        console.log(this.props)
+        this.props.dispatch(reset('TrackForm'))
       });
   }
 
