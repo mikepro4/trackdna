@@ -41,6 +41,18 @@ export default class Track extends React.Component {
     this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'pause'))
   }
 
+  onStop() {
+    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'stop'))
+  }
+
+  onSeek() {
+    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'seek', 30))
+  }
+
+  componentDidMount() {
+    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl))
+  }
+
 	render() {
     const { name, artist, id } = this.props.currentTrack
     let pageClasses = classNames({
@@ -60,6 +72,8 @@ export default class Track extends React.Component {
               <li><Link to={`/track/edit/${id}`} className='button'>Edit Track</Link></li>
               <li><button onClick={this.onPlay.bind(this)} className='button'>Play</button></li>
               <li><button onClick={this.onPause.bind(this)} className='button'>Pause</button></li>
+              <li><button onClick={this.onStop.bind(this)} className='button'>Stop</button></li>
+              <li><button onClick={this.onSeek.bind(this)} className='button'>Seek to 0:30</button></li>
             </ul>
           </div>
         </div>
