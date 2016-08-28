@@ -18,7 +18,7 @@ class AppContainer extends React.Component {
         <Helmet title="App" />
         <Header {...this.props} />
 
-        <div className='container'>
+        <div className='app_container'>
           {children}
         </div>
       </div>

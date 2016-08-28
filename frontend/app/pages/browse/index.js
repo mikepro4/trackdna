@@ -1,9 +1,9 @@
 import React from 'react'
 import Helmet from "react-helmet";
 import { asyncConnect } from 'redux-connect'
-import { loadTracks } from '../../actions';
+import { addTrack, loadTracks } from '../../actions';
 import TrackList from '../../components/track/track_list'
-import AddTrack from "./add_track"
+import AddTrack from "../../components/track/add_track"
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([
@@ -15,12 +15,22 @@ import AddTrack from "./add_track"
 	loading: state.loading
 }))
 export default class Browse extends React.Component {
+  handleFormSubmit({ artist, name}) {
+    this.props.dispatch(addTrack({
+        artist,
+        name,
+        "channels": []
+      }))
+      .then((response) => {
+        this.props.dispatch(loadTracks())
+      });
+  }
 	render() {
 		return (
 			<div>
 			 	<Helmet title="Browse – Track DNA" />
 
-        <AddTrack {...this.props}/>
+        <AddTrack {...this.props} onSubmit={this.handleFormSubmit.bind(this)} />
 
         ----
         <div>

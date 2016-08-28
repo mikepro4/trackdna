@@ -1,24 +1,12 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { addTrack, loadTracks } from '../../actions';
 
 class AddTrack extends React.Component {
-  handleFormSubmit({ artist, name}) {
-    this.props.dispatch(addTrack({
-        artist,
-        name,
-        "channels": []
-      }))
-      .then((response) => {
-        this.props.dispatch(loadTracks())
-      });
-  }
-
   render() {
     const { handleSubmit } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        <form onSubmit={handleSubmit}>
           <h3>Add Track</h3>
 
           <div>

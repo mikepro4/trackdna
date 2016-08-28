@@ -5,7 +5,6 @@ export default class TrackContainer extends React.Component {
     const { children } = this.props
     return (
       <div>
-        <div>Track Analysis Page</div>
         {children}
       </div>);
   }

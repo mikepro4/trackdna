@@ -30,10 +30,11 @@ export default (
     <Route path='trends' component={Trends} />
 
     <Route path='/track' component={TrackContainer}>
-      <Route path='new' component={TrackNew} />
+      <Route path='/track/new' component={TrackNew} />
       <Route path=':id' component={Track} />
       <Route path='edit/:id' component={TrackEdit} />
     </Route>
+
 
     <Route path='/auth/signin' component={SignIn} />
     <Route path='/auth/signup' component={SignUp} />
