@@ -19,6 +19,11 @@ class AddTrack extends React.Component {
             <Field  name="name" type="text" component="input" className="form-control" />
           </div>
 
+          <div>
+            <label>Youtube Url</label>
+            <Field  name="youtubeUrl" type="text" component="input" className="form-control" />
+          </div>
+
           <button type="submit" className="button">Add Track</button>
         </form>
       </div>

@@ -9,10 +9,29 @@ import {
   DELETE_TRACK,
   DELETE_TRACK_SUCCESS,
   EDIT_TRACK,
-  EDIT_TRACK_SUCCESS
+  EDIT_TRACK_SUCCESS,
+  CURRENT_TRACK_UPDATE
 } from './types';
 
 const ROOT_URL = 'http://localhost:3002';
+
+export function authError(error) {
+  return {
+    type: AUTH_ERROR,
+    payload: error,
+    meta: {
+      loading: false
+    }
+  };
+}
+
+export function updateTrack(id, action) {
+  return {
+    type: CURRENT_TRACK_UPDATE,
+    payload: id,
+    playerAction: action
+  };
+}
 
 export function loadTracks() {
   console.log('load tracks')

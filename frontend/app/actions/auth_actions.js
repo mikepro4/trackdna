@@ -11,16 +11,6 @@ import {
 
 const ROOT_URL = 'http://localhost:3090';
 
-export function authError(error) {
-  return {
-    type: AUTH_ERROR,
-    payload: error,
-    meta: {
-      loading: false
-    }
-  };
-}
-
 export function signinUser({ email, password }) {
   console.log('signinUser action stuff', { email, password })
   return dispatch => {

@@ -11,11 +11,11 @@ export default (state = {}, action) => {
         tracks: action.result,
         tracksLoaded: true
       })
-      case LOAD_SINGLE_TRACK_SUCCESS:
-        return Object.assign({}, state, {
-          currentTrack: action.result,
-          singleTrackLoaded: true
-        })
+    case LOAD_SINGLE_TRACK_SUCCESS:
+      return Object.assign({}, state, {
+        currentTrack: action.result,
+        singleTrackLoaded: true
+      })
     default:
       return state
   }
