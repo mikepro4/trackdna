@@ -1,0 +1,108 @@
+@import "../../styles/vars";
+
+.page_track {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  flex-direction: column;
+
+  &.loading {
+    &:before {
+      content:'';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba($white, .5);
+      z-index: 10000;
+    }
+    &:after {
+      content:'Loading...';
+      background: $black;
+      color: $white;
+      z-index: 10001;
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 20px;
+    }
+  }
+
+  .track_toolbar {
+    display: flex;
+    position: relative;
+    width: 100%;
+    background: $white;
+    border-bottom: 1px solid $strokeColor;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    .track_actions {
+      li {
+        float: left;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+
+  .track_container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+
+    .track_sidebar {
+      width: 300px;
+      height: 100%;
+      background: $white;
+      border-right: 1px solid $strokeColor;
+
+      .track_metadata {
+        padding: 20px 10px ;
+
+        .meta_block {
+          display: block;
+          margin: 0 0 20px 0;
+        }
+      }
+    }
+
+    .track_content {
+      display: flex;
+      flex-grow: 1;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .channels_container {
+        flex-grow: 1;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: row;
+
+        .channels_info {
+          background: #FAFAFA;
+          border-right: 1px solid $strokeColor;
+          width: 200px
+        }
+        .channels_content {
+          flex-grow: 1;
+        }
+      }
+
+      .info_container {
+        background: $white;
+        border-top: 1px solid $strokeColor;
+        height: 230px;
+      }
+    }
+  }
+}

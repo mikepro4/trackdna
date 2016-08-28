@@ -45,6 +45,7 @@
     flex-grow: 1;
     padding: 20px;
     position: relative;
+    background: $white;
 
     .track_list_container {
       display: block;
@@ -80,6 +81,7 @@
         margin: 0 0 20px 0;
         position: relative;
         z-index: 1;
+        border: 1px solid $strokeColor;
 
         .track_actions {
           height: 30px;
@@ -87,7 +89,7 @@
 
           li {
             float: left;
-            margin: 0 20px 0 0;
+            margin: 0 10px 0 0;
           }
         }
       }

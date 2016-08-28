@@ -25,10 +25,11 @@ export default class TrackEdit extends React.Component {
   }
 
   updateTrack(track) {
+    const id = this.props.currentTrack.id;
     this.props.dispatch(editTrack(track))
       .then((response) => {
         this.props.dispatch(loadTracks())
-         .then((response) => {this.context.router.push('/browse')})
+         .then((response) => {this.context.router.push(`/track/${id}`)})
       });
   }
 
