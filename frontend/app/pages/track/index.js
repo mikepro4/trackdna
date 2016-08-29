@@ -78,7 +78,6 @@ export default class Track extends React.Component {
     this.setState({
       channels: this.props.currentTrack.channels
     })
-    this.props.dispatch(updateTime(0, 0, 0, 0))
   }
 
   addChannel() {
