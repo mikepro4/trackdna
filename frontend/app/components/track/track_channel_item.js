@@ -6,7 +6,7 @@ export default class TrackChannelListItem extends React.Component {
 
     return (
       <div>
-        {name}
+        Channel Name: {name}
       </div>
     );
   }

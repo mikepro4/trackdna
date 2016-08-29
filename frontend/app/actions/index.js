@@ -10,7 +10,8 @@ import {
   DELETE_TRACK_SUCCESS,
   EDIT_TRACK,
   EDIT_TRACK_SUCCESS,
-  CURRENT_TRACK_UPDATE
+  CURRENT_TRACK_UPDATE,
+  UPDATE_TIME
 } from './types';
 
 const ROOT_URL = 'http://localhost:3002';
@@ -34,6 +35,16 @@ export function updateTrack(id, action, seconds, duration, currentMinutes, curre
     duration: duration,
     currentMinutes: currentMinutes,
     currentSeconds: currentSeconds
+  };
+}
+
+export function updateTime(durationMinutes, durationSeconds, currentMinutes, currentSeconds) {
+  return {
+    type: UPDATE_TIME,
+    durationMinutes,
+    durationSeconds,
+    currentMinutes,
+    currentSeconds
   };
 }
 

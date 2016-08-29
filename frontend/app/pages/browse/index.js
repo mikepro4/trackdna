@@ -16,7 +16,8 @@ import YoutubePlayer from "../../components/player/player"
 	tracks: state.app.tracks,
 	loading: state.loading,
   videoId: state.currentVideo,
-  playerAction: state.currentVideo.playerAction
+  playerAction: state.currentVideo.playerAction,
+  time: state.time
 }))
 export default class Browse extends React.Component {
 

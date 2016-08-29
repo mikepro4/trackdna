@@ -35,16 +35,13 @@ export default class TrackListItem extends React.Component {
 
   renderPlaying() {
     const {youtubeUrl} = this.props.track
-    const duration = this.props.videoId.duration
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration - minutes * 60);
     if(this.props.track.youtubeUrl == this.props.videoId.currentVideo) {
       return (
         <div>
           <h2>Playing</h2>
           <div>Youtube Url: {youtubeUrl ? youtubeUrl : '--'}</div>
-          <div>Duration: {minutes}:{seconds}</div>
-          <div>Current Time: {this.props.videoId.currentMinutes}:{this.props.videoId.currentSeconds}</div>
+          <div>Duration: {this.props.time.durationMinutes}:{this.props.time.durationSeconds}</div>
+          <div>Current Time: {this.props.time.currentMinutes}:{this.props.time.currentSeconds}</div>
         </div>
       )
     }

@@ -3,8 +3,9 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect'
 import classNames from 'classNames'
-import { loadTrack, deleteTrack, loadTracks, updateTrack, editTrack} from '../../actions'
+import { loadTrack, deleteTrack, loadTracks, updateTrack, editTrack, updateTime} from '../../actions'
 import YoutubePlayer from "../../components/player/player"
+import Channel from './components/channel'
 import _ from 'lodash'
 
 @asyncConnect([{
@@ -15,7 +16,8 @@ import _ from 'lodash'
   currentTrack: state.app.currentTrack,
   loading: state.loading.pending,
   videoId: state.currentVideo,
-  playerAction: state.currentVideo.playerAction
+  playerAction: state.currentVideo.playerAction,
+  time: state.time
 }))
 export default class Track extends React.Component {
   static contextTypes = {
@@ -44,14 +46,13 @@ export default class Track extends React.Component {
 
   renderPlaying() {
     const {youtubeUrl} = this.props.currentTrack
-    const duration = this.props.videoId.duration
     if(youtubeUrl == this.props.videoId.currentVideo) {
       return (
         <div className='test'>
           <h2>Playing</h2>
           <div>Youtube Url: {youtubeUrl ? youtubeUrl : '--'}</div>
-          <div>Duration: {duration}</div>
-          <div>Current Time: {this.props.videoId.currentMinutes}:{this.props.videoId.currentSeconds}</div>
+          <div>Duration: {this.props.time.durationMinutes}:{this.props.time.durationSeconds}</div>
+          <div>Current Time: {this.props.time.currentMinutes}:{this.props.time.currentSeconds}</div>
         </div>
       )
     }
@@ -78,14 +79,16 @@ export default class Track extends React.Component {
     this.setState({
       channels: this.props.currentTrack.channels
     })
+    this.props.dispatch(updateTime(0, 0, 0, 0))
   }
 
   addChannel() {
     const oldChannels = this.props.currentTrack.channels
     const newObject = {
-      'id': this.state.channels.length + 1,
+      'id': this.state.channels.length + Math.random(),
       'name': Math.random()
     }
+    console.log(newObject)
     this.setState({channels: this.state.channels.concat(newObject)});
   }
 
@@ -170,7 +173,16 @@ export default class Track extends React.Component {
                 <button className='button button_primary' onClick={this.addChannel.bind(this)}>Add Channel</button>
                 {this.renderSaveTrackButton()}
               </div>
-              <div className='channels_content'>channels content</div>
+              <div className='channels_content'>
+                {this.state.channels.map(channel => (
+                  <Channel
+                    channel={channel}
+                    {...this.props}
+                    onDelete={this.deleteChannel.bind(this, channel.id)}
+                    key={channel.id}
+                />
+                ))}
+              </div>
             </div>
             <div className='info_container'>
               tags info
