@@ -5,12 +5,12 @@ import {
 export default (state = {}, action) => {
   switch (action.type) {
       case UPDATE_TIME:
-        return  Object.assign({}, state, {
+        return  {...state,
           durationMinutes: action.durationMinutes,
           durationSeconds: action.durationSeconds,
           currentMinutes: action.currentMinutes,
           currentSeconds: action.currentSeconds
-        })
+        }
     default:
       return state
   }

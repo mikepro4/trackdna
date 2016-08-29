@@ -9,15 +9,28 @@ import {
 export default function(state = {}, action) {
   switch(action.type) {
     case AUTH_USER_SUCCESS:
-      return { ...state, error: '', authenticated: true };
+      return { ...state,
+        error: '',
+        authenticated: true
+      };
     case SIGNUP_USER_SUCCESS:
-        return { ...state, error: '', authenticated: true };
+        return { ...state,
+          error: '',
+          authenticated: true
+        };
     case UNAUTH_USER:
-      return { ...state, error: '', authenticated: false };
+      return { ...state,
+        error: '',
+        authenticated: false 
+      };
     case AUTH_ERROR:
-      return { ...state, error: action.payload };
+      return { ...state,
+        error: action.payload
+      };
     case FETCH_MESSAGE:
-      return { ...state, message: action.payload };
+      return { ...state,
+        message: action.payload
+      };
   }
 
   return state;

@@ -7,15 +7,15 @@ export default (state = {}, action) => {
   switch (action.type) {
     case LOAD_TRACKS_SUCCESS:
       console.log('load tracks success switch')
-      return  Object.assign({}, state, {
+      return  {...state,
         tracks: action.result,
         tracksLoaded: true
-      })
+      }
     case LOAD_SINGLE_TRACK_SUCCESS:
-      return Object.assign({}, state, {
+      return {... state,
         currentTrack: action.result,
         singleTrackLoaded: true
-      })
+      }
     default:
       return state
   }

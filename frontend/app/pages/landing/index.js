@@ -20,7 +20,7 @@ export default class Landing extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.auth)
+		console.log('auth state', this.props.auth)
 		return (
 			<div className='page_container page_landing'>
 			 	<Helmet title="Track DNA – Music Analysis Platform" />
