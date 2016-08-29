@@ -10,7 +10,10 @@ export default (state = {}, action) => {
         currentVideo: action.payload,
         playerAction: action.playerAction,
         videoLoaded: true,
-        seconds: action.seconds
+        seconds: action.seconds,
+        duration: action.duration,
+        currentMinutes: action.currentMinutes,
+        currentSeconds: action.currentSeconds
       })
     default:
       return state

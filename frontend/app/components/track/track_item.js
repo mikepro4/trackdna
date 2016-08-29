@@ -33,13 +33,33 @@ export default class TrackListItem extends React.Component {
     this.props.dispatch(updateTrack(this.props.track.youtubeUrl, 'seek', 30))
   }
 
+  renderPlaying() {
+    console.log('LOL', this.props.track.youtubeUrl, this.props.videoId.currentVideo )
+    const {youtubeUrl} = this.props.track
+    const duration = this.props.videoId.duration
+    const minutes = Math.floor(duration / 60);
+    const seconds = Math.floor(duration - minutes * 60);
+    if(this.props.track.youtubeUrl == this.props.videoId.currentVideo) {
+      return (
+        <div>
+          <h2>Playing</h2>
+          <div>Youtube Url: {youtubeUrl ? youtubeUrl : '--'}</div>
+          <div>Duration: {minutes}:{seconds}</div>
+          <div>Current Time: {this.props.videoId.currentMinutes}:{this.props.videoId.currentSeconds}</div>
+        </div>
+      )
+    }
+  }
+
   render() {
-    const {id, name, artist, channels, youtubeUrl} = this.props.track
+    const {id, name, artist, channels} = this.props.track
+
+    console.log(this.props.videoId.duration)
     return (
       <div className='track_list_item'>
         <h1>{artist} – {name} </h1>
         <TrackChannelsList channels={this.props.track.channels} />
-        Youtube Url: {youtubeUrl ? youtubeUrl : '--'}
+        {this.renderPlaying()}
         <ul className='track_actions'>
           <li><a className='button' onClick={this.onDelete.bind(this)}>Delete</a></li>
           <li><Link to={`/track/edit/${id}`} className='button'>Edit</Link></li>
