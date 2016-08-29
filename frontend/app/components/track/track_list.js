@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import TrackListItem from './track_item'
 import { connect } from 'react-redux'
-import classNames from 'classNames'
+import classnames from 'classnames'
 
 export default class TrackList extends React.Component {
   render() {
@@ -11,7 +11,7 @@ export default class TrackList extends React.Component {
       )
     }
 
-    let classes = classNames({
+    let classes = classnames({
       'track_list_container': true,
       'loading': this.props.loading.pending
     })

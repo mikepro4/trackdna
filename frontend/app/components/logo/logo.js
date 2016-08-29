@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router'
-import classNames from 'classNames'
+import classnames from 'classnames'
 import logoStatic from '../../assets/logo_static.svg'
 import logoSpinning from '../../assets/logo_spinning.svg'
 
 export default class Logo extends React.Component {
   render() {
-    let spinnerClassname = classNames({
+    let spinnerClassname = classnames({
       'logo_spinning': true,
       'show': this.props.loading.pending
     })

@@ -5,7 +5,7 @@ import { signupUser } from '../../../actions/auth_actions'
 import { asyncConnect } from 'redux-connect'
 import Helmet from 'react-helmet';
 import SignUpForm from './signup_form'
-import classNames from 'classNames'
+import classnames from 'classnames'
 import Logo from '../../../components/logo/logo'
 
 
@@ -28,7 +28,7 @@ export default class SignUp extends React.Component {
   }
 
   render() {
-    let errorClass = classNames({
+    let errorClass = classnames({
       'form_error': true,
       'show': this.props.auth.error
     });

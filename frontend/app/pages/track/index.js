@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect'
-import classNames from 'classNames'
+import classnames from 'classnames'
 import { loadTrack, deleteTrack, loadTracks, updateTrack, editTrack, updateTime} from '../../actions'
 import YoutubePlayer from "../../components/player/player"
 import Channel from './components/channel'
@@ -120,7 +120,7 @@ export default class Track extends React.Component {
 
 	render() {
     const { name, artist, id, channels } = this.props.currentTrack
-    let pageClasses = classNames({
+    let pageClasses = classnames({
       'page_container': true,
       'page_track': true,
       'loading': this.props.loading

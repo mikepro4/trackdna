@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import YouTube from 'react-youtube';
-import classNames from 'classNames'
+import classnames from 'classnames'
 import { updateTrack, updateTime } from '../../actions/'
 
 export default class YoutubePlayer extends React.Component {
@@ -86,7 +86,7 @@ export default class YoutubePlayer extends React.Component {
       }
     };
 
-    let videoClasses = classNames({
+    let videoClasses = classnames({
       'video-container': true,
       'video-loaded': this.props.videoId.currentVideo
     })

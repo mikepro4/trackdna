@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { asyncConnect } from 'redux-connect'
 import { signinUser } from '../../../actions/auth_actions'
 import SignInForm from './signin_form'
-import classNames from 'classNames'
+import classnames from 'classnames'
 import Logo from '../../../components/logo/logo'
 
 @asyncConnect([], state => ({
@@ -27,7 +27,7 @@ export default class SignIn extends React.Component {
   }
 
   render() {
-    let errorClass = classNames({
+    let errorClass = classnames({
       'form_error': true,
       'show': this.props.auth.error
     });

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router'
 import { Field, reduxForm } from 'redux-form';
-import classNames from 'classNames'
+import classnames from 'classnames'
 import check from '../../../assets/check.svg'
 
 class SignInForm extends React.Component {
@@ -9,7 +9,7 @@ class SignInForm extends React.Component {
   }
 
   renderField({ input, label, type, meta: { touched, error } }) {
-    let containerClassName = classNames({
+    let containerClassName = classnames({
       'input_container': true,
       'input_container_valid': touched && !error,
       'input_container_error': touched && error

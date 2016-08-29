@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { editTrack } from '../../actions'
-import classNames from 'classNames'
+import classnames from 'classnames'
 
 class TrackEditForm extends React.Component {
   renderField({ input, label, type, meta: { touched, error } }) {
-    let containerClassName = classNames({
+    let containerClassName = classnames({
       'input_container': true,
       'input_container_valid': touched && !error,
       'input_container_error': touched && error
