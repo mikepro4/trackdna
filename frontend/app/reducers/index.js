@@ -15,7 +15,7 @@ const reducers = combineReducers({
   loading: loadingReducer,
   auth: authReducer,
   currentVideo: currentVideoReducer,
-  time:timeReducer,
+  time: timeReducer,
   reduxAsyncConnect
 })
 export default reducers

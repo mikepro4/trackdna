@@ -1,82 +1,108 @@
 import React, {PropTypes} from 'react';
 import YouTube from 'react-youtube';
 import classnames from 'classnames'
-import { updateTrack, updateTime } from '../../actions/'
+import { updateCurrentVideo, updateTime } from '../../actions/'
 
 export default class YoutubePlayer extends React.Component {
   constructor(props) {
    super(props);
 
    this.state = {
-     player: null
+     player: null,
+     timeInterval: null
    }
   }
 
   onReady(event) {
     this.setState({
-     player: event.target
+      player: event.target
     });
   }
 
   componentDidUpdate(event) {
-    if(this.props.videoId.playerAction === 'play') {
-      this.props.dispatch(updateTime(0, 0, 0, 0))
-      clearInterval(this.state.intervalId);
-      setTimeout(() => this.state.player.playVideo(), 500);
-      this.startInterval()
-      this.props.dispatch(updateTrack(this.props.videoId.currentVideo))
-    } else if (this.props.videoId.playerAction === 'pause') {
-      clearInterval(this.state.intervalId);
-      this.props.dispatch(updateTrack(this.props.videoId.currentVideo))
-      this.state.player.pauseVideo();
-    } else if (this.props.videoId.playerAction === 'stop') {
-      clearInterval(this.state.intervalId);
-      this.props.dispatch(updateTrack(this.props.videoId.currentVideo))
-      this.state.player.stopVideo();
-    } else if (this.props.videoId.playerAction === 'seek') {
-      this.state.player.playVideo()
-
-      setTimeout(() => {this.state.player.seekTo(this.props.videoId.seconds);}, 1);
+    switch(this.props.currentVideo.playerAction) {
+      case 'play':
+        return this.playVideo()
+      case 'pause':
+        return this.pauseVideo()
+      case 'stop':
+        return this.stopVideo()
+      case 'seek':
+        return this.seekVideo()
     }
   }
 
+  playVideo() {
+    console.log('play video')
+    clearInterval(this.state.timeInterval);
+    this.props.dispatch(updateTime(0, 0, 0, 0))
+    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'waiting'))
+
+    // fake delay needed for the video switch
+    setTimeout(() => {
+      this.state.player.playVideo()
+      this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'playing'))
+    }, 1);
+  }
+
+  pauseVideo() {
+    console.log('pause video')
+    this.state.player.pauseVideo();
+  }
+
+  stopVideo() {
+    console.log('stop video')
+    clearInterval(this.state.timeInterval);
+    this.state.player.stopVideo();
+    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'stopped'))
+    this.props.dispatch(updateTime(0, 0, 0, 0))
+  }
+
+  seekVideo() {
+    console.log('seek to')
+    clearInterval(this.state.timeInterval);
+    const seekToSeconds = this.props.currentVideo.seconds
+    this.playVideo()
+
+    // fake delay needed for the video switch/seek
+    setTimeout(() => {
+      this.state.player.seekTo(seekToSeconds)
+    }, 2);
+  }
+
   onPlay(event) {
-    const duration = event.target.getDuration()
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration - minutes * 60);
-    this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'play'))
+    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'playing'))
+    this.startTimeInterval()
   }
 
   onPause(event) {
-    clearInterval(this.state.intervalId);
-    this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'pause'))
+    clearInterval(this.state.timeInterval);
+    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'paused'))
   }
 
-  startInterval() {
-    const intervalId = setInterval(() =>{
+  startTimeInterval() {
+    console.log('start time interval')
+    const timeInterval = setInterval(() =>{
       const duration = this.state.player.getDuration()
       const minutes = Math.floor(duration / 60);
       const seconds = Math.floor(duration - minutes * 60);
 
       const duration2 = this.state.player.getCurrentTime()
       const minutes2 = Math.floor(duration2 / 60);
-      const seconds2 = Math.floor(duration2 - minutes2 * 60);
-      this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'playing', null, duration, minutes2, seconds2))
-
+      let seconds2 = Math.floor(duration2 - minutes2 * 60);
       this.props.dispatch(updateTime(minutes, seconds, minutes2, seconds2))
-    }, 300)
+    }, 100)
 
-    this.setState({
-      intervalId: intervalId
-    })
+    this.setState({timeInterval})
   }
 
+
   componentWillUnmount(){
-    clearInterval(this.state.intervalId);
+    clearInterval(this.state.timeInterval);
   }
 
   render() {
-    const opts = {
+    const videoPlayerOptions = {
       height: '200',
       width: '280',
       playerVars: {
@@ -88,17 +114,17 @@ export default class YoutubePlayer extends React.Component {
 
     let videoClasses = classnames({
       'video-container': true,
-      'video-loaded': this.props.videoId.currentVideo
+      'video-loaded': this.props.currentVideo.videoId
     })
+
     return (
       <div className={videoClasses}>
         <YouTube
-          videoId={this.props.videoId.currentVideo}
-          opts={opts}
+          videoId={this.props.currentVideo.videoId}
+          opts={videoPlayerOptions}
           onReady={this.onReady.bind(this)}
           onPlay={this.onPlay.bind(this)}
           onPause={this.onPause.bind(this)}
-          // onStateChange={this.onStateChange.bind(this)}
         />
       </div>
     )

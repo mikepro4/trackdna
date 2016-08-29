@@ -10,21 +10,18 @@ import {
   DELETE_TRACK_SUCCESS,
   EDIT_TRACK,
   EDIT_TRACK_SUCCESS,
-  CURRENT_TRACK_UPDATE,
+  CURRENT_VIDEO_UPDATE,
   UPDATE_TIME
 } from './types';
 
 const ROOT_URL = 'http://localhost:3002';
 
-export function updateTrack(id, action, seconds, duration, currentMinutes, currentSeconds) {
+export function updateCurrentVideo(id, action, seconds) {
   return {
-    type: CURRENT_TRACK_UPDATE,
+    type: CURRENT_VIDEO_UPDATE,
     payload: id,
     playerAction: action,
-    seconds: seconds,
-    duration: duration,
-    currentMinutes: currentMinutes,
-    currentSeconds: currentSeconds
+    seconds
   };
 }
 

@@ -17,5 +17,5 @@ export const UNAUTH_USER = 'unauth_user';
 export const AUTH_ERROR = 'auth_error';
 export const FETCH_MESSAGE = 'fetch_message';
 
-export const CURRENT_TRACK_UPDATE = 'app/CURRENT_TRACK_UPDATE'
+export const CURRENT_VIDEO_UPDATE = 'app/CURRENT_VIDEO_UPDATE'
 export const UPDATE_TIME = 'app/UPDATE_TIME'

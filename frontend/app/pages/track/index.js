@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect'
 import classnames from 'classnames'
-import { loadTrack, deleteTrack, loadTracks, updateTrack, editTrack, updateTime} from '../../actions'
+import { loadTrack, deleteTrack, loadTracks, updateCurrentVideo, editTrack, updateTime} from '../../actions'
 import YoutubePlayer from "../../components/player/player"
 import Channel from './components/channel'
 import _ from 'lodash'
@@ -15,8 +15,7 @@ import _ from 'lodash'
 }], state => ({
   currentTrack: state.app.currentTrack,
   loading: state.loading.pending,
-  videoId: state.currentVideo,
-  playerAction: state.currentVideo.playerAction,
+  currentVideo: state.currentVideo,
   time: state.time
 }))
 export default class Track extends React.Component {
@@ -46,7 +45,7 @@ export default class Track extends React.Component {
 
   renderPlaying() {
     const {youtubeUrl} = this.props.currentTrack
-    if(youtubeUrl == this.props.videoId.currentVideo) {
+    if(youtubeUrl == this.props.currentVideo.videoId) {
       return (
         <div className='test'>
           <h2>Playing</h2>
@@ -59,23 +58,23 @@ export default class Track extends React.Component {
   }
 
   onPlay() {
-    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'play'))
+    this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl, 'play'))
   }
 
   onPause() {
-    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'pause'))
+    this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl, 'pause'))
   }
 
   onStop() {
-    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'stop'))
+    this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl, 'stop'))
   }
 
   onSeek() {
-    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'seek', 30))
+    this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl, 'seek', 30))
   }
 
   componentDidMount() {
-    this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl))
+    this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl, 'loaded'))
     this.setState({
       channels: this.props.currentTrack.channels
     })

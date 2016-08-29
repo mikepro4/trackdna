@@ -21,10 +21,10 @@ export default class TrackEdit extends React.Component {
     const id = this.props.currentTrack.id;
     console.log('from edit', {id, artist, name})
     const track =  {id, artist, name, youtubeUrl, channels: []}
-    this.updateTrack(track)
+    this.updateCurrentVideo(track)
   }
 
-  updateTrack(track) {
+  updateCurrentVideo(track) {
     const id = this.props.currentTrack.id;
     this.props.dispatch(editTrack(track))
       .then((response) => {
