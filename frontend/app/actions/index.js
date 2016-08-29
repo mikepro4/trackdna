@@ -16,16 +16,6 @@ import {
 
 const ROOT_URL = 'http://localhost:3002';
 
-export function authError(error) {
-  return {
-    type: AUTH_ERROR,
-    payload: error,
-    meta: {
-      loading: false
-    }
-  };
-}
-
 export function updateTrack(id, action, seconds, duration, currentMinutes, currentSeconds) {
   return {
     type: CURRENT_TRACK_UPDATE,
