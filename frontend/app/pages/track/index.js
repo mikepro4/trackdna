@@ -33,6 +33,21 @@ export default class Track extends React.Component {
       });
   }
 
+  renderPlaying() {
+    const {youtubeUrl} = this.props.currentTrack
+    const duration = this.props.videoId.duration
+    if(youtubeUrl == this.props.videoId.currentVideo) {
+      return (
+        <div className='test'>
+          <h2>Playing</h2>
+          <div>Youtube Url: {youtubeUrl ? youtubeUrl : '--'}</div>
+          <div>Duration: {duration}</div>
+          <div>Current Time: {this.props.videoId.currentMinutes}:{this.props.videoId.currentSeconds}</div>
+        </div>
+      )
+    }
+  }
+
   onPlay() {
     this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl, 'play'))
   }
@@ -94,6 +109,7 @@ export default class Track extends React.Component {
             <div className='track_player'>
               <YoutubePlayer {...this.props} />
             </div>
+            <div>{this.renderPlaying()}</div>
           </div>
           <div className='track_content'>
             <div className='channels_container'>

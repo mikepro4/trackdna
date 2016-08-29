@@ -61,10 +61,12 @@ export default class YoutubePlayer extends React.Component {
     const seconds = Math.floor(duration - minutes * 60);
     console.log(minutes, ':', seconds)
     console.log( this.state.player)
+    this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'play'))
   }
 
   onPause(event) {
     clearInterval(this.state.intervalId);
+    this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'pause'))
   }
 
   startInterval() {
