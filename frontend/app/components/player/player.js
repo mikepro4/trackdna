@@ -99,6 +99,7 @@ export default class YoutubePlayer extends React.Component {
 
   componentWillUnmount(){
     clearInterval(this.state.timeInterval);
+    this.props.dispatch(updateCurrentVideo('', 'stopped'))
   }
 
   render() {
