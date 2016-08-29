@@ -3,8 +3,9 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect'
 import classNames from 'classNames'
-import { loadTrack, deleteTrack, loadTracks, updateTrack} from '../../actions'
+import { loadTrack, deleteTrack, loadTracks, updateTrack, editTrack} from '../../actions'
 import YoutubePlayer from "../../components/player/player"
+import _ from 'lodash'
 
 @asyncConnect([{
   promise: (props) => {
@@ -20,6 +21,14 @@ export default class Track extends React.Component {
   static contextTypes = {
     router: PropTypes.object
   };
+
+  constructor(props) {
+   super(props);
+
+   this.state = {
+     channels: []
+   }
+  }
 
   onDelete() {
     const id = this.props.currentTrack.id
@@ -66,10 +75,48 @@ export default class Track extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(updateTrack(this.props.currentTrack.youtubeUrl))
+    this.setState({
+      channels: this.props.currentTrack.channels
+    })
+  }
+
+  addChannel() {
+    const oldChannels = this.props.currentTrack.channels
+    const newObject = {
+      'id': this.state.channels.length + 1,
+      'name': Math.random()
+    }
+    this.setState({channels: this.state.channels.concat(newObject)});
+  }
+
+  deleteChannel(channelId) {
+    this.setState({
+      channels: _.remove(this.state.channels, function(channel) {
+        return channel.id != channelId
+      })
+    })
+  }
+
+  saveTrack() {
+    console.log(this.state.channels)
+    const track =  {...this.props.currentTrack,  channels: this.state.channels}
+    this.props.dispatch(editTrack(track))
+      .then((response) => {
+        console.log('yay')
+        this.props.dispatch(loadTrack(this.props.currentTrack.id))
+      });
+  }
+
+  renderSaveTrackButton() {
+    if(!_.isEqual(this.props.currentTrack.channels.sort(), this.state.channels.sort())) {
+      return (
+        <button className='button' onClick={this.saveTrack.bind(this)}>Save Track</button>
+      )
+    }
   }
 
 	render() {
-    const { name, artist, id } = this.props.currentTrack
+    const { name, artist, id, channels } = this.props.currentTrack
     let pageClasses = classNames({
       'page_container': true,
       'page_track': true,
@@ -113,7 +160,16 @@ export default class Track extends React.Component {
           </div>
           <div className='track_content'>
             <div className='channels_container'>
-              <div className='channels_info'>channels info</div>
+              <div className='channels_info'>
+                {this.state.channels.map(channel => (
+                  <div key={channel.id}>
+                    Channel: {channel.name}
+                    <button className='button' onClick={this.deleteChannel.bind(this, channel.id)}> Delete channel</button>
+                  </div>
+                ))}
+                <button className='button button_primary' onClick={this.addChannel.bind(this)}>Add Channel</button>
+                {this.renderSaveTrackButton()}
+              </div>
               <div className='channels_content'>channels content</div>
             </div>
             <div className='info_container'>

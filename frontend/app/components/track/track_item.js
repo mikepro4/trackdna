@@ -34,7 +34,6 @@ export default class TrackListItem extends React.Component {
   }
 
   renderPlaying() {
-    console.log('LOL', this.props.track.youtubeUrl, this.props.videoId.currentVideo )
     const {youtubeUrl} = this.props.track
     const duration = this.props.videoId.duration
     const minutes = Math.floor(duration / 60);
@@ -53,8 +52,6 @@ export default class TrackListItem extends React.Component {
 
   render() {
     const {id, name, artist, channels} = this.props.track
-
-    console.log(this.props.videoId.duration)
     return (
       <div className='track_list_item'>
         <h1>{artist} – {name} </h1>

@@ -19,7 +19,6 @@ export default class YoutubePlayer extends React.Component {
   }
 
   componentDidUpdate(event) {
-    console.log('state change')
 
     if(this.props.videoId.playerAction === 'play') {
       clearInterval(this.state.intervalId);
@@ -34,33 +33,16 @@ export default class YoutubePlayer extends React.Component {
       clearInterval(this.state.intervalId);
       this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'idle'))
       this.state.player.stopVideo();
-      this.startInterval()
     }else if (this.props.videoId.playerAction === 'seek') {
-      console.log('seconds:', this.props.videoId.seconds)
       this.state.player.playVideo()
 
       setTimeout(() => {this.state.player.seekTo(this.props.videoId.seconds);}, 1);
     }
   }
-
-  componentDidMount() {
-    // if(this.state.player) {
-    //   const duration = this.state.player.getCurrentTime()
-    //   const minutes = Math.floor(duration / 60);
-    //   const seconds = Math.floor(duration - minutes * 60);
-    //
-    //   setInterval(() =>{
-    //     console.log(minutes, ':', seconds)
-    //   }, 1000)
-    // }
-  }
-
   onPlay(event) {
     const duration = event.target.getDuration()
     const minutes = Math.floor(duration / 60);
     const seconds = Math.floor(duration - minutes * 60);
-    console.log(minutes, ':', seconds)
-    console.log( this.state.player)
     this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'play'))
   }
 
@@ -70,13 +52,11 @@ export default class YoutubePlayer extends React.Component {
   }
 
   startInterval() {
-    console.log('start')
     const intervalId = setInterval(() =>{
       const duration = this.state.player.getDuration()
       const duration2 = this.state.player.getCurrentTime()
       const minutes2 = Math.floor(duration2 / 60);
       const seconds2 = Math.floor(duration2 - minutes2 * 60);
-      console.log(minutes2, ':', seconds2)
       this.props.dispatch(updateTrack(this.props.videoId.currentVideo, 'playing', null, duration, minutes2, seconds2))
     }, 300)
     this.setState({
@@ -89,7 +69,6 @@ export default class YoutubePlayer extends React.Component {
   }
 
   render() {
-    console.log('here', this.props.videoId.playerAction)
     const opts = {
       height: '200',
       width: '280',

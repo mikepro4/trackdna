@@ -12,13 +12,39 @@
       "artist": "Ian O’Donovan",
       "name": "Crucible",
       "youtubeUrl": "naUY9buixKY",
-      "channels": []
+      "channels": [
+        {
+          "id": 1,
+          "name": 0.3580817315741751
+        },
+        {
+          "id": 2,
+          "name": 0.013884491744315275
+        },
+        {
+          "id": 3,
+          "name": 0.43037929715390977
+        }
+      ]
     },
     {
       "artist": "Enrico Sangiuliano",
       "name": "Moon Rocks",
       "youtubeUrl": "2hsoXTZbhBo",
-      "channels": [],
+      "channels": [
+        {
+          "id": 1,
+          "name": 0.3237574146690718
+        },
+        {
+          "id": 2,
+          "name": 0.9177375449831171
+        },
+        {
+          "id": 3,
+          "name": 0.7543005745421156
+        }
+      ],
       "id": 6
     }
   ],
