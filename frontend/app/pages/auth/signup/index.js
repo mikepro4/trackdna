@@ -8,7 +8,6 @@ import SignUpForm from './signup_form'
 import classnames from 'classnames'
 import Logo from '../../../components/logo/logo'
 
-
 @asyncConnect([], state => ({
   auth: state.auth,
   loading: state.loading
@@ -23,6 +22,7 @@ export default class SignUp extends React.Component {
       );
     }
   }
+
   handleFormSubmit({ email, password }) {
     this.props.dispatch(signupUser({ email, password }))
   }

@@ -39,7 +39,6 @@ if (token) {
   store.dispatch({ type: AUTH_USER_SUCCESS });
 }
 
-
 // Render app function
 let render = () => {
   let App = require('./app').default

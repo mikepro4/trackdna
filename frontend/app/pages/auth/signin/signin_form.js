@@ -5,8 +5,6 @@ import classnames from 'classnames'
 import check from '../../../assets/check.svg'
 
 class SignInForm extends React.Component {
-  componentDidMount() {
-  }
 
   renderField({ input, label, type, meta: { touched, error } }) {
     let containerClassName = classnames({
