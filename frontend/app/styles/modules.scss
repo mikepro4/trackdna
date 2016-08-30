@@ -10,5 +10,8 @@
 @import "../pages/landing/index";
 @import "../pages/browse/index";
 @import "../pages/track/index";
+@import "../pages/track/new";
+@import "../pages/track/components/track_search_form";
+@import "../pages/track/components/youtube_search_results";
 @import "../pages/auth/signin/index";
 @import "../pages/auth/signup/index";

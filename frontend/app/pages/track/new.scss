@@ -1,0 +1,40 @@
+@import "../../styles/vars";
+
+.page_add_track {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  flex-direction: column;
+
+  .track_search_results_container {
+    flex-grow: 1;
+    position: absolute;
+    top: 82px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+
+    .initial_state {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+
+      h1 {
+        font-size: 46px;
+        margin: -40px 0 10px 0;
+      }
+    }
+  }
+}

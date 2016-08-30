@@ -6,6 +6,7 @@ import appReducer from './app_reducer'
 import authReducer from './auth_reducer'
 import currentVideoReducer from './current_video'
 import timeReducer from './time'
+import searchReducer from './search'
 import {loadingReducer} from 'redux-loading'
 
 const reducers = combineReducers({
@@ -16,6 +17,7 @@ const reducers = combineReducers({
   auth: authReducer,
   currentVideo: currentVideoReducer,
   time: timeReducer,
+  search: searchReducer,
   reduxAsyncConnect
 })
 export default reducers

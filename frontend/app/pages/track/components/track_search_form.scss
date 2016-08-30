@@ -1,0 +1,72 @@
+@import "../../../styles/vars";
+
+$trackSearchFormHeight: 80px;
+
+.track_search_form_container {
+  display: flex;
+  height: $trackSearchFormHeight + 1;
+  background: $white;
+  border-bottom: 1px solid $strokeColor;
+
+  form {
+    width: 100%;
+    height: $trackSearchFormHeight;
+    display: flex;
+
+    .input_container {
+      position: relative;
+      width: 480px;
+      margin: 0 0 0 20px;
+      display: flex;
+
+      &:first-child {
+        border-right: 1px solid $strokeColor;
+      }
+
+      .track_search_input_label {
+        white-space: nowrap;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 13px;
+        margin: 30px 10px 0 0;
+        transition: opacity .5s ease-in-out
+      }
+
+      &.input_container_populated {
+        .track_search_input_label {
+          opacity: .2;
+        }
+      }
+
+      input.track_search_input {
+        border:none;
+        height: $trackSearchFormHeight;
+        font-size: 26px;
+        padding: 0 0 8px;
+        z-index: 1
+      }
+
+      ::-webkit-input-placeholder {
+         color: rgba( $black, .2);
+      }
+
+      .input_error {
+        z-index: 2;
+        top: 60px;
+        position: absolute;
+      }
+    }
+
+    .track_search_submit {
+      display: block;
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      width: 180px;
+      height: 44px;
+      font-size: 18px;
+      z-index: 2;
+    }
+  }
+}
