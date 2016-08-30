@@ -3,21 +3,21 @@ import classNames from 'classnames'
 import moment from 'moment'
 import check from '../../../assets/check.svg'
 import { updateYoutubeSelectedVideo } from '../../../actions/search_actions'
+import { updateCurrentVideo } from '../../../actions'
 
 export default class YoutubeSearchResults extends React.Component {
   selectVideo(video) {
     this.props.dispatch(updateYoutubeSelectedVideo(video))
+    this.props.dispatch(updateCurrentVideo(video.id.videoId))
   }
 
   render() {
     const artistName = this.props.search.artist.replace(/\s/g, '').toLowerCase();
     const trackname = this.props.search.track_name.replace(/\s/g, '').toLowerCase();
-    console.log(_.isEmpty(this.props.search.youtubeSelectedVideo))
     let selectedVideoId = '';
     if(!_.isEmpty(this.props.search.youtubeSelectedVideo)) {
       selectedVideoId = this.props.search.youtubeSelectedVideo.id.videoId
     }
-    console.log()
     const videos = this.props.search.videos.map((video) => {
       const channelName = video.snippet.channelTitle.replace(/\s/g, '').toLowerCase()
       const videoTitle = video.snippet.title.replace(/\s/g, '').toLowerCase()

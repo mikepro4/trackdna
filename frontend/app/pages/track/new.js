@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import { asyncConnect } from 'redux-connect'
 import AddTrack from "../../components/track/add_track"
 import Helmet from 'react-helmet';
-import { addTrack, loadTracks } from '../../actions';
+import { addTrack, loadTracks, updateCurrentVideo } from '../../actions';
 import { updateSearchTerm, searchYoutube, clearSearchResults } from '../../actions/search_actions';
 import TrackSearchForm from './components/track_search_form'
 import TrackSearchResults from './components/track_search_results'
@@ -11,7 +11,10 @@ import TrackSearchResults from './components/track_search_results'
 import axios from 'axios'
 
 @asyncConnect([], state => ({
-  'search': state.search
+  search: state.search,
+  loading: state.loading.pending,
+  currentVideo: state.currentVideo,
+  time: state.time
 }))
 export default class TrackNew extends React.Component {
 
@@ -33,6 +36,7 @@ export default class TrackNew extends React.Component {
 
   handleTrackSearchSubmit({ artist, track_name }) {
     console.log({ artist, track_name })
+    this.props.dispatch(updateCurrentVideo(null, 'cleared'))
     this.props.dispatch(updateSearchTerm(artist, track_name))
     this.props.dispatch(searchYoutube(`${artist} – ${track_name}`))
   }

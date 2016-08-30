@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash'
 import YoutubeSearchResults from './youtube_search_results.js'
+import TrackMetadata from './track_metadata.js'
 
 export default class TrackSearchResults extends React.Component {
 
@@ -33,11 +34,14 @@ export default class TrackSearchResults extends React.Component {
     }
   }
 
-  renderYoutubeResults() {
+  renderSearchResults() {
     if(!_.isEmpty(this.props.search.videos)) {
       return (
-        <div className='youtube_results_container'>
-          <YoutubeSearchResults {...this.props} />
+        <div className='results_container'>
+          <TrackMetadata {...this.props} />
+          <div className='youtube_results_container'>
+            <YoutubeSearchResults {...this.props} />
+          </div>
         </div>
       )
     }
@@ -48,7 +52,7 @@ export default class TrackSearchResults extends React.Component {
     return (
       <div>
         {this.renderInitialState()}
-        {this.renderYoutubeResults()}
+        {this.renderSearchResults()}
       </div>
     )
   }
