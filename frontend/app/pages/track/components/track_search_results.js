@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash'
 import YoutubeSearchResults from './youtube_search_results.js'
+import BeatportSearchResults from './beatport_search_results.js'
 import TrackMetadata from './track_metadata.js'
 
 export default class TrackSearchResults extends React.Component {
@@ -42,13 +43,16 @@ export default class TrackSearchResults extends React.Component {
           <div className='youtube_results_container'>
             <YoutubeSearchResults {...this.props} />
           </div>
+
+          <div className='beatport_results_container'>
+            <BeatportSearchResults {...this.props} />
+          </div>
         </div>
       )
     }
   }
 
   render() {
-    console.log(this.props.search)
     return (
       <div>
         {this.renderInitialState()}

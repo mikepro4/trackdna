@@ -24,7 +24,7 @@ export default class YoutubeSearchResults extends React.Component {
       let videoItemClasses = classNames({
         'youtube_video_item': true,
         'owns': artistName === channelName,
-        'official': (channelName.indexOf('official') !== -1),
+        'official': (channelName.indexOf('official') !== -1) || (channelName.indexOf('vevo') !== -1),
         'name_match': (videoTitle.indexOf(trackname) !== -1),
         'selected_video': selectedVideoId === video.id.videoId
       })

@@ -24,6 +24,11 @@ export default (state = {}, action) => {
         videos: action.videos,
         loadingVideos: action.loadingVideos
       }
+    case BEATPORT_SEARCH_SUCCESS:
+      return  {...state,
+        beatportData: action.beatportData,
+        loadingBeatport: action.loadingBeatport
+      }
     case SELECT_YOUTUBE_VIDEO:
       return  {...state,
         youtubeSelectedVideo: action.video

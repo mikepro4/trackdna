@@ -3,11 +3,15 @@ import { asyncConnect } from 'redux-connect'
 import AddTrack from "../../components/track/add_track"
 import Helmet from 'react-helmet';
 import { addTrack, loadTracks, updateCurrentVideo } from '../../actions';
-import { updateSearchTerm, searchYoutube, clearSearchResults } from '../../actions/search_actions';
+import {
+  updateSearchTerm,
+  searchYoutube,
+  clearSearchResults,
+  updateYoutubeSelectedVideo,
+  searchBeatport
+} from '../../actions/search_actions';
 import TrackSearchForm from './components/track_search_form'
 import TrackSearchResults from './components/track_search_results'
-
-// import OAuth from 'oauth-1.0a'
 import axios from 'axios'
 
 @asyncConnect([], state => ({
@@ -39,6 +43,8 @@ export default class TrackNew extends React.Component {
     this.props.dispatch(updateCurrentVideo(null, 'cleared'))
     this.props.dispatch(updateSearchTerm(artist, track_name))
     this.props.dispatch(searchYoutube(`${artist} – ${track_name}`))
+    this.props.dispatch(searchBeatport(`${artist} ${track_name}`))
+    this.props.dispatch(updateYoutubeSelectedVideo(null))
   }
 
   componentWillUnmount() {

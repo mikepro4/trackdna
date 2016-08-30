@@ -26,11 +26,6 @@ const token = {
     secret: 'b7728c4a3cd249b170fb43e285875d98226f1792'
 };
 
-const request_data = {
-  url: 'https://oauth-api.beatport.com/catalog/3/most-popular/genre?id=6&perPage=100',
-  method: 'GET'
-};
-
 export function updateSearchTerm(artist, track_name) {
   return {
     type: SEARCH_TERM_UPDATE,
@@ -66,6 +61,39 @@ export function searchYoutube( searchTerm ) {
       });
   }
 }
+
+export function searchBeatport( searchTerm ) {
+  console.log('search beatport for:', searchTerm)
+  const searchTermEncoded = encodeURI(searchTerm)
+  const request_data = {
+    url: `https://oauth-api.beatport.com/catalog/3/search/?query=${searchTermEncoded}&perPage=20`,
+    method: 'GET'
+  };
+  return dispatch => {
+    dispatch({
+      type: BEATPORT_SEARCH,
+      loadingBeatport: true,
+      meta: {
+        loading: true
+      }
+    });
+    return axios.get(`https://oauth-api.beatport.com/catalog/3/search/?query=${searchTermEncoded}&perPage=20`, {headers: oauth.toHeader(oauth.authorize(request_data, token))})
+      .then(response => {
+        dispatch({
+          type: BEATPORT_SEARCH_SUCCESS,
+          beatportData: response.data.results,
+          loadingBeatport: false,
+          meta: {
+            loading: false
+          }
+        });
+      })
+      .catch(() => {
+        // dispatch(authError('Bad Login Info'));
+      });
+  }
+}
+
 
 export function clearSearchResults() {
   return {
