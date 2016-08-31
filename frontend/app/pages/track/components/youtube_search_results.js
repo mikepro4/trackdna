@@ -12,14 +12,9 @@ export default class YoutubeSearchResults extends React.Component {
   }
 
   componentDidUpdate() {
-    if(!this.props.search.preSelected) {
+    if(!this.props.search.preSelectedVideo) {
       this.pickBestVideo()
     }
-  }
-
-  preSelectVideo(video) {
-    this.props.dispatch(updateYoutubeSelectedVideo(video, true))
-    this.props.dispatch(updateCurrentVideo(video.id.videoId))
   }
 
   pickBestVideo() {
@@ -59,7 +54,7 @@ export default class YoutubeSearchResults extends React.Component {
           (videoTitle.indexOf(trackname) !== -1)
         )
       })
-      this.preSelectVideo(nameMatchOwned[0])
+      this.selectVideo(nameMatchOwned[0])
     } else if(!_.isEmpty(officialMatch)) {
       console.log('has official track')
       console.log('has owned track')
@@ -71,13 +66,13 @@ export default class YoutubeSearchResults extends React.Component {
       })
       console.log('nameMatcOfficial:', nameMatchOfficial[0])
       if(!_.isEmpty(nameMatchOfficial)) {
-        this.preSelectVideo(nameMatchOfficial[0])
+        this.selectVideo(nameMatchOfficial[0])
       } else {
-        this.preSelectVideo(nameMatch[0])
+        this.selectVideo(nameMatch[0])
       }
     } else if (!_.isEmpty(nameMatch)) {
       console.log('has named tracks')
-      this.preSelectVideo(nameMatch[0])
+      this.selectVideo(nameMatch[0])
     }
   }
 

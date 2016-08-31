@@ -33,11 +33,12 @@ export default (state = {}, action) => {
     case SELECT_YOUTUBE_VIDEO:
       return  {...state,
         youtubeSelectedVideo: action.video,
-        preSelected: action.preSelected
+        preSelectedVideo: action.preSelectedVideo
       }
     case SELECT_BEATPORT_TRACK:
       return  {...state,
-        beatportSelectedTrack: action.track
+        beatportSelectedTrack: action.track,
+        preSelectedTrack: action.preSelectedTrack
       }
     case CLEAR_SEARCH:
       return  {}

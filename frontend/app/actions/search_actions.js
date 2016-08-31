@@ -103,18 +103,19 @@ export function clearSearchResults() {
   };
 }
 
-export function updateYoutubeSelectedVideo(video, preSelected) {
+export function updateYoutubeSelectedVideo(video, preSelectedVideo) {
   return {
     type: SELECT_YOUTUBE_VIDEO,
     video,
-    preSelected
+    preSelectedVideo
   };
 }
 
-export function updateBeatportSelectedMetadata(track) {
+export function updateBeatportSelectedMetadata(track, preSelectedTrack) {
   return {
     type: SELECT_BEATPORT_TRACK,
-    track
+    track,
+    preSelectedTrack
   };
 }
 
