@@ -114,7 +114,7 @@ export default class BetaportSearchResults extends React.Component {
               <div>Genre: {track.genres[0].name}</div>
               <div>Released at: {track.releaseDate}</div>
               <div className='owns_label'><img src={check}/> Exact artist match </div>
-              <div className='name_match_label'><img src={check}/> Exact name match</div>
+              <div className='name_match_label'><img src={check}/> Contains track name</div>
             </li>
           )
         }

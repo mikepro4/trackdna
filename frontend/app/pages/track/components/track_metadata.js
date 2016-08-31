@@ -73,11 +73,29 @@ export default class TrackMetadata extends React.Component {
 
   renderTrackMetadata() {
     if(this.props.search.beatportSelectedTrack) {
-      const {name, bpm, length, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      let youtubeVideoDuration = 0;
+      let youtubeDurationParsed = '';
+      let beatportDurationParsed = '';
+
+      if(this.props.search.videoYoutubeDetails && this.props.search.beatportSelectedTrack) {
+        youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
+        
+        let momentDurationYoutube = moment.duration(youtubeVideoDuration, 'seconds')
+        let momentDurationBeatport =  moment.duration(moment.duration(lengthMs).asSeconds(), 'seconds')
+
+        youtubeDurationParsed = (`${momentDurationYoutube.minutes()}:${momentDurationYoutube.seconds()}`)
+        beatportDurationParsed = (`${momentDurationBeatport.minutes()}:${momentDurationBeatport.seconds()}`)
+      }
+
       // console.log(this.props.search.beatportSelectedTrack)
       const initialState = {
         initialValues: {
-          bpm, name, length,
+          bpm, name,
+          beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
+          beatportLengthParsed: beatportDurationParsed,
+          youtubeLength: youtubeVideoDuration,
+          youtubeLengthParsed: youtubeDurationParsed,
           label: label.name,
           genre: genres[0].name,
           key: `${key.standard.letter} ${key.standard.chord}`,

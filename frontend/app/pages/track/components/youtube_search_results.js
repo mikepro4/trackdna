@@ -110,7 +110,7 @@ export default class YoutubeSearchResults extends React.Component {
           <div className='published_time'>Uploaded {moment(video.snippet.publishedAt).fromNow()}</div>
           <div className='owns_label'><img src={check}/> Video owned by artist</div>
           <div className='official_label'><img src={check}/> Uploaded to official channel</div>
-          <div className='name_match_label'><img src={check}/> Exact name match</div>
+          <div className='name_match_label'><img src={check}/> Contains track name</div>
         </li>
       );
     });

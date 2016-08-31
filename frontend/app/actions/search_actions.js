@@ -61,7 +61,6 @@ export function searchYoutube( searchTerm ) {
         });
       })
       .catch(() => {
-        // dispatch(authError('Bad Login Info'));
       });
   }
 }
@@ -81,7 +80,9 @@ export function searchBeatport( searchTerm ) {
         loading: true
       }
     });
-    return axios.get(`https://oauth-api.beatport.com/catalog/3/search/?query=${searchTermEncoded}&perPage=20`, {headers: oauth.toHeader(oauth.authorize(request_data, token))})
+    return axios.get(`https://oauth-api.beatport.com/catalog/3/search/?query=${searchTermEncoded}&perPage=20`, {
+      headers: oauth.toHeader(oauth.authorize(request_data, token))
+    })
       .then(response => {
         dispatch({
           type: BEATPORT_SEARCH_SUCCESS,
@@ -93,7 +94,6 @@ export function searchBeatport( searchTerm ) {
         });
       })
       .catch(() => {
-        // dispatch(authError('Bad Login Info'));
       });
   }
 }
@@ -133,37 +133,3 @@ export function loadYoutubeVideoData(video) {
        })
   }
 }
-
-
-//
-// export function signupUser({ email, password }) {
-//   console.log('signupUser action stuff', { email, password })
-//   return dispatch => {
-//     dispatch({
-//       type: SIGNUP_USER,
-//       meta: {
-//         loading: true
-//       }
-//     });
-//     return axios.post(`${ROOT_URL}/signup`, { email, password})
-//       .then(response => {
-//         dispatch({
-//           type: SIGNUP_USER_SUCCESS,
-//           meta: {
-//             loading: false
-//           }
-//         });
-//         localStorage.setItem('token', response.data.token);
-//         browserHistory.push('/home');
-//       })
-//       .catch(error => {
-//         dispatch(authError(error.response.data.error))
-//       });
-//   }
-// }
-//
-// export function signoutUser() {
-//   localStorage.removeItem('token');
-//   console.log('sign out')
-//   return { type: UNAUTH_USER };
-// }

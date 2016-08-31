@@ -19,23 +19,11 @@ export default class YoutubePlayer extends React.Component {
     this.setState({
       player: event.target
     });
-    console.log('on Ready duration', this.state.player.getDuration())
-    this.loadYoutubeDetails()
   }
 
   onStateChange(event) {
     clearInterval(this.state.timeInterval);
     this.props.dispatch(updateTime(0, 0, 0, 0))
-    console.log('onStateChange duration', this.state.player.getDuration())
-    this.loadYoutubeDetails()
-  }
-
-  loadYoutubeDetails() {
-    // axios.get(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${this.props.currentVideo.videoId}&key=AIzaSyDQ_kgowJCa-mH5wnjnQ1mOE4nBqQIGij8`)
-    //  .then((results) => {
-    //    console.log(results.data.items[0])
-    //    console.log('Youtube Duration:', moment.duration(results.data.items[0].contentDetails.duration).asSeconds())
-    //  })
   }
 
   componentDidUpdate(event) {
