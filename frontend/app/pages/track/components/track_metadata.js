@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import YoutubePlayer from "../../../components/player/player"
 import { updateCurrentVideo } from '../../../actions'
 import classNames from 'classnames'
+import TrackMetadataForm from './track_metadata_form'
 
 export default class TrackMetadata extends React.Component {
   onPlay() {
@@ -54,10 +55,37 @@ export default class TrackMetadata extends React.Component {
     }
   }
 
+  trackMetadataFormSubmit() {
+    console.log('pressed')
+  }
+
   renderTrackMetadata() {
     if(this.props.search.beatportSelectedTrack) {
+      const {name, bpm, length, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      console.log(this.props.search.beatportSelectedTrack)
+      const initialState = {
+        initialValues: {
+          bpm, name, length,
+          label: label.name,
+          genre: genres[0].name,
+          key: `${key.standard.letter} ${key.standard.chord}`,
+          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
+        }
+      }
+      const trackArtists = artists.map((artist) => {
+        return (
+          <div key={artist.id}>{artist.name}</div>
+        )
+      })
       return (
-        <div>{this.props.search.beatportSelectedTrack.name}</div>
+        <div>
+          <img src={`http://geo-media.beatport.com/image_size/100x100/${dynamicImages.main.id}.jpg`} />
+          <h1>{trackArtists}</h1>
+          <div>{name}</div>
+          <ul className='track_input_list'>
+            <TrackMetadataForm {...this.props} {...initialState} enableReinitialize="true" onSubmit={this.trackMetadataFormSubmit.bind(this)}  />
+          </ul>
+        </div>
       )
     }
   }
