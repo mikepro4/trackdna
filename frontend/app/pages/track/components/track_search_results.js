@@ -3,6 +3,7 @@ import _ from 'lodash'
 import YoutubeSearchResults from './youtube_search_results.js'
 import BeatportSearchResults from './beatport_search_results.js'
 import TrackMetadata from './track_metadata.js'
+import ReactDOM from 'react-dom'
 
 export default class TrackSearchResults extends React.Component {
 
@@ -38,16 +39,11 @@ export default class TrackSearchResults extends React.Component {
   renderSearchResults() {
     if(!_.isEmpty(this.props.search.videos)) {
       return (
-        <div className='results_container'>
+        <div className='results_container' ref='results_container'>
           <TrackMetadata {...this.props} />
           <div className='search_results_container'>
-            <div className='youtube_results_container'>
               <YoutubeSearchResults {...this.props} />
-            </div>
-
-            <div className='beatport_results_container'>
               <BeatportSearchResults {...this.props} />
-            </div>
           </div>
         </div>
       )

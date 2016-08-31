@@ -5,6 +5,7 @@ import check from '../../../assets/check.svg'
 import { updateBeatportSelectedMetadata } from '../../../actions/search_actions'
 import { updateCurrentVideo } from '../../../actions'
 import _ from 'lodash'
+import ReactDOM from 'react-dom'
 
 export default class BetaportSearchResults extends React.Component {
   selectTrack(track) {
@@ -12,8 +13,17 @@ export default class BetaportSearchResults extends React.Component {
   }
 
   componentDidUpdate() {
+
     if(!this.props.search.preSelectedTrack) {
       this.pickBestTrack()
+    }
+
+    // const  node =  ReactDOM.findDOMNode(this.refs.selected);
+    var selectedItem = this.refs.selected;
+    if (selectedItem) {
+      var domNode = ReactDOM.findDOMNode(selectedItem);
+      var parentNode = ReactDOM.findDOMNode(this.refs.beatport_container);
+      parentNode.scrollTop = domNode.offsetTop - 80;
     }
   }
 
@@ -55,6 +65,7 @@ export default class BetaportSearchResults extends React.Component {
   }
 
   render() {
+
     const artistName = this.props.search.artist.replace(/\s/g, '').toLowerCase();
     const trackname = this.props.search.track_name.replace(/\s/g, '').toLowerCase();
     let selectedTrackId = '';
@@ -82,7 +93,7 @@ export default class BetaportSearchResults extends React.Component {
             }
           })
           const beatportTrackName = track.name.replace(/\s/g, '').toLowerCase()
-          console.log('YAS', selectedTrackId, ' ', track.id)
+          // console.log('YAS', selectedTrackId, ' ', track.id)
           let beatportTrackItemClasses = classNames({
             'beatport_track_item': true,
             'name_match': beatportTrackName === trackname,
@@ -90,8 +101,10 @@ export default class BetaportSearchResults extends React.Component {
             'selected_track': selectedTrackId === track.id
           })
 
+          const refValue = selectedTrackId === track.id ? 'selected' : '';
+
           return (
-            <li className={beatportTrackItemClasses} key={track.id} onClick={this.selectTrack.bind(this, track)} >
+            <li className={beatportTrackItemClasses} ref={refValue} key={track.id} onClick={this.selectTrack.bind(this, track)} >
               <div>{artists}</div>
               <div>Name: {track.name}</div>
               <div>BPM: {track.bpm}</div>
@@ -122,13 +135,17 @@ export default class BetaportSearchResults extends React.Component {
       'track_selected': this.props.search.beatportSelectedTrack
     })
 
+
     return (
-      <div className='beatport_results'>
-        <h2>Beatport Results</h2>
-        <ul className={videoListClasses}>
-          {tracks}
-        </ul>
+      <div className='beatport_results_container' ref="beatport_container">
+        <div className='beatport_results'>
+          <h2>Beatport Results</h2>
+          <ul className={videoListClasses}>
+            {tracks}
+          </ul>
+        </div>
       </div>
+
     )
   }
 }

@@ -4,6 +4,7 @@ import moment from 'moment'
 import check from '../../../assets/check.svg'
 import { updateYoutubeSelectedVideo } from '../../../actions/search_actions'
 import { updateCurrentVideo } from '../../../actions'
+import ReactDOM from 'react-dom'
 
 export default class YoutubeSearchResults extends React.Component {
   selectVideo(video) {
@@ -14,6 +15,12 @@ export default class YoutubeSearchResults extends React.Component {
   componentDidUpdate() {
     if(!this.props.search.preSelectedVideo) {
       this.pickBestVideo()
+    }
+    var selectedItem = this.refs.selectedVideo;
+    if (selectedItem) {
+      var domNode = ReactDOM.findDOMNode(selectedItem);
+      var parentNode = ReactDOM.findDOMNode(this.refs.youtube_container);
+      parentNode.scrollTop = domNode.offsetTop - 80;
     }
   }
 
@@ -93,8 +100,9 @@ export default class YoutubeSearchResults extends React.Component {
         'name_match': (videoTitle.indexOf(trackname) !== -1),
         'selected_video': selectedVideoId === video.id.videoId
       })
+      const refValue = selectedVideoId === video.id.videoId ? 'selectedVideo' : '';
       return (
-        <li className={videoItemClasses} key={video.id.videoId} onClick={this.selectVideo.bind(this, video)}>
+        <li className={videoItemClasses} key={video.id.videoId} ref={refValue} onClick={this.selectVideo.bind(this, video)}>
           <div className='video_title'>{video.snippet.title}</div>
           <div className='channel_title'>Published by <span>{video.snippet.channelTitle}</span></div>
           <div className='video_preview'><img src={video.snippet.thumbnails.default.url} /> </div>
@@ -112,11 +120,13 @@ export default class YoutubeSearchResults extends React.Component {
     })
 
     return (
-      <div className='youtube_results'>
-        <h2>Youtube Results</h2>
-        <ul className={videoListClasses}>
-          {videos}
-        </ul>
+      <div className='youtube_results_container'  ref="youtube_container">
+        <div className='youtube_results'>
+          <h2>Youtube Results</h2>
+          <ul className={videoListClasses}>
+            {videos}
+          </ul>
+        </div>
       </div>
     )
   }
