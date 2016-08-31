@@ -64,11 +64,18 @@ export default class TrackMetadata extends React.Component {
     if(this.props.search.videoYoutubeDetails){
       return(
         <div>
-          <div className>Youtube Duration: {moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()}</div>
+          <div className>Youtube Duration: {this.parseYoutubeDuration(this.props.search.videoYoutubeDetails.contentDetails.duration)}</div>
           <div className>Youtube Views: {this.props.search.videoYoutubeDetails.statistics.viewCount}</div>
         </div>
       )
     }
+  }
+
+  parseYoutubeDuration(duration) {
+    let youtubeVideoDuration = moment.duration(duration).asSeconds()
+    let momentDurationYoutube = moment.duration(youtubeVideoDuration, 'seconds')
+    let outubeDurationParsed = (`${momentDurationYoutube.minutes()}:${momentDurationYoutube.seconds()}`)
+    return outubeDurationParsed
   }
 
   renderTrackMetadata() {
@@ -80,7 +87,7 @@ export default class TrackMetadata extends React.Component {
 
       if(this.props.search.videoYoutubeDetails && this.props.search.beatportSelectedTrack) {
         youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
-        
+
         let momentDurationYoutube = moment.duration(youtubeVideoDuration, 'seconds')
         let momentDurationBeatport =  moment.duration(moment.duration(lengthMs).asSeconds(), 'seconds')
 
@@ -114,7 +121,6 @@ export default class TrackMetadata extends React.Component {
           <img src={`http://geo-media.beatport.com/image_size/100x100/${dynamicImages.main.id}.jpg`} />
           <h1>{trackArtists}</h1>
           <div>{name}</div>
-          {this.renderDuration()}
           <ul className='track_input_list'>
             <TrackMetadataForm {...this.props} {...initialState} enableReinitialize="true" onSubmit={this.trackMetadataFormSubmit.bind(this)}  />
           </ul>
@@ -128,6 +134,7 @@ export default class TrackMetadata extends React.Component {
       <div className='track_metadata_container'>
         <h1>Track metadata</h1>
         {this.renderPlayer()}
+        {this.renderDuration()}
         {this.renderPlaying()}
         {this.renderTrackMetadata()}
       </div>
