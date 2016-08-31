@@ -79,6 +79,7 @@ export default class TrackMetadata extends React.Component {
       })
       return (
         <div>
+          <div><img src={`http://geo-media.beatport.com/image_size/600x80/${dynamicImages.waveform.id}.png`} /></div>
           <img src={`http://geo-media.beatport.com/image_size/100x100/${dynamicImages.main.id}.jpg`} />
           <h1>{trackArtists}</h1>
           <div>{name}</div>
