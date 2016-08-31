@@ -40,11 +40,11 @@ export default class TrackNew extends React.Component {
 
   handleTrackSearchSubmit({ artist, track_name }) {
     console.log({ artist, track_name })
+    this.props.dispatch(clearSearchResults())
     this.props.dispatch(updateCurrentVideo(null, 'cleared'))
     this.props.dispatch(updateSearchTerm(artist, track_name))
-    this.props.dispatch(searchYoutube(`${artist} – ${track_name}`))
+    this.props.dispatch(searchYoutube(`${artist} ${track_name}`))
     this.props.dispatch(searchBeatport(`${artist} ${track_name}`))
-    this.props.dispatch(updateYoutubeSelectedVideo(null))
   }
 
   componentWillUnmount() {
@@ -84,9 +84,7 @@ export default class TrackNew extends React.Component {
       <div className='page_container page_add_track'>
         <Helmet title="New Track – Track DNA" />
         <TrackSearchForm {...this.props} onSubmit={this.handleTrackSearchSubmit.bind(this)} />
-        <div className='track_search_results_container'>
-          <TrackSearchResults {...this.props} />
-        </div>
+        <TrackSearchResults {...this.props} />
       </div>
     );
   }

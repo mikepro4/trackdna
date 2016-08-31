@@ -2,10 +2,11 @@
 
 .beatport_results_container {
   display: block;
-  margin: 20px 0 0 20px;
+  margin: 20px 20px 0 0px;
   width: 270px;
   background: $white;
   box-shadow: 0px 4px 19px 0px rgba(224,224,224,0.50);
+  overflow-y: scroll;
 
   .beatport_results {
     display: block;
@@ -18,28 +19,7 @@
 
     .beatport_track_list {
       margin: 0 0 20px 0;
-      //
-      // &.video_selected {
-      //   li {
-      //     border: 3px solid $grey1;
-      //     background: $grey1;
-      //     .video_title, .channel_title  {
-      //       opacity: .3
-      //     }
-      //     .video_preview {
-      //       opacity: .2
-      //     }
-      //
-      //     &:hover {
-      //       .video_title, .channel_title  {
-      //         opacity: 1
-      //       }
-      //       .video_preview {
-      //         opacity: 1
-      //       }
-      //     }
-      //   }
-      // }
+
 
       li.beatport_track_item {
         display: block;
@@ -49,18 +29,6 @@
         border: 3px solid $white;
         box-shadow: 0px 1px 0px 0px rgba(189,189,189,0.50);
         margin: 0 0 1px 0;
-        //
-        // &.selected_video {
-        //   background: $white;
-        //   border: 3px solid $green;
-        //
-        //   .video_title, .channel_title  {
-        //     opacity: 1
-        //   }
-        //   .video_preview {
-        //     opacity: 1
-        //   }
-        // }
       }
     }
   }

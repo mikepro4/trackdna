@@ -54,6 +54,13 @@ export default class TrackMetadata extends React.Component {
     }
   }
 
+  renderTrackMetadata() {
+    if(this.props.search.beatportSelectedTrack) {
+      return (
+        <div>{this.props.search.beatportSelectedTrack.name}</div>
+      )
+    }
+  }
 
   render() {
     return (
@@ -61,6 +68,7 @@ export default class TrackMetadata extends React.Component {
         Track metadata
         {this.renderPlayer()}
         {this.renderPlaying()}
+        {this.renderTrackMetadata()}
       </div>
     );
   }

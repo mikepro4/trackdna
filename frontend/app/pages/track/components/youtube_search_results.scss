@@ -2,10 +2,16 @@
 
 .youtube_results_container {
   display: block;
-  margin: 20px 0 0 20px;
+  margin: 20px 20px 0 20px;
   width: 270px;
   background: $white;
   box-shadow: 0px 4px 19px 0px rgba(224,224,224,0.50);
+  overflow-y: scroll;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
 
   .youtube_results {
     display: block;

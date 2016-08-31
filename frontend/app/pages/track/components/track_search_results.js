@@ -40,12 +40,14 @@ export default class TrackSearchResults extends React.Component {
       return (
         <div className='results_container'>
           <TrackMetadata {...this.props} />
-          <div className='youtube_results_container'>
-            <YoutubeSearchResults {...this.props} />
-          </div>
+          <div className='search_results_container'>
+            <div className='youtube_results_container'>
+              <YoutubeSearchResults {...this.props} />
+            </div>
 
-          <div className='beatport_results_container'>
-            <BeatportSearchResults {...this.props} />
+            <div className='beatport_results_container'>
+              <BeatportSearchResults {...this.props} />
+            </div>
           </div>
         </div>
       )
@@ -54,7 +56,7 @@ export default class TrackSearchResults extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='track_search_results_container'>
         {this.renderInitialState()}
         {this.renderSearchResults()}
       </div>

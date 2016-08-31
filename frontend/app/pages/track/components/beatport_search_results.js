@@ -2,11 +2,15 @@ import React from 'react';
 import classNames from 'classnames'
 import moment from 'moment'
 import check from '../../../assets/check.svg'
-import { updateYoutubeSelectedVideo } from '../../../actions/search_actions'
+import { updateBeatportSelectedMetadata } from '../../../actions/search_actions'
 import { updateCurrentVideo } from '../../../actions'
 import _ from 'lodash'
 
 export default class BetaportSearchResults extends React.Component {
+  selectTrack(track) {
+    this.props.dispatch(updateBeatportSelectedMetadata(track))
+  }
+
   render() {
     const artistName = this.props.search.artist.replace(/\s/g, '').toLowerCase();
     const trackname = this.props.search.track_name.replace(/\s/g, '').toLowerCase();
@@ -19,8 +23,6 @@ export default class BetaportSearchResults extends React.Component {
 
     if(!_.isEmpty(this.props.search.beatportData)) {
       tracks = this.props.search.beatportData.map((track) => {
-
-        console.log(track)
 
         if(track.type === 'track') {
           const artists = track.artists.map((artist) => {
@@ -35,7 +37,6 @@ export default class BetaportSearchResults extends React.Component {
               return true
             }
           })
-          console.log('beaportArtistName:', beaportArtistName)
           const beatportTrackName = track.name.replace(/\s/g, '').toLowerCase()
 
           let beatportTrackItemClasses = classNames({
@@ -45,7 +46,7 @@ export default class BetaportSearchResults extends React.Component {
           })
 
           return (
-            <li className={beatportTrackItemClasses} key={track.id}>
+            <li className={beatportTrackItemClasses} key={track.id} onClick={this.selectTrack.bind(this, track)} >
               <div>{artists}</div>
               <div>Name: {track.name}</div>
               <div>BPM: {track.bpm}</div>

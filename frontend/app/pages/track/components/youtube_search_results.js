@@ -7,8 +7,78 @@ import { updateCurrentVideo } from '../../../actions'
 
 export default class YoutubeSearchResults extends React.Component {
   selectVideo(video) {
-    this.props.dispatch(updateYoutubeSelectedVideo(video))
+    this.props.dispatch(updateYoutubeSelectedVideo(video, true))
     this.props.dispatch(updateCurrentVideo(video.id.videoId))
+  }
+
+  componentDidUpdate() {
+    if(!this.props.search.preSelected) {
+      this.pickBestVideo()
+    }
+  }
+
+  preSelectVideo(video) {
+    this.props.dispatch(updateYoutubeSelectedVideo(video, true))
+    this.props.dispatch(updateCurrentVideo(video.id.videoId))
+  }
+
+  pickBestVideo() {
+    const artistName = this.props.search.artist.replace(/\s/g, '').toLowerCase();
+    const trackname = this.props.search.track_name.replace(/\s/g, '').toLowerCase();
+
+    const owns = _.filter(this.props.search.videos, (video) => {
+      const channelName = video.snippet.channelTitle.replace(/\s/g, '').toLowerCase()
+      return (
+        channelName === artistName
+      )
+    });
+
+    const nameMatch = _.filter(this.props.search.videos, (video) => {
+      const videoTitle = video.snippet.title.replace(/\s/g, '').toLowerCase()
+      return (
+        (videoTitle.indexOf(trackname) !== -1)
+      )
+    })
+
+    const officialMatch = _.filter(this.props.search.videos, (video) => {
+      const channelName = video.snippet.channelTitle.replace(/\s/g, '').toLowerCase()
+      return (
+        (channelName.indexOf('official') !== -1) || (channelName.indexOf('vevo') !== -1)
+      )
+    })
+
+    console.log('owned:', owns)
+    console.log('name matched:', nameMatch)
+    console.log('official matched:', officialMatch)
+
+    if (!_.isEmpty(owns)) {
+      console.log('has owned track')
+      const nameMatchOwned = _.filter(owns, (video) => {
+        const videoTitle = video.snippet.title.replace(/\s/g, '').toLowerCase()
+        return (
+          (videoTitle.indexOf(trackname) !== -1)
+        )
+      })
+      this.preSelectVideo(nameMatchOwned[0])
+    } else if(!_.isEmpty(officialMatch)) {
+      console.log('has official track')
+      console.log('has owned track')
+      const nameMatchOfficial = _.filter(officialMatch, (video) => {
+        const videoTitle = video.snippet.title.replace(/\s/g, '').toLowerCase()
+        return (
+          (videoTitle.indexOf(trackname) !== -1)
+        )
+      })
+      console.log('nameMatcOfficial:', nameMatchOfficial[0])
+      if(!_.isEmpty(nameMatchOfficial)) {
+        this.preSelectVideo(nameMatchOfficial[0])
+      } else {
+        this.preSelectVideo(nameMatch[0])
+      }
+    } else if (!_.isEmpty(nameMatch)) {
+      console.log('has named tracks')
+      this.preSelectVideo(nameMatch[0])
+    }
   }
 
   render() {

@@ -8,7 +8,8 @@ import {
   BEATPORT_SEARCH,
   BEATPORT_SEARCH_SUCCESS,
   CLEAR_SEARCH,
-  SELECT_YOUTUBE_VIDEO
+  SELECT_YOUTUBE_VIDEO,
+  SELECT_BEATPORT_TRACK
 } from './types';
 
 const YOUTUBE_API_KEY = 'AIzaSyDQ_kgowJCa-mH5wnjnQ1mOE4nBqQIGij8'
@@ -51,6 +52,7 @@ export function searchYoutube( searchTerm ) {
           type: YOUTUBE_SEARCH_SUCCESS,
           videos: response.data.items,
           loadingVideos: false,
+          preSelected: false,
           meta: {
             loading: false
           }
@@ -101,12 +103,21 @@ export function clearSearchResults() {
   };
 }
 
-export function updateYoutubeSelectedVideo(video) {
+export function updateYoutubeSelectedVideo(video, preSelected) {
   return {
     type: SELECT_YOUTUBE_VIDEO,
-    video
+    video,
+    preSelected
   };
 }
+
+export function updateBeatportSelectedMetadata(track) {
+  return {
+    type: SELECT_BEATPORT_TRACK,
+    track
+  };
+}
+
 //
 // export function signupUser({ email, password }) {
 //   console.log('signupUser action stuff', { email, password })
