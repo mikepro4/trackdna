@@ -23,7 +23,7 @@ export default class BetaportSearchResults extends React.Component {
     if (selectedItem) {
       var domNode = ReactDOM.findDOMNode(selectedItem);
       var parentNode = ReactDOM.findDOMNode(this.refs.beatport_container);
-      parentNode.scrollTop = domNode.offsetTop - 80;
+      // parentNode.scrollTop = domNode.offsetTop - 80;
     }
   }
 
@@ -102,7 +102,6 @@ export default class BetaportSearchResults extends React.Component {
           })
 
           const refValue = selectedTrackId === track.id ? 'selected' : '';
-          console.log(track)
           return (
             <li className={beatportTrackItemClasses} ref={refValue} key={track.id} onClick={this.selectTrack.bind(this, track)} >
               <div>{artists}</div>

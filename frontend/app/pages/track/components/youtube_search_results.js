@@ -20,7 +20,7 @@ export default class YoutubeSearchResults extends React.Component {
     if (selectedItem) {
       var domNode = ReactDOM.findDOMNode(selectedItem);
       var parentNode = ReactDOM.findDOMNode(this.refs.youtube_container);
-      parentNode.scrollTop = domNode.offsetTop - 80;
+      // parentNode.scrollTop = domNode.offsetTop - 80;
     }
   }
 

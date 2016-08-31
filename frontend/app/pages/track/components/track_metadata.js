@@ -94,7 +94,7 @@ export default class TrackMetadata extends React.Component {
   render() {
     return (
       <div className='track_metadata_container'>
-        Track metadata
+        <h1>Track metadata</h1>
         {this.renderPlayer()}
         {this.renderPlaying()}
         {this.renderTrackMetadata()}
