@@ -6,7 +6,8 @@ import {
   BEATPORT_SEARCH_SUCCESS,
   CLEAR_SEARCH,
   SELECT_YOUTUBE_VIDEO,
-  SELECT_BEATPORT_TRACK
+  SELECT_BEATPORT_TRACK,
+  LOAD_YOUTUBE_VIDEO_DETAILS
 } from '../actions/types'
 
 export default (state = {}, action) => {
@@ -39,6 +40,10 @@ export default (state = {}, action) => {
       return  {...state,
         beatportSelectedTrack: action.track,
         preSelectedTrack: action.preSelectedTrack
+      }
+    case LOAD_YOUTUBE_VIDEO_DETAILS:
+      return {...state,
+        videoYoutubeDetails: action.videoYoutubeDetails
       }
     case CLEAR_SEARCH:
       return  {}

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import OAuth from 'oauth-1.0a'
+import moment from 'moment'
 import { browserHistory } from 'react-router';
 import {
   SEARCH_TERM_UPDATE,
@@ -9,7 +10,8 @@ import {
   BEATPORT_SEARCH_SUCCESS,
   CLEAR_SEARCH,
   SELECT_YOUTUBE_VIDEO,
-  SELECT_BEATPORT_TRACK
+  SELECT_BEATPORT_TRACK,
+  LOAD_YOUTUBE_VIDEO_DETAILS
 } from './types';
 
 const YOUTUBE_API_KEY = 'AIzaSyDQ_kgowJCa-mH5wnjnQ1mOE4nBqQIGij8'
@@ -118,6 +120,20 @@ export function updateBeatportSelectedMetadata(track, preSelectedTrack) {
     preSelectedTrack
   };
 }
+
+export function loadYoutubeVideoData(video) {
+  console.log('load youtube data', video.id.videoId)
+  return dispatch => {
+    return axios.get(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${video.id.videoId}&key=${YOUTUBE_API_KEY}`)
+       .then((results) => {
+         dispatch({
+           type: LOAD_YOUTUBE_VIDEO_DETAILS,
+           videoYoutubeDetails: results.data.items[0]
+         });
+       })
+  }
+}
+
 
 //
 // export function signupUser({ email, password }) {

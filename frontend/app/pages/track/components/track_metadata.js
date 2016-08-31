@@ -3,6 +3,7 @@ import YoutubePlayer from "../../../components/player/player"
 import { updateCurrentVideo } from '../../../actions'
 import classNames from 'classnames'
 import TrackMetadataForm from './track_metadata_form'
+import moment from 'moment'
 
 export default class TrackMetadata extends React.Component {
   onPlay() {
@@ -59,10 +60,21 @@ export default class TrackMetadata extends React.Component {
     console.log('pressed')
   }
 
+  renderDuration() {
+    if(this.props.search.videoYoutubeDetails){
+      return(
+        <div>
+          <div className>Youtube Duration: {moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()}</div>
+          <div className>Youtube Views: {this.props.search.videoYoutubeDetails.statistics.viewCount}</div>
+        </div>
+      )
+    }
+  }
+
   renderTrackMetadata() {
     if(this.props.search.beatportSelectedTrack) {
       const {name, bpm, length, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
-      console.log(this.props.search.beatportSelectedTrack)
+      // console.log(this.props.search.beatportSelectedTrack)
       const initialState = {
         initialValues: {
           bpm, name, length,
@@ -77,12 +89,14 @@ export default class TrackMetadata extends React.Component {
           <div key={artist.id}>{artist.name}</div>
         )
       })
+      // const durationYoutubeParsed = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
       return (
         <div>
           <div><img src={`http://geo-media.beatport.com/image_size/600x80/${dynamicImages.waveform.id}.png`} /></div>
           <img src={`http://geo-media.beatport.com/image_size/100x100/${dynamicImages.main.id}.jpg`} />
           <h1>{trackArtists}</h1>
           <div>{name}</div>
+          {this.renderDuration()}
           <ul className='track_input_list'>
             <TrackMetadataForm {...this.props} {...initialState} enableReinitialize="true" onSubmit={this.trackMetadataFormSubmit.bind(this)}  />
           </ul>

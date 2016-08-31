@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import YouTube from 'react-youtube';
 import classnames from 'classnames'
 import { updateCurrentVideo, updateTime } from '../../actions/'
+import axios from 'axios'
+import moment from 'moment'
 
 export default class YoutubePlayer extends React.Component {
   constructor(props) {
@@ -17,6 +19,23 @@ export default class YoutubePlayer extends React.Component {
     this.setState({
       player: event.target
     });
+    console.log('on Ready duration', this.state.player.getDuration())
+    this.loadYoutubeDetails()
+  }
+
+  onStateChange(event) {
+    clearInterval(this.state.timeInterval);
+    this.props.dispatch(updateTime(0, 0, 0, 0))
+    console.log('onStateChange duration', this.state.player.getDuration())
+    this.loadYoutubeDetails()
+  }
+
+  loadYoutubeDetails() {
+    // axios.get(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${this.props.currentVideo.videoId}&key=AIzaSyDQ_kgowJCa-mH5wnjnQ1mOE4nBqQIGij8`)
+    //  .then((results) => {
+    //    console.log(results.data.items[0])
+    //    console.log('Youtube Duration:', moment.duration(results.data.items[0].contentDetails.duration).asSeconds())
+    //  })
   }
 
   componentDidUpdate(event) {
@@ -52,7 +71,6 @@ export default class YoutubePlayer extends React.Component {
 
   stopVideo() {
     console.log('stop video')
-    clearInterval(this.state.timeInterval);
     this.state.player.stopVideo();
     this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'stopped'))
     this.props.dispatch(updateTime(0, 0, 0, 0))
@@ -71,11 +89,14 @@ export default class YoutubePlayer extends React.Component {
   }
 
   onPlay(event) {
+    console.log('onPlay')
+    this.setState({ 'timeInterval': null })
     this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'playing'))
     this.startTimeInterval()
   }
 
   onPause(event) {
+    console.log('onPause')
     clearInterval(this.state.timeInterval);
     this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'paused'))
   }
@@ -91,13 +112,18 @@ export default class YoutubePlayer extends React.Component {
       const minutes2 = Math.floor(duration2 / 60);
       let seconds2 = Math.floor(duration2 - minutes2 * 60);
       this.props.dispatch(updateTime(minutes, seconds, minutes2, seconds2))
+      // console.log(minutes, seconds, minutes2, seconds2)
     }, 100)
 
     this.setState({timeInterval})
   }
 
+  componentWillMount() {
+    clearInterval(this.state.timeInterval);
+  }
 
   componentWillUnmount(){
+    console.log('unmount player')
     clearInterval(this.state.timeInterval);
     this.props.dispatch(updateCurrentVideo(null, 'cleared'))
     this.props.dispatch(updateTime(0, 0, 0, 0))
@@ -127,6 +153,7 @@ export default class YoutubePlayer extends React.Component {
           onReady={this.onReady.bind(this)}
           onPlay={this.onPlay.bind(this)}
           onPause={this.onPause.bind(this)}
+          onStateChange={this.onStateChange.bind(this)}
         />
       </div>
     )

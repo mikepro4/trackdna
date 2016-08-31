@@ -2,13 +2,14 @@ import React from 'react';
 import classNames from 'classnames'
 import moment from 'moment'
 import check from '../../../assets/check.svg'
-import { updateYoutubeSelectedVideo } from '../../../actions/search_actions'
+import { updateYoutubeSelectedVideo, loadYoutubeVideoData } from '../../../actions/search_actions'
 import { updateCurrentVideo } from '../../../actions'
 import ReactDOM from 'react-dom'
 
 export default class YoutubeSearchResults extends React.Component {
   selectVideo(video) {
     this.props.dispatch(updateYoutubeSelectedVideo(video, true))
+    this.props.dispatch(loadYoutubeVideoData(video))
     this.props.dispatch(updateCurrentVideo(video.id.videoId))
   }
 

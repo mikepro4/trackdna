@@ -65,7 +65,6 @@ export default class BetaportSearchResults extends React.Component {
   }
 
   render() {
-
     const artistName = this.props.search.artist.replace(/\s/g, '').toLowerCase();
     const trackname = this.props.search.track_name.replace(/\s/g, '').toLowerCase();
     let selectedTrackId = '';
