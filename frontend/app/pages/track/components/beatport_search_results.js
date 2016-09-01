@@ -8,6 +8,14 @@ import _ from 'lodash'
 import ReactDOM from 'react-dom'
 
 export default class BetaportSearchResults extends React.Component {
+  constructor(props) {
+   super(props);
+
+   this.state = {
+     containerScrolled: false
+   }
+  }
+
   selectTrack(track) {
     this.props.dispatch(updateBeatportSelectedMetadata(track, true))
   }
@@ -18,12 +26,16 @@ export default class BetaportSearchResults extends React.Component {
       this.pickBestTrack()
     }
 
-    // const  node =  ReactDOM.findDOMNode(this.refs.selected);
     var selectedItem = this.refs.selected;
     if (selectedItem) {
       var domNode = ReactDOM.findDOMNode(selectedItem);
       var parentNode = ReactDOM.findDOMNode(this.refs.beatport_container);
-      // parentNode.scrollTop = domNode.offsetTop - 80;
+      if(!this.state.containerScrolled) {
+        parentNode.scrollTop = domNode.offsetTop - 80;
+        this.setState({
+          containerScrolled: true
+        })
+      }
     }
   }
 
@@ -56,7 +68,7 @@ export default class BetaportSearchResults extends React.Component {
         const nameMatch = _.filter(this.props.search.beatportData, (track) => {
           const beatportTrackName = track.name.replace(/\s/g, '').toLowerCase()
           return (
-            (beatportTrackName.indexOf(trackname) !== -1)
+            (beatportTrackName.indexOf(trackname) !== -1) && (track.type === 'track')
           )
         })
         this.selectTrack(nameMatch[0], true)
@@ -67,6 +79,7 @@ export default class BetaportSearchResults extends React.Component {
   render() {
     const artistName = this.props.search.artist.replace(/\s/g, '').toLowerCase();
     const trackname = this.props.search.track_name.replace(/\s/g, '').toLowerCase();
+
     let selectedTrackId = '';
     if(this.props.search.beatportSelectedTrack) {
       selectedTrackId = this.props.search.beatportSelectedTrack.id
@@ -76,12 +89,12 @@ export default class BetaportSearchResults extends React.Component {
 
     if(!_.isEmpty(this.props.search.beatportData)) {
 
-      tracks = this.props.search.beatportData.map((track) => {
+      tracks = this.props.search.beatportData.map((track,i) => {
 
         if(track.type === 'track') {
-          const artists = track.artists.map((artist) => {
+          const artists = track.artists.map((artist, i) => {
             return (
-              <div key={artist.id}>Artist:{artist.name}</div>
+              <div key={i}>Artist:{artist.name}</div>
             )
           })
 
@@ -92,18 +105,17 @@ export default class BetaportSearchResults extends React.Component {
             }
           })
           const beatportTrackName = track.name.replace(/\s/g, '').toLowerCase()
-          // console.log('YAS', selectedTrackId, ' ', track.id)
           let beatportTrackItemClasses = classNames({
             'beatport_track_item': true,
             'name_match': beatportTrackName === trackname,
             'owns': _.includes(beaportArtistName, true),
             'selected_track': selectedTrackId === track.id
           })
-
           const refValue = selectedTrackId === track.id ? 'selected' : '';
           return (
-            <li className={beatportTrackItemClasses} ref={refValue} key={track.id} onClick={this.selectTrack.bind(this, track)} >
+            <li className={beatportTrackItemClasses} ref={refValue} key={i} onClick={this.selectTrack.bind(this, track)} >
               <div>{artists}</div>
+              <div>Id: {track.id}</div>
               <div>Name: {track.name}</div>
               <div>BPM: {track.bpm}</div>
               <div>Key: {track.key.standard.letter} {track.key.standard.chord}</div>

@@ -13,6 +13,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: subpixel-antialiased;
+  color: $black;
 }
 
 h1, h2, h3 {
@@ -36,6 +37,7 @@ a {
   right: 0;
   bottom: 0;
   z-index: 1;
+  color: $black;
 
   .app_wrapper {
     display: flex;

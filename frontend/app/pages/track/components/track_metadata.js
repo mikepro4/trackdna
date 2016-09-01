@@ -109,9 +109,9 @@ export default class TrackMetadata extends React.Component {
           youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
         }
       }
-      const trackArtists = artists.map((artist) => {
+      const trackArtists = artists.map((artist, i) => {
         return (
-          <div key={artist.id}>{artist.name}</div>
+          <div key={i}>{artist.name}</div>
         )
       })
       // const durationYoutubeParsed = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()

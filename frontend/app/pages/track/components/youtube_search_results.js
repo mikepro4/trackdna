@@ -7,6 +7,14 @@ import { updateCurrentVideo } from '../../../actions'
 import ReactDOM from 'react-dom'
 
 export default class YoutubeSearchResults extends React.Component {
+  constructor(props) {
+   super(props);
+
+   this.state = {
+     containerScrolled: false
+   }
+  }
+
   selectVideo(video) {
     this.props.dispatch(updateYoutubeSelectedVideo(video, true))
     this.props.dispatch(loadYoutubeVideoData(video))
@@ -21,7 +29,12 @@ export default class YoutubeSearchResults extends React.Component {
     if (selectedItem) {
       var domNode = ReactDOM.findDOMNode(selectedItem);
       var parentNode = ReactDOM.findDOMNode(this.refs.youtube_container);
-      // parentNode.scrollTop = domNode.offsetTop - 80;
+      if(!this.state.containerScrolled) {
+        parentNode.scrollTop = domNode.offsetTop - 80;
+        this.setState({
+          containerScrolled: true
+        })
+      }
     }
   }
 

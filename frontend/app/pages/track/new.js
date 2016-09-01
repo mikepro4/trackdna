@@ -64,6 +64,15 @@ export default class TrackNew extends React.Component {
     }
   }
 
+  generateTitle() {
+    const { trackName, artistName } = this.props.location.query
+    if(trackName && artistName) {
+      return `${artistName} – ${trackName} | Track DNA`
+    } else {
+      return 'New Track – Track DNA '
+    }
+  }
+
   render() {
     const initialState = {
       initialValues: {
@@ -73,7 +82,7 @@ export default class TrackNew extends React.Component {
     }
     return (
       <div className='page_container page_add_track'>
-        <Helmet title="New Track – Track DNA" />
+        <Helmet title={this.generateTitle()} />
         <TrackSearchForm {...this.props} {...initialState} onSubmit={this.handleTrackSearchSubmit.bind(this)} />
         <TrackSearchResults {...this.props} />
       </div>
