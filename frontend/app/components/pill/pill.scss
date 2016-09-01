@@ -1,0 +1,56 @@
+@import "../../styles/vars";
+
+$pillHeight: 28px;
+
+.pill {
+  border-radius: 100px;
+  border: 1px solid $black;
+  color: $black;
+  display: inline-block;
+  height: $pillHeight;
+  padding: 0 10px;
+  margin: 0 5px 5px 0;
+
+  .pill_content {
+    height: $pillHeight;
+    display: inline-block;
+    color: $black;
+
+    .pill_label {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: $pillHeight - 2;
+    }
+  }
+
+  .pill_icon {
+    display: inline-block;
+    position: relative;
+
+    img.check {
+      position: relative;
+      top: 1px;
+    }
+
+    &.pill_icon_left {
+      margin: 0 3px 0 0;
+    }
+
+    &.pill_icon_right {
+      margin: 0 0 0 3px;
+    }
+  }
+
+  &.pill_green {
+    border: 1px solid $green;
+
+    .pill_content  {
+      color: $green
+    }
+  }
+
+  &.pill_red {}
+
+  &.pill_grey {}
+}

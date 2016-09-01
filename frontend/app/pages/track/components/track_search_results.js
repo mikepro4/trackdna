@@ -39,11 +39,11 @@ export default class TrackSearchResults extends React.Component {
   renderSearchResults() {
     if(!_.isEmpty(this.props.search.videos)) {
       return (
-        <div className='results_container' ref='results_container'>
+        <div className='results_page'>
           <TrackMetadata {...this.props} />
           <div className='search_results_container'>
-              <YoutubeSearchResults {...this.props} />
-              <BeatportSearchResults {...this.props} />
+            <YoutubeSearchResults {...this.props} />
+            <BeatportSearchResults {...this.props} />
           </div>
         </div>
       )

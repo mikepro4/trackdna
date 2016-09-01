@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames'
 import moment from 'moment'
-import check from '../../../assets/check.svg'
 import { updateYoutubeSelectedVideo, loadYoutubeVideoData } from '../../../actions/search_actions'
 import { updateCurrentVideo } from '../../../actions'
 import ReactDOM from 'react-dom'
+import Pill from '../../../components/pill/pill'
 
 export default class YoutubeSearchResults extends React.Component {
   constructor(props) {
@@ -28,9 +28,9 @@ export default class YoutubeSearchResults extends React.Component {
     var selectedItem = this.refs.selectedVideo;
     if (selectedItem) {
       var domNode = ReactDOM.findDOMNode(selectedItem);
-      var parentNode = ReactDOM.findDOMNode(this.refs.youtube_container);
+      var parentNode = ReactDOM.findDOMNode(this.refs.scrollable_container);
       if(!this.state.containerScrolled) {
-        parentNode.scrollTop = domNode.offsetTop - 80;
+        parentNode.scrollTop = domNode.offsetTop - 60;
         this.setState({
           containerScrolled: true
         })
@@ -108,36 +108,60 @@ export default class YoutubeSearchResults extends React.Component {
       const channelName = video.snippet.channelTitle.replace(/\s/g, '').toLowerCase()
       const videoTitle = video.snippet.title.replace(/\s/g, '').toLowerCase()
       let videoItemClasses = classNames({
-        'youtube_video_item': true,
-        'owns': artistName === channelName,
-        'official': (channelName.indexOf('official') !== -1) || (channelName.indexOf('vevo') !== -1),
-        'name_match': (videoTitle.indexOf(trackname) !== -1),
-        'selected_video': selectedVideoId === video.id.videoId
+        'result_item': true,
+        'youtube_search_result_item': true,
+        'selected_result': selectedVideoId === video.id.videoId
       })
+      const OWNS_RESULT = (artistName === channelName)
+      const OFFICIAL_RESULT = (channelName.indexOf('official') !== -1) || (channelName.indexOf('vevo') !== -1)
+      const NAME_MATCH_RESULT = (videoTitle.indexOf(trackname) !== -1)
       const refValue = selectedVideoId === video.id.videoId ? 'selectedVideo' : '';
       return (
         <li className={videoItemClasses} key={video.id.videoId} ref={refValue} onClick={this.selectVideo.bind(this, video)}>
           <div className='video_title'>{video.snippet.title}</div>
           <div className='channel_title'>Published by <span>{video.snippet.channelTitle}</span></div>
-          <div className='video_preview'><img src={video.snippet.thumbnails.default.url} /> </div>
+          <div className='video_preview'><img src={video.snippet.thumbnails.medium.url} /> </div>
           <div className='published_time'>Uploaded {moment(video.snippet.publishedAt).fromNow()}</div>
-          <div className='owns_label'><img src={check}/> Video owned by artist</div>
-          <div className='official_label'><img src={check}/> Uploaded to official channel</div>
-          <div className='name_match_label'><img src={check}/> Contains track name</div>
+          {OWNS_RESULT ?
+            <Pill
+              {...this.props}
+              iconLeft='check'
+              type='positive'
+              content='Artist Match'
+            /> : ''
+          }
+
+          {OFFICIAL_RESULT ?
+            <Pill
+              {...this.props}
+              iconLeft='check'
+              type='positive'
+              content='Official Channel'
+            /> : ''
+          }
+
+          {NAME_MATCH_RESULT ?
+            <Pill
+              {...this.props}
+              iconLeft='check'
+              type='positive'
+              content='Name Match'
+            /> : ''
+          }
         </li>
       );
     });
 
-    let videoListClasses = classNames({
-      'youtube_video_list': true,
-      'video_selected': this.props.search.youtubeSelectedVideo
+    let resultsListClasses = classNames({
+      'results_list': true,
+      'selected_result_container': this.props.search.youtubeSelectedVideo
     })
 
     return (
-      <div className='youtube_results_container'  ref="youtube_container">
-        <div className='youtube_results'>
-          <h2>Youtube Results</h2>
-          <ul className={videoListClasses}>
+      <div className='metadata_results_container'>
+        <h2 className='results_source_name'><span>YOUTUBE RESULTS</span></h2>
+        <div className='results_scrollable_container' ref="scrollable_container">
+          <ul className={resultsListClasses}>
             {videos}
           </ul>
         </div>

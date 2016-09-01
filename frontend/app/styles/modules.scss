@@ -1,10 +1,12 @@
 // Elements
 @import "./elements/button";
 @import "./elements/input";
+@import "./elements/scrollbars";
 
 // Components
 @import "../components/header/header";
 @import "../components/logo/logo";
+@import "../components/pill/pill";
 
 //Pages
 @import "../pages/landing/index";
@@ -12,6 +14,7 @@
 @import "../pages/track/index";
 @import "../pages/track/new";
 @import "../pages/track/components/track_search_form";
+@import "../pages/track/components/track_search_results";
 @import "../pages/track/components/youtube_search_results";
 @import "../pages/track/components/beatport_search_results";
 @import "../pages/auth/signin/index";

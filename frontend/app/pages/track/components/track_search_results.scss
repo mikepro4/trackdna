@@ -1,0 +1,133 @@
+@import "../../../styles/vars";
+@import "../../../styles/elements/scrollbars";
+
+$outerPadding: 20px;
+$innerPadding: 15px;
+$containerShadow: 0px 4px 19px 0px rgba($black, 0.05);
+
+.track_search_results_container {
+  flex-grow: 1;
+  position: absolute;
+  top: 82px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .initial_state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100;
+    background: rgba($bgColor, .85);
+
+    h1 {
+      font-size: 46px;
+      margin: -40px 0 10px 0;
+    }
+  }
+
+  .results_page {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    align-items: stretch;
+
+    .track_metadata_container {
+      background: $white;
+      margin: $outerPadding $outerPadding 0 $outerPadding;
+      box-shadow: $containerShadow;
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: scroll;
+      display: block;
+    }
+
+    .search_results_container {
+      display: flex;
+      flex-grow: 0;
+
+      .metadata_results_container {
+        display: flex;
+        margin: $outerPadding $outerPadding 0 0px;
+        width: 300px;
+        background: $white;
+        box-shadow: $containerShadow;
+        flex-direction: column;
+
+        .results_source_name {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+          font-size: 12px;
+          padding: 0 $innerPadding;
+          border-bottom: 1px solid $strokeColor;
+          flex-grow: 0;
+          height: 40px;
+          display: flex;
+          flex-shrink: 0;
+          align-items: center;
+        }
+
+        .results_scrollable_container {
+          display: block;
+          flex-grow: 1;
+          overflow-y: scroll;
+          @include webkit-scrollbar-light();
+
+          ul.results_list {
+            display: block;
+
+            &.selected_result_container {
+              li.result_item {
+                opacity: .4;
+
+                &:hover {
+                  opacity: 1
+                }
+              }
+            }
+
+            li.result_item {
+              display: block;
+              padding: $innerPadding - 3;
+              cursor: pointer;
+              border: 3px solid $white;
+              margin: 0 0 1px 0;
+              position: relative;
+              transition: opacity .2s ease-in-out;
+
+              &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                left: $innerPadding;
+                right: $innerPadding;
+                bottom: -4px;
+                border-bottom: 1px solid rgba($black, .1)
+              }
+
+              &.selected_result {
+                opacity: 1;
+                border: 3px solid $green;
+
+                &:after {
+                  display: none
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

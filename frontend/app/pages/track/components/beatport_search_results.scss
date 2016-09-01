@@ -1,70 +1,86 @@
 @import "../../../styles/vars";
 
-.beatport_results_container {
-  display: block;
-  margin: 20px 20px 0 0px;
-  width: 270px;
-  background: $white;
-  box-shadow: 0px 4px 19px 0px rgba(224,224,224,0.50);
-  overflow-y: scroll;
+$innerPadding: 15px;
 
-  .beatport_results {
-    display: block;
+.beatport_search_result_item {
+  .beatport_result_top {
+    display: flex;
 
-    h2 {
-      display: block;
-      padding: 20px;
-      border-bottom: 1px solid $strokeColor;
+    .cover_container {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        box-shadow: 0px 2px 9px 0px rgba($black, 0.15);
+      }
+    }
+    .main_info_container {
+      padding: 0 0 0 $innerPadding;
+      flex-grow: 1;
+      margin: 0 0 10px;
+      line-height: 20px;
+
+      .beatport_artist {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .track_name {
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      .label_name {
+        font-size: 13px;
+        font-weight: 600;
+        opacity: .25;
+      }
+    }
+  }
+
+  .beatport_result_bottom {
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 10px;
+
+    ul.beatport_info_list {
+      li {
+        line-height: 13px;
+        margin: 0 0 5px 0;
+
+        &.highlighted {
+          font-weight: 600
+        }
+        &.faded {
+          opacity: .3
+        }
+      }
     }
 
-    .beatport_track_list {
-      margin: 0 0 20px 0;
+    .beatport_result_bottom_left {
+      display: flex;
 
-      &.track_selected {
+      ul.beatport_info_list {
+        &:first-child {
+          width: 60px + $innerPadding;
+        }
+      }
+    }
+
+    .beatport_result_bottom_right {
+      ul.beatport_info_list {
         li {
-          border: 3px solid $grey1;
-          background: $grey1;
+          text-align: right;
+          max-width: 100px;
 
-          &:hover {
+          &:last-child {
           }
-        }
-      }
-
-
-      li.beatport_track_item {
-        display: block;
-        padding: 17px;
-        border-bottom: 1px solid $strokeColor;
-        cursor: pointer;
-        border: 3px solid $white;
-        box-shadow: 0px 1px 0px 0px rgba(189,189,189,0.50);
-        margin: 0 0 1px 0;
-
-        .owns_label, .name_match_label {
-          display: none;
-          color: $green;
-          font-family: 'Roboto', sans-serif;
-          font-weight: 400;
-          font-size: 13px;
-          margin: 5px 0 0 0;
-        }
-
-        &.owns {
-          .owns_label {
-            display: block;
-          }
-        }
-        &.name_match {
-          .name_match_label {
-            display: block;
-          }
-        }
-
-        &.selected_track {
-          background: $white;
-          border: 3px solid $green;
         }
       }
     }
+
   }
 }

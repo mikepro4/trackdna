@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames'
 import moment from 'moment'
-import check from '../../../assets/check.svg'
 import { updateBeatportSelectedMetadata } from '../../../actions/search_actions'
 import { updateCurrentVideo } from '../../../actions'
 import _ from 'lodash'
 import ReactDOM from 'react-dom'
+import Pill from '../../../components/pill/pill'
 
 export default class BetaportSearchResults extends React.Component {
   constructor(props) {
@@ -29,9 +29,9 @@ export default class BetaportSearchResults extends React.Component {
     var selectedItem = this.refs.selected;
     if (selectedItem) {
       var domNode = ReactDOM.findDOMNode(selectedItem);
-      var parentNode = ReactDOM.findDOMNode(this.refs.beatport_container);
+      var parentNode = ReactDOM.findDOMNode(this.refs.scrollable_container);
       if(!this.state.containerScrolled) {
-        parentNode.scrollTop = domNode.offsetTop - 80;
+        parentNode.scrollTop = domNode.offsetTop - 60;
         this.setState({
           containerScrolled: true
         })
@@ -94,7 +94,7 @@ export default class BetaportSearchResults extends React.Component {
         if(track.type === 'track') {
           const artists = track.artists.map((artist, i) => {
             return (
-              <div key={i}>Artist:{artist.name}</div>
+              <div key={i} className='beatport_artist'>{artist.name}</div>
             )
           })
 
@@ -104,58 +104,99 @@ export default class BetaportSearchResults extends React.Component {
               return true
             }
           })
-          const beatportTrackName = track.name.replace(/\s/g, '').toLowerCase()
-          let beatportTrackItemClasses = classNames({
-            'beatport_track_item': true,
-            'name_match': beatportTrackName === trackname,
-            'owns': _.includes(beaportArtistName, true),
-            'selected_track': selectedTrackId === track.id
-          })
+
           const refValue = selectedTrackId === track.id ? 'selected' : '';
+
+          const beatportTrackName = track.name.replace(/\s/g, '').toLowerCase()
+          const OWNS_RESULTS = _.includes(beaportArtistName, true)
+          const NAME_MATCH_RESULT = (beatportTrackName === trackname)
+
+          let beatportTrackItemClasses = classNames({
+            'result_item': true,
+            'beatport_search_result_item': true,
+            'selected_result': selectedTrackId === track.id
+          })
+
           return (
             <li className={beatportTrackItemClasses} ref={refValue} key={i} onClick={this.selectTrack.bind(this, track)} >
-              <div>{artists}</div>
-              <div>Id: {track.id}</div>
-              <div>Name: {track.name}</div>
-              <div>BPM: {track.bpm}</div>
-              <div>Key: {track.key.standard.letter} {track.key.standard.chord}</div>
-              <div>Label: {track.label.name}</div>
-              <div>Length: {track.length}</div>
-              <div>Mix Name: {track.mixName}</div>
-              <div>Track Name: {track.name}</div>
-              <div>Genre: {track.genres[0].name}</div>
-              <div>Released at: {track.releaseDate}</div>
-              <div className='owns_label'><img src={check}/> Exact artist match </div>
-              <div className='name_match_label'><img src={check}/> Contains track name</div>
+              <div className='beatport_result_top'>
+                <div className='cover_container'>
+                  <img src={`http://geo-media.beatport.com/image_size/120x120/${track.dynamicImages.main.id}.jpg`} />
+                </div>
+                <div className='main_info_container'>
+                  {artists}
+                  <div className='track_name'>{track.name}</div>
+                  <div className='label_name'>{track.label.name}</div>
+                </div>
+              </div>
+
+              <div className='beatport_result_bottom'>
+                <div className='beatport_result_bottom_left'>
+                  <ul className='beatport_info_list'>
+                    <li className='highlighted'>{track.length}</li>
+                    <li className='highlighted'>{track.bpm} BPM</li>
+                  </ul>
+
+                  <ul className='beatport_info_list'>
+                    <li>{track.key.standard.letter} {track.key.standard.chord}</li>
+                    <li>{track.genres[0].name}</li>
+                  </ul>
+                </div>
+
+                <div className="beatport_result_bottom_right">
+                  <ul className='beatport_info_list'>
+                    <li>{track.releaseDate}</li>
+                    <li className='faded'>{track.mixName}</li>
+                  </ul>
+                </div>
+              </div>
+
+              {OWNS_RESULTS ?
+                <Pill
+                  {...this.props}
+                  iconLeft='check'
+                  type='positive'
+                  content='Artist Match'
+                /> : ''
+              }
+
+              {NAME_MATCH_RESULT ?
+                <Pill
+                  {...this.props}
+                  iconLeft='check'
+                  type='positive'
+                  content='Name Match'
+                /> : ''
+              }
             </li>
           )
         }
       })
     } else {
-      tracks = "No beatport results"
+      tracks = (
+          <div className='metatada_no_results'>
+            <div className='no_results_content'>
+              <h1>No beatport results</h1>
+              <p>Beatport doesn't contain metadata for this track</p>
+            </div>
+          </div>
+      )
     }
 
-    let trackListClasses = classNames({
-      'beatport_track_list': true,
-
-    })
-
     let videoListClasses = classNames({
-      'beatport_track_list': true,
-      'track_selected': this.props.search.beatportSelectedTrack
+      'results_list': true,
+      'selected_result_container': this.props.search.beatportSelectedTrack
     })
-
 
     return (
-      <div className='beatport_results_container' ref="beatport_container">
-        <div className='beatport_results'>
-          <h2>Beatport Results</h2>
+      <div className='metadata_results_container'>
+        <h2 className='results_source_name'><span>BEATPORT RESULTS</span></h2>
+        <div className='results_scrollable_container' ref="scrollable_container">
           <ul className={videoListClasses}>
             {tracks}
           </ul>
         </div>
       </div>
-
     )
   }
 }
