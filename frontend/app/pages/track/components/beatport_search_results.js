@@ -183,7 +183,7 @@ export default class BetaportSearchResults extends React.Component {
       )
     }
 
-    let videoListClasses = classNames({
+    let resultsListClasses = classNames({
       'results_list': true,
       'selected_result_container': this.props.search.beatportSelectedTrack
     })
@@ -192,7 +192,7 @@ export default class BetaportSearchResults extends React.Component {
       <div className='metadata_results_container'>
         <h2 className='results_source_name'><span>BEATPORT RESULTS</span></h2>
         <div className='results_scrollable_container' ref="scrollable_container">
-          <ul className={videoListClasses}>
+          <ul className={resultsListClasses}>
             {tracks}
           </ul>
         </div>

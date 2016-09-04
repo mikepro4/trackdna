@@ -1,0 +1,14 @@
+@import "../../styles/vars";
+
+.player_controls_container {
+  display: inline-block;
+
+  li {
+    display: inline-block;
+    margin: 0 15px 0 0;
+
+    .button {
+      width: 100px;
+    }
+  }
+}

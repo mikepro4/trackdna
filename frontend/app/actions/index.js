@@ -25,13 +25,12 @@ export function updateCurrentVideo(id, action, seconds) {
   };
 }
 
-export function updateTime(durationMinutes, durationSeconds, currentMinutes, currentSeconds) {
+export function updateTime(duration, currentTime, playingVideoId) {
   return {
     type: UPDATE_TIME,
-    durationMinutes,
-    durationSeconds,
-    currentMinutes,
-    currentSeconds
+    duration,
+    currentTime,
+    playingVideoId
   };
 }
 

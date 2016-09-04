@@ -1,0 +1,92 @@
+@import "../../../styles/vars";
+@import "../../../styles/elements/scrollbars";
+
+.track_metadata_container {
+  background: $white;
+  margin: $outerPadding $outerPadding 0 $outerPadding;
+  box-shadow: $containerShadow;
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: scroll;
+  display: block;
+
+  @include webkit-scrollbar-light();
+
+  .track_metadata {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+
+    .track_metadata_header {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0 0 0;
+
+      .track_metadata_header_text {
+        h1.track_metadata_title {
+          font-size: 18px;
+          margin: 0 0 5px 0;
+        }
+        p.track_metadata_description {
+          font-size: 11px;
+        }
+      }
+      .track_metadata_header_action {
+        button.button_start {
+          width: 150px;
+          height: 40px;
+        }
+      }
+    }
+    .track_metadata_beatport {
+      margin: 30px 0 0 0;
+      display: flex;
+
+      .cover_container {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+
+        img {
+          width: 100%;
+          box-shadow: 0px 2px 9px 0px rgba($black, 0.15);
+        }
+      }
+      .main_info_container {
+        padding: 0 0 0 $innerPadding;
+        flex-grow: 1;
+        margin: 6px 0 10px 0;
+        line-height: 28px;
+
+        .beatport_artist {
+
+          span {
+            font-size: 22px;
+            font-weight: 600;
+
+            &:after {
+              content: ', '
+            }
+
+            &:last-child {
+              &:after {
+                display: none;
+              }
+            }
+          }
+        }
+
+        .track_name {
+          font-size: 18px;
+          font-weight: 300;
+        }
+
+        .label_name {
+          font-size: 16px;
+          font-weight: 600;
+          opacity: .25;
+        }
+      }
+    }
+  }
+}

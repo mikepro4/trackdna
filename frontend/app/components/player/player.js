@@ -23,7 +23,9 @@ export default class YoutubePlayer extends React.Component {
 
   onStateChange(event) {
     clearInterval(this.state.timeInterval);
-    this.props.dispatch(updateTime(0, 0, 0, 0))
+    if(this.props.currentVideo.videoId != this.props.time.playingVideoId) {
+      this.clearTime()
+    }
   }
 
   componentDidUpdate(event) {
@@ -42,7 +44,7 @@ export default class YoutubePlayer extends React.Component {
   playVideo() {
     console.log('play video')
     clearInterval(this.state.timeInterval);
-    this.props.dispatch(updateTime(0, 0, 0, 0))
+    // this.clearTime()
     this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'waiting'))
 
     // fake delay needed for the video switch
@@ -61,7 +63,7 @@ export default class YoutubePlayer extends React.Component {
     console.log('stop video')
     this.state.player.stopVideo();
     this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'stopped'))
-    this.props.dispatch(updateTime(0, 0, 0, 0))
+    this.clearTime()
   }
 
   seekVideo() {
@@ -92,15 +94,11 @@ export default class YoutubePlayer extends React.Component {
   startTimeInterval() {
     console.log('start time interval')
     const timeInterval = setInterval(() =>{
-      const duration = this.state.player.getDuration()
-      const minutes = Math.floor(duration / 60);
-      const seconds = Math.floor(duration - minutes * 60);
-
-      const duration2 = this.state.player.getCurrentTime()
-      const minutes2 = Math.floor(duration2 / 60);
-      let seconds2 = Math.floor(duration2 - minutes2 * 60);
-      this.props.dispatch(updateTime(minutes, seconds, minutes2, seconds2))
-      // console.log(minutes, seconds, minutes2, seconds2)
+      this.props.dispatch(updateTime(
+        this.state.player.getDuration(),
+        this.state.player.getCurrentTime(),
+        this.props.currentVideo.videoId
+      ))
     }, 100)
 
     this.setState({timeInterval})
@@ -114,7 +112,11 @@ export default class YoutubePlayer extends React.Component {
     console.log('unmount player')
     clearInterval(this.state.timeInterval);
     this.props.dispatch(updateCurrentVideo(null, 'cleared'))
-    this.props.dispatch(updateTime(0, 0, 0, 0))
+    this.clearTime()
+  }
+
+  clearTime() {
+    this.props.dispatch(updateTime(0, 0, null))
   }
 
   render() {

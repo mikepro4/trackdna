@@ -1,0 +1,82 @@
+@import "../../styles/vars";
+
+.progress_bar_player_container {
+  display: block;
+  margin: 15px 0 50px 0;
+
+  .player_top_bar {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+  }
+
+  .progress_bar_wrapper {
+    background: darken($grey2, 2%);
+    display: block;
+    height: 6px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+
+    .progress_bar {
+      display: block;
+      height: 6px;
+      background: $black;
+      width: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .progress_bar_hover {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background: darken($grey2, 10%);
+      height: 6px;
+    }
+  }
+}
+
+.player_time_wrapper {
+  display: block;
+  position: relative;
+  cursor: pointer;
+
+  img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    margin: 10px 0 0 0;
+    height: 100px;
+  }
+
+  .cursor {
+    display: block;
+    position: absolute;
+    border-right: 1px solid $black;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    &.playing {
+      z-index: 3
+    }
+
+    &.hover {
+      z-index: 2;
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    .cursor.hover {
+      opacity: .1
+    }
+  }
+}

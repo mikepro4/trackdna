@@ -6,10 +6,9 @@ export default (state = {}, action) => {
   switch (action.type) {
       case UPDATE_TIME:
         return  {...state,
-          durationMinutes: action.durationMinutes,
-          durationSeconds: action.durationSeconds,
-          currentMinutes: action.currentMinutes,
-          currentSeconds: action.currentSeconds
+          duration: action.duration,
+          currentTime: action.currentTime || 0,
+          playingVideoId: action.playingVideoId
         }
     default:
       return state

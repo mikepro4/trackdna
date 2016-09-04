@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import YoutubePlayer from "../../../components/player/player"
+import ProgressBarPlayer from "../../../components/player/progress_bar"
 import { updateCurrentVideo } from '../../../actions'
 import classNames from 'classnames'
 import TrackMetadataForm from './track_metadata_form'
@@ -35,24 +36,7 @@ export default class TrackMetadata extends React.Component {
 
   renderPlayer() {
     if(this.props.currentVideo.videoId) {
-      let controlsClasses = classNames({
-        'track_actions': true,
-        'play':   this.props.currentVideo.playerAction,
-        'pause': (this.props.currentVideo.playerAction === 'playing'),
-        'stop':  (this.props.currentVideo.playerAction === 'playing'),
-        'seek': true
-      })
-      return(
-        <div>
-          <YoutubePlayer {...this.props} />
-          <ul className={controlsClasses}>
-            <li className='play'><button onClick={this.onPlay.bind(this)} className='button'>Play</button></li>
-            <li className='pause'><button onClick={this.onPause.bind(this)} className='button'>Pause</button></li>
-            <li className='stop'><button onClick={this.onStop.bind(this)} className='button'>Stop</button></li>
-            <li className='seek'><button onClick={this.onSeek.bind(this)} className='button'>Seek to 0:30</button></li>
-          </ul>
-        </div>
-      )
+      return( <YoutubePlayer {...this.props} /> )
     }
   }
 
@@ -129,14 +113,67 @@ export default class TrackMetadata extends React.Component {
     }
   }
 
+  renderBeatportHeader() {
+    if(this.props.search.beatportSelectedTrack) {
+      const {name, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      const trackArtists = artists.map((artist, i) => {
+        return (
+          <span key={i}>{artist.name}</span>
+        )
+      })
+      return (
+        <div className='track_metadata_beatport'>
+          <div className='cover_container'>
+            <img src={`http://geo-media.beatport.com/image_size/220x220/${dynamicImages.main.id}.jpg`} />
+          </div>
+          <div className='main_info_container'>
+            <div className='beatport_artist'>{trackArtists}</div>
+            <div className='track_name'>{name}</div>
+            <div className='label_name'>{label.name}</div>
+          </div>
+        </div>
+      )
+    }
+  }
+
+  renderProgressBarPlayer() {
+    if(this.props.search.youtubeSelectedVideo && this.props.search.videoYoutubeDetails) {
+      const youtubeDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
+      return (
+        <ProgressBarPlayer
+          {...this.props}
+          duration={youtubeDuration}
+        />
+      )
+    }
+  }
+
   render() {
     return (
       <div className='track_metadata_container'>
-        <h1>Track metadata</h1>
-        {this.renderPlayer()}
+        <div className='track_metadata'>
+          <div className='track_metadata_header'>
+            <div className='track_metadata_header_text'>
+              <h1 className='track_metadata_title'>Create New Track Analysis</h1>
+              <p className='track_metadata_description'>
+                Verify details of the track and add it to the database to start it’s analysis
+                </p>
+            </div>
+            <div className='track_metadata_header_action'>
+              <button className='button button_primary button_start'>
+                Start Analysis
+              </button>
+            </div>
+          </div>
+          {this.renderBeatportHeader()}
+          {this.renderProgressBarPlayer()}
+          {this.renderPlayer()}
+        </div>
+
+        {/* {this.renderPlayer()}
         {this.renderDuration()}
         {this.renderPlaying()}
-        {this.renderTrackMetadata()}
+        {this.renderTrackMetadata()} */}
       </div>
     );
   }

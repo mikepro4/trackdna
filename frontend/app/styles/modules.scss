@@ -7,6 +7,8 @@
 @import "../components/header/header";
 @import "../components/logo/logo";
 @import "../components/pill/pill";
+@import "../components/player/progress_bar";
+@import "../components/player/player_controls";
 
 //Pages
 @import "../pages/landing/index";
@@ -15,6 +17,7 @@
 @import "../pages/track/new";
 @import "../pages/track/components/track_search_form";
 @import "../pages/track/components/track_search_results";
+@import "../pages/track/components/track_metadata";
 @import "../pages/track/components/youtube_search_results";
 @import "../pages/track/components/beatport_search_results";
 @import "../pages/auth/signin/index";
