@@ -9,6 +9,7 @@ import Pill from '../../../components/pill/pill'
 import {
   checkVideoOwnership, checkVideoOfficial, checkVideoNameMatch
 } from '../../../utils/youtube'
+import {submit} from 'redux-form';
 
 export default class TrackMetadata extends React.Component {
   static contextTypes = {
@@ -196,10 +197,15 @@ export default class TrackMetadata extends React.Component {
           {...this.props}
           {...initialState}
           enableReinitialize="true"
+          ref="track_form"
           onSubmit={this.trackMetadataFormSubmit.bind(this)}
         />
       </div>
     )
+  }
+
+  manualFormSubmit() {
+    this.refs.track_form.submit();
   }
 
   render() {
@@ -214,7 +220,7 @@ export default class TrackMetadata extends React.Component {
               </p>
             </div>
             <div className='track_metadata_header_action'>
-              <button className='button button_primary button_start'>
+              <button className='button button_primary button_start' onClick={this.manualFormSubmit.bind(this)}>
                 Start Analysis
               </button>
             </div>

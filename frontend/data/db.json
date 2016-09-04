@@ -17,6 +17,45 @@
         }
       ],
       "id": 1
+    },
+    {
+      "artist": "Adam Beyer",
+      "trackName": "You Know",
+      "youtubeUrl": "Q5W2zCLjQNk",
+      "bpm": 124,
+      "youtubeLength": 473,
+      "beatportLength": 472,
+      "label": "Truesoul",
+      "genre": "Deep House",
+      "key": "D# minor",
+      "channels": [],
+      "id": 2
+    },
+    {
+      "artist": "Mark Reeve",
+      "trackName": "Run Back",
+      "youtubeUrl": "A5G3Qz_jmLw",
+      "bpm": 126,
+      "youtubeLength": 429,
+      "beatportLength": 428,
+      "label": "Drumcode",
+      "genre": "Techno",
+      "key": "F# minor",
+      "channels": [],
+      "id": 3
+    },
+    {
+      "artist": "Kai",
+      "trackName": "Never Be Like You (feat. Kai)",
+      "youtubeUrl": "-KPnyf8vwXI",
+      "bpm": 120,
+      "youtubeLength": 233,
+      "beatportLength": 233,
+      "label": "Mom + Pop",
+      "genre": "Electronica",
+      "key": "C major",
+      "channels": [],
+      "id": 4
     }
   ],
   "folders": [
