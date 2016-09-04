@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { updateCurrentVideo } from '../../actions'
+import { updateCurrentVideo, updateTime } from '../../actions'
 import _ from 'lodash'
 
 export default class PlayerControls extends React.Component {
@@ -13,6 +13,9 @@ export default class PlayerControls extends React.Component {
 
   onStop() {
     this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'stop'))
+    setTimeout(() => {
+      this.props.dispatch(updateTime(0, 0, null))
+    }, 500);
   }
 
   render() {

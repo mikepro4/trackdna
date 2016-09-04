@@ -20,7 +20,6 @@ export default class ProgressBarPlayer extends React.Component {
   }
 
   calculateWidth(event) {
-    console.log(this.refs.wave)
     const relX = event.pageX - this.refs.progress_bar_container.offsetLeft
     const progressBarPercent = relX * 100 / this.refs.progress_bar_container.getBoundingClientRect().width
     const seekSeconds = progressBarPercent * this.props.duration / 100
@@ -65,7 +64,7 @@ export default class ProgressBarPlayer extends React.Component {
           <PlayerControls {...this.props} />
           <div className='player_time_container'>
             <span className='current_time'>{current}</span>
-            <span className='time_divider'>/ </span>
+            <span className='time_divider'> / </span>
             <span className='total_time'>{total}</span>
           </div>
         </div>

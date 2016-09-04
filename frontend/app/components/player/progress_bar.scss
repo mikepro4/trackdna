@@ -8,6 +8,16 @@
     display: flex;
     justify-content: space-between;
     height: 50px;
+
+    .player_time_container {
+      font-size: 24px;
+      position: relative;
+      top: -2px;
+
+      .total_time, .time_divider {
+        opacity: .2;
+      }
+    }
   }
 
   .progress_bar_wrapper {
