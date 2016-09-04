@@ -154,10 +154,20 @@ export default class TrackMetadata extends React.Component {
       const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists, releaseDate, mixName} = this.props.search.beatportSelectedTrack
       const youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
 
+      const trackArtists = artists.map((artist, i) => {
+        if(i != 0) {
+          return (' ' + artist.name)
+        } else {
+          return (artist.name)
+        }
+      })
+
+      console.log(trackArtists)
+
       initialState = {
         initialValues: {
           bpm, releaseDate, mixName,
-          artist: artists[0].name,
+          artist: trackArtists.toString(),
           trackName: name,
           beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
           youtubeLength: youtubeVideoDuration,
@@ -179,10 +189,17 @@ export default class TrackMetadata extends React.Component {
       }
     } else if (this.props.search.beatportSelectedTrack) {
       const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists, releaseDate, mixName} = this.props.search.beatportSelectedTrack
+      const trackArtists = artists.map((artist, i) => {
+        if(i != 0) {
+          return (' ' + artist.name)
+        } else {
+          return (artist.name)
+        }
+      })
       initialState = {
         initialValues: {
           bpm, releaseDate, mixName,
-          artist: artists[0].name,
+          artist: trackArtists.toString(),
           trackName: name,
           beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
           label: label.name,
