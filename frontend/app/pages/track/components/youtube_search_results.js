@@ -5,6 +5,9 @@ import { updateYoutubeSelectedVideo, loadYoutubeVideoData } from '../../../actio
 import { updateCurrentVideo } from '../../../actions'
 import ReactDOM from 'react-dom'
 import Pill from '../../../components/pill/pill'
+import {
+  checkVideoOwnership, checkVideoOfficial, checkVideoNameMatch
+} from '../../../utils/youtube'
 
 export default class YoutubeSearchResults extends React.Component {
   constructor(props) {
@@ -85,7 +88,7 @@ export default class YoutubeSearchResults extends React.Component {
           (videoTitle.indexOf(trackname) !== -1)
         )
       })
-      console.log('nameMatcOfficial:', nameMatchOfficial[0])
+      console.log('nameMatchOfficial:', nameMatchOfficial[0])
       if(!_.isEmpty(nameMatchOfficial)) {
         this.selectVideo(nameMatchOfficial[0])
       } else {
@@ -98,30 +101,32 @@ export default class YoutubeSearchResults extends React.Component {
   }
 
   render() {
-    const artistName = this.props.search.artist.replace(/\s/g, '').toLowerCase();
-    const trackname = this.props.search.track_name.replace(/\s/g, '').toLowerCase();
     let selectedVideoId = '';
     if(!_.isEmpty(this.props.search.youtubeSelectedVideo)) {
       selectedVideoId = this.props.search.youtubeSelectedVideo.id.videoId
     }
+
     const videos = this.props.search.videos.map((video) => {
-      const channelName = video.snippet.channelTitle.replace(/\s/g, '').toLowerCase()
-      const videoTitle = video.snippet.title.replace(/\s/g, '').toLowerCase()
+
+      const OWNS_RESULT = checkVideoOwnership(this.props.search.artist, video)
+      const OFFICIAL_RESULT = checkVideoOfficial(video)
+      const NAME_MATCH_RESULT = checkVideoNameMatch(this.props.search.track_name, video)
+
+      const refValue = selectedVideoId === video.id.videoId ? 'selectedVideo' : '';
+
       let videoItemClasses = classNames({
         'result_item': true,
         'youtube_search_result_item': true,
         'selected_result': selectedVideoId === video.id.videoId
       })
-      const OWNS_RESULT = (artistName === channelName)
-      const OFFICIAL_RESULT = (channelName.indexOf('official') !== -1) || (channelName.indexOf('vevo') !== -1)
-      const NAME_MATCH_RESULT = (videoTitle.indexOf(trackname) !== -1)
-      const refValue = selectedVideoId === video.id.videoId ? 'selectedVideo' : '';
+
       return (
         <li className={videoItemClasses} key={video.id.videoId} ref={refValue} onClick={this.selectVideo.bind(this, video)}>
           <div className='video_title'>{video.snippet.title}</div>
           <div className='channel_title'>Published by <span>{video.snippet.channelTitle}</span></div>
           <div className='video_preview'><img src={video.snippet.thumbnails.medium.url} /> </div>
           <div className='published_time'>Uploaded {moment(video.snippet.publishedAt).fromNow()}</div>
+
           {OWNS_RESULT ?
             <Pill
               {...this.props}

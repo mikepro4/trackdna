@@ -64,14 +64,6 @@ export default class BetaportSearchResults extends React.Component {
           )
         })
         this.selectTrack(nameMatchOwns[0], true)
-      } else if(_.isEmpty(owns)) {
-        const nameMatch = _.filter(this.props.search.beatportData, (track) => {
-          const beatportTrackName = track.name.replace(/\s/g, '').toLowerCase()
-          return (
-            (beatportTrackName.indexOf(trackname) !== -1) && (track.type === 'track')
-          )
-        })
-        this.selectTrack(nameMatch[0], true)
       }
     }
   }
@@ -138,7 +130,12 @@ export default class BetaportSearchResults extends React.Component {
                   </ul>
 
                   <ul className='beatport_info_list'>
-                    <li>{track.key.standard.letter} {track.key.standard.chord}</li>
+                    <li>
+                      {track.key.standard.letter}
+                      {track.key.standard.sharp ? '# ' : ' '}
+                      {track.key.standard.flat ? 'b ' : ' '}
+                      {track.key.standard.chord}
+                    </li>
                     <li>{track.genres[0].name}</li>
                   </ul>
                 </div>

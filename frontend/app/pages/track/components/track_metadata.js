@@ -5,122 +5,26 @@ import { updateCurrentVideo } from '../../../actions'
 import classNames from 'classnames'
 import TrackMetadataForm from './track_metadata_form'
 import moment from 'moment'
+import Pill from '../../../components/pill/pill'
+import {
+  checkVideoOwnership, checkVideoOfficial, checkVideoNameMatch
+} from '../../../utils/youtube'
 
 export default class TrackMetadata extends React.Component {
-  onPlay() {
-    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'play'))
-  }
-
-  onPause() {
-    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'pause'))
-  }
-
-  onStop() {
-    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'stop'))
-  }
-
-  onSeek() {
-    this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'seek', 30))
-  }
-
-  renderPlaying() {
-    if(this.props.currentVideo.playerAction === 'playing') {
-      return (
-        <div>
-          <div>Duration: {this.props.time.durationMinutes}:{this.props.time.durationSeconds}</div>
-          <div>Current Time: {this.props.time.currentMinutes}:{this.props.time.currentSeconds}</div>
-        </div>
-      )
-    }
-  }
-
-  renderPlayer() {
-    if(this.props.currentVideo.videoId) {
-      return( <YoutubePlayer {...this.props} /> )
-    }
-  }
-
   trackMetadataFormSubmit() {
     console.log('pressed')
   }
 
-  renderDuration() {
-    if(this.props.search.videoYoutubeDetails){
-      return(
-        <div>
-          <div className>Youtube Duration: {this.parseYoutubeDuration(this.props.search.videoYoutubeDetails.contentDetails.duration)}</div>
-          <div className>Youtube Views: {this.props.search.videoYoutubeDetails.statistics.viewCount}</div>
-        </div>
-      )
-    }
-  }
-
-  parseYoutubeDuration(duration) {
-    let youtubeVideoDuration = moment.duration(duration).asSeconds()
-    let momentDurationYoutube = moment.duration(youtubeVideoDuration, 'seconds')
-    let outubeDurationParsed = (`${momentDurationYoutube.minutes()}:${momentDurationYoutube.seconds()}`)
-    return outubeDurationParsed
-  }
-
-  renderTrackMetadata() {
-    if(this.props.search.beatportSelectedTrack) {
-      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
-      let youtubeVideoDuration = 0;
-      let youtubeDurationParsed = '';
-      let beatportDurationParsed = '';
-
-      if(this.props.search.videoYoutubeDetails && this.props.search.beatportSelectedTrack) {
-        youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
-
-        let momentDurationYoutube = moment.duration(youtubeVideoDuration, 'seconds')
-        let momentDurationBeatport =  moment.duration(moment.duration(lengthMs).asSeconds(), 'seconds')
-
-        youtubeDurationParsed = (`${momentDurationYoutube.minutes()}:${momentDurationYoutube.seconds()}`)
-        beatportDurationParsed = (`${momentDurationBeatport.minutes()}:${momentDurationBeatport.seconds()}`)
-      }
-
-      // console.log(this.props.search.beatportSelectedTrack)
-      const initialState = {
-        initialValues: {
-          bpm, name,
-          beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
-          beatportLengthParsed: beatportDurationParsed,
-          youtubeLength: youtubeVideoDuration,
-          youtubeLengthParsed: youtubeDurationParsed,
-          label: label.name,
-          genre: genres[0].name,
-          key: `${key.standard.letter} ${key.standard.chord}`,
-          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
-        }
-      }
-      const trackArtists = artists.map((artist, i) => {
-        return (
-          <div key={i}>{artist.name}</div>
-        )
-      })
-      // const durationYoutubeParsed = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
-      return (
-        <div>
-          <div><img src={`http://geo-media.beatport.com/image_size/600x80/${dynamicImages.waveform.id}.png`} /></div>
-          <img src={`http://geo-media.beatport.com/image_size/100x100/${dynamicImages.main.id}.jpg`} />
-          <h1>{trackArtists}</h1>
-          <div>{name}</div>
-          <ul className='track_input_list'>
-            <TrackMetadataForm {...this.props} {...initialState} enableReinitialize="true" onSubmit={this.trackMetadataFormSubmit.bind(this)}  />
-          </ul>
-        </div>
-      )
-    }
-  }
-
   renderBeatportHeader() {
     if(this.props.search.beatportSelectedTrack) {
+
       const {name, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
       const trackArtists = artists.map((artist, i) => {
         return (
           <span key={i}>{artist.name}</span>
         )
       })
+
       return (
         <div className='track_metadata_beatport'>
           <div className='cover_container'>
@@ -148,16 +52,115 @@ export default class TrackMetadata extends React.Component {
     }
   }
 
+  renderErrors() {
+    if(this.props.search.videoYoutubeDetails && this.props.search.beatportSelectedTrack) {
+      const youtubeDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
+      const beatportDuration = moment.duration(this.props.search.beatportSelectedTrack.lengthMs).asSeconds()
+
+      if((beatportDuration - youtubeDuration) < -30 || (beatportDuration - youtubeDuration) > 30) {
+        return (
+          <div className='selection_error'>
+            <span className='error_title'>INCORRECT METADATA</span>
+            <span className='error_description'>Beatport and Youtube content durations don’t match.</span>
+          </div>
+        )
+      }
+    }
+  }
+
+  renderPlayer() {
+    if(this.props.currentVideo.videoId && this.props.search.videoYoutubeDetails) {
+
+      const youtubeUrl = 'https://www.youtube.com/watch?v=' + this.props.search.youtubeSelectedVideo.id.videoId
+      const video = this.props.search.youtubeSelectedVideo
+      
+      const OWNS_RESULT = checkVideoOwnership(this.props.search.artist, video)
+      const OFFICIAL_RESULT = checkVideoOfficial(video)
+      const NAME_MATCH_RESULT = checkVideoNameMatch(this.props.search.track_name, video)
+
+      return (
+        <div className='video_player_container'>
+          <h1>AUDIO SOURCE</h1>
+          <YoutubePlayer {...this.props} />
+          <div>Youtube Views: {this.props.search.videoYoutubeDetails.statistics.viewCount}</div>
+          <div>Likes: {this.props.search.videoYoutubeDetails.statistics.likeCount}</div>
+          <div>Dislikes: {this.props.search.videoYoutubeDetails.statistics.dislikeCount}</div>
+          <a href={youtubeUrl} target='_blank'>{youtubeUrl}</a>
+          {OWNS_RESULT ?
+            <Pill
+              {...this.props}
+              iconLeft='check'
+              type='positive'
+              content='Artist Match'
+            /> : ''
+          }
+
+          {OFFICIAL_RESULT ?
+            <Pill
+              {...this.props}
+              iconLeft='check'
+              type='positive'
+              content='Official Channel'
+            /> : ''
+          }
+
+          {NAME_MATCH_RESULT ?
+            <Pill
+              {...this.props}
+              iconLeft='check'
+              type='positive'
+              content='Name Match'
+            /> : ''
+          }
+        </div>
+      )
+    }
+  }
+
+  renderTrackMetadata() {
+    if(this.props.search.beatportSelectedTrack && this.props.search.videoYoutubeDetails) {
+      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      const youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
+
+      const initialState = {
+        initialValues: {
+          bpm, name,
+          beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
+          youtubeLength: youtubeVideoDuration,
+          label: label.name,
+          genre: genres[0].name,
+          key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
+          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
+        }
+      }
+
+      return (
+        <div className='track_metadata_form'>
+          <h1>TRACK METADATA</h1>
+          <ul className='track_input_list'>
+            <TrackMetadataForm
+              {...this.props}
+              {...initialState}
+              enableReinitialize="true"
+              onSubmit={this.trackMetadataFormSubmit.bind(this)}
+            />
+          </ul>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className='track_metadata_container'>
         <div className='track_metadata'>
+
           <div className='track_metadata_header'>
             <div className='track_metadata_header_text'>
               <h1 className='track_metadata_title'>Create New Track Analysis</h1>
               <p className='track_metadata_description'>
                 Verify details of the track and add it to the database to start it’s analysis
-                </p>
+              </p>
             </div>
             <div className='track_metadata_header_action'>
               <button className='button button_primary button_start'>
@@ -165,15 +168,14 @@ export default class TrackMetadata extends React.Component {
               </button>
             </div>
           </div>
+
           {this.renderBeatportHeader()}
           {this.renderProgressBarPlayer()}
+          {this.renderErrors()}
           {this.renderPlayer()}
-        </div>
+          {this.renderTrackMetadata()}
 
-        {/* {this.renderPlayer()}
-        {this.renderDuration()}
-        {this.renderPlaying()}
-        {this.renderTrackMetadata()} */}
+        </div>
       </div>
     );
   }

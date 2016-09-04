@@ -24,9 +24,7 @@ class TrackMetadataForm extends React.Component {
         <form onSubmit={handleSubmit}>
           <Field name="bpm"  component={this.renderField} label="BPM"/>
           <Field name="youtubeLength"  component={this.renderField} label="Youtube Length Seconds"/>
-          <Field name="youtubeLengthParsed"  component={this.renderField} label="Youtube Length Parsed"/>
           <Field name="beatportLength"  component={this.renderField} label="Beatport Length"/>
-          <Field name="beatportLengthParsed"  component={this.renderField} label="Beatport Length Parsed"/>
           <Field name="label"  component={this.renderField} label="Label"/>
           <Field name="genre"  component={this.renderField} label="Genre"/>
           <Field name="key"  component={this.renderField} label="Key"/>

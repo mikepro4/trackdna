@@ -2,7 +2,7 @@
 
 .progress_bar_player_container {
   display: block;
-  margin: 15px 0 50px 0;
+  margin: 15px 0 20px 0;
 
   .player_top_bar {
     display: flex;
@@ -55,6 +55,7 @@
   display: block;
   position: relative;
   cursor: pointer;
+  user-select: none;
 
   img {
     position: relative;
@@ -63,7 +64,9 @@
     width: 100%;
     z-index: 1;
     margin: 10px 0 0 0;
-    height: 100px;
+    height: 60px;
+    opacity: 0.7;
+    transition: opacity .15s ease-in-out;
   }
 
   .cursor {
@@ -86,7 +89,11 @@
 
   &:hover {
     .cursor.hover {
-      opacity: .1
+      opacity: .2
+    }
+
+    img {
+      opacity: .9
     }
   }
 }

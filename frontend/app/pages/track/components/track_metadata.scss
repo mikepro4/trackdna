@@ -88,5 +88,31 @@
         }
       }
     }
+
+    .selection_error {
+      display: block;
+      margin: 0 0 20px 0;
+      padding: 15px 15px;
+      border: 1px solid $red;
+      font-size: 12px;
+      position: relative;
+
+      .error_title {
+        color: $red;
+        font-weight: 500;
+        position: relative;
+        margin: 0 30px 0 0;
+
+        &:after {
+          display: block;
+          position: absolute;
+          content: '';
+          height: 20px;
+          border-right: 1px solid rgba($black, .1);
+          right: -16px;
+          top: -2px;
+        }
+      }
+    }
   }
 }
