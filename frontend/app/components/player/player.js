@@ -131,7 +131,7 @@ export default class YoutubePlayer extends React.Component {
       height: '200',
       width: '280',
       playerVars: {
-        // controls: 0,
+        controls: 0,
         showinfo: 0,
         modestbranding: 1
       }

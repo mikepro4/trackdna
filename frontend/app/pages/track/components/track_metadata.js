@@ -73,45 +73,63 @@ export default class TrackMetadata extends React.Component {
 
       const youtubeUrl = 'https://www.youtube.com/watch?v=' + this.props.search.youtubeSelectedVideo.id.videoId
       const video = this.props.search.youtubeSelectedVideo
-      
+
       const OWNS_RESULT = checkVideoOwnership(this.props.search.artist, video)
       const OFFICIAL_RESULT = checkVideoOfficial(video)
       const NAME_MATCH_RESULT = checkVideoNameMatch(this.props.search.track_name, video)
 
       return (
         <div className='video_player_container'>
-          <h1>AUDIO SOURCE</h1>
+
+          <div className='youtube_video_details'>
+            <h1>AUDIO SOURCE</h1>
+
+            <h2 className='youtube_video_title'>{this.props.search.youtubeSelectedVideo.snippet.title}</h2>
+            <div className='published_by'>Published by <span>{this.props.search.youtubeSelectedVideo.snippet.channelTitle}</span></div>
+
+            <ul className='youtube_video_statistics'>
+              <li className='views'>
+                {this.props.search.videoYoutubeDetails.statistics.viewCount.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} Views
+              </li>
+              <li className='likes'>
+                {this.props.search.videoYoutubeDetails.statistics.likeCount.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} Likes
+              </li>
+              <li className='dislikes'>
+                {this.props.search.videoYoutubeDetails.statistics.dislikeCount.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} Dislikes
+              </li>
+            </ul>
+
+            <a href={youtubeUrl} className='youtube_url' target='_blank'>{youtubeUrl}</a>
+            {OWNS_RESULT ?
+              <Pill
+                {...this.props}
+                iconLeft='check'
+                type='positive'
+                content='Artist Match'
+              /> : ''
+            }
+
+            {OFFICIAL_RESULT ?
+              <Pill
+                {...this.props}
+                iconLeft='check'
+                type='positive'
+                content='Official Channel'
+              /> : ''
+            }
+
+            {NAME_MATCH_RESULT ?
+              <Pill
+                {...this.props}
+                iconLeft='check'
+                type='positive'
+                content='Name Match'
+              /> : ''
+            }
+          </div>
+
           <YoutubePlayer {...this.props} />
-          <div>Youtube Views: {this.props.search.videoYoutubeDetails.statistics.viewCount}</div>
-          <div>Likes: {this.props.search.videoYoutubeDetails.statistics.likeCount}</div>
-          <div>Dislikes: {this.props.search.videoYoutubeDetails.statistics.dislikeCount}</div>
-          <a href={youtubeUrl} target='_blank'>{youtubeUrl}</a>
-          {OWNS_RESULT ?
-            <Pill
-              {...this.props}
-              iconLeft='check'
-              type='positive'
-              content='Artist Match'
-            /> : ''
-          }
 
-          {OFFICIAL_RESULT ?
-            <Pill
-              {...this.props}
-              iconLeft='check'
-              type='positive'
-              content='Official Channel'
-            /> : ''
-          }
-
-          {NAME_MATCH_RESULT ?
-            <Pill
-              {...this.props}
-              iconLeft='check'
-              type='positive'
-              content='Name Match'
-            /> : ''
-          }
         </div>
       )
     }
