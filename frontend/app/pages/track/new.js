@@ -26,21 +26,6 @@ export default class TrackNew extends React.Component {
     router: PropTypes.object
   };
 
-	componentWillMount() {
-	}
-
-  handleFormSubmit({ artist, name}) {
-    this.props.dispatch(addTrack({
-        artist,
-        name,
-        "channels": []
-      }))
-      .then((response) => {
-        this.props.dispatch(loadTracks())
-          .then((response) => {this.context.router.push('/browse')})
-      });
-  }
-
   handleTrackSearchSubmit({ artist, track_name }) {
     console.log({ artist, track_name })
     this.props.dispatch(clearSearchResults())

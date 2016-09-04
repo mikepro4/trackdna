@@ -24,6 +24,7 @@ class TrackMetadataForm extends React.Component {
         <form onSubmit={handleSubmit}>
           <Field name="artist"  component={this.renderField} label="Artist Name"/>
           <Field name="trackName"  component={this.renderField} label="Track Name"/>
+          <Field name="mixName"  component={this.renderField} label="Beatport Mix Name"/>
           <Field name="bpm"  component={this.renderField} label="BPM"/>
           <Field name="youtubeLength"  component={this.renderField} label="Youtube Length Seconds"/>
           <Field name="beatportLength"  component={this.renderField} label="Beatport Length"/>
@@ -31,6 +32,9 @@ class TrackMetadataForm extends React.Component {
           <Field name="genre"  component={this.renderField} label="Genre"/>
           <Field name="key"  component={this.renderField} label="Key"/>
           <Field name="youtubeUrl"  component={this.renderField} label="Youtube Video Id"/>
+          <Field name="releaseDate"  component={this.renderField} label="Release Date"/>
+          <Field name="coverId"  component={this.renderField} label="Beatport Cover Id"/>
+          <Field name="waveformId"  component={this.renderField} label="Beatport Waveform Id"/>
           <button type="submit" className="button button_primary">Start Analysis</button>
         </form>
       </div>

@@ -16,9 +16,9 @@ export default class TrackMetadata extends React.Component {
     router: PropTypes.object
   };
 
-  trackMetadataFormSubmit({ artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key }) {
+  trackMetadataFormSubmit({ artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key, releaseDate, mixName, coverId, waveformId }) {
     this.props.dispatch(addTrack({
-        artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key,
+        artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key, releaseDate, mixName, coverId, waveformId,
         "channels": []
       }))
       .then((response) => {
@@ -151,12 +151,12 @@ export default class TrackMetadata extends React.Component {
     let initialState = {}
 
     if(this.props.search.beatportSelectedTrack && this.props.search.videoYoutubeDetails) {
-      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists, releaseDate, mixName} = this.props.search.beatportSelectedTrack
       const youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
 
       initialState = {
         initialValues: {
-          bpm,
+          bpm, releaseDate, mixName,
           artist: artists[0].name,
           trackName: name,
           beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
@@ -164,7 +164,9 @@ export default class TrackMetadata extends React.Component {
           label: label.name,
           genre: genres[0].name,
           key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
-          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
+          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId,
+          coverId: dynamicImages.main.id,
+          waveformId: dynamicImages.waveform.id
         }
       }
     } else if (this.props.search.videoYoutubeDetails) {
@@ -176,16 +178,18 @@ export default class TrackMetadata extends React.Component {
         }
       }
     } else if (this.props.search.beatportSelectedTrack) {
-      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists, releaseDate, mixName} = this.props.search.beatportSelectedTrack
       initialState = {
         initialValues: {
-          bpm,
+          bpm, releaseDate, mixName,
           artist: artists[0].name,
           trackName: name,
           beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
           label: label.name,
           genre: genres[0].name,
-          key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`
+          key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
+          coverId: dynamicImages.main.id,
+          waveformId: dynamicImages.waveform.id
         }
       }
     }
