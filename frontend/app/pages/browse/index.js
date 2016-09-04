@@ -34,6 +34,10 @@ export default class Browse extends React.Component {
       });
   }
 
+  componentWillMount() {
+    this.props.dispatch(loadTracks())
+  }
+
 	render() {
 		return (
 			<div className='page_container page_browse'>
