@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import YoutubePlayer from "../../../components/player/player"
 import ProgressBarPlayer from "../../../components/player/progress_bar"
-import { updateCurrentVideo } from '../../../actions'
+import { updateCurrentVideo, addTrack } from '../../../actions'
 import classNames from 'classnames'
 import TrackMetadataForm from './track_metadata_form'
 import moment from 'moment'
@@ -11,8 +11,19 @@ import {
 } from '../../../utils/youtube'
 
 export default class TrackMetadata extends React.Component {
-  trackMetadataFormSubmit() {
-    console.log('pressed')
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  trackMetadataFormSubmit({ artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key }) {
+    this.props.dispatch(addTrack({
+        artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key,
+        "channels": []
+      }))
+      .then((response) => {
+        // console.log(response)
+        // this.context.router.push(`/track/${response.id}`)}
+      });
   }
 
   renderBeatportHeader() {
@@ -57,7 +68,7 @@ export default class TrackMetadata extends React.Component {
       const youtubeDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
       const beatportDuration = moment.duration(this.props.search.beatportSelectedTrack.lengthMs).asSeconds()
 
-      if((beatportDuration - youtubeDuration) < -30 || (beatportDuration - youtubeDuration) > 30) {
+      if((beatportDuration - youtubeDuration) < -40 || (beatportDuration - youtubeDuration) > 40) {
         return (
           <div className='selection_error'>
             <span className='error_title'>INCORRECT METADATA</span>
@@ -136,13 +147,17 @@ export default class TrackMetadata extends React.Component {
   }
 
   renderTrackMetadata() {
+    let initialState = {}
+
     if(this.props.search.beatportSelectedTrack && this.props.search.videoYoutubeDetails) {
       const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
       const youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
 
-      const initialState = {
+      initialState = {
         initialValues: {
-          bpm, name,
+          bpm,
+          artist: artists[0].name,
+          trackName: name,
           beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
           youtubeLength: youtubeVideoDuration,
           label: label.name,
@@ -151,28 +166,46 @@ export default class TrackMetadata extends React.Component {
           youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
         }
       }
-
-      return (
-        <div className='track_metadata_form'>
-          <h1>TRACK METADATA</h1>
-          <ul className='track_input_list'>
-            <TrackMetadataForm
-              {...this.props}
-              {...initialState}
-              enableReinitialize="true"
-              onSubmit={this.trackMetadataFormSubmit.bind(this)}
-            />
-          </ul>
-        </div>
-      )
+    } else if (this.props.search.videoYoutubeDetails) {
+      const youtubeVideoDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
+      initialState = {
+        initialValues: {
+          youtubeLength: youtubeVideoDuration,
+          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
+        }
+      }
+    } else if (this.props.search.beatportSelectedTrack) {
+      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists} = this.props.search.beatportSelectedTrack
+      initialState = {
+        initialValues: {
+          bpm,
+          artist: artists[0].name,
+          trackName: name,
+          beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
+          label: label.name,
+          genre: genres[0].name,
+          key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`
+        }
+      }
     }
+
+    return (
+      <div className='track_metadata_form'>
+        <h1>TRACK METADATA</h1>
+        <TrackMetadataForm
+          {...this.props}
+          {...initialState}
+          enableReinitialize="true"
+          onSubmit={this.trackMetadataFormSubmit.bind(this)}
+        />
+      </div>
+    )
   }
 
   render() {
     return (
       <div className='track_metadata_container'>
         <div className='track_metadata'>
-
           <div className='track_metadata_header'>
             <div className='track_metadata_header_text'>
               <h1 className='track_metadata_title'>Create New Track Analysis</h1>

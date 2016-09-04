@@ -11,8 +11,8 @@ class TrackMetadataForm extends React.Component {
     })
     return (
       <div className={containerClassName}>
-         <label><strong>{label}</strong></label>
-          <input {...input} className="input input_big" placeholder={label} type={type}/>
+         <label>{label}</label>
+          <input {...input} className="input input_big" placeholder={'Type ' + label + '...'} type={type}/>
           <div className='input_error'>{touched && error && <span>{error}</span>}</div>
       </div>
     )
@@ -20,8 +20,10 @@ class TrackMetadataForm extends React.Component {
   render() {
     const { handleSubmit } = this.props
     return (
-      <div>
+      <div className='track_metadata_form_container'>
         <form onSubmit={handleSubmit}>
+          <Field name="artist"  component={this.renderField} label="Artist Name"/>
+          <Field name="trackName"  component={this.renderField} label="Track Name"/>
           <Field name="bpm"  component={this.renderField} label="BPM"/>
           <Field name="youtubeLength"  component={this.renderField} label="Youtube Length Seconds"/>
           <Field name="beatportLength"  component={this.renderField} label="Beatport Length"/>

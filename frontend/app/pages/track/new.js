@@ -48,7 +48,7 @@ export default class TrackNew extends React.Component {
     this.props.dispatch(updateSearchTerm(artist, track_name))
     this.props.dispatch(searchYoutube(`${artist} ${track_name}`))
     this.props.dispatch(searchBeatport(`${artist} ${track_name}`))
-    this.context.router.push(`/track/new?artistName=${encodeURI(artist)}&trackName=${encodeURI(track_name)}`);
+    this.context.router.push(`/track/new?artistName=${encodeURIComponent(artist)}&trackName=${encodeURIComponent(track_name)}`);
   }
 
   componentWillUnmount() {

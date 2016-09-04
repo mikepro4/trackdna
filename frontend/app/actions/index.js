@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 import {
   LOAD_TRACKS,
   LOAD_TRACKS_SUCCESS,
@@ -100,6 +101,7 @@ export function addTrack(props) {
     })
     return axios.post(`${ROOT_URL}/tracks`, props)
       .then(response => {
+          browserHistory.push(`/track/${response.data.id}`);
           dispatch({
             type: ADD_TRACK_SUCCESS,
             meta: {

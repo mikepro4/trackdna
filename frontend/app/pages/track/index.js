@@ -117,7 +117,7 @@ export default class Track extends React.Component {
   }
 
 	render() {
-    const { name, artist, id, channels } = this.props.currentTrack
+    const { trackName, artist, id, channels } = this.props.currentTrack
     let pageClasses = classnames({
       'page_container': true,
       'page_track': true,
@@ -150,7 +150,7 @@ export default class Track extends React.Component {
               </div>
 
               <div className='meta_block'>
-               Track Name: <h1>{name}</h1>
+               Track Name: <h1>{trackName}</h1>
               </div>
             </div>
 

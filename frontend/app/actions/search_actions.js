@@ -39,7 +39,7 @@ export function updateSearchTerm(artist, track_name) {
 
 export function searchYoutube( searchTerm ) {
   console.log('search youtube for:', searchTerm)
-  const searchTermEncoded = encodeURI(searchTerm)
+  const searchTermEncoded = encodeURIComponent(searchTerm)
   return dispatch => {
     dispatch({
       type: YOUTUBE_SEARCH,
@@ -67,7 +67,7 @@ export function searchYoutube( searchTerm ) {
 
 export function searchBeatport( searchTerm ) {
   console.log('search beatport for:', searchTerm)
-  const searchTermEncoded = encodeURI(searchTerm)
+  const searchTermEncoded = encodeURIComponent(searchTerm)
   const request_data = {
     url: `https://oauth-api.beatport.com/catalog/3/search/?query=${searchTermEncoded}&perPage=20`,
     method: 'GET'

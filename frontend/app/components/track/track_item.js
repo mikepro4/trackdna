@@ -47,7 +47,7 @@ export default class TrackListItem extends React.Component {
   }
 
   render() {
-    const {id, name, artist, channels} = this.props.track
+    const {id, trackName, artist, channels} = this.props.track
 
     const activeVideo = this.props.track.youtubeUrl == this.props.currentVideo.videoId
 
@@ -60,7 +60,7 @@ export default class TrackListItem extends React.Component {
     })
     return (
       <div className='track_list_item'>
-        <h1>{artist} – {name} </h1>
+        <h1>{artist} – {trackName} </h1>
         <TrackChannelsList channels={this.props.track.channels} />
         {this.renderPlaying()}
         <ul className={controlsClasses}>

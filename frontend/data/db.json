@@ -1,50 +1,22 @@
 {
   "tracks": [
     {
-      "id": 4,
-      "artist": "Cirez D ",
-      "name": "In The Reds",
-      "youtubeUrl": "dQXzMR_gCsc",
-      "channels": []
-    },
-    {
-      "id": 5,
-      "artist": "Ian O’Donovan",
-      "name": "Crucible",
-      "youtubeUrl": "naUY9buixKY",
-      "channels": [
-        {
-          "id": 0.10573413050959957,
-          "name": 0.3828242813217122
-        },
-        {
-          "id": 1.5859787952111644,
-          "name": 0.9465682803617015
-        }
-      ]
-    },
-    {
       "artist": "Enrico Sangiuliano",
-      "name": "Moon Rocks",
+      "trackName": "Moon Rocks",
       "youtubeUrl": "2hsoXTZbhBo",
-      "channels": [],
-      "id": 6
-    },
-    {
-      "artist": "Recondite",
-      "name": "Tie In (Acid Test)",
-      "youtubeUrl": "KKYYAbGpw6A",
+      "bpm": 125,
+      "youtubeLength": 454,
+      "beatportLength": 453,
+      "label": "Drumcode",
+      "genre": "Techno",
+      "key": "D# minor",
       "channels": [
         {
-          "id": 0.06582226882283226,
-          "name": 0.29270263082489945
-        },
-        {
-          "id": 1.0893636067170962,
-          "name": 0.48179854799003397
+          "id": 0.6640677239122705,
+          "name": 0.4321610944717791
         }
       ],
-      "id": 7
+      "id": 1
     }
   ],
   "folders": [
