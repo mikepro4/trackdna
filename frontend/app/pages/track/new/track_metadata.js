@@ -174,7 +174,7 @@ export default class TrackMetadata extends React.Component {
           key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
           youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId,
           coverId: dynamicImages.main.id,
-          waveformId: (dynamicImages.waveform ? dynamicImages.waveform.id : '' )
+          waveformId: (dynamicImages && dynamicImages.waveform ? dynamicImages.waveform.id : '' )
         }
       }
     } else if (this.props.search.videoYoutubeDetails) {
@@ -186,7 +186,7 @@ export default class TrackMetadata extends React.Component {
         }
       }
     } else if (this.props.search.beatportSelectedTrack) {
-      const {name, bpm, lengthMs, genres, key, label, dynamicImages, artists, releaseDate, mixName} = this.props.search.beatportSelectedTrack
+      const {name, bpm, lengthMs, genres, key, label, artists, releaseDate, mixName, dynamicImages} = this.props.search.beatportSelectedTrack
       const trackArtists = artists.map((artist, i) => {
         if(i != 0) {
           return (' ' + artist.name)
@@ -204,7 +204,7 @@ export default class TrackMetadata extends React.Component {
           genre: genres[0].name,
           key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
           coverId: dynamicImages.main.id,
-          waveformId: (dynamicImages.waveform ? dynamicImages.waveform.id : '' )
+          waveformId: (this.props.search.beatportSelectedTrack.dynamicImages && this.props.search.beatportSelectedTrack.dynamicImages.waveform ? this.props.search.beatportSelectedTrack.dynamicImages.waveform.id : '' )
         }
       }
     }

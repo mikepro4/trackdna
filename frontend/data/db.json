@@ -89,6 +89,46 @@
       "waveformId": 13869380,
       "channels": [],
       "id": 6
+    },
+    {
+      "artist": "Drunken Kong",
+      "trackName": "Future Heights",
+      "youtubeUrl": "2_rY8dqdrag",
+      "bpm": 126,
+      "youtubeLength": 455,
+      "beatportLength": 453,
+      "label": "Tronic",
+      "genre": "Techno",
+      "key": "B minor",
+      "releaseDate": "2016-08-29",
+      "mixName": "Original Mix",
+      "coverId": 14209348,
+      "waveformId": 14209371,
+      "channels": [],
+      "id": 7
+    },
+    {
+      "artist": "Drunken Kong",
+      "trackName": "Seven Colors",
+      "youtubeUrl": "kfwCUqpUpFI",
+      "bpm": 125,
+      "youtubeLength": 389,
+      "beatportLength": 387,
+      "label": "Tronic",
+      "genre": "Techno",
+      "key": "C minor",
+      "releaseDate": "2016-08-29",
+      "mixName": "Original Mix",
+      "coverId": 14209348,
+      "waveformId": 14209374,
+      "channels": [],
+      "id": 8
+    },
+    {
+      "youtubeUrl": "sJ-tkesRhIQ",
+      "youtubeLength": 377,
+      "channels": [],
+      "id": 9
     }
   ],
   "folders": [
