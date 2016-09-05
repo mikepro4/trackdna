@@ -57,23 +57,6 @@
       "id": 3
     },
     {
-      "artist": "Calvin Harris, Disciples, Calvin Harris, R3hab",
-      "trackName": "How Deep Is Your Love",
-      "youtubeUrl": "EgqUJOudrcM",
-      "bpm": 128,
-      "youtubeLength": 261,
-      "beatportLength": 256,
-      "label": "Columbia (Sony)",
-      "genre": "Electro House",
-      "key": "E minor",
-      "releaseDate": "2015-08-07",
-      "mixName": "Calvin Harris & R3hab Remix",
-      "coverId": 12068623,
-      "waveformId": 12068626,
-      "channels": [],
-      "id": 5
-    },
-    {
       "artist": "Kai, Flume",
       "trackName": "Never Be Like You (feat. Kai)",
       "youtubeUrl": "-KPnyf8vwXI",
@@ -123,6 +106,14 @@
       "waveformId": 14209374,
       "channels": [],
       "id": 8
+    },
+    {
+      "artist": "50 cent",
+      "trackName": "21 questions",
+      "youtubeUrl": "cDMhlvbOFaM",
+      "youtubeLength": 260,
+      "channels": [],
+      "id": 9
     }
   ],
   "folders": [

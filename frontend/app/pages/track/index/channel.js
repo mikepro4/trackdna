@@ -2,11 +2,11 @@ import React, {PropTypes} from 'react';
 
 export default class Channel extends React.Component {
   constructor(props) {
-   super(props);
+    super(props);
 
-   this.state = {
-     duration: 500
-   }
+    this.state = {
+      duration: 500
+    }
   }
   render() {
 

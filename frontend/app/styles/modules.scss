@@ -13,8 +13,6 @@
 //Pages
 @import "../pages/landing/index";
 @import "../pages/browse/index";
-@import "../pages/track/index";
-
 @import "../pages/auth/signin/index";
 @import "../pages/auth/signup/index";
 
@@ -25,3 +23,11 @@
 @import "../pages/track/new/track_metadata";
 @import "../pages/track/new/youtube_search_results";
 @import "../pages/track/new/beatport_search_results";
+
+// page /track/${id}
+@import "../pages/track/index";
+@import "../pages/track/index/channels_content";
+@import "../pages/track/index/channels_info";
+@import "../pages/track/index/channels";
+@import "../pages/track/index/track_info";
+@import "../pages/track/index/track_sidebar";

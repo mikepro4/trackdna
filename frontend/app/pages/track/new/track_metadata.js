@@ -55,6 +55,7 @@ export default class TrackMetadata extends React.Component {
         <ProgressBarPlayer
           {...this.props}
           duration={youtubeDuration}
+          waveformId={this.props.search.beatportSelectedTrack ? this.props.search.beatportSelectedTrack.dynamicImages.waveform.id : ''}
         />
       )
     }
@@ -178,7 +179,9 @@ export default class TrackMetadata extends React.Component {
       initialState = {
         initialValues: {
           youtubeLength: youtubeVideoDuration,
-          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId
+          youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId,
+          artist: this.props.search.artist,
+          trackName: this.props.search.track_name
         }
       }
     } else if (this.props.search.beatportSelectedTrack) {

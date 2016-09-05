@@ -62,14 +62,14 @@ export default class ProgressBarPlayer extends React.Component {
     return (
       <div className='progress_bar_player_container'>
 
-        <div className='player_top_bar'>
+        {/* <div className='player_top_bar'>
           <PlayerControls {...this.props} />
           <div className='player_time_container'>
             <span className='current_time'>{current}</span>
             <span className='time_divider'> / </span>
             <span className='total_time'>{total}</span>
           </div>
-        </div>
+        </div> */}
 
         <div className='player_time_wrapper'
           onClick={this.handlePorgressBarClick.bind(this)}
@@ -85,9 +85,9 @@ export default class ProgressBarPlayer extends React.Component {
             <div className='cursor playing' style={cursor} ></div>
             <div className='cursor hover' style={cursorHover}></div>
             {
-              (this.props.search.beatportSelectedTrack && this.props.search.beatportSelectedTrack.dynamicImages && this.props.search.beatportSelectedTrack.dynamicImages.waveform) ?
+              (this.props.waveformId) ?
               (<img
-                src={`http://geo-media.beatport.com/image_size/2000x250/${this.props.search.beatportSelectedTrack.dynamicImages.waveform.id}.png`}
+                src={`http://geo-media.beatport.com/image_size/2000x250/${this.props.waveformId}.png`}
                 ref='wave'
                 className='beatport_wave'
               />)
