@@ -18,23 +18,6 @@
       "id": 1
     },
     {
-      "artist": "Adam Beyer",
-      "trackName": "You Know",
-      "youtubeUrl": "Q5W2zCLjQNk",
-      "bpm": 124,
-      "youtubeLength": 473,
-      "beatportLength": 472,
-      "label": "Truesoul",
-      "genre": "Deep House",
-      "key": "D# minor",
-      "releaseDate": "2013-11-18",
-      "mixName": "Original Mix",
-      "coverId": 8513659,
-      "waveformId": 8513670,
-      "channels": [],
-      "id": 2
-    },
-    {
       "artist": "Tiesto",
       "trackName": "Elements Of Life",
       "youtubeUrl": "V9HKtPVms_Y",
@@ -114,6 +97,23 @@
       "youtubeLength": 260,
       "channels": [],
       "id": 9
+    },
+    {
+      "artist": "Adam Beyer, Ida Engberg",
+      "trackName": "You Know",
+      "youtubeUrl": "Q5W2zCLjQNk",
+      "bpm": 124,
+      "youtubeLength": 473,
+      "beatportLength": 472,
+      "label": "Truesoul",
+      "genre": "Deep House",
+      "key": "D# minor",
+      "releaseDate": "2013-11-18",
+      "mixName": "Original Mix",
+      "coverId": 8513659,
+      "waveformId": 8513670,
+      "channels": [],
+      "id": 10
     }
   ],
   "folders": [

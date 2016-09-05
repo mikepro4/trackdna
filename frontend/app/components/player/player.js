@@ -128,8 +128,8 @@ export default class YoutubePlayer extends React.Component {
 
   render() {
     const videoPlayerOptions = {
-      height: '200',
-      width: '280',
+      height: '170',
+      width: '270',
       playerVars: {
         controls: 0,
         showinfo: 0,
