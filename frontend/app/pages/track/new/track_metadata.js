@@ -18,13 +18,9 @@ export default class TrackMetadata extends React.Component {
 
   trackMetadataFormSubmit({ artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key, releaseDate, mixName, coverId, waveformId }) {
     this.props.dispatch(addTrack({
-        artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key, releaseDate, mixName, coverId, waveformId,
-        "channels": []
-      }))
-      .then((response) => {
-        // console.log(response)
-        // this.context.router.push(`/track/${response.id}`)}
-      });
+      artist, trackName, youtubeUrl, bpm, youtubeLength, beatportLength, label, genre, key, releaseDate, mixName, coverId, waveformId,
+      "channels": []
+    }))
   }
 
   renderBeatportHeader() {
