@@ -4,7 +4,7 @@ export default class ChannelsInfo extends React.Component {
   render() {
     return (
       <div className='channels_info'>
-        <button className='button button_primary'>Add Channel</button>
+        {/* <button className='button button_primary'>Add Channel</button> */}
       </div>
     );
   }

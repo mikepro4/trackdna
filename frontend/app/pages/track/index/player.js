@@ -14,17 +14,24 @@ export default class TrackPlayer extends React.Component {
     const current = formatTime(this.props.time.currentTime)
     return (
       <div className='track_player_container'>
-        <PlayerControls {...this.props} />
-        <div className='player_time_container'>
-          <span className='current_time'>{current}</span>
-          <span className='time_divider'> / </span>
-          <span className='total_time'>{total}</span>
+
+        <div className='track_player_controls'>
+          <PlayerControls {...this.props} />
+          <div className='player_time_container'>
+            <span className='current_time'>{current}</span>
+            <span className='time_divider'> / </span>
+            <span className='total_time'>{total}</span>
+          </div>
         </div>
-        <ProgressBarPlayer
-          {...this.props}
-          duration={youtubeLength}
-          waveformId={waveformId}
-        />
+
+        <div className='track_player_wave'>
+          <ProgressBarPlayer
+            {...this.props}
+            duration={youtubeLength}
+            waveformId={waveformId}
+          />
+        </div>
+        
       </div>
     );
   }

@@ -4,7 +4,6 @@ export default class ChannelsContent extends React.Component {
   render() {
     return (
       <div className='channels_content'>
-        channels content
       </div>
     );
   }
