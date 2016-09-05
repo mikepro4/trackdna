@@ -1,11 +1,15 @@
 import React from 'react'
-import Helmet from "react-helmet";
+import Helmet from 'react-helmet'
 import { asyncConnect } from 'redux-connect'
-import { addTrack, loadTracks } from '../../actions';
+import { reset } from 'redux-form'
+
+//actions
+import { addTrack, loadTracks } from '../../actions'
+
+//components
+import YoutubePlayer from '../../components/player/player'
 import TrackList from '../../components/track/track_list'
-import AddTrack from "../../components/track/add_track"
-import {reset} from 'redux-form';
-import YoutubePlayer from "../../components/player/player"
+
 
 @asyncConnect([{
   promise: ({ store }) => Promise.all([
@@ -20,20 +24,6 @@ import YoutubePlayer from "../../components/player/player"
 }))
 export default class Browse extends React.Component {
 
-  handleFormSubmit({ artist, name, youtubeUrl}) {
-    this.props.dispatch(addTrack({
-        artist,
-        name,
-        youtubeUrl,
-        "channels": []
-      }))
-      .then((response) => {
-        this.props.dispatch(loadTracks())
-        console.log(this.props)
-        this.props.dispatch(reset('TrackForm'))
-      });
-  }
-
   componentWillMount() {
     this.props.dispatch(loadTracks())
   }
@@ -47,7 +37,6 @@ export default class Browse extends React.Component {
           <div className='filters_section_1'>
             <h1>Track Filters</h1>
             <div className='add_track_test'>
-              <AddTrack {...this.props} onSubmit={this.handleFormSubmit.bind(this)} />
               <YoutubePlayer {...this.props} />
             </div>
           </div>

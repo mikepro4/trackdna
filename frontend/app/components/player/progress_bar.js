@@ -57,6 +57,8 @@ export default class ProgressBarPlayer extends React.Component {
       width: this.state.hoverWidth
     }
 
+    const { dynamicImages } = this.props.search.beatportSelectedTrack;
+
     return (
       <div className='progress_bar_player_container'>
 
@@ -83,9 +85,9 @@ export default class ProgressBarPlayer extends React.Component {
             <div className='cursor playing' style={cursor} ></div>
             <div className='cursor hover' style={cursorHover}></div>
             {
-              this.props.search.beatportSelectedTrack ?
+              dynamicImages.waveform ?
               (<img
-                src={`http://geo-media.beatport.com/image_size/2000x250/${this.props.search.beatportSelectedTrack.dynamicImages.waveform.id}.png`}
+                src={`http://geo-media.beatport.com/image_size/2000x250/${dynamicImages.waveform.id}.png`}
                 ref='wave'
                 className='beatport_wave'
               />)

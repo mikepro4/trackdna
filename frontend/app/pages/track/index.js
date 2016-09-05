@@ -5,7 +5,7 @@ import { asyncConnect } from 'redux-connect'
 import classnames from 'classnames'
 import { loadTrack, deleteTrack, loadTracks, updateCurrentVideo, editTrack, updateTime} from '../../actions'
 import YoutubePlayer from "../../components/player/player"
-import Channel from './components/channel'
+import Channel from './index/channel'
 import _ from 'lodash'
 
 @asyncConnect([{

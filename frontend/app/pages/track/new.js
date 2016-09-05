@@ -1,7 +1,9 @@
 import React, {PropTypes} from 'react';
 import { asyncConnect } from 'redux-connect'
-import AddTrack from "../../components/track/add_track"
 import Helmet from 'react-helmet';
+import axios from 'axios'
+
+// actions
 import { addTrack, loadTracks, updateCurrentVideo } from '../../actions';
 import {
   updateSearchTerm,
@@ -10,9 +12,10 @@ import {
   updateYoutubeSelectedVideo,
   searchBeatport
 } from '../../actions/search_actions';
-import TrackSearchForm from './components/track_search_form'
-import TrackSearchResults from './components/track_search_results'
-import axios from 'axios'
+
+// components
+import TrackSearchForm from './new/track_search_form'
+import TrackSearchResults from './new/track_search_results'
 
 @asyncConnect([], state => ({
   search: state.search,

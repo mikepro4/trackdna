@@ -162,8 +162,6 @@ export default class TrackMetadata extends React.Component {
         }
       })
 
-      console.log(trackArtists)
-
       initialState = {
         initialValues: {
           bpm, releaseDate, mixName,
@@ -176,7 +174,7 @@ export default class TrackMetadata extends React.Component {
           key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
           youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId,
           coverId: dynamicImages.main.id,
-          waveformId: dynamicImages.waveform.id
+          waveformId: (dynamicImages.waveform ? dynamicImages.waveform.id : '' )
         }
       }
     } else if (this.props.search.videoYoutubeDetails) {
@@ -206,7 +204,7 @@ export default class TrackMetadata extends React.Component {
           genre: genres[0].name,
           key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
           coverId: dynamicImages.main.id,
-          waveformId: dynamicImages.waveform.id
+          waveformId: (dynamicImages.waveform ? dynamicImages.waveform.id : '' )
         }
       }
     }
