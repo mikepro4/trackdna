@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import YoutubePlayer from "../../../components/player/player"
 import ProgressBarPlayer from "../../../components/player/progress_bar"
+import PlayerControls from "../../../components/player/player_controls"
 import { updateCurrentVideo, addTrack } from '../../../actions'
 import classNames from 'classnames'
 import TrackMetadataForm from './track_metadata_form'
@@ -10,6 +11,9 @@ import {
   checkVideoOwnership, checkVideoOfficial, checkVideoNameMatch
 } from '../../../utils/youtube'
 import {submit} from 'redux-form';
+
+// utils
+import { formatTime } from '../../../utils/time_formatter'
 
 export default class TrackMetadata extends React.Component {
   static contextTypes = {
@@ -51,12 +55,24 @@ export default class TrackMetadata extends React.Component {
   renderProgressBarPlayer() {
     if(this.props.search.youtubeSelectedVideo && this.props.search.videoYoutubeDetails) {
       const youtubeDuration = moment.duration(this.props.search.videoYoutubeDetails.contentDetails.duration).asSeconds()
+      const total = formatTime(youtubeDuration)
+      const current = formatTime(this.props.time.currentTime)
       return (
-        <ProgressBarPlayer
-          {...this.props}
-          duration={youtubeDuration}
-          waveformId={this.props.search.beatportSelectedTrack ? this.props.search.beatportSelectedTrack.dynamicImages.waveform.id : ''}
-        />
+        <div className='new_track_player_container'>
+          <div className='player_top_bar'>
+            <PlayerControls {...this.props} />
+            <div className='player_time_container'>
+              <span className='current_time'>{current}</span>
+              <span className='time_divider'> / </span>
+              <span className='total_time'>{total}</span>
+            </div>
+          </div>
+          <ProgressBarPlayer
+            {...this.props}
+            duration={youtubeDuration}
+            waveformId={this.props.search.beatportSelectedTrack ? this.props.search.beatportSelectedTrack.dynamicImages.waveform.id : ''}
+          />
+        </div>
       )
     }
   }
