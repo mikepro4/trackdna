@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import PlayerControls from './player_controls'
 import Timeline from './timeline'
 import { updateCurrentVideo } from '../../actions/'
+import { updateHoverTime } from '../../actions/analysis'
 import { formatTime } from '../../utils/time_formatter'
 
 export default class ProgressBarPlayer extends React.Component {
@@ -31,12 +32,15 @@ export default class ProgressBarPlayer extends React.Component {
     this.setState({
       hoverWidth: this.calculateWidth(event) * 100 / this.props.duration + '%'
     })
+
+    this.props.dispatch(updateHoverTime(this.calculateWidth(event)))
   }
 
   onMouseLeave(event) {
     this.setState({
       hoverWidth: 0
     })
+    this.props.dispatch(updateHoverTime(null))
   }
 
   render() {
@@ -74,7 +78,7 @@ export default class ProgressBarPlayer extends React.Component {
 
 
         <Timeline {...this.props} />
-        
+
         <div className='player_time_wrapper'
           onClick={this.handlePorgressBarClick.bind(this)}
           onMouseMove={this.onMouseMove.bind(this)}

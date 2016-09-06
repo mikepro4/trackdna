@@ -20,6 +20,7 @@ export const FETCH_MESSAGE = 'fetch_message';
 export const CURRENT_VIDEO_UPDATE = 'app/CURRENT_VIDEO_UPDATE'
 export const UPDATE_TIME = 'app/UPDATE_TIME'
 
+// new
 export const CLEAR_SEARCH ='app/CLEAR_SEARCH'
 export const SEARCH_TERM_UPDATE ='app/SEARCH_TERM_UPDATE'
 export const YOUTUBE_SEARCH = 'app/YOUTUBE_SEARCH'
@@ -29,3 +30,7 @@ export const BEATPORT_SEARCH_SUCCESS = 'app/BEATPORT_SEARCH_SUCCESS'
 export const SELECT_YOUTUBE_VIDEO = 'app/SELECT_YOUTUBE_VIDEO'
 export const SELECT_BEATPORT_TRACK = 'app/SELECT_BEATPORT_TRACK'
 export const LOAD_YOUTUBE_VIDEO_DETAILS = 'app/LOAD_YOUTUBE_VIDEO_DETAILS'
+
+
+// track
+export const UPDATE_HOVER_TIME = 'app/UPDATE_HOVER_TIME'

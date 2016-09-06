@@ -28,7 +28,8 @@ import TrackInfo from './index/track_info'
   currentTrack: state.app.currentTrack,
   loading: state.loading.pending,
   currentVideo: state.currentVideo,
-  time: state.time
+  time: state.time,
+  analysis: state.analysis
 }))
 export default class Track extends React.Component {
   componentDidMount() {

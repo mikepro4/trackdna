@@ -1,23 +1,47 @@
 @import "../../styles/vars";
 
-.time_list {
-  display: flex;
-  height: 35px;
-  // margin: 10px 0 0 0;
-  align-items: center;
+.timeline_container {
+  position: relative;
 
-  li {
-    float: left;
-    width: 25px;
-    margin-right: 25px;
-    font-size: 10px;
+  .hoverTime {
+    background: $black;
+    width: 40px;
+    color: $white;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    line-height: 10px;
+    position: absolute;
+    top: 8px;
+    z-index: 2;
+    margin: 0 0 0 -18px;
+    box-shadow: 0px 2px 7px 0px rgba($black, 0.24);
+  }
 
-    span {
-      opacity: .5;
-    }
+  .time_list {
+    display: flex;
+    height: 35px;
+    // margin: 10px 0 0 0;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 
-    &:last-child {
-      margin: 0;
+    li {
+      float: left;
+      width: 25px;
+      margin-right: 25px;
+      font-size: 10px;
+
+      span {
+        opacity: .5;
+      }
+
+      &:last-child {
+        margin: 0;
+      }
     }
   }
+
 }

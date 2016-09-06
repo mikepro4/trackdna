@@ -23,10 +23,14 @@ export default class Timeline extends React.Component {
 
     let times;
 
+    const hoverTimePosition = {
+      left: this.props.analysis.hoverTime * 100 / this.props.duration + '%'
+    }
+
     if(this.refs.timeline) {
-      times = this.getTimeline().map(time => {
+      times = this.getTimeline().map((time,i) => {
         return (
-          <li className='time'>
+          <li className='time' key={i}>
             <span>{formatTime(time)}</span>
           </li>
         )
@@ -34,7 +38,12 @@ export default class Timeline extends React.Component {
     }
     return (
       <div className='timeline_container' ref='timeline'>
-
+        {this.props.analysis.hoverTime ?
+          <div className='hoverTime' style={hoverTimePosition}>
+            <span>{formatTime(this.props.analysis.hoverTime)}</span>
+          </div>
+          : ''
+        }
         <ul className='time_list'>
           {times}
         </ul>
