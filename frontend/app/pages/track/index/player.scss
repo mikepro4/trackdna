@@ -10,7 +10,7 @@
   .track_player_controls {
     width: 220px;
     flex-shrink: 0;
-    padding: 20px 15px 15px 15px;
+    padding: 23px 15px 15px 15px;
 
     .player_controls_container {
       li {
@@ -21,7 +21,7 @@
     }
 
     .player_time_container {
-      margin: 10px 0 0 0;
+      margin: 8px 0 0 0;
       font-size: 26px;
 
       .time_divider, .total_time {
