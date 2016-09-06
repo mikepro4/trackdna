@@ -34,3 +34,15 @@ export const LOAD_YOUTUBE_VIDEO_DETAILS = 'app/LOAD_YOUTUBE_VIDEO_DETAILS'
 
 // track
 export const UPDATE_HOVER_TIME = 'app/UPDATE_HOVER_TIME'
+
+export const ADD_CHANNEL = 'app/ADD_CHANNEL'
+export const EDIT_CHANNEL = 'app/EDIT_CHANNEL'
+export const DELETE_CHANNEL = 'app/DELETE_CHANNEL'
+
+export const ADD_CLIP = 'app/ADD_CLIP'
+export const EDIT_CLIP = 'app/EDIT_CLIP'
+export const DELETE_CLIP = 'app/DELETE_CLIP'
+
+export const ADD_MOMENT = 'app/ADD_MOMENT'
+export const EDIT_MOMENT = 'app/EDIT_MOMENT'
+export const DELETE_MOMENT = 'app/DELETE_MOMENT'

@@ -2,6 +2,7 @@
 
 .timeline_container {
   position: relative;
+  height: 35px;
 
   .hoverTime {
     background: $black;
@@ -25,7 +26,8 @@
     height: 35px;
     // margin: 10px 0 0 0;
     align-items: center;
-    position: relative;
+    position: absolute;
+    width: 100%;
     z-index: 1;
 
     li {

@@ -9,9 +9,22 @@ export default class Timeline extends React.Component {
     }, 1)
   }
 
+  handleResize = () => {
+    this.forceUpdate();
+  };
+
+  componentDidMount() {
+      window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnmount() {
+      window.removeEventListener("resize", this.handleResize);
+  }
+
   getTimeline() {
     if(this.refs.timeline) {
       const containerWIdth = this.refs.timeline.getBoundingClientRect().width
+      console.log(containerWIdth)
       const timesAmount = Math.floor(containerWIdth/25/2)
       const timeInterval = Math.floor(this.props.duration / timesAmount)
 
