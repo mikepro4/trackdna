@@ -3,6 +3,12 @@ import _ from 'lodash'
 import { formatTime } from '../../utils/time_formatter'
 
 export default class Timeline extends React.Component {
+  componentDidMount() {
+    setTimeout(() => {
+      this.forceUpdate()
+    }, 1)
+  }
+
   getTimeline() {
     if(this.refs.timeline) {
       const containerWIdth = this.refs.timeline.getBoundingClientRect().width
@@ -14,21 +20,21 @@ export default class Timeline extends React.Component {
       const filteredSeconds = _.filter(secondsArray, (number) => {
         return((number % timeInterval) === 0)
       })
-
       return filteredSeconds
     }
   }
-  render() {
-    // this.getTimeline()
 
-    let times;
+  render() {
+    let times = ''
 
     const hoverTimePosition = {
       left: this.props.analysis.hoverTime * 100 / this.props.duration + '%'
     }
 
-    if(this.refs.timeline) {
-      times = this.getTimeline().map((time,i) => {
+    const timeArray = this.getTimeline()
+
+    if(!_.isEmpty(timeArray)) {
+      times = timeArray.map((time,i) => {
         return (
           <li className='time' key={i}>
             <span>{formatTime(time)}</span>
@@ -36,6 +42,7 @@ export default class Timeline extends React.Component {
         )
       })
     }
+
     return (
       <div className='timeline_container' ref='timeline'>
         {this.props.analysis.hoverTime ?

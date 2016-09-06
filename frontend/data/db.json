@@ -114,6 +114,40 @@
       "waveformId": 8513670,
       "channels": [],
       "id": 10
+    },
+    {
+      "artist": "Alan Fitzpatrick",
+      "trackName": "We Do What We Want",
+      "youtubeUrl": "ecCE3PGQ-pc",
+      "bpm": 126,
+      "youtubeLength": 511,
+      "beatportLength": 505,
+      "label": "We Are The Brave",
+      "genre": "Techno",
+      "key": "A# major",
+      "releaseDate": "2016-08-12",
+      "mixName": "Original Mix",
+      "coverId": 14181909,
+      "waveformId": 14181935,
+      "channels": [],
+      "id": 11
+    },
+    {
+      "artist": "Drake",
+      "trackName": "Energy",
+      "youtubeUrl": "7LnBvuzjpr4",
+      "bpm": 86,
+      "youtubeLength": 178,
+      "beatportLength": 181,
+      "label": "Cash Money Records/Motown Records",
+      "genre": "Hip-Hop",
+      "key": "A# minor",
+      "releaseDate": "2015-02-13",
+      "mixName": "Original Mix",
+      "coverId": 11032995,
+      "waveformId": 11033002,
+      "channels": [],
+      "id": 12
     }
   ],
   "folders": [

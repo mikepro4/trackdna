@@ -21,7 +21,8 @@ import TrackSearchResults from './new/track_search_results'
   search: state.search,
   loading: state.loading.pending,
   currentVideo: state.currentVideo,
-  time: state.time
+  time: state.time,
+  analysis: state.analysis
 }))
 export default class TrackNew extends React.Component {
 
