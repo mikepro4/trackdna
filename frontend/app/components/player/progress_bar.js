@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import PlayerControls from './player_controls'
+import Timeline from './timeline'
 import { updateCurrentVideo } from '../../actions/'
 import { formatTime } from '../../utils/time_formatter'
 
@@ -71,6 +72,9 @@ export default class ProgressBarPlayer extends React.Component {
           </div>
         </div> */}
 
+
+        <Timeline {...this.props} />
+        
         <div className='player_time_wrapper'
           onClick={this.handlePorgressBarClick.bind(this)}
           onMouseMove={this.onMouseMove.bind(this)}

@@ -1,0 +1,23 @@
+@import "../../styles/vars";
+
+.time_list {
+  display: flex;
+  height: 35px;
+  // margin: 10px 0 0 0;
+  align-items: center;
+
+  li {
+    float: left;
+    width: 25px;
+    margin-right: 25px;
+    font-size: 10px;
+
+    span {
+      opacity: .5;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}

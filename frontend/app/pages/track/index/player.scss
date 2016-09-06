@@ -15,7 +15,7 @@
     .player_controls_container {
       li {
         .button {
-          width: 70px;
+          width: 80px;
         }
       }
     }
@@ -34,5 +34,9 @@
     flex-grow: 1;
     margin: 0 20px 0 0;
     padding: 0 10px 0 10px;
+
+    .player_time_wrapper {
+      height: 85px;
+    }
   }
 }
