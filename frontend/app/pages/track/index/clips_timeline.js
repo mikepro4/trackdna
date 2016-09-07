@@ -1,8 +1,15 @@
 import React, {PropTypes} from 'react';
+import _ from 'lodash'
+
 // actions
 import {
   addClip
 } from '../../../actions/analysis'
+
+// utils
+import {
+  uuid
+} from '../../../utils/uuid'
 
 export default class ClipsTimeline extends React.Component {
   constructor(props) {
@@ -66,20 +73,17 @@ export default class ClipsTimeline extends React.Component {
 
     start = (this.state.endPercent > this.state.startPercent ? this.state.startPercent : this.state.endPercent)
     end = (this.state.endPercent < this.state.startPercent ? this.state.startPercent : this.state.endPercent)
+
     const newClip = {
-      id: Math.random(),
+      id: uuid(),
       start: start * this.props.currentTrack.youtubeLength / 100,
       end: end * this.props.currentTrack.youtubeLength / 100,
       name: 'Clip 1'
     }
-    // this.setState({
-    //   startedDragging: false,
-    //   startPercent: 0,
-    //   endPercent: 0
-    // })
-    console.log(newClip)
-    console.log(this.props.channel.id)
-    this.props.dispatch(addClip(this.props.channel.id, newClip))
+
+    if((end * this.props.currentTrack.youtubeLength / 100-start * this.props.currentTrack.youtubeLength / 100)>1) {
+      this.props.dispatch(addClip(this.props.channel.id, newClip))
+    }
   }
 
   render() {

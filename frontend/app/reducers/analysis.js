@@ -33,6 +33,7 @@ export default (state = {}, action) => {
         let newClipStart = action.clip.start
         let newClipEnd = action.clip.end
 
+        // filter completely overlapping clips
         const filteredClips = _.filter(channel.clips, (clip) => {
           let start = clip.start
           let end = clip.end
@@ -45,6 +46,7 @@ export default (state = {}, action) => {
           return !inRange
         })
 
+        // trim partially overlapping clips
         const updatedChannelClips = _.map(filteredClips, (clip) => {
           let start = clip.start
           let end = clip.end
@@ -72,8 +74,6 @@ export default (state = {}, action) => {
         let newChannelNewClip = update(channel, {
           clips: {$push: [action.clip]}
         })
-
-        console.log(newChannelNewClip)
 
         let index = _.findIndex(state.channels,  {id: action.channelId})
         return update(state, {

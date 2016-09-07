@@ -8,10 +8,15 @@ import {
   addChannel
 } from '../../../actions/analysis'
 
+// utils
+import {
+  uuid
+} from '../../../utils/uuid'
+
 export default class ChannelsContent extends React.Component {
   onAddChannel() {
     const newChannel = {
-      id: Math.random(),
+      id: uuid(),
       name: `Untitled Channel ${Math.random()}`,
       clips: []
     }
