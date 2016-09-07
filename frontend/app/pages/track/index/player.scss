@@ -6,7 +6,6 @@
   flex-shrink: 0;
   border-top: 1px solid $strokeColor;
   border-bottom: 1px solid $strokeColor;
-  margin: 25px 0 0 0;
   position: relative;
   display: flex;
 
@@ -15,8 +14,8 @@
     top: 49px;
     width: 1180px;
     margin: 0;
+    z-index: 100;
   }
-
 
   .track_player_controls {
     width: 220px;

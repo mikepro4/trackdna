@@ -27,11 +27,12 @@
 
 // page /track/${id}
 @import "../pages/track/index";
-// @import "../pages/track/index/channels_content";
 // @import "../pages/track/index/channels_info";
-// @import "../pages/track/index/channels";
 // @import "../pages/track/index/track_sidebar";
 
 @import "../pages/track/index/analysis";
 @import "../pages/track/index/track_info";
 @import "../pages/track/index/player";
+@import "../pages/track/index/channels_content";
+@import "../pages/track/index/channels";
+@import "../pages/track/index/channel";
