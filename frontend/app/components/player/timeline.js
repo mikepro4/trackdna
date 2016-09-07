@@ -3,22 +3,19 @@ import _ from 'lodash'
 import { formatTime } from '../../utils/time_formatter'
 
 export default class Timeline extends React.Component {
-  componentDidMount() {
-    setTimeout(() => {
-      this.forceUpdate()
-    }, 1)
-  }
-
   handleResize = () => {
     this.forceUpdate();
   };
 
   componentDidMount() {
-      window.addEventListener("resize", this.handleResize);
+    window.addEventListener("resize", this.handleResize);
+    setTimeout(() => {
+      this.forceUpdate()
+    }, 1)
   }
 
   componentWillUnmount() {
-      window.removeEventListener("resize", this.handleResize);
+    window.removeEventListener("resize", this.handleResize);
   }
 
   getTimeline() {
