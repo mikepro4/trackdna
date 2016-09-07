@@ -22,7 +22,7 @@ export default class ProgressBarPlayer extends React.Component {
   }
 
   calculateWidth(event) {
-    const relX = event.pageX - this.refs.progress_bar_container.offsetLeft
+    const relX = event.pageX - (this.refs.progress_bar_container.offsetLeft + this.refs.progress_bar_container.offsetParent.offsetLeft)
     const progressBarPercent = relX * 100 / this.refs.progress_bar_container.getBoundingClientRect().width
     const seekSeconds = progressBarPercent * this.props.duration / 100
     return seekSeconds
@@ -62,20 +62,8 @@ export default class ProgressBarPlayer extends React.Component {
       width: this.state.hoverWidth
     }
 
-    // const { dynamicImages } = this.props.search.beatportSelectedTrack;
-
     return (
       <div className='progress_bar_player_container'>
-
-        {/* <div className='player_top_bar'>
-          <PlayerControls {...this.props} />
-          <div className='player_time_container'>
-            <span className='current_time'>{current}</span>
-            <span className='time_divider'> / </span>
-            <span className='total_time'>{total}</span>
-          </div>
-        </div> */}
-
 
         <Timeline {...this.props} />
 

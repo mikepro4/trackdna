@@ -2,15 +2,26 @@
 
 .track_player_container {
   background: $white;
-  height: 120px;
+  height: 121px;
   flex-shrink: 0;
-  display: flex;
+  border-top: 1px solid $strokeColor;
   border-bottom: 1px solid $strokeColor;
+  margin: 25px 0 0 0;
+  position: relative;
+  display: flex;
+
+  &.player_fixed {
+    position: fixed;
+    top: 49px;
+    width: 1180px;
+    margin: 0;
+  }
+
 
   .track_player_controls {
     width: 220px;
     flex-shrink: 0;
-    padding: 23px 15px 15px 15px;
+    padding: 23px 0 15px 25px;
 
     .player_controls_container {
       li {
@@ -34,6 +45,8 @@
     flex-grow: 1;
     margin: 0 20px 0 0;
     padding: 0 10px 0 10px;
+    // position: relative;
+    // display: block;
 
     .player_time_wrapper {
       height: 85px;

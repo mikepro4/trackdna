@@ -15,10 +15,12 @@ import {
 } from '../../actions'
 
 // components
-import TrackSidebar from './index/track_sidebar'
-import TrackPlayer from './index/player'
-import TrackChannels from './index/channels'
-import TrackInfo from './index/track_info'
+// import TrackSidebar from './index/track_sidebar'
+// import TrackPlayer from './index/player'
+// import TrackChannels from './index/channels'
+// import TrackInfo from './index/track_info'
+import Analysis from './index/analysis'
+import YoutubePlayer from '../../components/player/player'
 
 @asyncConnect([{
   promise: (props) => {
@@ -32,28 +34,30 @@ import TrackInfo from './index/track_info'
   analysis: state.analysis
 }))
 export default class Track extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl))
+  constructor(props) {
+   super(props);
+
+   this.state = {
+     scrollTop: 0,
+   }
   }
 
-  // saveTrack() {
-  //   console.log(this.state.channels)
-  //   const track =  {...this.props.currentTrack,  channels: this.state.channels}
-  //   this.props.dispatch(editTrack(track))
-  //     .then((response) => {
-  //       console.log('yay')
-  //       this.props.dispatch(loadTrack(this.props.currentTrack.id))
-  //     });
-  // }
-  //
-  // renderSaveTrackButton() {
-  //   if(!_.isEqual(this.props.currentTrack.channels.sort(), this.state.channels.sort())) {
-  //     return (
-  //       <button className='button' onClick={this.saveTrack.bind(this)}>Save Track</button>
-  //     )
-  //   }
-  // }
-  //
+
+  componentDidMount() {
+    this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl))
+    this.refs.track_container.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    this.refs.track_container.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = (event) =>  {
+    // this.refs.player_wrapper.getDOMNode().style.top = document.documentElement.scrollTop + 'px';
+    this.setState({
+      scrollTop: event.target.scrollTop
+    })
+  }
 
 	render() {
     let pageClasses = classnames({
@@ -66,16 +70,29 @@ export default class Track extends React.Component {
 			<div className={pageClasses}>
 			 	<Helmet title="Track – Track DNA" />
 
-        <div className='track_container'>
+        <div className='track_container' ref='track_container'>
 
-          <TrackSidebar {...this.props} />
+          <div className='track_page_content'>
+            <Analysis
+              {...this.props}
+              scrollTop={this.state.scrollTop}
+            />
+          </div>
 
-          <div className='track_content'>
+
+
+          {/* <TrackSidebar {...this.props} /> */}
+
+          {/* <div className='track_content'>
             <TrackPlayer {...this.props} />
             <TrackChannels {...this.props} />
             <TrackInfo {...this.props} />
-          </div>
+          </div> */}
 
+        </div>
+
+        <div className='track_player'>
+          <YoutubePlayer {...this.props} />
         </div>
 
 			</div>

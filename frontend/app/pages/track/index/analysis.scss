@@ -1,0 +1,31 @@
+@import "../../../styles/vars";
+
+$containerShadow: 0px 4px 28px 0px rgba($black, 0.04);
+
+.analsysis_container {
+  display: block;
+  margin: 30px 0 30px 0;
+  background: $white;
+  box-shadow: $containerShadow;
+  min-height: 380px;
+  height: 3000px;
+
+  .analysis_header {
+    display: flex;
+    padding: 15px 25px;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font-size: 13px;
+      opacity: .3;
+    }
+
+    .analysis_actions {
+      li {
+        float: left;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+}
