@@ -30,9 +30,54 @@ export default (state = {}, action) => {
           clips: {$push: [action.clip]}
         })
 
+        let newClipStart = action.clip.start
+        let newClipEnd = action.clip.end
+
+        const filteredClips = _.filter(channel.clips, (clip) => {
+          let start = clip.start
+          let end = clip.end
+
+          const startInRange = (start > newClipStart && start < newClipEnd)
+          const endInRange = (end > newClipStart && end < newClipEnd)
+
+          let inRange = (startInRange && endInRange ? true : false)
+
+          return !inRange
+        })
+
+        const updatedChannelClips = _.map(filteredClips, (clip) => {
+          let start = clip.start
+          let end = clip.end
+          // console.log(newClipStart < clip.end)
+          if(newClipStart > start && newClipStart < end) {
+            let diff = clip.end - newClipStart
+            end = clip.end - diff
+          }
+          if(newClipEnd > start && newClipEnd < end) {
+            if(newClipEnd > clip.start) {
+              let diff = newClipEnd - clip.start
+              start = clip.start + diff
+            }
+          }
+
+          return {
+            ...clip,
+            start: start,
+            end: end
+          }
+        })
+
+        channel.clips = updatedChannelClips
+
+        let newChannelNewClip = update(channel, {
+          clips: {$push: [action.clip]}
+        })
+
+        console.log(newChannelNewClip)
+
         let index = _.findIndex(state.channels,  {id: action.channelId})
         return update(state, {
-          channels: {$splice: [[index, 1, newChannel]]}
+          channels: {$splice: [[index, 1, newChannelNewClip]]}
         })
       case DELETE_CHANNEL:
         return update(state, {

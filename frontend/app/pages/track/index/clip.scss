@@ -7,5 +7,6 @@
   top: 0;
   width: 0;
   left: 0;
-  background: $black
+  background: rgba($black, .1);
+  border: 1px solid $black;
 }
