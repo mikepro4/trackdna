@@ -15,7 +15,7 @@ export default class ProgressBarPlayer extends React.Component {
   }
 
   handlePorgressBarClick(event) {
-    const relX = event.pageX - this.refs.progress_bar_container.offsetLeft
+    const relX = event.pageX - (this.refs.progress_bar_container.offsetLeft + this.refs.progress_bar_container.offsetParent.offsetLeft)
     const progressBarPercent = relX * 100 / this.refs.progress_bar_container.getBoundingClientRect().width
     const seekSeconds = progressBarPercent * this.props.duration / 100
     this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'seek', seekSeconds))
