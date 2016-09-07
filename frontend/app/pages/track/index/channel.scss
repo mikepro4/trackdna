@@ -1,6 +1,50 @@
 @import "../../../styles/vars";
 
 .channel_container {
-  padding: 25px;
   border-bottom: 1px solid $strokeColor;
+  height: 80px;
+
+  .channel_top_container {
+    height: 80px;
+    display: flex;
+
+    .channel_name {
+      width: 220px;
+      flex-shrink: 0;
+      border-right: 1px solid $strokeColor;
+      padding: 0 0 0 25px;
+    }
+
+    .channel_content {
+      flex-grow: 1;
+
+      .clips_timeline {
+        background: rgba(#EFEFEF, 0);
+        height: 24px;
+        margin: 14px 25px 0 10px;
+        transition: background .2s ease-in-out;
+        position: relative;
+      }
+
+      .moments_timeline {
+        background: rgba(#EFEFEF, 0);
+        height: 24px;
+        margin: 5px 25px 0 10px;
+        transition: background .2s ease-in-out;
+        position: relative;
+      }
+    }
+
+    &:hover {
+      .channel_content {
+        .clips_timeline {
+          background: rgba(#EFEFEF, 1);
+        }
+
+        .moments_timeline {
+          background: rgba(#EFEFEF, 1);
+        }
+      }
+    }
+  }
 }

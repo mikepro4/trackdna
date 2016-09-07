@@ -1,0 +1,11 @@
+@import "../../../styles/vars";
+
+.clip {
+  display: block;
+  position: absolute;
+  height: 24px;
+  top: 0;
+  width: 0;
+  left: 0;
+  background: $black
+}

@@ -1,5 +1,8 @@
 import React, {PropTypes} from 'react';
 
+import ClipsTimeline from './clips_timeline'
+import MomentsTimeline from './moments_timeline'
+
 // actions
 import {
   deleteChannel
@@ -20,11 +23,20 @@ export default class Channel extends React.Component {
 
   render() {
     return (
-      <div className='channel_container' onClick={this.onDeleteChannel.bind(this)}>
-        <h1>Channel Container</h1>
-        <div>
-          Channel: {this.props.channel.name}
-          <button className='button'>Delete channel</button>
+      <div className='channel_container'>
+
+        <div className='channel_top_container'>
+
+          <div className='channel_name'>
+            {this.props.channel.name}
+            <button className='button' onClick={this.onDeleteChannel.bind(this)}>Delete channel</button>
+          </div>
+
+          <div className='channel_content'>
+            <ClipsTimeline {...this.props} />
+            <MomentsTimeline {...this.props} />
+          </div>
+
         </div>
 
       </div>);
