@@ -83,7 +83,7 @@ export default class ProgressBarPlayer extends React.Component {
             {
               (this.props.waveformId) ?
               (<img
-                src={`http://geo-media.beatport.com/image_size/2000x250/${this.props.waveformId}.png`}
+                src={`http://geo-media.beatport.com/image_size/1850x250/${this.props.waveformId}.png`}
                 ref='wave'
                 className='beatport_wave'
               />)

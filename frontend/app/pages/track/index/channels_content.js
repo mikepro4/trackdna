@@ -12,7 +12,8 @@ export default class ChannelsContent extends React.Component {
   onAddChannel() {
     const newChannel = {
       id: Math.random(),
-      name: `Untitled Channel ${Math.random()}`
+      name: `Untitled Channel ${Math.random()}`,
+      clips: []
     }
 
     this.props.dispatch(addChannel([newChannel]))
