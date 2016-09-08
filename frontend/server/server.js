@@ -120,13 +120,15 @@ app.listen(process.env.PORT, function (err) {
   console.log(`Listening at http://localhost:${process.env.PORT}`)
 })
 
-var jsonServer = require('json-server')
-var server = jsonServer.create()
-var router = jsonServer.router('data/db.json')
-var middlewares = jsonServer.defaults()
+if (!global.__DEV__) {
+  var jsonServer = require('json-server')
+  var server = jsonServer.create()
+  var router = jsonServer.router('data/db.json')
+  var middlewares = jsonServer.defaults()
 
-server.use(middlewares)
-server.use(router)
-server.listen(3002, function () {
-  console.log('JSON Server is running')
-})
+  server.use(middlewares)
+  server.use(router)
+  server.listen(3002, function () {
+    console.log('JSON Server is running')
+  })
+}
