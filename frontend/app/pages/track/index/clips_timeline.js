@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash'
 import classNames from 'classnames'
-import keydown, { keydownScoped } from 'react-keydown';
+import keydown from 'react-keydown'
 
 // components
 import Clip from './clip'
@@ -79,7 +79,6 @@ export default class ClipsTimeline extends React.Component {
     this.props.dispatch(updateHoverTime(null))
     this.props.dispatch(updateRangeTime(null, null, null))
   }
-
 
   onMouseMove(event) {
     if(this.state.startedDragging) {

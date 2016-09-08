@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames'
+import keydown from 'react-keydown'
 
 // actions
 import {
@@ -22,13 +23,18 @@ export default class Clip extends React.Component {
     // fucking mess here but works
     if(this.props.analysis.selectedClip && this.props.analysis.selectedClip.id) {
       if(this.props.clip.id === this.props.analysis.selectedClip.id) {
-        this.props.dispatch(selectClip(null))
+        this.deselectClip()
       } else {
         this.props.dispatch(selectClip(this.props.clip))
       }
     } else {
       this.props.dispatch(selectClip(this.props.clip))
     }
+  }
+
+  @keydown('esc')
+  deselectClip() {
+    this.props.dispatch(selectClip(null))
   }
 
   render() {
