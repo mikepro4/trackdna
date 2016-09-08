@@ -5,7 +5,8 @@ import {
   ADD_CHANNEL,
   EDIT_CHANNEL,
   DELETE_CHANNEL,
-  ADD_CLIP
+  ADD_CLIP,
+  SELECT_CLIP
 } from '../actions/types'
 import update from 'react/lib/update'
 import _ from 'lodash'
@@ -31,6 +32,10 @@ export default (state = {}, action) => {
         return update(state, {
           channels: {$push: action.channel}
         })
+      case SELECT_CLIP:
+        return {... state,
+          selectedClip: action.clip || '',
+        }
       case ADD_CLIP:
         let channel = _.find(state.channels, {id: action.channelId})
         let newChannel = update(channel, {

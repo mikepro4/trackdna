@@ -284,6 +284,23 @@
       "waveformId": 13847334,
       "channels": [],
       "id": 23
+    },
+    {
+      "artist": "Hugo, Luigi Rocca, CASSIMM",
+      "trackName": "Trip Trap",
+      "youtubeUrl": "68oXLAqDdig",
+      "bpm": 123,
+      "youtubeLength": 395,
+      "beatportLength": 394,
+      "label": "303Lovers",
+      "genre": "Tech House",
+      "key": "F major",
+      "releaseDate": "2016-01-18",
+      "mixName": "Cassimm Remix",
+      "coverId": 12882310,
+      "waveformId": 12882337,
+      "channels": [],
+      "id": 24
     }
   ],
   "folders": [
