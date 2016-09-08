@@ -16,10 +16,10 @@ export function updateHoverTime(hoverTime) {
   };
 }
 
-export function updateRangeTime(rangeStart, rangeLength) {
+export function updateRangeTime(rangeStart, rangeLength, direction) {
   return {
     type: UPDATE_RANGE_TIME,
-    rangeStart, rangeLength
+    rangeStart, rangeLength, direction
   };
 }
 

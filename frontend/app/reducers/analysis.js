@@ -19,7 +19,8 @@ export default (state = {}, action) => {
       case UPDATE_RANGE_TIME:
         return  {...state,
           rangeStart: action.rangeStart,
-          rangeLength: action.rangeLength
+          rangeLength: action.rangeLength,
+          direction: action.direction
         }
       case LOAD_SINGLE_TRACK_SUCCESS:
         return {... state,

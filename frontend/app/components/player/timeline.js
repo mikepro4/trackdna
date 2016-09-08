@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash'
+import classNames from 'classnames'
 import { formatTime } from '../../utils/time_formatter'
 
 export default class Timeline extends React.Component {
@@ -43,6 +44,16 @@ export default class Timeline extends React.Component {
 
     const timeArray = this.getTimeline()
 
+    const rangePosition = {
+      left: this.props.analysis.hoverTime * 100 / this.props.duration + '%'
+    }
+
+    let rangeCLases = classNames({
+      'range': true,
+      'range_time_left': this.props.analysis.direction === 'left',
+      'range_time_right': this.props.analysis.direction === 'right'
+    })
+
     if(!_.isEmpty(timeArray)) {
       times = timeArray.map((time,i) => {
         return (
@@ -55,9 +66,16 @@ export default class Timeline extends React.Component {
 
     return (
       <div className='timeline_container' ref='timeline'>
-        {this.props.analysis.hoverTime ?
+        {this.props.analysis.hoverTime && !this.props.analysis.rangeStart ?
           <div className='hoverTime' style={hoverTimePosition}>
             <span>{formatTime(this.props.analysis.hoverTime)}</span>
+          </div>
+          : ''
+        }
+        {this.props.analysis.rangeStart && this.props.analysis.rangeLength ?
+          <div className={rangeCLases} style={hoverTimePosition}>
+            <span className='range_time'>{formatTime(this.props.analysis.rangeStart)} – {formatTime(this.props.analysis.rangeStart + this.props.analysis.rangeLength)}</span>
+            <span className='range_total'>({formatTime(this.props.analysis.rangeLength)})</span>
           </div>
           : ''
         }
