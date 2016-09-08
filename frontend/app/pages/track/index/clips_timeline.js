@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash'
 import classNames from 'classnames'
+import keydown, { keydownScoped } from 'react-keydown';
 
 // components
 import Clip from './clip'
@@ -8,6 +9,7 @@ import Clip from './clip'
 // actions
 import {
   addClip,
+  deleteClip,
   updateHoverTime,
   updateRangeTime
 } from '../../../actions/analysis'
@@ -26,6 +28,14 @@ export default class ClipsTimeline extends React.Component {
       startPercent: 0,
       endPercent: 0,
       ghostWidth: 0
+    }
+  }
+
+  @keydown('backspace')
+  submit() {
+    if(!_.isEmpty(this.props.analysis.selectedClip)) {
+      this.props.dispatch(deleteClip(this.props.analysis.selectedClip.id, this.props.channel.id))
+      console.log('delete pressed')
     }
   }
 

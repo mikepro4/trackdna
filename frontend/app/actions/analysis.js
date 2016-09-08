@@ -7,7 +7,8 @@ import {
   EDIT_CHANNEL,
   DELETE_CHANNEL,
   ADD_CLIP,
-  SELECT_CLIP
+  SELECT_CLIP,
+  DELETE_CLIP
 } from './types';
 
 export function updateHoverTime(hoverTime) {
@@ -59,5 +60,13 @@ export function selectClip(clip) {
   return {
     type: SELECT_CLIP,
     clip
+  };
+}
+
+export function deleteClip(clipId, channelId) {
+  return {
+    type: DELETE_CLIP,
+    clipId,
+    channelId
   };
 }

@@ -19,8 +19,13 @@ export default class Clip extends React.Component {
 
   onClipClick() {
     console.log('clip click')
-    if(this.props.clip.id === this.props.analysis.selectedClip.id) {
-      this.props.dispatch(selectClip(null))
+    // fucking mess here but works
+    if(this.props.analysis.selectedClip && this.props.analysis.selectedClip.id) {
+      if(this.props.clip.id === this.props.analysis.selectedClip.id) {
+        this.props.dispatch(selectClip(null))
+      } else {
+        this.props.dispatch(selectClip(this.props.clip))
+      }
     } else {
       this.props.dispatch(selectClip(this.props.clip))
     }
