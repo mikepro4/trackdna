@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash'
+import classNames from 'classnames'
 
 // actions
 import {
@@ -18,7 +19,8 @@ export default class ClipsTimeline extends React.Component {
     this.state = {
       startedDragging: false,
       startPercent: 0,
-      endPercent: 0
+      endPercent: 0,
+      ghostWidth: 0
     }
   }
 
@@ -42,7 +44,9 @@ export default class ClipsTimeline extends React.Component {
     this.calculateWidth(event)
     this.setState({
       startedDragging: false,
-      endPercent: this.calculateWidth(event)
+      endPercent: this.calculateWidth(event),
+      ghostWidth: 0,
+      ghostEndPosition: 0
     }, () => {
       this.createClip()
     })
@@ -51,11 +55,36 @@ export default class ClipsTimeline extends React.Component {
   }
 
   onMouseLeave(event) {
-    // this.setState({
-    //   startedDragging: false,
-    //   startPercent: 0,
-    //   endPercent: 0
-    // })
+    this.setState({
+      ghostWidth: 0
+    })
+  }
+
+
+  onMouseMove(event) {
+    if(this.state.startedDragging) {
+      // console.log(this.calculateWidth(event))
+      let ghostWidth
+      let ghostDirection = ''
+      let ghostEndPosition = 0
+      const endPosition = this.calculateWidth(event)
+
+      if(endPosition > this.state.startPercent) {
+        ghostWidth = endPosition - this.state.startPercent
+        ghostDirection = 'right'
+      } else {
+        ghostWidth = this.state.startPercent - endPosition
+        ghostEndPosition = endPosition
+        ghostDirection = 'left'
+      }
+
+      // console.log(ghostWidth)
+      this.setState({
+        ghostWidth: ghostWidth,
+        ghostDirection: ghostDirection,
+        ghostEndPosition: ghostEndPosition
+      })
+    }
   }
 
   calculateClipPosition(seconds) {
@@ -87,17 +116,33 @@ export default class ClipsTimeline extends React.Component {
   }
 
   render() {
-    const style = {
-      left: this.state.startPercent + '%',
-      width: this.state.endPercent - this.state.startPercent + '%'
+    let ghostStyle = {}
+    if(this.state.ghostDirection === 'left') {
+      ghostStyle = {
+        width: this.state.ghostWidth + '%',
+        left: this.state.ghostEndPosition + '%'
+      }
+    } else if(this.state.ghostDirection === 'right') {
+      ghostStyle = {
+        left: this.state.startPercent + '%',
+        width: this.state.ghostWidth + '%'
+      }
     }
+
+
+    // let ghostClasses = classNames({
+    //   ghost_clip: true
+    // })
 
     return (
       <div className='clips_timeline'
         onMouseDown={this.onMouseDown.bind(this)}
         onMouseUp={this.onMouseUp.bind(this)}
         onMouseLeave={this.onMouseLeave.bind(this)}
+        onMouseMove={this.onMouseMove.bind(this)}
         ref='clip_timeline'>
+
+          <div className='ghost_clip' style={ghostStyle}></div>
 
           {/* <div className='clip' style={style}></div> */}
           {this.props.channel.clips ?

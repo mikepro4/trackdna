@@ -10,3 +10,13 @@
   background: rgba($black, .1);
   border: 1px solid $black;
 }
+
+.ghost_clip {
+  background: rgba($yellow, 1);
+  display: block;
+  position: absolute;
+  height: 24px;
+  top: 0;
+  width: 0;
+  left: 0;
+}
