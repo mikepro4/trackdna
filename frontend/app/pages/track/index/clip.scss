@@ -17,6 +17,26 @@
     box-shadow: 0px 4px 20px 0px rgba($black,0.2);
   }
 
+  .resize_left {
+    display: block;
+    width: 5px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: w-resize;
+  }
+
+  .resize_right {
+    display: block;
+    width: 5px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: e-resize;
+  }
+
   .clip_name {
     display: block;
     position: absolute;

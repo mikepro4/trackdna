@@ -25,6 +25,7 @@ export default class ClipsTimeline extends React.Component {
 
     this.state = {
       startedDragging: false,
+      startedEditing: false,
       startPercent: 0,
       endPercent: 0,
       ghostWidth: 0
@@ -32,7 +33,7 @@ export default class ClipsTimeline extends React.Component {
   }
 
   @keydown('backspace')
-  submit() {
+  deleteClip() {
     if(!_.isEmpty(this.props.analysis.selectedClip)) {
       this.props.dispatch(deleteClip(this.props.analysis.selectedClip.id, this.props.channel.id))
       console.log('delete pressed')
@@ -42,12 +43,16 @@ export default class ClipsTimeline extends React.Component {
   calculateWidth(event) {
     const relX = event.pageX - (this.refs.clip_timeline.offsetLeft + this.refs.clip_timeline.offsetParent.offsetLeft)
     const progressBarPercent = relX * 100 / this.refs.clip_timeline.getBoundingClientRect().width
-    const seekSeconds = progressBarPercent * this.props.duration / 100
     return progressBarPercent
   }
 
   onMouseDown(event) {
-    if(event.target.className !== 'clip' && event.target.className !== 'clip_name') {
+    if(
+      event.target.className !== 'clip'
+      && event.target.className !== 'clip_name'
+      && event.target.className !== 'resize_left'
+      && event.target.className !== 'resize_right'
+    ) {
       this.calculateWidth(event)
       this.setState({
         startedDragging: true,
@@ -122,6 +127,22 @@ export default class ClipsTimeline extends React.Component {
       })
     }
 
+    if(this.state.startedEditing) {
+      // console.log('moving and editing')
+      // let ghostWidth
+      // let ghostDirection = ''
+      // let ghostEndPosition = 0
+      //
+      // ghostWidth = this.state.startPercent - endPosition
+      // ghostEndPosition = endPosition
+      //
+      // this.setState({
+      //   ghostWidth: ghostWidth,
+      //   ghostDirection: 'right',
+      //   ghostEndPosition: ghostEndPosition
+      // })
+    }
+
     this.props.dispatch(updateHoverTime(this.calculateHover(event)))
 
   }
@@ -151,6 +172,17 @@ export default class ClipsTimeline extends React.Component {
     }
   }
 
+  resizeLeft(clip) {
+    console.log('left', clip)
+  }
+  resizeRight(clip) {
+    console.log('right', clip)
+    this.setState({
+      startedEditing: true,
+      startPercent: clip.start * 100 / this.props.currentTrack.youtubeLength + '%'
+    })
+  }
+
   render() {
     let ghostStyle = {}
     if(this.state.ghostDirection === 'left') {
@@ -165,8 +197,6 @@ export default class ClipsTimeline extends React.Component {
       }
     }
 
-
-
     return (
       <div className='clips_timeline'
         onMouseDown={this.onMouseDown.bind(this)}
@@ -179,7 +209,14 @@ export default class ClipsTimeline extends React.Component {
 
           {this.props.channel.clips ?
             this.props.channel.clips.map((clip, i) => {
-              return (<Clip {...this.props} clip={clip} clipPosition={i} key={i} />)
+              return (
+                <Clip {...this.props}
+                  clip={clip}
+                  resizeLeft={this.resizeLeft.bind(this)}
+                  resizeRight={this.resizeRight.bind(this)}
+                  clipPosition={i}
+                  key={i} />
+                )
             })
             : ''
           }

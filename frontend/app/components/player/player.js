@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import { updateCurrentVideo, updateTime } from '../../actions/'
 import axios from 'axios'
 import moment from 'moment'
+import keydown from 'react-keydown'
 
 export default class YoutubePlayer extends React.Component {
   constructor(props) {
@@ -41,6 +42,30 @@ export default class YoutubePlayer extends React.Component {
     }
   }
 
+  @keydown( 'space' )
+  playPauseSwitch() {
+    switch(this.props.currentVideo.playerAction) {
+      case 'playing':
+        return this.pauseVideo()
+      case 'paused':
+        return this.playVideo()
+      case 'stopped':
+        return this.playVideo()
+      case undefined:
+        return this.playVideo()
+      default:
+        return this.playVideo()
+    }
+  }
+
+  @keydown( 'enter' )
+  seekToClip() {
+    // console.log(this.props.analysis)
+    if(this.props.analysis.selectedClip) {
+      this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'seek', this.props.analysis.selectedClip.start))
+    }
+  }
+
   playVideo() {
     console.log('play video')
     clearInterval(this.state.timeInterval);
@@ -53,6 +78,7 @@ export default class YoutubePlayer extends React.Component {
       this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'playing'))
     }, 1);
   }
+
 
   pauseVideo() {
     console.log('pause video')
