@@ -77,7 +77,7 @@ app.get('*',(req, res) => {
           headTitle = head.title.toString()
           /* styles (will be present only in production with webpack extract text plugin) */
           stylesheets = Object.keys(assets.styles).map((style) =>
-            `<link href='${assets.styles[style]}' media="screen, projection" rel="stylesheet" type="text/css"/>`)
+            `<link href='/${assets.styles[style]}' media="screen, projection" rel="stylesheet" type="text/css"/>`)
 
           inlineStyles = Object.keys(assets.assets)
             .map(k => assets.assets[k])
