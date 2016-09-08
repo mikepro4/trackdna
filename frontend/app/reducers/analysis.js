@@ -1,6 +1,7 @@
 import {
   LOAD_SINGLE_TRACK_SUCCESS,
   UPDATE_HOVER_TIME,
+  UPDATE_RANGE_TIME,
   ADD_CHANNEL,
   EDIT_CHANNEL,
   DELETE_CHANNEL,
@@ -14,6 +15,11 @@ export default (state = {}, action) => {
       case UPDATE_HOVER_TIME:
         return  {...state,
           hoverTime: action.hoverTime
+        }
+      case UPDATE_RANGE_TIME:
+        return  {...state,
+          rangeStart: action.rangeStart,
+          rangeLength: action.rangeLength
         }
       case LOAD_SINGLE_TRACK_SUCCESS:
         return {... state,

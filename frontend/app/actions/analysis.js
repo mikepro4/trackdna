@@ -2,6 +2,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import {
   UPDATE_HOVER_TIME,
+  UPDATE_RANGE_TIME,
   ADD_CHANNEL,
   EDIT_CHANNEL,
   DELETE_CHANNEL,
@@ -14,6 +15,14 @@ export function updateHoverTime(hoverTime) {
     hoverTime
   };
 }
+
+export function updateRangeTime(rangeStart, rangeLength) {
+  return {
+    type: UPDATE_RANGE_TIME,
+    rangeStart, rangeLength
+  };
+}
+
 
 // Channels
 export function addChannel(channel) {

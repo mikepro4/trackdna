@@ -8,7 +8,8 @@ import Clip from './clip'
 // actions
 import {
   addClip,
-  updateHoverTime
+  updateHoverTime,
+  updateRangeTime
 } from '../../../actions/analysis'
 
 // utils
@@ -53,6 +54,7 @@ export default class ClipsTimeline extends React.Component {
         ghostEndPosition: 0
       }, () => {
         this.createClip()
+        this.props.dispatch(updateRangeTime(null, null))
       })
     }
   }
@@ -65,6 +67,7 @@ export default class ClipsTimeline extends React.Component {
       ghostEndPosition: 0
     })
     this.props.dispatch(updateHoverTime(null))
+    this.props.dispatch(updateRangeTime(null, null))
   }
 
 
@@ -90,10 +93,25 @@ export default class ClipsTimeline extends React.Component {
         ghostWidth: ghostWidth,
         ghostDirection: ghostDirection,
         ghostEndPosition: ghostEndPosition
+      }, () => {
+        let ghostStyle
+        if(this.state.ghostDirection === 'left') {
+          ghostStyle = {
+            width: this.state.ghostWidth * this.props.currentTrack.youtubeLength / 100,
+            left: this.state.ghostEndPosition * this.props.currentTrack.youtubeLength / 100
+          }
+        } else if(this.state.ghostDirection === 'right') {
+          ghostStyle = {
+            left: this.state.startPercent * this.props.currentTrack.youtubeLength / 100,
+            width: this.state.ghostWidth * this.props.currentTrack.youtubeLength / 100
+          }
+        }
+        this.props.dispatch(updateRangeTime(ghostStyle.left, ghostStyle.width))
       })
-    } else {
     }
+
     this.props.dispatch(updateHoverTime(this.calculateHover(event)))
+
   }
 
   calculateHover(event) {
@@ -134,6 +152,8 @@ export default class ClipsTimeline extends React.Component {
         width: this.state.ghostWidth + '%'
       }
     }
+
+
 
     return (
       <div className='clips_timeline'

@@ -34,6 +34,7 @@ export const LOAD_YOUTUBE_VIDEO_DETAILS = 'app/LOAD_YOUTUBE_VIDEO_DETAILS'
 
 // track
 export const UPDATE_HOVER_TIME = 'app/UPDATE_HOVER_TIME'
+export const UPDATE_RANGE_TIME = 'app/UPDATE_RANGE_TIME'
 
 export const ADD_CHANNEL = 'app/ADD_CHANNEL'
 export const EDIT_CHANNEL = 'app/EDIT_CHANNEL'

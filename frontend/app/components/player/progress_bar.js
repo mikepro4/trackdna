@@ -62,6 +62,11 @@ export default class ProgressBarPlayer extends React.Component {
       width: this.state.hoverWidth
     }
 
+    const rangeHighlightStyles = {
+      left: this.props.analysis.rangeStart * 100 / this.props.duration + '%',
+      width: this.props.analysis.rangeLength * 100 / this.props.duration + '%'
+    }
+
     return (
       <div className='progress_bar_player_container'>
 
@@ -89,6 +94,7 @@ export default class ProgressBarPlayer extends React.Component {
               />)
               : ''
             }
+            <div className='range_highlight' style={rangeHighlightStyles}></div>
         </div>
       </div>
     );

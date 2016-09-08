@@ -47,10 +47,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     margin: 11px 0 0 0;
     height: 55px;
-    opacity: 0.7;
+    opacity: 1;
     transition: opacity .15s ease-in-out;
   }
 
@@ -68,8 +68,20 @@
 
     &.hover {
       z-index: 2;
-      opacity: .1;
+      opacity: .07;
     }
+  }
+
+  .range_highlight {
+    display: block;
+    background: $yellow;
+    position: absolute;
+    z-index: 1;
+    width: 0;
+    left: 0;
+    height: 78px;
+    top: 6px;
+    opacity: 1;
   }
 
   &:hover {

@@ -16,7 +16,7 @@ export default class Clip extends React.Component {
       left: this.calculateClipPosition(this.props.clip.start),
       width: this.calculateClipWidth(this.props.clip.start, this.props.clip.end)
     }
-    console.log(this.props.channel)
+    // console.log(this.props.channel)
     return (
       <div style={clipStyle} className='clip'>
         <span className='clip_name'>{this.props.channel.name}</span>
