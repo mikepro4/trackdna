@@ -10,6 +10,7 @@ import Clip from './clip'
 import {
   addClip,
   deleteClip,
+  selectClip,
   updateHoverTime,
   updateRangeTime
 } from '../../../actions/analysis'
@@ -169,6 +170,7 @@ export default class ClipsTimeline extends React.Component {
 
     if((end * this.props.currentTrack.youtubeLength / 100-start * this.props.currentTrack.youtubeLength / 100)>1) {
       this.props.dispatch(addClip(this.props.channel.id, newClip))
+      this.props.dispatch(selectClip(newClip))
     }
   }
 
