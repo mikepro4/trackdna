@@ -41,22 +41,25 @@ export default class ClipsTimeline extends React.Component {
   }
 
   onMouseUp(event) {
-    this.calculateWidth(event)
-    this.setState({
-      startedDragging: false,
-      endPercent: this.calculateWidth(event),
-      ghostWidth: 0,
-      ghostEndPosition: 0
-    }, () => {
-      this.createClip()
-    })
-
-    // this.createClip()
+    if(this.state.startedDragging) {
+      this.calculateWidth(event)
+      this.setState({
+        startedDragging: false,
+        endPercent: this.calculateWidth(event),
+        ghostWidth: 0,
+        ghostEndPosition: 0
+      }, () => {
+        this.createClip()
+      })
+    }
   }
 
   onMouseLeave(event) {
     this.setState({
-      ghostWidth: 0
+      startedDragging: false,
+      endPercent: 0,
+      ghostWidth: 0,
+      ghostEndPosition: 0
     })
   }
 
