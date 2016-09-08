@@ -47,11 +47,13 @@ export default class ClipsTimeline extends React.Component {
   }
 
   onMouseDown(event) {
-    this.calculateWidth(event)
-    this.setState({
-      startedDragging: true,
-      startPercent: this.calculateWidth(event)
-    })
+    if(event.target.className !== 'clip' && event.target.className !== 'clip_name') {
+      this.calculateWidth(event)
+      this.setState({
+        startedDragging: true,
+        startPercent: this.calculateWidth(event)
+      })
+    }
   }
 
   onMouseUp(event) {

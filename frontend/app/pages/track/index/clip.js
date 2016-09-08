@@ -50,7 +50,7 @@ export default class Clip extends React.Component {
 
     // console.log(this.props.channel)
     return (
-      <div style={clipStyle} className={clipClasses} onClick={this.onClipClick.bind(this)}>
+      <div style={clipStyle} className={clipClasses} onMouseDown={this.onClipClick.bind(this)}>
         <span className='clip_name'>{this.props.channel.name}</span>
       </div>
     );
