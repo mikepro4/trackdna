@@ -55,7 +55,7 @@ export default class ProgressBarPlayer extends React.Component {
     }
 
     const cursorHover = {
-      left: this.state.hoverWidth
+      left: this.props.analysis.hoverTime * 100 / this.props.duration + '%'
     }
 
     const progressBarHoverWidth = {

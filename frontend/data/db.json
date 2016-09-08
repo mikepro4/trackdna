@@ -235,23 +235,6 @@
       "id": 19
     },
     {
-      "artist": "Adam Beyer, Ida Engberg",
-      "trackName": "You Know",
-      "youtubeUrl": "Q5W2zCLjQNk",
-      "bpm": 124,
-      "youtubeLength": 473,
-      "beatportLength": 472,
-      "label": "Truesoul",
-      "genre": "Deep House",
-      "key": "D# minor",
-      "releaseDate": "2013-11-18",
-      "mixName": "Original Mix",
-      "coverId": 8513659,
-      "waveformId": 8513670,
-      "channels": [],
-      "id": 20
-    },
-    {
       "artist": "Drake",
       "trackName": "Energy",
       "youtubeUrl": "7LnBvuzjpr4",
@@ -284,6 +267,23 @@
       "waveformId": 9002676,
       "channels": [],
       "id": 22
+    },
+    {
+      "artist": "Simone Vitullo, Luigi Rocca",
+      "trackName": "Shape The Words Feat. Lady Vale",
+      "youtubeUrl": "-xBA-m_9-zQ",
+      "bpm": 121,
+      "youtubeLength": 423,
+      "beatportLength": 422,
+      "label": "303Lovers",
+      "genre": "Tech House",
+      "key": "D# major",
+      "releaseDate": "2016-07-04",
+      "mixName": "Original Mix",
+      "coverId": 13847233,
+      "waveformId": 13847334,
+      "channels": [],
+      "id": 23
     }
   ],
   "folders": [

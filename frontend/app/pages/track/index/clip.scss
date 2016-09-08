@@ -9,6 +9,18 @@
   left: 0;
   background: rgba($black, .1);
   border: 1px solid $black;
+
+  .clip_name {
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    right: 5px;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 
 .ghost_clip {

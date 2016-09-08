@@ -3,6 +3,7 @@
 .channel_container {
   border-bottom: 1px solid $strokeColor;
   height: 80px;
+  user-select: none;
 
   .channel_top_container {
     height: 80px;

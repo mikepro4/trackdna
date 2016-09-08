@@ -2,9 +2,13 @@ import React, {PropTypes} from 'react';
 import _ from 'lodash'
 import classNames from 'classnames'
 
+// components
+import Clip from './clip'
+
 // actions
 import {
-  addClip
+  addClip,
+  updateHoverTime
 } from '../../../actions/analysis'
 
 // utils
@@ -29,7 +33,6 @@ export default class ClipsTimeline extends React.Component {
     const progressBarPercent = relX * 100 / this.refs.clip_timeline.getBoundingClientRect().width
     const seekSeconds = progressBarPercent * this.props.duration / 100
     return progressBarPercent
-    // console.log(progressBarPercent)
   }
 
   onMouseDown(event) {
@@ -61,6 +64,7 @@ export default class ClipsTimeline extends React.Component {
       ghostWidth: 0,
       ghostEndPosition: 0
     })
+    this.props.dispatch(updateHoverTime(null))
   }
 
 
@@ -87,17 +91,16 @@ export default class ClipsTimeline extends React.Component {
         ghostDirection: ghostDirection,
         ghostEndPosition: ghostEndPosition
       })
+    } else {
     }
+    this.props.dispatch(updateHoverTime(this.calculateHover(event)))
   }
 
-  calculateClipPosition(seconds) {
-    const left = seconds * 100 / this.props.currentTrack.youtubeLength + '%'
-    return left
-  }
-
-  calculateClipWidth(start, end) {
-    const width = (end - start) * 100/ this.props.currentTrack.youtubeLength + '%'
-    return width
+  calculateHover(event) {
+    const relX = event.pageX - (this.refs.clip_timeline.offsetLeft + this.refs.clip_timeline.offsetParent.offsetLeft)
+    const progressBarPercent = relX * 100 / this.refs.clip_timeline.getBoundingClientRect().width
+    const seekSeconds = progressBarPercent * this.props.currentTrack.youtubeLength / 100
+    return seekSeconds
   }
 
   createClip() {
@@ -110,7 +113,7 @@ export default class ClipsTimeline extends React.Component {
       id: uuid(),
       start: start * this.props.currentTrack.youtubeLength / 100,
       end: end * this.props.currentTrack.youtubeLength / 100,
-      name: 'Clip 1'
+      name: 'Clip Name'
     }
 
     if((end * this.props.currentTrack.youtubeLength / 100-start * this.props.currentTrack.youtubeLength / 100)>1) {
@@ -132,11 +135,6 @@ export default class ClipsTimeline extends React.Component {
       }
     }
 
-
-    // let ghostClasses = classNames({
-    //   ghost_clip: true
-    // })
-
     return (
       <div className='clips_timeline'
         onMouseDown={this.onMouseDown.bind(this)}
@@ -147,16 +145,10 @@ export default class ClipsTimeline extends React.Component {
 
           <div className='ghost_clip' style={ghostStyle}></div>
 
-          {/* <div className='clip' style={style}></div> */}
           {this.props.channel.clips ?
             this.props.channel.clips.map((clip, i) => {
-              let clipStyle = {
-                left: this.calculateClipPosition(clip.start),
-                width: this.calculateClipWidth(clip.start, clip.end)
-              }
-              return (<div key={i} style={clipStyle} className='clip'></div>)
-            }
-            )
+              return (<Clip {...this.props} clip={clip} clipPosition={i} key={i} />)
+            })
             : ''
           }
 
