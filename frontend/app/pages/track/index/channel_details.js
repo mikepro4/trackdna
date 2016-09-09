@@ -7,7 +7,8 @@ import ChannelDetailsTimeline from './channel_details_timeline'
 // actions
 import {
   deleteChannel,
-  selectChannel
+  selectChannel,
+  updateChannel
 } from '../../../actions/analysis'
 
 export default class ChannelDetails extends React.Component {
@@ -19,13 +20,21 @@ export default class ChannelDetails extends React.Component {
     this.props.dispatch(selectChannel(null))
   }
 
+  manualFormSubmit() {
+    this.refs.channel_details_form.submit();
+  }
+
   onUpdate({ name, color, role, source, type, }) {
-    console.log({ name, color, role, source, type, })
+    const newChannel = {...this.props.channel,
+      name, color, role, source, type
+    }
+    this.props.dispatch(updateChannel(newChannel))
+    console.log('newChannel', newChannel)
   }
 
   render() {
-    const { name, color, role, source, type, effects } = this.props.channel
-    const channelInitialValues = {
+    const { name, color, role, source, type, effects } = this.props.analysis.selectedChannel
+    let channelInitialValues = {
       initialValues: {
         name: name,
         color: color,
@@ -35,6 +44,7 @@ export default class ChannelDetails extends React.Component {
         effects: effects
       }
     }
+    // console.log(channelInitialValues)
 
     return (
       <div className='channel_details_container'>
@@ -42,14 +52,14 @@ export default class ChannelDetails extends React.Component {
           <h1>CHANNEL DETAILS</h1>
 
           <ul className='channel_actions'>
-            <li className='channel_action'>
+            {/* <li className='channel_action'>
               <button className='button'>Share channel</button>
-            </li>
+            </li> */}
             <li className='channel_action'>
               <button className='button' onClick={this.onDeleteChannel.bind(this)}>Delete channel</button>
             </li>
             <li className='channel_action'>
-              <button className='button' onClick={this.onUpdate.bind(this)}>Update channel</button>
+              <button className='button' onClick={this.manualFormSubmit.bind(this)}>Update channel</button>
             </li>
             <li className='channel_action'>
               <button className='button' onClick={this.onClose.bind(this)}>Close</button>
@@ -58,12 +68,17 @@ export default class ChannelDetails extends React.Component {
         </div>
 
         <div className='channel_details_content'>
-          <ChannelDetailsForm
-            {...this.props}
-            {...channelInitialValues}
-            onSubmit={this.onUpdate.bind(this)}
-            ref='channel_details_form'
-          />
+          {
+            this.props.analysis.selectedChannel.id ? <ChannelDetailsForm
+              {...this.props}
+              {...channelInitialValues}
+              onSubmit={this.onUpdate.bind(this)}
+              initialValues={this.props.analysis.selectedChannel}
+              enableReinitialize="true"
+              ref='channel_details_form'
+            /> : ''
+          }
+
           <ChannelDetailsTimeline {...this.props} />
         </div>
       </div>

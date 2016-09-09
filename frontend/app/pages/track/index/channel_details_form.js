@@ -3,6 +3,12 @@ import { Field, reduxForm } from 'redux-form'
 import classNames from 'classnames'
 
 export default class ChannelDetailsForm extends React.Component {
+  componentDidMount() {
+    this.props.initialize(
+      this.props.initialValues
+    )
+  }
+
   renderInputField({ input, label, type, meta: { touched, error } }) {
     let containerClassName = classNames({
       'input_container': true,
@@ -37,7 +43,7 @@ export default class ChannelDetailsForm extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, load, pristine, reset, submitting } = this.props
 
     const colors = [
       'default', 'red', 'orange', 'green', 'blue', 'indigo', 'violet'
@@ -48,7 +54,7 @@ export default class ChannelDetailsForm extends React.Component {
     ]
 
     const sources = [
-      'synthesized', 'sampled', 'acoustic', 'noise', 'vocal'
+      'synthesized', 'acoustic', 'noise', 'vocal'
     ]
 
     const types = [

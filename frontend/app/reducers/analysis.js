@@ -3,7 +3,7 @@ import {
   UPDATE_HOVER_TIME,
   UPDATE_RANGE_TIME,
   ADD_CHANNEL,
-  EDIT_CHANNEL,
+  UPDATE_CHANNEL,
   DELETE_CHANNEL,
   SELECT_CHANNEL,
   ADD_CLIP,
@@ -38,6 +38,11 @@ export default (state = {}, action) => {
         return {... state,
           selectedChannel: action.channel || {},
         }
+      case UPDATE_CHANNEL:
+        let channeltoUpdateIndex = _.findIndex(state.channels,  {id: action.channel.id})
+        return update(state, {
+          channels: {$splice: [[channeltoUpdateIndex, 1, action.channel]]}
+        })
       case DELETE_CHANNEL:
         return update(state, {
           channels: {$splice: [[action.channelId, 1]]}

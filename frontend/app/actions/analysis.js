@@ -4,7 +4,7 @@ import {
   UPDATE_HOVER_TIME,
   UPDATE_RANGE_TIME,
   ADD_CHANNEL,
-  EDIT_CHANNEL,
+  UPDATE_CHANNEL,
   DELETE_CHANNEL,
   SELECT_CHANNEL,
   ADD_CLIP,
@@ -42,16 +42,16 @@ export function deleteChannel(channelId) {
   };
 }
 
-export function editChannel(channel) {
+export function selectChannel(channel) {
   return {
-    type: EDIT_CHANNEL,
+    type: SELECT_CHANNEL,
     channel
   };
 }
 
-export function selectChannel(channel) {
+export function updateChannel(channel) {
   return {
-    type: SELECT_CHANNEL,
+    type: UPDATE_CHANNEL,
     channel
   };
 }

@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import _ from 'lodash'
 
 // components
 import Channels from './channels'
@@ -15,10 +16,14 @@ import {
 
 export default class ChannelsContent extends React.Component {
   onAddChannel() {
+    const colors = [
+      'default', 'red', 'orange', 'green', 'blue', 'indigo', 'violet'
+    ]
+    
     const newChannel = {
       id: uuid(),
       name: `Untitled Channel`,
-      color: 'default',
+      color: colors[_.random(0, 6)],
       role: '',
       type: '',
       source: '',
