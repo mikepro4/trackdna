@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames'
+import _ from 'lodash'
 
 // components
 import ClipsTimeline from './clips_timeline'
@@ -24,6 +25,23 @@ export default class Channel extends React.Component {
       }
     } else {
       this.props.dispatch(selectChannel(this.props.channel))
+    }
+  }
+
+  renderChannelProperties() {
+    const { name, color, role, source, type, effects } = this.props.channel
+    if(_.isEmpty(role) && _.isEmpty(source) && _.isEmpty(type)) {
+      return(
+        <span className='empty_state'>No Channel Properties Selected...</span>
+      )
+    } else {
+      return (
+        <div className='channel_properties'>
+        {!_.isEmpty(role) ? <span className='property'>{role.replace(/\b\w/g, l => l.toUpperCase())}</span> : ''}
+        {!_.isEmpty(source) ? <span className='property'>{source.replace(/\b\w/g, l => l.toUpperCase())}</span> : ''}
+        {!_.isEmpty(type) ? <span className='property'>{type.replace(/\b\w/g, l => l.toUpperCase())}</span> : ''}
+        </div>
+      )
     }
   }
 
@@ -52,7 +70,7 @@ export default class Channel extends React.Component {
                 <span className='channel_name'>{this.props.channelPosition + 1}. {this.props.channel.name}</span>
               </div>
               <div className='channel_description'>
-                <span className='empty_state'>No Channel Properties Selected...</span>
+                {this.renderChannelProperties()}
               </div>
             </div>
           </div>

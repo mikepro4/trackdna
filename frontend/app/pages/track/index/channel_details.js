@@ -30,6 +30,7 @@ export default class ChannelDetails extends React.Component {
     }
     this.props.dispatch(updateChannel(newChannel))
     console.log('newChannel', newChannel)
+    this.props.dispatch(selectChannel(null))
   }
 
   render() {
