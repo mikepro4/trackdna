@@ -85,7 +85,7 @@ app.get('*',(req, res) => {
             .map(v => `<style>${v._style}</style>`)
 
           serverState = `<script charSet='UTF-8'>window.__data=${serialize(store.getState())}</script>`
-          bundleScriptFile = `<script src=${assets.javascript.main} charSet='UTF-8'></script>`
+          bundleScriptFile = `<script src='/${assets.javascript.main}' charSet='UTF-8'></script>`
         } else {
           bundleScriptFile = `<script src=${assets.javascript.main} charSet='UTF-8'></script>`
         }
