@@ -17,7 +17,7 @@ export default class ChannelDetailsForm extends React.Component {
     })
     return (
       <div className={containerClassName}>
-        <label>{label}</label>
+        <label className='form_label'>{label}</label>
         <input {...input} className="input" placeholder={'Type ' + label + '...'} type={type} />
         <div className='input_error'>{touched && error && <span>{error}</span>}</div>
       </div>
@@ -32,7 +32,7 @@ export default class ChannelDetailsForm extends React.Component {
     })
     return (
       <div className={containerClassName}>
-        <label>{label}</label>
+        <label className='form_label'>{label}</label>
         <select name={name} {...input}>
           <option value="">Select {name}...</option>
           {options.map(colorOption =>

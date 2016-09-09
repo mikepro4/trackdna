@@ -4,5 +4,16 @@
   padding: 15px;
   border: 1px solid $strokeColor;
   width: calc(50% - 12px);
-  min-height: 200px;
+
+  .input_container {
+    height: 70px;
+    width: calc(45% - 12px);
+    float: left;
+    margin: 0 30px 0 0;
+
+    select {
+      width: 100%;
+      margin: 7px 0 0 0;
+    }
+  }
 }
