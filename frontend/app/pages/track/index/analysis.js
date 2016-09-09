@@ -42,6 +42,10 @@ export default class Analysis extends React.Component {
       });
   }
 
+  componentWillUnmount() {
+    this.props.dispatch(selectChannel(null))
+  }
+
   render() {
     const sameContent = _.isEqual(this.props.currentTrack.channels, this.props.analysis.channels)
     return (
