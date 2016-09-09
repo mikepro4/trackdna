@@ -5,6 +5,7 @@ import {
   ADD_CHANNEL,
   EDIT_CHANNEL,
   DELETE_CHANNEL,
+  SELECT_CHANNEL,
   ADD_CLIP,
   SELECT_CLIP,
   DELETE_CLIP
@@ -32,6 +33,14 @@ export default (state = {}, action) => {
       case ADD_CHANNEL:
         return update(state, {
           channels: {$push: action.channel}
+        })
+      case SELECT_CHANNEL:
+        return {... state,
+          selectedChannel: action.channel || {},
+        }
+      case DELETE_CHANNEL:
+        return update(state, {
+          channels: {$splice: [[action.channelId, 1]]}
         })
       case SELECT_CLIP:
         return {... state,
@@ -101,10 +110,6 @@ export default (state = {}, action) => {
         let index = _.findIndex(state.channels,  {id: action.channelId})
         return update(state, {
           channels: {$splice: [[index, 1, newChannelNewClip]]}
-        })
-      case DELETE_CHANNEL:
-        return update(state, {
-          channels: {$splice: [[action.channelId, 1]]}
         })
     default:
       return state

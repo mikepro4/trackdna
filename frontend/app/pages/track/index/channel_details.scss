@@ -1,0 +1,36 @@
+@import "../../../styles/vars";
+
+.channel_details_container {
+  padding: 15px 25px;
+
+  .channel_details_header {
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 13px;
+      opacity: .3;
+      margin: 3px 0 0 0;
+    }
+
+    .channel_actions {
+      li {
+        float: left;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+
+  .channel_details_content {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 15px 0;
+
+    .channel_details_timeline {
+      padding: 15px;
+      border: 1px solid $strokeColor;
+      width: calc(50% - 12px);
+      min-height: 200px;
+    }
+  }
+}

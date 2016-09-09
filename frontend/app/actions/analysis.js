@@ -6,6 +6,7 @@ import {
   ADD_CHANNEL,
   EDIT_CHANNEL,
   DELETE_CHANNEL,
+  SELECT_CHANNEL,
   ADD_CLIP,
   SELECT_CLIP,
   DELETE_CLIP
@@ -44,6 +45,13 @@ export function deleteChannel(channelId) {
 export function editChannel(channel) {
   return {
     type: EDIT_CHANNEL,
+    channel
+  };
+}
+
+export function selectChannel(channel) {
+  return {
+    type: SELECT_CHANNEL,
     channel
   };
 }

@@ -17,7 +17,12 @@ export default class ChannelsContent extends React.Component {
   onAddChannel() {
     const newChannel = {
       id: uuid(),
-      name: `Untitled Channel ${Math.random()}`,
+      name: `Untitled Channel`,
+      color: 'default',
+      role: '',
+      type: '',
+      source: '',
+      effects: [],
       clips: []
     }
 

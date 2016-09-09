@@ -1,0 +1,8 @@
+@import "../../../styles/vars";
+
+.channel_details_form {
+  padding: 15px;
+  border: 1px solid $strokeColor;
+  width: calc(50% - 12px);
+  min-height: 200px;
+}
