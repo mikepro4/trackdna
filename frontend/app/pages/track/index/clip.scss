@@ -50,6 +50,98 @@
   }
 }
 
+.green {
+  .clip {
+    background: #40BF5A;
+    border: 1px solid #2E8A41;
+    color: $white;
+
+    &.selected_clip {
+      background: $black;
+      color: $white;
+      border: 1px solid $black;
+      box-shadow: 0px 4px 20px 0px rgba($black,0.2);
+    }
+  }
+}
+
+.red {
+  .clip {
+    background: #E85952;
+    border: 1px solid #9F3530;
+    color: $white;
+
+    &.selected_clip {
+      background: $black;
+      color: $white;
+      border: 1px solid $black;
+      box-shadow: 0px 4px 20px 0px rgba($black,0.2);
+    }
+  }
+}
+
+.orange {
+  .clip {
+    background: #F79533;
+    border: 1px solid #CE7216;
+    color: $white;
+
+    &.selected_clip {
+      background: $black;
+      color: $white;
+      border: 1px solid $black;
+      box-shadow: 0px 4px 20px 0px rgba($black,0.2);
+    }
+  }
+}
+
+.blue {
+  .clip {
+    background: #00B0EE;
+    border: 1px solid #247E9E;
+    color: $white;
+
+    &.selected_clip {
+      background: $black;
+      color: $white;
+      border: 1px solid $black;
+      box-shadow: 0px 4px 20px 0px rgba($black,0.2);
+    }
+  }
+}
+
+
+.indigo {
+  .clip {
+    background: #5368E4;
+    border: 1px solid #162370;
+    color: $white;
+
+    &.selected_clip {
+      background: $black;
+      color: $white;
+      border: 1px solid $black;
+      box-shadow: 0px 4px 20px 0px rgba($black,0.2);
+    }
+  }
+}
+
+.violet {
+  .clip {
+    background: #9048CC;
+    border: 1px solid #3F1760;
+    color: $white;
+
+    &.selected_clip {
+      background: $black;
+      color: $white;
+      border: 1px solid $black;
+      box-shadow: 0px 4px 20px 0px rgba($black,0.2);
+    }
+  }
+}
+
+
 .ghost_clip {
   background: rgba($yellow, 1);
   display: block;

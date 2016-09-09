@@ -53,7 +53,8 @@ export default class Channel extends React.Component {
 
     let channelClasses = classNames({
       'channel_container': true,
-      'channel_selected': channelSelected
+      'channel_selected': channelSelected,
+      [this.props.channel.color]: true
     })
 
     return (
