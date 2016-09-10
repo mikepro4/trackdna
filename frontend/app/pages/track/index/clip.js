@@ -7,6 +7,10 @@ import {
   selectClip,
 } from '../../../actions/analysis'
 
+import {
+  updateCurrentVideo
+} from '../../../actions/'
+
 export default class Clip extends React.Component {
   calculateClipPosition(seconds) {
     const left = seconds * 100 / this.props.currentTrack.youtubeLength + '%'
@@ -21,16 +25,22 @@ export default class Clip extends React.Component {
   onClipClick(event) {
     console.log('clip click')
     // fucking mess here but works
-    if(event.target.className !== 'resize_left' && event.target.className !== 'resize_right') {
+    // if(event.target.className !== 'resize_left' && event.target.className !== 'resize_right') {
       if(this.props.analysis.selectedClip && this.props.analysis.selectedClip.id) {
         if(this.props.clip.id === this.props.analysis.selectedClip.id) {
-          this.deselectClip()
+          // this.deselectClip()
         } else {
           this.props.dispatch(selectClip(this.props.clip))
         }
       } else {
         this.props.dispatch(selectClip(this.props.clip))
       }
+    // }
+  }
+
+  onDoubleClick(event) {
+    if(this.props.analysis.selectedClip) {
+      this.props.dispatch(updateCurrentVideo(this.props.currentVideo.videoId, 'seek', this.props.analysis.selectedClip.start))
     }
   }
 
@@ -52,10 +62,10 @@ export default class Clip extends React.Component {
 
     // console.log(this.props.channel)
     return (
-      <div style={clipStyle} className={clipClasses} onMouseDown={this.onClipClick.bind(this)}>
-        {/* <span className='resize_left' onMouseDown={this.props.resizeLeft.bind(this, this.props.clip)}></span> */}
+      <div style={clipStyle} className={clipClasses} onMouseDown={this.onClipClick.bind(this)} onDoubleClick={this.onDoubleClick.bind(this)}>
+        <span className='resize_left' onMouseDown={this.props.resizeLeft.bind(this, this.props.clip)}></span>
         <span className='clip_name'>{this.props.channel.name}</span>
-        {/* <span className='resize_right' onMouseDown={this.props.resizeRight.bind(this, this.props.clip)}></span> */}
+        <span className='resize_right' onMouseDown={this.props.resizeRight.bind(this, this.props.clip)}></span>
       </div>
     );
   }

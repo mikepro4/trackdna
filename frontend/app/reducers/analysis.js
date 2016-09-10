@@ -8,7 +8,8 @@ import {
   SELECT_CHANNEL,
   ADD_CLIP,
   SELECT_CLIP,
-  DELETE_CLIP
+  DELETE_CLIP,
+  UPDATE_CLIP
 } from '../actions/types'
 import update from 'react/lib/update'
 import _ from 'lodash'
@@ -42,6 +43,33 @@ export default (state = {}, action) => {
         let channeltoUpdateIndex = _.findIndex(state.channels,  {id: action.channel.id})
         return update(state, {
           channels: {$splice: [[channeltoUpdateIndex, 1, action.channel]]}
+        })
+      case UPDATE_CLIP:
+        let channelToUpdateNow = _.find(state.channels, {id: action.channelId})
+        let filteredClipYo = _.filter(channelToUpdateNow.clips, (clip) => {
+          return (clip.id === action.clip.id)
+        })
+
+        const clipEnd = action.clip.end
+        const clipStart = action.clip.start
+        let updatedClipYo = {...filteredClipYo[0],
+          end: clipEnd,
+          start: clipStart
+        }
+
+        let clipToFilterIndexYo = _.findIndex(channelToUpdateNow.clips,  {id: action.clip.id})
+        let updatedChannelYo = update(channelToUpdateNow, {
+          clips: {$splice: [[clipToFilterIndexYo, 1, updatedClipYo]]}
+        })
+        // console.log(updatedChannelYo)
+        // let channelToUpdate = _.find(state.channels, {id: action.channelId})
+        // let channelUpdatedClip = update(channelToUpdate, {
+        //   clips: {$splice: [action.clip]}
+        // })
+        let channelsToFilterIndexYo = _.findIndex(state.channels,  {id: action.channelId})
+
+        return update(state, {
+          channels: {$splice: [[channelsToFilterIndexYo, 1, updatedChannelYo]]}
         })
       case DELETE_CHANNEL:
         return update(state, {

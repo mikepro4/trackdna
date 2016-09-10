@@ -84,7 +84,7 @@ export default class ProgressBarPlayer extends React.Component {
           </div>
 
             <div className='cursor playing' style={cursor} ></div>
-            <div className='cursor hover' style={cursorHover}></div>
+            {this.props.analysis.hoverTime * 100 / this.props.duration > 0 ? <div className='cursor hover' style={cursorHover}></div> : ''}
             {
               (this.props.waveformId) ?
               (<img

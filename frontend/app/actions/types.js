@@ -45,6 +45,7 @@ export const ADD_CLIP = 'app/ADD_CLIP'
 export const EDIT_CLIP = 'app/EDIT_CLIP'
 export const DELETE_CLIP = 'app/DELETE_CLIP'
 export const SELECT_CLIP = 'app/SELECT_CLIP'
+export const UPDATE_CLIP = 'app/UPDATE_CLIP'
 
 export const ADD_MOMENT = 'app/ADD_MOMENT'
 export const EDIT_MOMENT = 'app/EDIT_MOMENT'

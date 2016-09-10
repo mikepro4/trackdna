@@ -15,10 +15,6 @@ import {
 } from '../../actions'
 
 // components
-// import TrackSidebar from './index/track_sidebar'
-// import TrackPlayer from './index/player'
-// import TrackChannels from './index/channels'
-// import TrackInfo from './index/track_info'
 import Analysis from './index/analysis'
 import YoutubePlayer from '../../components/player/player'
 
@@ -38,10 +34,9 @@ export default class Track extends React.Component {
    super(props);
 
    this.state = {
-     scrollTop: 0,
+     scrollTop: 0
    }
   }
-
 
   componentDidMount() {
     this.props.dispatch(updateCurrentVideo(this.props.currentTrack.youtubeUrl))
@@ -53,7 +48,6 @@ export default class Track extends React.Component {
   }
 
   handleScroll = (event) =>  {
-    // this.refs.player_wrapper.getDOMNode().style.top = document.documentElement.scrollTop + 'px';
     this.setState({
       scrollTop: event.target.scrollTop
     })
@@ -78,16 +72,6 @@ export default class Track extends React.Component {
               scrollTop={this.state.scrollTop}
             />
           </div>
-
-
-
-          {/* <TrackSidebar {...this.props} /> */}
-
-          {/* <div className='track_content'>
-            <TrackPlayer {...this.props} />
-            <TrackChannels {...this.props} />
-            <TrackInfo {...this.props} />
-          </div> */}
 
         </div>
 
