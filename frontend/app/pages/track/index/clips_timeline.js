@@ -224,19 +224,35 @@ export default class ClipsTimeline extends React.Component {
         const percentDiff = this.state.startPercent - endPosition
         const diff = percentDiff * this.props.currentTrack.youtubeLength / 100
         // const clipStart = this.props.analysis.selectedClip.start - diff;
-        newClip = {
-          id: this.props.analysis.selectedClip.id,
-          start: this.props.analysis.selectedClip.start - diff,
-          end: this.props.analysis.selectedClip.end - diff,
+
+        if( this.props.analysis.selectedClip.start - diff >= 0) {
+          newClip = {
+            id: this.props.analysis.selectedClip.id,
+            start: this.props.analysis.selectedClip.start - diff,
+            end: this.props.analysis.selectedClip.end - diff,
+          }
+          this.props.dispatch(updateClip(this.props.channel.id, newClip))
+          this.setState({
+            newClip
+          })
         }
+
       } else if(endPosition > this.state.startPercent) {
         const percentDiff =  endPosition - this.state.startPercent
         const diff = percentDiff * this.props.currentTrack.youtubeLength / 100
         // const clipStart = this.props.analysis.selectedClip.start - diff;
-        newClip = {
-          id: this.props.analysis.selectedClip.id,
-          start: this.props.analysis.selectedClip.start + diff,
-          end: this.props.analysis.selectedClip.end + diff,
+
+
+        if( this.props.analysis.selectedClip.end + diff <= this.props.currentTrack.youtubeLength) {
+          newClip = {
+            id: this.props.analysis.selectedClip.id,
+            start: this.props.analysis.selectedClip.start + diff,
+            end: this.props.analysis.selectedClip.end + diff,
+          }
+          this.props.dispatch(updateClip(this.props.channel.id, newClip))
+          this.setState({
+            newClip
+          })
         }
         // newClip = {
         //   id: this.props.analysis.selectedClip.id,
@@ -245,13 +261,13 @@ export default class ClipsTimeline extends React.Component {
         // }
       }
 
-      if(newClip.start && newClip.end) {
-
-        this.props.dispatch(updateClip(this.props.channel.id, newClip))
-        this.setState({
-          newClip
-        })
-      }
+      // if(newClip.start && newClip.end) {
+      //
+      //   this.props.dispatch(updateClip(this.props.channel.id, newClip))
+      //   this.setState({
+      //     newClip
+      //   })
+      // }
     }
 
 
