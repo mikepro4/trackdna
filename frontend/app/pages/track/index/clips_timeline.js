@@ -22,6 +22,10 @@ import {
 } from '../../../utils/uuid'
 
 export default class ClipsTimeline extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
 
@@ -97,7 +101,8 @@ export default class ClipsTimeline extends React.Component {
     })
 
     if(!_.isEmpty(this.state.newClip)) {
-      this.props.dispatch(selectClip(this.state.newClip))
+      this.selectClip(this.state.newClip)
+
       this.setState({
         newClip: {}
       })
@@ -122,7 +127,7 @@ export default class ClipsTimeline extends React.Component {
 
     if(!_.isEmpty(this.state.newClip)) {
       console.log('update on leave')
-      this.props.dispatch(selectClip(this.state.newClip))
+      this.selectClip(this.state.newClip)
       this.setState({
         newClip: {}
       })
@@ -207,7 +212,7 @@ export default class ClipsTimeline extends React.Component {
 
         console.log( this.state.clip)
         if(newClip.start && newClip.end) {
-          this.props.dispatch(selectClip(newClip))
+          this.selectClip(newClip)
           this.props.dispatch(updateClip(this.props.channel.id, newClip))
           this.setState({
             newClip
@@ -254,20 +259,8 @@ export default class ClipsTimeline extends React.Component {
             newClip
           })
         }
-        // newClip = {
-        //   id: this.props.analysis.selectedClip.id,
-        //   start: this.props.analysis.selectedClip.start + 1,
-        //   end: this.props.analysis.selectedClip.end + 1,
-        // }
       }
 
-      // if(newClip.start && newClip.end) {
-      //
-      //   this.props.dispatch(updateClip(this.props.channel.id, newClip))
-      //   this.setState({
-      //     newClip
-      //   })
-      // }
     }
 
 
@@ -297,7 +290,7 @@ export default class ClipsTimeline extends React.Component {
 
     if((end * this.props.currentTrack.youtubeLength / 100-start * this.props.currentTrack.youtubeLength / 100)>1) {
       this.props.dispatch(addClip(this.props.channel.id, newClip))
-      this.props.dispatch(selectClip(newClip))
+      this.selectClip(newClip)
     }
   }
 
@@ -318,6 +311,13 @@ export default class ClipsTimeline extends React.Component {
       startPercent: clip.start * 100 / this.props.currentTrack.youtubeLength,
       clip
     })
+  }
+
+  selectClip(clip) {
+    this.props.dispatch(selectClip(clip))
+    // const id = this.props.currentTrack.id;
+    // const clipId = this.props.analysis.selectedClip.id;
+    // this.context.router.push(`/track/${id}?clipId=${encodeURIComponent(clipId)}`)
   }
 
   render() {

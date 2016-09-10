@@ -54,7 +54,7 @@ export default class Analysis extends React.Component {
         <div className='analysis_header'>
           <h1 className='analysis_title'>TRACK ANALYSIS</h1>
           <ul className='analysis_actions'>
-            {!sameContent ? <li><a className='button' onClick={this.onAnalysisSave.bind(this)}>Save Track</a></li> : ''}
+            <li><a className='button' onClick={this.onAnalysisSave.bind(this)}>Save Track</a></li>
             <li><a className='button' onClick={this.onDelete.bind(this)}>Delete Track</a></li>
           </ul>
         </div>

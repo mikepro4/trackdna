@@ -12,6 +12,10 @@ import {
 } from '../../../actions/'
 
 export default class Clip extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
 
@@ -42,9 +46,15 @@ export default class Clip extends React.Component {
           // this.deselectClip()
         } else {
           this.props.dispatch(selectClip(this.props.clip))
+          // const id = this.props.currentTrack.id;
+          // const clipId = this.props.analysis.selectedClip.id;
+          // this.context.router.push(`?clipId=${encodeURIComponent(clipId)}`)
         }
       } else {
         this.props.dispatch(selectClip(this.props.clip))
+        // const id = this.props.currentTrack.id;
+        // const clipId = this.props.analysis.selectedClip.id;
+        // this.context.router.push(`?clipId=${encodeURIComponent(clipId)}`)
       }
     // }
   }
@@ -54,7 +64,7 @@ export default class Clip extends React.Component {
       mousePressed: false
     })
   }
-  
+
   onMouseLeave(){
     this.setState({
       mousePressed: false
