@@ -5,6 +5,9 @@ $channelHeight: 80px;
 .channel_container {
   border-bottom: 1px solid $strokeColor;
   height: $channelHeight;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   position: relative;
   box-shadow:  0px 0px 30px 0px rgba($black, 0);
