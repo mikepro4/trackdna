@@ -641,8 +641,8 @@
           "clips": [
             {
               "id": "8b201906-4740-4b82-be99-0d10b605311b",
-              "start": 11.837837837837837,
-              "end": 57.61081081081081,
+              "start": 13.021621621621621,
+              "end": 58.79459459459459,
               "name": "Clip Name"
             },
             {
@@ -1657,8 +1657,8 @@
           "clips": [
             {
               "id": "dc02ca32-c23c-4a8c-95cf-1d4b8056f2cd",
-              "start": 79.7318918918919,
-              "end": 151.39567567567568,
+              "start": 63.1210810810811,
+              "end": 134.78486486486486,
               "name": "Clip Name"
             },
             {
@@ -1698,21 +1698,15 @@
             },
             {
               "id": "e571dde6-dd51-433f-827b-46bc311d57ec",
-              "start": 165.6335135135135,
-              "end": 213.56756756756755,
-              "name": "Clip Name"
-            },
-            {
-              "id": "0982cd11-eb09-42bf-9945-2a2b6589914b",
-              "start": 5.695135135135118,
-              "end": 51.25621621621622,
+              "start": 129.5643243243243,
+              "end": 247.26378378378368,
               "name": "Clip Name"
             }
           ]
         },
         {
           "id": "4399ddc3-f74c-41ea-9bb6-36b6393df244",
-          "name": "Untitled Channel",
+          "name": "Untitled Channel 1",
           "color": "red",
           "role": "",
           "type": "",
@@ -1746,6 +1740,335 @@
       "waveformId": 7541732,
       "channels": [],
       "id": 36
+    },
+    {
+      "artist": "Tiesto",
+      "trackName": "Traffic",
+      "youtubeUrl": "wXTgtFnY0Lw",
+      "bpm": 138,
+      "youtubeLength": 420,
+      "beatportLength": 417,
+      "label": "Magik Muzik",
+      "genre": "House",
+      "key": "A# minor",
+      "releaseDate": "2009-12-08",
+      "mixName": "Original 12\"",
+      "coverId": 12970846,
+      "waveformId": 12971230,
+      "channels": [
+        {
+          "id": "2b153fd1-cf03-4096-8b99-b3c78fd6f45e",
+          "name": "Kick",
+          "color": "blue",
+          "role": "groove",
+          "type": "",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "d707d111-d3b7-4f90-8b0a-af26f4a6db31",
+              "start": 3.1783783783783788,
+              "end": 44.04324324324324,
+              "name": "Clip Name"
+            },
+            {
+              "id": "99fd8228-72e0-45d6-a8b2-72c419fe7e79",
+              "start": 46.313513513513506,
+              "end": 117.6,
+              "name": "Clip Name"
+            },
+            {
+              "id": "5f21d7c4-9323-4abe-9536-892389ffbec3",
+              "start": 119.8702702702703,
+              "end": 168.45405405405404,
+              "name": "Clip Name"
+            },
+            {
+              "id": "610ab992-3080-472b-a45b-cfff14ef09fe",
+              "start": 196.15135135135134,
+              "end": 259.2648648648649,
+              "name": "Clip Name"
+            },
+            {
+              "id": "66646caa-9b76-495f-b8dd-dfe6534113b0",
+              "start": 286.96216216216214,
+              "end": 419.0918918918919,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "fae5823a-a618-4693-a247-a9ce9297b025",
+          "name": "High-hat",
+          "color": "blue",
+          "role": "groove",
+          "type": "",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "a099ea96-7cd4-4f98-9f94-cb2222df3d58",
+              "start": 12.259459459459459,
+              "end": 44.4972972972973,
+              "name": "Clip Name"
+            },
+            {
+              "id": "31978617-349e-44fd-8ab1-f4978b3c8df6",
+              "start": 56.75675675675676,
+              "end": 118.50810810810812,
+              "name": "Clip Name"
+            },
+            {
+              "id": "9e458c79-6080-4911-bace-e221966231ca",
+              "start": 210.68108108108106,
+              "end": 258.3567567567568,
+              "name": "Clip Name"
+            },
+            {
+              "id": "0395a140-361c-4c33-b7da-d0a87f441976",
+              "start": 285.1459459459459,
+              "end": 419.0918918918919,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "c0d72223-8be9-4fd0-b648-a090c54373f4",
+          "name": "Cymbals",
+          "color": "blue",
+          "role": "groove",
+          "type": "",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "f7621c50-93e2-4e87-987a-1f8d3278aa62",
+              "start": 67.2,
+              "end": 117.14594594594595,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "c886d43f-4a31-4b50-b219-2d805bdd1792",
+          "name": "Lead melody",
+          "color": "red",
+          "role": "",
+          "type": "synth",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "35337cb9-2311-4982-b3fc-46e38464cde9",
+              "start": 133.03783783783786,
+              "end": 191.6108108108108,
+              "name": "Clip Name"
+            },
+            {
+              "id": "353a432b-2c31-4a72-8c90-8737b501eaf1",
+              "start": 194.7891891891892,
+              "end": 328.2810810810811,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "f2650889-455e-47d9-86f3-55aae6e3a892",
+          "name": "Bass",
+          "color": "blue",
+          "role": "",
+          "type": "",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "35884695-b424-4667-9123-5510caf2a694",
+              "start": 46.313513513513506,
+              "end": 117.6,
+              "name": "Clip Name"
+            },
+            {
+              "id": "b27cd736-9d89-47f2-bd05-0bdde7194e5e",
+              "start": 119.87027027027027,
+              "end": 164.82162162162163,
+              "name": "Clip Name"
+            },
+            {
+              "id": "a3796578-2b03-43aa-92a1-ad173f0b41d1",
+              "start": 196.15135135135134,
+              "end": 259.2648648648649,
+              "name": "Clip Name"
+            },
+            {
+              "id": "822c0c2f-32e2-4f5a-a848-8dfb04b1123b",
+              "start": 286.5081081081081,
+              "end": 419.54594594594596,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "0c647436-b460-4de3-9eae-3052aec76612",
+          "name": "Snare",
+          "color": "blue",
+          "role": "groove",
+          "type": "",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "247b352c-b15f-438d-a111-c2644faa165a",
+              "start": 271.5243243243243,
+              "end": 286.05405405405406,
+              "name": "Clip Name"
+            },
+            {
+              "id": "d4522b11-b489-424b-8a5a-f402460c8177",
+              "start": 300.1297297297297,
+              "end": 419.54594594594596,
+              "name": "Clip Name"
+            },
+            {
+              "id": "e3e1d4de-ee92-42cd-9c8f-82cedfb4c9ca",
+              "start": 29.513513513513512,
+              "end": 40.86486486486487,
+              "name": "Clip Name"
+            },
+            {
+              "id": "a5c4d92b-6233-4c67-bf26-aeb5e2ea50d3",
+              "start": 212.4972972972973,
+              "end": 258.3567567567568,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "50d4d9b6-ea43-4ce8-b2c0-04565ed24bef",
+          "name": "Background noise",
+          "color": "green",
+          "role": "background",
+          "type": "fx",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "546d1afc-dc58-4e07-bca1-2d057eb6fe3e",
+              "start": 353.70810810810804,
+              "end": 383.2216216216216,
+              "name": "Clip Name"
+            },
+            {
+              "id": "6375d4fc-a3dc-4801-af90-4904f59a2108",
+              "start": 395.027027027027,
+              "end": 417.27567567567564,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "34ad2f1f-7500-4683-8a03-4f70b6edac2d",
+          "name": "Groove effect",
+          "color": "violet",
+          "role": "groove",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "283134d0-2351-465d-a62a-50efb117fd7c",
+              "start": 92.62702702702703,
+              "end": 114.87567567567567,
+              "name": "Clip Name"
+            },
+            {
+              "id": "bf64dc6d-9968-4aee-87a8-21eabf9fac7f",
+              "start": 30.42162162162162,
+              "end": 41.77297297297297,
+              "name": "Clip Name"
+            }
+          ]
+        }
+      ],
+      "id": 37
+    },
+    {
+      "artist": "Kodaline, Kygo",
+      "trackName": "Raging feat. Kodaline",
+      "youtubeUrl": "ZhzN7-Q00KU",
+      "bpm": 100,
+      "youtubeLength": 225,
+      "beatportLength": 224,
+      "label": "Kygo Music",
+      "genre": "Dance",
+      "key": "F# major",
+      "releaseDate": "2016-04-01",
+      "mixName": "Original Mix",
+      "coverId": 13488453,
+      "waveformId": 13489715,
+      "channels": [
+        {
+          "id": "5c36ee03-a8a3-4df1-9b0f-275781317408",
+          "name": "plingplong ",
+          "color": "orange",
+          "role": "lead",
+          "type": "synth",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "538b5930-f3b4-41d3-bed0-c6f70e7e4f7f",
+              "start": 60.238386308068456,
+              "end": 96.54645476772616,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "838d035d-e75d-482a-8a56-f66d0263dc85",
+          "name": "Untitled Channel",
+          "color": "blue",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": []
+        }
+      ],
+      "id": 38
+    },
+    {
+      "artist": "Weiss (UK)",
+      "trackName": "You're Sunshine",
+      "youtubeUrl": "OvWs01RS3do",
+      "bpm": 123,
+      "youtubeLength": 362,
+      "beatportLength": 362,
+      "label": "Toolroom",
+      "genre": "House",
+      "key": "A# minor",
+      "releaseDate": "2016-08-26",
+      "mixName": "Original Mix",
+      "coverId": 14229779,
+      "waveformId": 14285996,
+      "channels": [],
+      "id": 39
+    },
+    {
+      "artist": "Mark Knight",
+      "trackName": "Yebisah",
+      "youtubeUrl": "bpATiJ9W7kM",
+      "bpm": 124,
+      "youtubeLength": 504,
+      "beatportLength": 503,
+      "label": "Toolroom",
+      "genre": "House",
+      "key": "D minor",
+      "releaseDate": "2016-08-05",
+      "mixName": "Original Mix",
+      "coverId": 14124612,
+      "waveformId": 14193607,
+      "channels": [],
+      "id": 40
     }
   ],
   "folders": [
