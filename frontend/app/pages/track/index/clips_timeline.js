@@ -28,6 +28,7 @@ export default class ClipsTimeline extends React.Component {
     this.state = {
       startedDragging: false,
       startedEditing: false,
+      startedMoving: false,
       startPercent: 0,
       endPercent: 0,
       ghostWidth: 0
@@ -61,7 +62,12 @@ export default class ClipsTimeline extends React.Component {
         startedDragging: true,
         startPercent: this.calculateWidth(event)
       })
-    } 
+    } else if (event.target.className == 'clip' || event.target.className == 'clip_name') {
+      this.setState({
+        startedMoving: true,
+        startPercent: this.calculateWidth(event)
+      })
+    }
   }
 
   onMouseUp(event) {
@@ -81,19 +87,25 @@ export default class ClipsTimeline extends React.Component {
     this.setState({
       startedEditing: false,
       startedEditingLeft: false,
-      startedEditingRight: false
+      startedEditingRight: false,
+      startedMoving: false
       // startPercent: this.calculateWidth(event),
       // startedDragging: false,
       // ghostWidth: 0,
       // ghostEndPosition: 0,
       // endPercent: 0
     })
+
+    if(this.state.newClip) {
+      this.props.dispatch(selectClip(this.state.newClip))
+    }
   }
 
   onMouseLeave(event) {
     this.setState({
       startedDragging: false,
       startedEditing: false,
+      startedMoving: false,
       startPercent: 0,
       endPercent: 0,
       ghostWidth: 0,
@@ -146,58 +158,89 @@ export default class ClipsTimeline extends React.Component {
     }
 
     if(this.state.startedEditing) {
-        console.log('started editing')
-        // console.log('moving and editing')
-        // console.log(this.calculateHover(event))
-        // console.log(this.props.analysis.selectedClip.start, this.props.analysis.selectedClip.end)
-        // console.log(this.props.analysis.selectedClip.start * this.props.currentTrack.youtubeLength / 100)
-        // if(this.props.analysis.selectedClip) {
-          let ghostWidth
-          let ghostDirection = ''
-          let ghostEndPosition = 0
-          const endPosition = this.calculateWidth(event)
+        const endPosition = this.calculateWidth(event)
 
-          let newClip = {};
-          if(endPosition < this.state.startPercent) {
-            console.log('end is less then start')
-            this.setState({
-              startedEditingLeft: true,
-              startedEditingRight: false
-            })
+        let newClip = {};
+        if(endPosition < this.state.startPercent) {
+          console.log('end is less then start')
+          this.setState({
+            startedEditingLeft: true,
+            startedEditingRight: false
+          })
+          newClip = {
+            id: this.state.clip.id,
+            start: this.calculateHover(event),
+            end: this.state.clip.end,
+          }
+        } else if(endPosition > this.state.startPercent) {
+
+          if(this.state.startedEditingLeft) {
             newClip = {
               id: this.state.clip.id,
               start: this.calculateHover(event),
               end: this.state.clip.end,
             }
-          } else if(endPosition > this.state.startPercent) {
+          } else {
+            console.log('end is more then start')
 
-            if(this.state.startedEditingLeft) {
-              newClip = {
-                id: this.state.clip.id,
-                start: this.calculateHover(event),
-                end: this.state.clip.end,
-              }
-            } else {
-              console.log('end is more then start')
-
-              newClip = {
-                id: this.state.clip.id,
-                start: this.state.clip.start,
-                end: this.calculateHover(event),
-              }
+            newClip = {
+              id: this.state.clip.id,
+              start: this.state.clip.start,
+              end: this.calculateHover(event),
             }
-
           }
 
+        }
 
-          console.log( this.state.clip)
-          if(newClip.start && newClip.end) {
-            this.props.dispatch(selectClip(newClip))
-            this.props.dispatch(updateClip(this.props.channel.id, newClip))
-          }
+
+        console.log( this.state.clip)
+        if(newClip.start && newClip.end) {
+          this.props.dispatch(selectClip(newClip))
+          this.props.dispatch(updateClip(this.props.channel.id, newClip))
+          this.setState({
+            newClip
+          })
+        }
+      }
+
+    if(this.state.startedMoving) {
+      console.log('moving clip')
+      const endPosition = this.calculateWidth(event)
+
+      let newClip = {};
+      if(endPosition < this.state.startPercent) {
+        const percentDiff = this.state.startPercent - endPosition
+        const diff = percentDiff * this.props.currentTrack.youtubeLength / 100
+        // const clipStart = this.props.analysis.selectedClip.start - diff;
+        newClip = {
+          id: this.props.analysis.selectedClip.id,
+          start: this.props.analysis.selectedClip.start - diff,
+          end: this.props.analysis.selectedClip.end - diff,
+        }
+      } else if(endPosition > this.state.startPercent) {
+        const percentDiff =  endPosition - this.state.startPercent
+        const diff = percentDiff * this.props.currentTrack.youtubeLength / 100
+        // const clipStart = this.props.analysis.selectedClip.start - diff;
+        newClip = {
+          id: this.props.analysis.selectedClip.id,
+          start: this.props.analysis.selectedClip.start + diff,
+          end: this.props.analysis.selectedClip.end + diff,
+        }
+        // newClip = {
+        //   id: this.props.analysis.selectedClip.id,
+        //   start: this.props.analysis.selectedClip.start + 1,
+        //   end: this.props.analysis.selectedClip.end + 1,
         // }
       }
 
+      if(newClip.start && newClip.end) {
+
+        this.props.dispatch(updateClip(this.props.channel.id, newClip))
+        this.setState({
+          newClip
+        })
+      }
+    }
 
 
     this.props.dispatch(updateHoverTime(this.calculateHover(event)))
@@ -233,6 +276,7 @@ export default class ClipsTimeline extends React.Component {
   resizeLeft(clip) {
     this.setState({
       startedEditing: true,
+      startedMoving: false,
       startedEditingLeft: true,
       startPercent: clip.start * 100 / this.props.currentTrack.youtubeLength,
       clip
@@ -242,6 +286,7 @@ export default class ClipsTimeline extends React.Component {
     this.setState({
       startedEditing: true,
       startedEditingRight: true,
+      startedMoving: false,
       startPercent: clip.start * 100 / this.props.currentTrack.youtubeLength,
       clip
     })

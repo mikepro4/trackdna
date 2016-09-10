@@ -14,6 +14,50 @@ import {
 import update from 'react/lib/update'
 import _ from 'lodash'
 
+export function filterClips(channel, action) {
+  console.log('filter clips')
+  let newClipStart = action.clip.start
+  let newClipEnd = action.clip.end
+
+  // filter completely overlapping clips
+  const filteredClips = _.filter(channel.clips, (clip) => {
+    let start = clip.start
+    let end = clip.end
+
+    const startInRange = (start > newClipStart && start < newClipEnd)
+    const endInRange = (end > newClipStart && end < newClipEnd)
+
+    let inRange = (startInRange && endInRange ? true : false)
+
+    return !inRange
+  })
+
+  // trim partially overlapping clips
+  const updatedChannelClips = _.map(filteredClips, (clip) => {
+    let start = clip.start
+    let end = clip.end
+    // console.log(newClipStart < clip.end)
+    if(newClipStart > start && newClipStart < end) {
+      let diff = clip.end - newClipStart
+      end = clip.end - diff
+    }
+    if(newClipEnd > start && newClipEnd < end) {
+      if(newClipEnd > clip.start) {
+        let diff = newClipEnd - clip.start
+        start = clip.start + diff
+      }
+    }
+
+    return {
+      ...clip,
+      start: start,
+      end: end
+    }
+  })
+
+  return updatedChannelClips
+}
+
 export default (state = {}, action) => {
   switch (action.type) {
       case UPDATE_HOVER_TIME:
@@ -61,15 +105,12 @@ export default (state = {}, action) => {
         let updatedChannelYo = update(channelToUpdateNow, {
           clips: {$splice: [[clipToFilterIndexYo, 1, updatedClipYo]]}
         })
-        // console.log(updatedChannelYo)
-        // let channelToUpdate = _.find(state.channels, {id: action.channelId})
-        // let channelUpdatedClip = update(channelToUpdate, {
-        //   clips: {$splice: [action.clip]}
-        // })
         let channelsToFilterIndexYo = _.findIndex(state.channels,  {id: action.channelId})
 
+        channelToUpdateNow.clips = filterClips(updatedChannelYo, action)
+
         return update(state, {
-          channels: {$splice: [[channelsToFilterIndexYo, 1, updatedChannelYo]]}
+          channels: {$splice: [[channelsToFilterIndexYo, 1, channelToUpdateNow]]}
         })
       case DELETE_CHANNEL:
         return update(state, {
@@ -95,46 +136,9 @@ export default (state = {}, action) => {
           clips: {$push: [action.clip]}
         })
 
-        let newClipStart = action.clip.start
-        let newClipEnd = action.clip.end
+        // channel.clips = updatedChannelClips
 
-        // filter completely overlapping clips
-        const filteredClips = _.filter(channel.clips, (clip) => {
-          let start = clip.start
-          let end = clip.end
-
-          const startInRange = (start > newClipStart && start < newClipEnd)
-          const endInRange = (end > newClipStart && end < newClipEnd)
-
-          let inRange = (startInRange && endInRange ? true : false)
-
-          return !inRange
-        })
-
-        // trim partially overlapping clips
-        const updatedChannelClips = _.map(filteredClips, (clip) => {
-          let start = clip.start
-          let end = clip.end
-          // console.log(newClipStart < clip.end)
-          if(newClipStart > start && newClipStart < end) {
-            let diff = clip.end - newClipStart
-            end = clip.end - diff
-          }
-          if(newClipEnd > start && newClipEnd < end) {
-            if(newClipEnd > clip.start) {
-              let diff = newClipEnd - clip.start
-              start = clip.start + diff
-            }
-          }
-
-          return {
-            ...clip,
-            start: start,
-            end: end
-          }
-        })
-
-        channel.clips = updatedChannelClips
+        channel.clips = filterClips(channel, action)
 
         let newChannelNewClip = update(channel, {
           clips: {$push: [action.clip]}
