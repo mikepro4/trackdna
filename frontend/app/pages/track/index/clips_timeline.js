@@ -96,8 +96,11 @@ export default class ClipsTimeline extends React.Component {
       // endPercent: 0
     })
 
-    if(this.state.newClip) {
+    if(!_.isEmpty(this.state.newClip)) {
       this.props.dispatch(selectClip(this.state.newClip))
+      this.setState({
+        newClip: {}
+      })
     }
   }
 
@@ -111,10 +114,19 @@ export default class ClipsTimeline extends React.Component {
       ghostWidth: 0,
       ghostEndPosition: 0,
       startedEditingLeft: false,
-      startedEditingRight: false
+      startedEditingRight: false,
+      // newClip: {}
     })
     this.props.dispatch(updateHoverTime(null))
     this.props.dispatch(updateRangeTime(null, null, null))
+
+    if(!_.isEmpty(this.state.newClip)) {
+      console.log('update on leave')
+      this.props.dispatch(selectClip(this.state.newClip))
+      this.setState({
+        newClip: {}
+      })
+    }
   }
 
   onMouseMove(event) {
