@@ -184,7 +184,7 @@ export default class TrackMetadata extends React.Component {
           youtubeLength: youtubeVideoDuration,
           label: label.name,
           genre: genres[0].name,
-          key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
+          key: key ? `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}` : '',
           youtubeUrl: this.props.search.youtubeSelectedVideo.id.videoId,
           coverId: dynamicImages.main.id,
           waveformId: (dynamicImages && dynamicImages.waveform ? dynamicImages.waveform.id : '' )
@@ -217,7 +217,7 @@ export default class TrackMetadata extends React.Component {
           beatportLength: Math.floor(moment.duration(lengthMs).asSeconds()),
           label: label.name,
           genre: genres[0].name,
-          key: `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}`,
+          key: key ? `${key.standard.letter}${key.standard.sharp ? '#' : ''}${key.standard.flat ? 'b' : ''} ${key.standard.chord}` : '',
           coverId: dynamicImages.main.id,
           waveformId: (this.props.search.beatportSelectedTrack.dynamicImages && this.props.search.beatportSelectedTrack.dynamicImages.waveform ? this.props.search.beatportSelectedTrack.dynamicImages.waveform.id : '' )
         }

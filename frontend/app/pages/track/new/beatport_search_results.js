@@ -130,12 +130,15 @@ export default class BetaportSearchResults extends React.Component {
                   </ul>
 
                   <ul className='beatport_info_list'>
+                  {track.key ?
                     <li>
                       {track.key.standard.letter}
                       {track.key.standard.sharp ? '# ' : ' '}
                       {track.key.standard.flat ? 'b ' : ' '}
                       {track.key.standard.chord}
                     </li>
+                    : ''
+                  }
                     <li>{track.genres[0].name}</li>
                   </ul>
                 </div>
