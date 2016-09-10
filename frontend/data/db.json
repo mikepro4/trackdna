@@ -31,12 +31,7 @@
       "mixName": "Original Mix",
       "coverId": 6253677,
       "waveformId": 2268499,
-      "channels": [
-        {
-          "id": 0.7070189198298857,
-          "name": 0.04597677450241666
-        }
-      ],
+      "channels": [],
       "id": 3
     },
     {
@@ -53,7 +48,418 @@
       "mixName": "Original Mix",
       "coverId": 13869367,
       "waveformId": 13869380,
-      "channels": [],
+      "channels": [
+        {
+          "id": "1c4188a5-0b4e-4f05-8e52-bdcc70cad7bc",
+          "name": "Verse Lyrics",
+          "color": "orange",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "4952cd6f-484e-405d-bb89-70b0d6ba04d6",
+              "start": 6.801081081081081,
+              "end": 20.90702702702703,
+              "name": "Clip Name"
+            },
+            {
+              "id": "c2cc6cfb-119b-4f44-bc95-072fce99526e",
+              "start": 22.922162162162163,
+              "end": 36.77621621621622,
+              "name": "Clip Name"
+            },
+            {
+              "id": "6c9a0bf4-2e86-492f-b003-5a7a83cdd5da",
+              "start": 70.78162162162162,
+              "end": 84.13189189189188,
+              "name": "Clip Name"
+            },
+            {
+              "id": "231c31ef-529d-429a-ada2-7151caee6093",
+              "start": 86.39891891891892,
+              "end": 100.75675675675674,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "fcf62b98-76ef-4a36-877c-3b66d1495e27",
+          "name": "\"I'll never be like you\"' (hook)",
+          "color": "red",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "dfa108ea-5092-4a1c-bab3-5531b07c330c",
+              "start": 18.64,
+              "end": 21.410810810810812,
+              "name": "Clip Name"
+            },
+            {
+              "id": "6b832332-8c84-4379-a376-2c4e40066505",
+              "start": 34.509189189189186,
+              "end": 36.27243243243243,
+              "name": "Clip Name"
+            },
+            {
+              "id": "576beb62-45b1-44d8-91f9-206ec4a57097",
+              "start": 51.13405405405406,
+              "end": 53.149189189189194,
+              "name": "Clip Name"
+            },
+            {
+              "id": "bb5ae118-1d26-40c7-b7a9-d791e95f4568",
+              "start": 66.75135135135135,
+              "end": 68.26270270270271,
+              "name": "Clip Name"
+            },
+            {
+              "id": "76f1712b-37d2-40f0-8b18-4a5b33bce020",
+              "start": 82.36864864864864,
+              "end": 83.88,
+              "name": "Clip Name"
+            },
+            {
+              "id": "7fba0d17-a38e-4744-9809-e3c803788b17",
+              "start": 98.74162162162162,
+              "end": 100.50486486486487,
+              "name": "Clip Name"
+            },
+            {
+              "id": "fce39bd4-a225-486d-a204-8ce53667baa5",
+              "start": 115.11459459459458,
+              "end": 116.87783783783783,
+              "name": "Clip Name"
+            },
+            {
+              "id": "7a51a6d6-60dd-4d91-a33a-311b7323daf7",
+              "start": 130.73189189189188,
+              "end": 132.49513513513514,
+              "name": "Clip Name"
+            },
+            {
+              "id": "30611348-6081-4903-8f14-409478be1f28",
+              "start": 178.33945945945948,
+              "end": 180.8583783783784,
+              "name": "Clip Name"
+            },
+            {
+              "id": "6efe8292-7c90-47ea-82d8-3e78bb5b48c8",
+              "start": 194.96432432432434,
+              "end": 197.48324324324324,
+              "name": "Clip Name"
+            },
+            {
+              "id": "c7bdb61e-6399-47ec-9abf-9d60273626b0",
+              "start": 226.9545945945946,
+              "end": 229.7254054054054,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "3bef5af6-e39a-4509-8dc5-634bb66c3fb0",
+          "name": "Chorus Lyrics",
+          "color": "indigo",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "1c1aba6a-40c2-4ecb-bec5-bf3394a8b361",
+              "start": 39.54702702702703,
+              "end": 53.149189189189194,
+              "name": "Clip Name"
+            },
+            {
+              "id": "e3bb3843-ffe6-43ce-9501-ccbdc6bea9de",
+              "start": 55.164324324324326,
+              "end": 68.5145945945946,
+              "name": "Clip Name"
+            },
+            {
+              "id": "61c0e168-1a82-4281-82d5-c5dd155376e0",
+              "start": 103.27567567567567,
+              "end": 117.12972972972973,
+              "name": "Clip Name"
+            },
+            {
+              "id": "5f44ce86-40ab-4f65-8b49-7e45a5e18ed3",
+              "start": 119.14486486486487,
+              "end": 132.24324324324326,
+              "name": "Clip Name"
+            },
+            {
+              "id": "4e632343-746c-44af-b97e-be1f6dbffb3c",
+              "start": 167.25621621621625,
+              "end": 181.36216216216218,
+              "name": "Clip Name"
+            },
+            {
+              "id": "dae4e25e-1513-495e-b06c-b1017f8b7d43",
+              "start": 182.62162162162159,
+              "end": 196.22378378378377,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "3aec79a2-4e60-4adc-89e1-999f4cb00775",
+          "name": "Bridge",
+          "color": "blue",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "e84b4a73-f50d-40d0-86b1-97b408a25ba0",
+              "start": 135.51783783783785,
+              "end": 166.75243243243244,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "92e3037e-20cd-4432-a013-aa413bc02d06",
+          "name": "Vocal FX Outro",
+          "color": "indigo",
+          "role": "background",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "e03a911a-4186-4923-977e-f6a5757ea68b",
+              "start": 199.75027027027028,
+              "end": 212.59675675675678,
+              "name": "Clip Name"
+            },
+            {
+              "id": "87c43e68-5672-489f-9ffd-7513fe17306d",
+              "start": 215.11567567567567,
+              "end": 229.4735135135135,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "48b2dcad-36ea-49ad-b59c-92a0d25d9c1e",
+          "name": "Bells",
+          "color": "red",
+          "role": "background",
+          "type": "bell",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "69a25e4d-430c-44e6-8dc1-7b5ca2f271d1",
+              "start": 0.2518918918918919,
+              "end": 39.043243243243246,
+              "name": "Clip Name"
+            },
+            {
+              "id": "7901c2b3-7953-4f9a-aba8-41c021ac7be0",
+              "start": 135.76972972972973,
+              "end": 166.50054054054053,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "196314d5-97b2-4ca6-9093-31f4444a0aae",
+          "name": "Pad Chords",
+          "color": "violet",
+          "role": "background",
+          "type": "pad",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "5370619c-c654-413f-ba64-30d781ee35c5",
+              "start": 8.06054054054054,
+              "end": 39.043243243243246,
+              "name": "Clip Name"
+            },
+            {
+              "id": "de11576a-b202-4fc4-89ca-c6329d16765a",
+              "start": 72.04108108108109,
+              "end": 103.27567567567567,
+              "name": "Clip Name"
+            },
+            {
+              "id": "2f9428b9-98c0-4993-b734-f988384fdab3",
+              "start": 135.51783783783785,
+              "end": 166.75243243243244,
+              "name": "Clip Name"
+            },
+            {
+              "id": "fe2698c4-a3fc-46ca-a9f3-d41d4d64c0c7",
+              "start": 199.2464864864865,
+              "end": 230.73297297297296,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "9b6ae1e0-f48c-4acd-bfc1-e6a995d5cb13",
+          "name": "Sidechained Lead 1",
+          "color": "green",
+          "role": "lead",
+          "type": "synth",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "bdee98c3-51e0-4d32-8546-b961503a8492",
+              "start": 39.54702702702703,
+              "end": 54.40864864864865,
+              "name": "Clip Name"
+            },
+            {
+              "id": "cd011950-3524-4365-950d-4af982133f3c",
+              "start": 55.92,
+              "end": 72.04108108108109,
+              "name": "Clip Name"
+            },
+            {
+              "id": "e4d93dcb-525b-4533-8a9f-102715b667b1",
+              "start": 103.52756756756757,
+              "end": 118.89297297297297,
+              "name": "Clip Name"
+            },
+            {
+              "id": "5476a5bd-d0f7-4fdb-ae2d-da7e88526f16",
+              "start": 120.15243243243243,
+              "end": 135.26594594594596,
+              "name": "Clip Name"
+            },
+            {
+              "id": "2f17c81d-2f66-40de-b7ff-288830de6608",
+              "start": 167.25621621621625,
+              "end": 182.8735135135135,
+              "name": "Clip Name"
+            },
+            {
+              "id": "18f7a442-91db-4968-9605-a90306585f73",
+              "start": 183.3772972972973,
+              "end": 199.75027027027028,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "d609fabb-79c4-4276-993b-b5d9c422e907",
+          "name": "Strings Chords",
+          "color": "orange",
+          "role": "background",
+          "type": "pad",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "0986dc6a-adbe-48bb-b153-2d495e726ad1",
+              "start": 23.67783783783784,
+              "end": 39.043243243243246,
+              "name": "Clip Name"
+            },
+            {
+              "id": "fa77aa38-ff91-4f43-8994-2c1be4a9646a",
+              "start": 87.40648648648649,
+              "end": 103.27567567567567,
+              "name": "Clip Name"
+            },
+            {
+              "id": "37151b24-b1f4-4250-8b7b-aa3df63497fe",
+              "start": 151.89081081081082,
+              "end": 167.76,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "bf4edeaa-aa75-46aa-8215-977b38004c9b",
+          "name": "Sidechained Lead 2",
+          "color": "red",
+          "role": "lead",
+          "type": "synth",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "421f06fe-3cc1-41f4-8461-5f2e2630da82",
+              "start": 199.2464864864865,
+              "end": 230.98486486486487,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "f9aff422-b977-4ce1-b71d-fe60c1f5e3bd",
+          "name": "Untitled Channel",
+          "color": "green",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": []
+        },
+        {
+          "id": "f4eff325-832a-48f8-8c79-f14eeba194ed",
+          "name": "Untitled Channel",
+          "color": "indigo",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": []
+        },
+        {
+          "id": "7e18f8eb-1406-413e-a31c-cab8d89a448d",
+          "name": "Untitled Channel",
+          "color": "indigo",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": []
+        },
+        {
+          "id": "aa299207-8bdb-4e3f-9cc2-c07e5a160241",
+          "name": "Untitled Channel",
+          "color": "default",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": []
+        },
+        {
+          "id": "c4651e91-3687-44f0-a015-a324a7fbdbd6",
+          "name": "Untitled Channel",
+          "color": "red",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": []
+        },
+        {
+          "id": "618cc54e-c8fb-4628-8156-20662541e27b",
+          "name": "Untitled Channel",
+          "color": "default",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": []
+        }
+      ],
       "id": 6
     },
     {
@@ -89,14 +495,6 @@
       "waveformId": 14209374,
       "channels": [],
       "id": 8
-    },
-    {
-      "artist": "50 cent",
-      "trackName": "21 questions",
-      "youtubeUrl": "cDMhlvbOFaM",
-      "youtubeLength": 260,
-      "channels": [],
-      "id": 9
     },
     {
       "artist": "Adam Beyer, Ida Engberg",
@@ -231,25 +629,393 @@
       "mixName": "2012 Mix/Master",
       "coverId": 6222191,
       "waveformId": 6222201,
-      "channels": [],
+      "channels": [
+        {
+          "id": "137891d2-23dd-4f7a-a472-7ba4929b1cc9",
+          "name": "Daddy G",
+          "color": "indigo",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "8b201906-4740-4b82-be99-0d10b605311b",
+              "start": 11.837837837837837,
+              "end": 57.61081081081081,
+              "name": "Clip Name"
+            },
+            {
+              "id": "5edad99c-ad4e-447b-b555-a34324675e8e",
+              "start": 86.81081081081079,
+              "end": 89.96756756756757,
+              "name": "Clip Name"
+            },
+            {
+              "id": "8517a4ee-cfcd-4fbc-8275-a7b4757eaf81",
+              "start": 90.36216216216216,
+              "end": 106.14594594594595,
+              "name": "Clip Name"
+            },
+            {
+              "id": "3b8ee43f-d41e-4021-a3ce-aeae7023387d",
+              "start": 107.32972972972973,
+              "end": 119.95675675675675,
+              "name": "Clip Name"
+            },
+            {
+              "id": "751388f4-6dac-47df-bf1e-ce51ebf60a08",
+              "start": 145.2108108108108,
+              "end": 150.73513513513512,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "feb8bf45-ebe7-4d96-8cd0-bfe090a32b31",
+          "name": "Tricky",
+          "color": "green",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "c25c734a-d4a8-42f3-924b-54b77ba58644",
+              "start": 56.42702702702702,
+              "end": 87.6,
+              "name": "Clip Name"
+            },
+            {
+              "id": "09b80197-2569-4de3-8989-3f74ba86fe6f",
+              "start": 88.3891891891892,
+              "end": 92.72972972972974,
+              "name": "Clip Name"
+            },
+            {
+              "id": "536c4a99-f0c8-4278-8dfe-11fdde91ad4a",
+              "start": 104.96216216216217,
+              "end": 108.90810810810812,
+              "name": "Clip Name"
+            },
+            {
+              "id": "5f026a46-0072-4d76-91ce-b5604bfd1675",
+              "start": 103.77837837837838,
+              "end": 108.90810810810812,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "789afddc-92f4-4f44-8538-59505bf46477",
+          "name": "3D",
+          "color": "default",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "d93191b8-68aa-465f-bbab-cb54c073187f",
+              "start": 119.16756756756754,
+              "end": 144.02702702702703,
+              "name": "Clip Name"
+            },
+            {
+              "id": "abd94a8b-1806-440e-8841-c2c73cb6f7e2",
+              "start": 149.15675675675675,
+              "end": 162.96756756756756,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "d57a4b37-5671-4779-86cd-2074206523da",
+          "name": "Horace Andy Fillers",
+          "color": "red",
+          "role": "fill",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "a56feaa3-406d-4883-8d46-a4795883eae5",
+              "start": 54.45405405405406,
+              "end": 57.61081081081081,
+              "name": "Clip Name"
+            },
+            {
+              "id": "f3b48199-e4fb-4595-afe2-e6b54166aa42",
+              "start": 69.05405405405406,
+              "end": 71.42162162162163,
+              "name": "Clip Name"
+            },
+            {
+              "id": "c824b849-e58f-473b-9fbc-836d71856b27",
+              "start": 95.88648648648649,
+              "end": 98.64864864864865,
+              "name": "Clip Name"
+            },
+            {
+              "id": "95b539e7-3d4e-4c56-971a-a017ef37b8b9",
+              "start": 98.64864864864865,
+              "end": 101.01621621621622,
+              "name": "Clip Name"
+            },
+            {
+              "id": "0dd2fd36-94cd-4e56-9b4b-d66d6ae0734c",
+              "start": 137.3189189189189,
+              "end": 142.44864864864863,
+              "name": "Clip Name"
+            },
+            {
+              "id": "711d3127-bf8a-4a66-a7a6-b0ed41e4a839",
+              "start": 153.4972972972973,
+              "end": 156.65405405405406,
+              "name": "Clip Name"
+            },
+            {
+              "id": "6556895b-99a7-4ce3-977a-95d8c775b4e3",
+              "start": 160.6,
+              "end": 165.33513513513515,
+              "name": "Clip Name"
+            },
+            {
+              "id": "f17345c0-8dee-453b-b41f-7e99775373de",
+              "start": 175.2,
+              "end": 178.35675675675677,
+              "name": "Clip Name"
+            },
+            {
+              "id": "2909da2c-2cdd-4be0-b24f-297aa0e1f6a5",
+              "start": 179.14594594594593,
+              "end": 182.3027027027027,
+              "name": "Clip Name"
+            },
+            {
+              "id": "9791565b-6bf7-4f6c-a36d-4e75ed7526e0",
+              "start": 183.4864864864865,
+              "end": 185.45945945945948,
+              "name": "Clip Name"
+            },
+            {
+              "id": "2b9f4341-7998-4ec6-8cfd-f5a0bcfb4ce5",
+              "start": 187.43243243243242,
+              "end": 191.37837837837841,
+              "name": "Clip Name"
+            },
+            {
+              "id": "e18cabf1-17c9-429a-8da5-bda9e972e04f",
+              "start": 196.1135135135135,
+              "end": 198.48108108108107,
+              "name": "Clip Name"
+            },
+            {
+              "id": "2eceb11f-c543-41b0-94f3-7353b4236313",
+              "start": 200.05945945945948,
+              "end": 202.03243243243244,
+              "name": "Clip Name"
+            },
+            {
+              "id": "0083feb3-9a69-4658-b843-9076478828f2",
+              "start": 211.1081081081081,
+              "end": 214.26486486486488,
+              "name": "Clip Name"
+            },
+            {
+              "id": "1ab109e0-ff8b-4bcd-95c5-31306c98cf32",
+              "start": 226.1027027027027,
+              "end": 230.44324324324324,
+              "name": "Clip Name"
+            },
+            {
+              "id": "43ca9bdf-152e-4aa4-9b5a-44ad1e5a11b0",
+              "start": 233.6,
+              "end": 235.1783783783784,
+              "name": "Clip Name"
+            },
+            {
+              "id": "72284aed-6823-4c03-9266-1a34855c3353",
+              "start": 255.30270270270273,
+              "end": 257.27567567567564,
+              "name": "Clip Name"
+            },
+            {
+              "id": "6b599ced-c6bf-4a6d-a734-1a38df2d919c",
+              "start": 253.32972972972973,
+              "end": 255.30270270270273,
+              "name": "Clip Name"
+            },
+            {
+              "id": "cd377137-78c4-46ea-9058-a08e0d412a17",
+              "start": 259.24864864864867,
+              "end": 262.8,
+              "name": "Clip Name"
+            },
+            {
+              "id": "1690046b-493d-4d73-938e-3f9582453cdd",
+              "start": 274.6378378378378,
+              "end": 277.4,
+              "name": "Clip Name"
+            },
+            {
+              "id": "4f4ce942-d1e8-4da8-b5b9-4802cd275f11",
+              "start": 278.58378378378376,
+              "end": 281.74054054054056,
+              "name": "Clip Name"
+            },
+            {
+              "id": "68b9b389-5036-403c-b126-0bebbcfc6c3f",
+              "start": 283.7135135135135,
+              "end": 286.08108108108104,
+              "name": "Clip Name"
+            },
+            {
+              "id": "552c0c23-f2e7-4fa4-bd0b-c84af1697277",
+              "start": 288.05405405405406,
+              "end": 289.23783783783784,
+              "name": "Clip Name"
+            },
+            {
+              "id": "9d3164e9-6cc9-40fc-a391-9b1ca1003367",
+              "start": 292,
+              "end": 299.10270270270274,
+              "name": "Clip Name"
+            },
+            {
+              "id": "b0fe9605-d311-4399-bbbd-26e51055ba7e",
+              "start": 302.6540540540541,
+              "end": 307.78378378378375,
+              "name": "Clip Name"
+            },
+            {
+              "id": "736bee04-20c3-4282-b118-d0ab94debfaf",
+              "start": 312.12432432432433,
+              "end": 314.09729729729725,
+              "name": "Clip Name"
+            },
+            {
+              "id": "add531bc-9527-4d73-82e7-93fac2c5c4be",
+              "start": 314.8864864864865,
+              "end": 316.85945945945946,
+              "name": "Clip Name"
+            },
+            {
+              "id": "5504c77b-8441-44bc-aa65-819e94e5e332",
+              "start": 319.227027027027,
+              "end": 323.172972972973,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "da5dba3d-2928-488b-a094-c35ddb23b49f",
+          "name": "Horace Andy Lyrics",
+          "color": "blue",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "ba28d041-6db1-419d-bb29-53ca6119eb85",
+              "start": 166.51891891891893,
+              "end": 177.17297297297296,
+              "name": "Clip Name"
+            },
+            {
+              "id": "aa774439-23b8-46e6-b3d1-234d69bb0d1c",
+              "start": 179.14594594594593,
+              "end": 187.82702702702704,
+              "name": "Clip Name"
+            },
+            {
+              "id": "80b5b7a8-4161-422d-a78d-e738d09cee16",
+              "start": 195.32432432432432,
+              "end": 202.8216216216216,
+              "name": "Clip Name"
+            },
+            {
+              "id": "07631689-5bb2-44a1-abfe-143a7d5666d3",
+              "start": 228.86486486486487,
+              "end": 235.1783783783784,
+              "name": "Clip Name"
+            },
+            {
+              "id": "ed081697-ba89-47ec-9770-3660269cf5a9",
+              "start": 235.572972972973,
+              "end": 237.15135135135134,
+              "name": "Clip Name"
+            },
+            {
+              "id": "bd5e6555-5164-4730-b49c-36b03e48a735",
+              "start": 298.3135135135135,
+              "end": 314.09729729729725,
+              "name": "Clip Name"
+            },
+            {
+              "id": "4b1d9ffe-942e-4d8c-b65e-a71be160044f",
+              "start": 334.6162162162162,
+              "end": 339.35135135135135,
+              "name": "Clip Name"
+            },
+            {
+              "id": "d7bcbba2-8bce-4666-9e97-8de1b1588aab",
+              "start": 342.90270270270275,
+              "end": 346.45405405405404,
+              "name": "Clip Name"
+            },
+            {
+              "id": "db7bdbb6-625d-4e3b-9c5e-7f6044149db0",
+              "start": 340.92972972972973,
+              "end": 346.45405405405404,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "912b84b0-0e16-4837-9fe9-d8c5f3493bae",
+          "name": "\"Money Root Of All Evil\"",
+          "color": "orange",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "b1edc5b1-207d-4094-861e-a94beb80ff73",
+              "start": 204.4,
+              "end": 225.3135135135135,
+              "name": "Clip Name"
+            },
+            {
+              "id": "d7738097-150e-48bf-98e1-64c2d00af6f7",
+              "start": 242.67567567567568,
+              "end": 255.69729729729727,
+              "name": "Clip Name"
+            },
+            {
+              "id": "b6e31203-774a-4370-b9ac-da5a48b33532",
+              "start": 261.61621621621623,
+              "end": 271.87567567567567,
+              "name": "Clip Name"
+            },
+            {
+              "id": "41aa94d6-1e32-4172-9040-f2773593cb1d",
+              "start": 330.6702702702703,
+              "end": 332.24864864864867,
+              "name": "Clip Name"
+            },
+            {
+              "id": "c4413e4d-f82f-4447-852e-a6e3d9262703",
+              "start": 333.43243243243245,
+              "end": 335.4054054054054,
+              "name": "Clip Name"
+            }
+          ]
+        }
+      ],
       "id": 19
-    },
-    {
-      "artist": "Drake",
-      "trackName": "Energy",
-      "youtubeUrl": "7LnBvuzjpr4",
-      "bpm": 86,
-      "youtubeLength": 178,
-      "beatportLength": 181,
-      "label": "Cash Money Records/Motown Records",
-      "genre": "Hip-Hop",
-      "key": "A# minor",
-      "releaseDate": "2015-02-13",
-      "mixName": "Original Mix",
-      "coverId": 11032995,
-      "waveformId": 11033002,
-      "channels": [],
-      "id": 21
     },
     {
       "artist": "Noisia",
@@ -282,7 +1048,147 @@
       "mixName": "Original Mix",
       "coverId": 13847233,
       "waveformId": 13847334,
-      "channels": [],
+      "channels": [
+        {
+          "id": "ab065052-887d-48f1-9232-a6b49c3dd837",
+          "name": "Main Bass Line",
+          "color": "violet",
+          "role": "groove",
+          "type": "bass",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "3a44fc24-b78d-45e2-a69a-b0e6502bf706",
+              "start": 79.11243243243243,
+              "end": 189.3210810810811,
+              "name": "Clip Name"
+            },
+            {
+              "id": "73a47a90-ee07-4b69-b8a2-9ebcdef69514",
+              "start": 222.2464864864865,
+              "end": 317.36432432432434,
+              "name": "Clip Name"
+            },
+            {
+              "id": "843ad9c3-ea97-4948-9957-e0d84b3f053c",
+              "start": 325.5956756756757,
+              "end": 408.8237837837838,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "bbfa57bd-19ce-433f-9346-d4c8a116de18",
+          "name": "Bass Stab",
+          "color": "blue",
+          "role": "groove",
+          "type": "bass",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "6b31f34c-1c92-4416-8e2c-272cd12ddc23",
+              "start": 79.11243243243243,
+              "end": 189.3210810810811,
+              "name": "Clip Name"
+            },
+            {
+              "id": "180075cf-ecf8-4cfb-ad08-442bce7eeb37",
+              "start": 222.70378378378376,
+              "end": 407.4518918918919,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "4149dc5a-7069-457b-a464-5f07b1da04ae",
+          "name": "Vocal FX",
+          "color": "orange",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "2d2a5271-6e9c-4f7a-b03c-cf36513b7bef",
+              "start": 64.02162162162162,
+              "end": 79.11243243243243,
+              "name": "Clip Name"
+            },
+            {
+              "id": "0bc259cf-cee6-4eee-b44c-66c296e067d8",
+              "start": 208.07027027027027,
+              "end": 221.7891891891892,
+              "name": "Clip Name"
+            },
+            {
+              "id": "1436edbd-2a31-44b9-b9e2-5a451e356099",
+              "start": 300.9016216216216,
+              "end": 316.4497297297297,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "38e7d146-d9d9-4ff3-a7f0-97e42e3da892",
+          "name": "Female Lyrics",
+          "color": "red",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "f8b2c639-75a1-4a43-8ec6-dd0d317c3981",
+              "start": 142.67675675675676,
+              "end": 175.60216216216216,
+              "name": "Clip Name"
+            },
+            {
+              "id": "dd934740-7cd5-48bd-9fa5-d9a447cc48ec",
+              "start": 190.2356756756757,
+              "end": 201.6681081081081,
+              "name": "Clip Name"
+            },
+            {
+              "id": "53c8435f-cb28-4061-b33b-51dfdb4a178f",
+              "start": 253.8,
+              "end": 288.0972972972973,
+              "name": "Clip Name"
+            },
+            {
+              "id": "a28201d8-ed93-4161-926e-54e342f7f40d",
+              "start": 315.53513513513514,
+              "end": 319.1935135135135,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "94b55861-7c30-4c83-8223-45586e69e82e",
+          "name": "Male Lyrics",
+          "color": "orange",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "99015ff1-b095-4d24-9627-eaf1c3c32440",
+              "start": 203.04,
+              "end": 208.07027027027027,
+              "name": "Clip Name"
+            },
+            {
+              "id": "cabcce5d-7e89-4b66-9536-1259cb5f9b27",
+              "start": 244.19675675675674,
+              "end": 250.14162162162162,
+              "name": "Clip Name"
+            }
+          ]
+        }
+      ],
       "id": 23
     },
     {
@@ -316,7 +1222,31 @@
       "mixName": "Original Mix",
       "coverId": 13312352,
       "waveformId": 13461255,
-      "channels": [],
+      "channels": [
+        {
+          "id": "925dda3f-a6a7-464f-8413-f146b88c9b2d",
+          "name": "Test",
+          "color": "red",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "e751e86c-43e6-44d8-80da-6e91f38151ad",
+              "start": 30.691891891891892,
+              "end": 50.19027027027027,
+              "name": "Clip Name"
+            },
+            {
+              "id": "34df3bd1-decf-4b64-8270-3c4ce6a1bfa1",
+              "start": 74.74378378378378,
+              "end": 89.5481081081081,
+              "name": "Clip Name"
+            }
+          ]
+        }
+      ],
       "id": 25
     },
     {
@@ -333,7 +1263,253 @@
       "mixName": "Original Mix",
       "coverId": 14212079,
       "waveformId": 14212614,
-      "channels": [],
+      "channels": [
+        {
+          "id": "1ca74652-826e-412a-a6d2-4be9aafac8e3",
+          "name": "Reverbed Looped Vocal",
+          "color": "indigo",
+          "role": "lead",
+          "type": "",
+          "source": "vocal",
+          "effects": [],
+          "clips": [
+            {
+              "id": "068078e2-f87b-4949-a9b6-44c3d8f88042",
+              "start": 217.1891891891892,
+              "end": 277.02702702702703,
+              "name": "Clip Name"
+            },
+            {
+              "id": "ca5fb500-5966-4a8d-8171-e0b75914de98",
+              "start": 139.17837837837837,
+              "end": 154.69189189189188,
+              "name": "Clip Name"
+            },
+            {
+              "id": "4235673f-6158-425d-9d7d-cfa34857cc09",
+              "start": 93.08108108108108,
+              "end": 119.67567567567568,
+              "name": "Clip Name"
+            },
+            {
+              "id": "f7a55cca-92d6-48fa-ba0f-7fc36fb1757e",
+              "start": 93.08108108108108,
+              "end": 124.1081081081081,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "96386192-d75c-4433-b232-856a14fe4f9c",
+          "name": "Bass Stabs",
+          "color": "red",
+          "role": "lead",
+          "type": "bass",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "82b3d738-c73d-4ea8-aad8-e95755f9be59",
+              "start": 154.24864864864864,
+              "end": 167.1027027027027,
+              "name": "Clip Name"
+            },
+            {
+              "id": "eb341808-6514-4539-a89f-c496fd96dd2f",
+              "start": 169.76216216216216,
+              "end": 215.41621621621618,
+              "name": "Clip Name"
+            },
+            {
+              "id": "625b0d43-9d9b-4dde-a4e8-4bffb6c72112",
+              "start": 277.02702702702703,
+              "end": 290.76756756756754,
+              "name": "Clip Name"
+            },
+            {
+              "id": "3cc20d3c-b609-4ba5-8ef9-6be346247352",
+              "start": 293.427027027027,
+              "end": 398.91891891891885,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "f6180c8a-a32a-46c3-b173-653129b07feb",
+          "name": "Old School Fill",
+          "color": "blue",
+          "role": "fill",
+          "type": "",
+          "source": "acoustic",
+          "effects": [],
+          "clips": [
+            {
+              "id": "f12315ae-3497-4ca7-a91b-06b2c6cd85f6",
+              "start": 90.42162162162161,
+              "end": 93.08108108108108,
+              "name": "Clip Name"
+            },
+            {
+              "id": "d70888d0-b81c-4fac-b978-a77af8f1a3d6",
+              "start": 149.37297297297297,
+              "end": 153.36216216216215,
+              "name": "Clip Name"
+            },
+            {
+              "id": "217010a4-1643-4e40-9830-1cda96d59e4c",
+              "start": 167.54594594594593,
+              "end": 169.31891891891894,
+              "name": "Clip Name"
+            },
+            {
+              "id": "23598215-716f-4090-a8fb-a1b2cace284b",
+              "start": 231.8162162162162,
+              "end": 276.58378378378376,
+              "name": "Clip Name"
+            },
+            {
+              "id": "55e89e74-be9d-4585-9b79-169211564664",
+              "start": 290.3243243243243,
+              "end": 293.427027027027,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "d26ce222-d579-4726-b272-bfa3c62e3a5a",
+          "name": "Snare Pitched Riser",
+          "color": "orange",
+          "role": "fill",
+          "type": "",
+          "source": "acoustic",
+          "effects": [],
+          "clips": [
+            {
+              "id": "056c248d-2232-44ce-828a-aa1dd8ef68b2",
+              "start": 267.7189189189189,
+              "end": 274.36756756756756,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "56bda471-6423-48eb-a272-b047834b0d98",
+          "name": "Background Looped Noise",
+          "color": "violet",
+          "role": "background",
+          "type": "bass",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "0a22d36c-f832-471f-8f39-205041558357",
+              "start": 0.4432432432432433,
+              "end": 90.42162162162161,
+              "name": "Clip Name"
+            },
+            {
+              "id": "48f2364b-dddd-4232-bce9-47f4a8570099",
+              "start": 92.63783783783784,
+              "end": 150.7027027027027,
+              "name": "Clip Name"
+            },
+            {
+              "id": "8cbd0792-1419-46e3-bc79-c0eca501abb6",
+              "start": 154.24864864864864,
+              "end": 167.1027027027027,
+              "name": "Clip Name"
+            },
+            {
+              "id": "8d068616-a3b8-4cf9-b369-56a3f4e50dd7",
+              "start": 169.31891891891894,
+              "end": 215.85945945945943,
+              "name": "Clip Name"
+            },
+            {
+              "id": "2477b468-fd6a-4728-bf1f-95644f347ca5",
+              "start": 277.47027027027025,
+              "end": 290.3243243243243,
+              "name": "Clip Name"
+            },
+            {
+              "id": "6452b2c2-2220-46cc-8a46-c927065165ba",
+              "start": 292.9837837837838,
+              "end": 399.3621621621621,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "9a7e9770-b2bc-415c-852f-05239cddc6ce",
+          "name": "Cool Sample",
+          "color": "green",
+          "role": "background",
+          "type": "",
+          "source": "synthesized",
+          "effects": [],
+          "clips": [
+            {
+              "id": "0b569f83-1b79-4a39-a86f-779148b3cecd",
+              "start": 122.33513513513513,
+              "end": 129.87027027027028,
+              "name": "Clip Name"
+            },
+            {
+              "id": "b6583624-53b2-458b-9d2f-86d803abe099",
+              "start": 213.64324324324323,
+              "end": 217.1891891891892,
+              "name": "Clip Name"
+            },
+            {
+              "id": "9815ad15-8e6f-478e-9770-6fa681e6ee2b",
+              "start": 45.65405405405405,
+              "end": 50.52972972972973,
+              "name": "Clip Name"
+            },
+            {
+              "id": "e3fab995-7881-4378-a8c6-8a9e18768c9a",
+              "start": 45.65405405405405,
+              "end": 53.63243243243243,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "7d57e142-d4f9-4c1f-86b8-c4233ed22e98",
+          "name": "FX",
+          "color": "red",
+          "role": "background",
+          "type": "fx",
+          "source": "noise",
+          "effects": [],
+          "clips": [
+            {
+              "id": "2904f76e-587d-4e02-bfa0-1de9157266d7",
+              "start": 27.48108108108108,
+              "end": 56.29189189189189,
+              "name": "Clip Name"
+            },
+            {
+              "id": "71950296-cb8e-4c7b-b807-8c5d88db251c",
+              "start": 117.9027027027027,
+              "end": 148.92972972972973,
+              "name": "Clip Name"
+            },
+            {
+              "id": "41d9d93e-4e38-40ca-9007-a48dac04dac7",
+              "start": 191.92432432432435,
+              "end": 229.6,
+              "name": "Clip Name"
+            },
+            {
+              "id": "1c0d9561-6442-44de-a63c-c98bd5303fae",
+              "start": 278.35675675675674,
+              "end": 307.1675675675676,
+              "name": "Clip Name"
+            }
+          ]
+        }
+      ],
       "id": 26
     },
     {
@@ -422,21 +1598,154 @@
       "id": 32
     },
     {
-      "artist": "Adam Beyer, Gary Beck",
-      "trackName": "Say What",
-      "youtubeUrl": "2B6LWnxigr4",
-      "bpm": 126,
-      "youtubeLength": 542,
-      "beatportLength": 541,
-      "label": "Natura Viva",
-      "genre": "Techno",
-      "key": "A# major",
-      "releaseDate": "2015-04-17",
-      "mixName": "Adam Beyer Remix",
-      "coverId": 11422607,
-      "waveformId": 11422709,
+      "artist": "Gucci Mane, Rae Sremmurd",
+      "trackName": "Black Beatles",
+      "youtubeUrl": "gnVUR4ddPTk",
+      "bpm": 146,
+      "youtubeLength": 298,
+      "beatportLength": 291,
+      "label": "Eardruma/Interscope Records",
+      "genre": "Hip-Hop",
+      "key": "E minor",
+      "releaseDate": "2016-08-12",
+      "mixName": "Original Mix",
+      "coverId": 14258328,
+      "waveformId": 14258349,
       "channels": [],
       "id": 33
+    },
+    {
+      "artist": "Pirupa",
+      "trackName": "Demons",
+      "youtubeUrl": "ltgIHJb3z7E",
+      "bpm": 124,
+      "youtubeLength": 441,
+      "beatportLength": 440,
+      "label": "Saved Records",
+      "genre": "Tech House",
+      "key": "B minor",
+      "releaseDate": "2016-05-06",
+      "mixName": "Original Mix",
+      "coverId": 13591534,
+      "waveformId": 13593220,
+      "channels": [],
+      "id": 34
+    },
+    {
+      "artist": "Hot Since 82",
+      "trackName": "Like You",
+      "youtubeUrl": "8-7x-xRrKkY",
+      "bpm": 123,
+      "youtubeLength": 439,
+      "beatportLength": 438,
+      "label": "Get Physical Music",
+      "genre": "Deep House",
+      "key": "B minor",
+      "releaseDate": "2014-03-17",
+      "mixName": "Original Mix",
+      "coverId": 9031617,
+      "waveformId": 9031643,
+      "channels": [
+        {
+          "id": "c75da3d1-33c5-462b-8069-6b7cdcc9dd72",
+          "name": "Test",
+          "color": "indigo",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "dc02ca32-c23c-4a8c-95cf-1d4b8056f2cd",
+              "start": 79.7318918918919,
+              "end": 151.39567567567568,
+              "name": "Clip Name"
+            },
+            {
+              "id": "5a1790ff-cfd3-44f4-ae55-da6898613b5b",
+              "start": 220.2118918918919,
+              "end": 280.48540540540546,
+              "name": "Clip Name"
+            },
+            {
+              "id": "ce9753f2-9733-416f-962d-66873c2e0f8f",
+              "start": 344.55567567567573,
+              "end": 394.3881081081082,
+              "name": "Clip Name"
+            },
+            {
+              "id": "a1659b34-7a83-4320-abcc-286631daadbf",
+              "start": 165.6335135135135,
+              "end": 175.12540540540544,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "1204c7cc-f4b9-43a1-8bb2-42fb82c98d76",
+          "name": "Untitled Channel",
+          "color": "default",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "45928f6d-602c-4576-b09d-19c74d850386",
+              "start": 393.4389189189189,
+              "end": 437.5762162162162,
+              "name": "Clip Name"
+            },
+            {
+              "id": "e571dde6-dd51-433f-827b-46bc311d57ec",
+              "start": 165.6335135135135,
+              "end": 213.56756756756755,
+              "name": "Clip Name"
+            },
+            {
+              "id": "0982cd11-eb09-42bf-9945-2a2b6589914b",
+              "start": 5.695135135135118,
+              "end": 51.25621621621622,
+              "name": "Clip Name"
+            }
+          ]
+        },
+        {
+          "id": "4399ddc3-f74c-41ea-9bb6-36b6393df244",
+          "name": "Untitled Channel",
+          "color": "red",
+          "role": "",
+          "type": "",
+          "source": "",
+          "effects": [],
+          "clips": [
+            {
+              "id": "d7912d87-b4c9-40af-8549-4dcb957f1a4b",
+              "start": 86.8508108108108,
+              "end": 113.42810810810812,
+              "name": "Clip Name"
+            }
+          ]
+        }
+      ],
+      "id": 35
+    },
+    {
+      "artist": "George Morel",
+      "trackName": "Let's Groove",
+      "youtubeUrl": "6Dv1xsyiQS4",
+      "bpm": 124,
+      "youtubeLength": 423,
+      "beatportLength": 436,
+      "label": "Get Physical Music",
+      "genre": "Tech House",
+      "key": "A minor",
+      "releaseDate": "2013-06-10",
+      "mixName": "George Morel Remix",
+      "coverId": 7541709,
+      "waveformId": 7541732,
+      "channels": [],
+      "id": 36
     }
   ],
   "folders": [
