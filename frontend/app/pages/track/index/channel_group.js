@@ -3,14 +3,15 @@ import _ from 'lodash'
 
 // components
 import Channel from './channel'
-import drums from '../../../assets/sounds/drums.svg'
-import synths from '../../../assets/sounds/synths.svg'
-import percussion from '../../../assets/sounds/percussion.svg'
-import vocals from '../../../assets/sounds/vocals.svg'
-import instruments from '../../../assets/sounds/instruments.svg'
-import fx from '../../../assets/sounds/fx.svg'
-import sampled from '../../../assets/sounds/sampled.svg'
-import unassigned from '../../../assets/sounds/unassigned.svg'
+
+import instruments from '../../../assets/instruments.svg'
+import drums from '../../../assets/drums.svg'
+import synths from '../../../assets/synths.svg'
+import percussion from '../../../assets/percussion.svg'
+import vocals from '../../../assets/vocals.svg'
+import fx from '../../../assets/fx.svg'
+import sampled from '../../../assets/sampled.svg'
+import unassigned from '../../../assets/unassigned.svg'
 import add from '../../../assets/add.svg'
 
 // actions
@@ -40,7 +41,7 @@ export default class ChannelGroup extends React.Component {
         return (fx)
       case('sampled'):
         return (sampled)
-      default:
+      case('unassigned'):
         return (unassigned)
     }
   }
