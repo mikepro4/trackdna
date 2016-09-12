@@ -36,10 +36,10 @@ export function addChannel(channel) {
   };
 }
 
-export function deleteChannel(channelId) {
+export function deleteChannel(channel) {
   return {
     type: DELETE_CHANNEL,
-    channelId
+    channel
   };
 }
 

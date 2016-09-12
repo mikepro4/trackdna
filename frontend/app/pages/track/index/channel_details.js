@@ -13,7 +13,7 @@ import {
 
 export default class ChannelDetails extends React.Component {
   onDeleteChannel() {
-    this.props.dispatch(deleteChannel(this.props.channelPosition))
+    this.props.dispatch(deleteChannel(this.props.channel))
   }
 
   onClose() {
@@ -24,9 +24,9 @@ export default class ChannelDetails extends React.Component {
     this.refs.channel_details_form.submit();
   }
 
-  onUpdate({ name, color, role, source, type, }) {
+  onUpdate({ name, color, role, source, type, groupCategory }) {
     const newChannel = {...this.props.channel,
-      name, color, role, source, type
+      name, color, role, source, type, groupCategory
     }
     this.props.dispatch(updateChannel(newChannel))
     console.log('newChannel', newChannel)
@@ -34,7 +34,7 @@ export default class ChannelDetails extends React.Component {
   }
 
   render() {
-    const { name, color, role, source, type, effects } = this.props.analysis.selectedChannel
+    const { name, color, role, source, type, effects, groupCategory } = this.props.analysis.selectedChannel
     let channelInitialValues = {
       initialValues: {
         name: name,
@@ -42,7 +42,8 @@ export default class ChannelDetails extends React.Component {
         role: role,
         source: source,
         type: type,
-        effects: effects
+        effects: effects,
+        groupCategory: groupCategory
       }
     }
     // console.log(channelInitialValues)

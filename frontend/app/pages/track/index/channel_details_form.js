@@ -61,11 +61,16 @@ export default class ChannelDetailsForm extends React.Component {
       'bass', 'keyboard', 'pluck', 'pad', 'fx', 'sequence', 'synth', 'ambiance', 'acid', 'bell', 'choir'
     ]
 
+    const categories = [
+      'drums', 'synths', 'percussion', 'vocals', 'instruments', 'fx', 'sampled', 'unassigned'
+    ]
+
     return (
       <div className='channel_details_form'>
         <form onSubmit={handleSubmit}>
           <Field name="name"  component={this.renderInputField} label="Channel Name"/>
           <Field name="color"  component={this.renderDropdownField} label="Color" options={colors}/>
+          <Field name="groupCategory"  component={this.renderDropdownField} label="Group Category" options={categories}/>
           <Field name="role"  component={this.renderDropdownField} label="Channel Role" options={roles}/>
           <Field name="source"  component={this.renderDropdownField} label="Sound Source" options={sources}/>
           <Field name="type"  component={this.renderDropdownField} label="Sound Type" options={types}/>
