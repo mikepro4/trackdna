@@ -3,7 +3,6 @@
 $channelHeight: 80px;
 
 .channel_container {
-  border-bottom: 1px solid $strokeColor;
   height: $channelHeight;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -21,6 +20,16 @@ $channelHeight: 80px;
       flex-shrink: 0;
       border-right: 1px solid $strokeColor;
       position: relative;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 25px;
+        bottom: 0;
+        right: 0;
+        border-bottom: 1px solid $strokeColor;
+      }
 
       .channel_summary_content {
         position: absolute;
@@ -50,7 +59,7 @@ $channelHeight: 80px;
             position: absolute;
             left: -19px;
             top: 1px;
-            opacity: .15;
+            opacity: 0;
             width: 14px;
             height: 14px;
             transition: opacity .2s ease-in-out;
@@ -105,6 +114,7 @@ $channelHeight: 80px;
 
     .channel_content {
       flex-grow: 1;
+        border-bottom: 1px solid $strokeColor;
 
       .clips_timeline {
         background: rgba(#EFEFEF, 0);
@@ -135,6 +145,16 @@ $channelHeight: 80px;
     }
   }
 
+  &:last-child {
+    .channel_top_container {
+      .channel_summary {
+        &:after {
+          left: 0;
+        }
+      }
+    }
+  }
+
   &.channel_selected {
     height: auto;
     box-shadow:  0px 0px 30px 0px rgba($black, 0.1);
@@ -146,11 +166,14 @@ $channelHeight: 80px;
       position: absolute;
       top: 0px;
       left: 0;
-      bottom: -1px;
+      bottom: 0px;
     }
 
     .channel_top_container {
       .channel_summary {
+        &:after {
+          display: none
+        }
         .channel_summary_content {
           .channel_selected_label  {
             display: block;

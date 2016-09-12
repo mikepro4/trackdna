@@ -1,0 +1,62 @@
+@import "../../../styles/vars";
+
+.channel_group {
+  display: block;
+  padding: 25px 0 25px 0;
+
+  .channel_group_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $strokeColor;
+
+    .channel_group_title_container {
+      display: flex;
+      height: 40px;
+      margin: 0 0 0 25px;
+
+      .channel_group_icon {
+        width: 28px;
+        height: 28px;
+        text-align: center;
+      }
+
+      .channel_group_title {
+        font-size: 13px;
+        text-transform: uppercase;
+        margin: 6px 0 0 10px;
+      }
+    }
+
+    .add_channel_button {
+      display: block;
+      margin: 0 25px 0 0;
+      background: none;
+      padding: 0;
+
+      span {
+        margin: 0 7px 0 0;
+        position: relative;
+        top: -6px;
+        font-size: 12px;
+        opacity: .4;
+        transition: opacity .2s ease-in-out;
+      }
+
+      &:hover {
+        span {
+          opacity: 1;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .placeholder_container {
+    margin: 10px 0 0 25px;
+    opacity: .4;
+    font-size: 13px
+  }
+}

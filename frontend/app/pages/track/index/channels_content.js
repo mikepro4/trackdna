@@ -2,9 +2,7 @@ import React, {PropTypes} from 'react';
 import _ from 'lodash'
 
 // components
-import Channels from './channels'
 import ChannelGroup from './channel_group'
-
 
 export default class ChannelsContent extends React.Component {
   render() {
@@ -59,9 +57,23 @@ export default class ChannelsContent extends React.Component {
       }
     ]
 
+    let unassignedChannels = _.filter(this.props.analysis.channels, (channel) => {
+      return (channel.groupCategory === 'unassigned') || _.isEmpty(channel.groupCategory)
+    })
+
+    let groupsToShow;
+
+    if(_.isEmpty(unassignedChannels)) {
+      groupsToShow = _.filter(channelGroups, (group) => {
+        return (group.groupCategory !== 'unassigned')
+      })
+    } else {
+      groupsToShow = channelGroups
+    }
+
     return (
       <div className='channels_content'>
-        {channelGroups.map((group, i) => (
+        {groupsToShow.map((group, i) => (
             <ChannelGroup
               {...this.props}
               group={group}
@@ -70,8 +82,6 @@ export default class ChannelsContent extends React.Component {
             />
           ))
         }
-        {/* <Channels {...this.props} />
-        <button className='button add_channel_button' onClick={this.onAddChannel.bind(this)}>+ Add Channel</button> */}
       </div>
     );
   }

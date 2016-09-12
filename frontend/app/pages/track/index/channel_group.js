@@ -3,6 +3,15 @@ import _ from 'lodash'
 
 // components
 import Channel from './channel'
+import drums from '../../../assets/sounds/drums.svg'
+import synths from '../../../assets/sounds/synths.svg'
+import percussion from '../../../assets/sounds/percussion.svg'
+import vocals from '../../../assets/sounds/vocals.svg'
+import instruments from '../../../assets/sounds/instruments.svg'
+import fx from '../../../assets/sounds/fx.svg'
+import sampled from '../../../assets/sounds/sampled.svg'
+import unassigned from '../../../assets/sounds/unassigned.svg'
+import add from '../../../assets/add.svg'
 
 // actions
 import {
@@ -15,6 +24,27 @@ import {
 } from '../../../utils/uuid'
 
 export default class ChannelGroup extends React.Component {
+  selectIcon() {
+    switch(this.props.group.groupCategory) {
+      case('drums'):
+        return (drums)
+      case('synths'):
+        return (synths)
+      case('percussion'):
+        return (percussion)
+      case('vocals'):
+        return (vocals)
+      case('instruments'):
+        return (instruments)
+      case('fx'):
+        return (fx)
+      case('sampled'):
+        return (sampled)
+      default:
+        return (unassigned)
+    }
+  }
+
   onAddChannel() {
     const colors = [
       'default', 'red', 'orange', 'green', 'blue', 'indigo', 'violet'
@@ -42,9 +72,20 @@ export default class ChannelGroup extends React.Component {
       return noGroup || currentGroup
     })
     return (
-      <div>
-        <h1>{this.props.group.groupName}</h1>
-        <button className='button add_channel_button' onClick={this.onAddChannel.bind(this)}>+ Add {this.props.group.groupName} Channel</button>
+      <div className='channel_group'>
+        <div className='channel_group_header'>
+          <div className='channel_group_title_container'>
+            <span className='channel_group_icon'><img src={this.selectIcon()} /></span>
+            <h1 className='channel_group_title'>{this.props.group.groupName}</h1>
+          </div>
+          <button
+            className='button button_simple add_channel_button'
+            onClick={this.onAddChannel.bind(this)}>
+            <span>Add {this.props.group.groupName} Channel</span>
+            <img src={add} className='icon icon_add' />
+          </button>
+        </div>
+
         {!_.isEmpty(filteredChannels) ?
           filteredChannels.map((channel, i) => (
             <Channel
@@ -54,7 +95,7 @@ export default class ChannelGroup extends React.Component {
               key={i}
             />
           ))
-          : this.props.group.groupPlaceholder
+          : <div className='placeholder_container'>{this.props.group.groupPlaceholder}</div>
         }
       </div>
     );
