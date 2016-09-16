@@ -6,6 +6,7 @@ import {
   UPDATE_CHANNEL,
   DELETE_CHANNEL,
   SELECT_CHANNEL,
+  REORDER_CHANNELS,
   ADD_CLIP,
   SELECT_CLIP,
   DELETE_CLIP,
@@ -74,11 +75,21 @@ export default (state = {}, action) => {
         return {... state,
           channels: action.result.channels,
         }
-
       case ADD_CHANNEL:
         return update(state, {
           channels: {$push: action.channel}
         })
+      case REORDER_CHANNELS:
+        const dragChannel = state.channels[action.dragIndex]
+
+        return (update(state, {
+          channels: {
+            $splice: [
+              [action.dragIndex, 1],
+              [action.hoverIndex, 0, dragChannel]
+            ]
+          }
+        }))
       case SELECT_CHANNEL:
         return {... state,
           selectedChannel: action.channel || {},

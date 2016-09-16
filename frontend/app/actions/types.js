@@ -40,6 +40,7 @@ export const ADD_CHANNEL = 'app/ADD_CHANNEL'
 export const UPDATE_CHANNEL = 'app/UPDATE_CHANNEL'
 export const DELETE_CHANNEL = 'app/DELETE_CHANNEL'
 export const SELECT_CHANNEL = 'app/SELECT_CHANNEL'
+export const REORDER_CHANNELS = 'app/REORDER_CHANNELS'
 
 export const ADD_CLIP = 'app/ADD_CLIP'
 export const EDIT_CLIP = 'app/EDIT_CLIP'

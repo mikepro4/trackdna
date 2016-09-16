@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames'
 import _ from 'lodash'
+import { findDOMNode } from 'react-dom';
+import { DragSource, DropTarget } from 'react-dnd';
 
 // components
 import ClipsTimeline from './clips_timeline'
@@ -14,6 +16,63 @@ import {
   selectChannel
 } from '../../../actions/analysis'
 
+const channelSource = {
+  beginDrag(props) {
+    return {
+      id: props.channel.id,
+      index: props.index
+    };
+  }
+};
+
+const channelTarget = {
+  hover(props, monitor, component) {
+    // console.log(props, monitor, component)
+    const dragIndex = monitor.getItem().index;
+    const hoverIndex = props.index;
+
+    // Don't replace items with themselves
+     if (dragIndex === hoverIndex) {
+       return;
+     }
+
+     // Determine rectangle on screen
+    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
+
+    // Get vertical middle
+    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+    // Determine mouse position
+    const clientOffset = monitor.getClientOffset();
+
+    // Get pixels to the top
+    const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
+    // Dragging downwards
+    if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY / 5) {
+      return;
+    }
+
+    // Dragging upwards
+    if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY * 2) {
+      return;
+    }
+
+    props.moveChannel(dragIndex, hoverIndex);
+
+    monitor.getItem().index = hoverIndex;
+
+  }
+};
+
+@DropTarget('channel', channelTarget, connect => ({
+  connectDropTarget: connect.dropTarget()
+}))
+@DragSource('channel', channelSource, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  isDragging: monitor.isDragging(),
+  connectDragPreview: connect.dragPreview()
+}))
 export default class Channel extends React.Component {
 
   onChannelClick() {
@@ -57,24 +116,30 @@ export default class Channel extends React.Component {
       [this.props.channel.color]: true
     })
 
-    return (
-      <div className={channelClasses}>
+    const { isDragging, connectDragSource, connectDropTarget, connectDragPreview } = this.props;
+    const opacity = isDragging ? .2 : 1;
 
+    const style = {
+      opacity: opacity
+    }
+
+    return connectDragPreview(
+      <div className={channelClasses} style={style}>
         <div className='channel_top_container'>
-
-          <div className='channel_summary' onClick={this.onChannelClick.bind(this)}>
-
-            <div className='channel_summary_content'>
-              <div className='channel_selected_label'>Selected Channel</div>
-              <div className='channel_name_container'>
-                <img src={gear} className='configure_icon' />
-                <span className='channel_name'>{this.props.channelPosition + 1}. {this.props.channel.name}</span>
-              </div>
-              <div className='channel_description'>
-                {this.renderChannelProperties()}
+          {connectDragSource(connectDropTarget(
+            <div className='channel_summary' onClick={this.onChannelClick.bind(this)}>
+              <div className='channel_summary_content'>
+                <div className='channel_selected_label'>Selected Channel</div>
+                <div className='channel_name_container'>
+                  <img src={gear} className='configure_icon' />
+                  <span className='channel_name'>{this.props.channelPosition + 1}. {this.props.channel.name}</span>
+                </div>
+                <div className='channel_description'>
+                  {this.renderChannelProperties()}
+                </div>
               </div>
             </div>
-          </div>
+          ))}
 
           <div className='channel_content'>
             <ClipsTimeline {...this.props} />
@@ -84,6 +149,7 @@ export default class Channel extends React.Component {
 
         {channelSelected ? <ChannelDetails {...this.props} /> : ''}
 
-      </div>);
+      </div>
+    );
   }
 }

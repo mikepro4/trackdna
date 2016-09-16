@@ -7,6 +7,7 @@ import {
   UPDATE_CHANNEL,
   DELETE_CHANNEL,
   SELECT_CHANNEL,
+  REORDER_CHANNELS,
   ADD_CLIP,
   SELECT_CLIP,
   DELETE_CLIP,
@@ -55,6 +56,13 @@ export function updateChannel(channel) {
     type: UPDATE_CHANNEL,
     channel
   };
+}
+
+export function reorderChannels(dragIndex, hoverIndex) {
+  return {
+    type: REORDER_CHANNELS,
+    dragIndex, hoverIndex
+  }
 }
 
 export function addClip(channelId, clip) {
