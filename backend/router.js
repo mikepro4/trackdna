@@ -5,6 +5,7 @@ const passport = require('passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 import axios from 'axios';
+// importing axios
 
 module.exports = function(app) {
   app.get('/', requireAuth, function(req, res) {
