@@ -27,7 +27,7 @@ export function searchYoutube(req, res, next) {
   const searchTermEncoded = encodeURIComponent(searchTerm);
   return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY}&q=${searchTermEncoded}&type=video&maxResults=${resultsLimit}`)
     .then(function (response) {
-        res.json({ videos: response.data.items });
+        res.json({ data: response.data.items });
     })
     .catch(function (error) {
       console.log(error);
@@ -39,7 +39,7 @@ export function loadYoutubeVideoData(req, res, next) {
   console.log('load youtube data: ', videoId)
   return axios.get(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${videoId}&key=${YOUTUBE_API_KEY}`)
     .then(function (response) {
-         res.json({videoYoutubeDetails: response.data.items[0]})
+         res.json({ data: response.data.items[0]})
     })
     .catch(function (error) {
       console.log(error);
@@ -93,7 +93,7 @@ export function searchBeatport(req, res, next) {
     headers: oauth.toHeader(oauth.authorize(request_data, token))
   })
   .then(function (response) {
-    res.json({ videos: response.data.results });
+    res.json({ data: response.data.results });
   })
   .catch(function (error) {
     console.log(error);
