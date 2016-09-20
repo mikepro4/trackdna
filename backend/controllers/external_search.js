@@ -65,14 +65,15 @@ export function loadYoutubeWave(req, res, next) {
     // the next command is for older version of mmpeg installed on DO
     // exec.exec(`ffmpeg -i ${flvFile} -lavfi showwavespic=split_channels=0:s=1024x800 ${pngFile}`);
 
-    var command = 'ffmpeg -i ' + flvFile + ' -filter_complex "[0:a]aformat=channel_layouts=mono, \
+     var command = 'ffmpeg -i ' + flvFile + ' -filter_complex "[0:a]aformat=channel_layouts=mono, \
      compand=gain=-6, \
      showwavespic=s=1000x120:colors=#555555[fg]; color=s=1000x120:color=#ffffff, \
      drawgrid=width=iw/10:height=ih/5:color=#000000@0.1[bg]; \
      [bg][fg]overlay=format=rgb" -vframes 1 ' + pngFile
-    exec.exec(command);
 
-    res.json({ waveUrl: `/wave/wave_${videoId}.png` });
+     console.log(command);
+     exec.exec(command);
+     res.json({ waveUrl: `/wave/wave_${videoId}.png` });
   });
   stream.pipe(fs.createWriteStream(flvFile));
 }
