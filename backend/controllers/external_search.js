@@ -66,7 +66,7 @@ export function loadYoutubeWave(req, res, next) {
     // exec.exec(`ffmpeg -i ${flvFile} -lavfi showwavespic=split_channels=0:s=1024x800 ${pngFile}`);
 
     var command = 'ffmpeg -i ' + flvFile + ' -filter_complex "[0:a]aformat=channel_layouts=mono, \
-    compand=gain=-1, showwavespic=s=1850x250:colorkey=#ffffff:colors=#555555[fg]; color=s=1850x250:color=#ffffff@0.1[bg]; \
+    compand=gain=-1, showwavespic=s=1850x250:colors=#555555[fg]; color=s=1850x250:color=#ffffff@0.1[bg]; \
     [bg][fg]overlay=format=rgb" -vframes 1' + pngFile
 
      console.log(command);
