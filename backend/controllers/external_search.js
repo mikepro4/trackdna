@@ -62,12 +62,10 @@ export function loadYoutubeWave(req, res, next) {
   var stream = ytdl(url);
   stream.on('end', function () {
     console.log(`Download completed: flv ${videoId}`);
-    // the next command is for older version of mmpeg installed on DO
-    // exec.exec(`ffmpeg -i ${flvFile} -lavfi showwavespic=split_channels=0:s=1024x800 ${pngFile}`);
 
-     var command = 'ffmpeg -i ' + flvFile + ' -filter_complex "[0:a]aformat=channel_layouts=mono, \
-     compand=gain=-6, showwavespic=s=1850x250:colors=#555555[fg]; color=s=1850x250:color=#ffffff; \
-     [bg][fg]overlay=format=rgb" -vframes 1 ' + pngFile
+    var command = 'ffmpeg -i ' + flvFile + ' -filter_complex "[0:a]aformat=channel_layouts=mono, \
+    compand=gain=-1, showwavespic=s=1850x250:colors=#555555[fg]; color=s=1850x250:color=#ffffff[bg]; \
+    [bg][fg]overlay=format=rgb" -vframes 1 ' + pngFile
 
      console.log(command);
      exec.exec(command);
