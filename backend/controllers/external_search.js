@@ -64,6 +64,7 @@ export function loadYoutubeWave(req, res, next) {
   stream.on('end', function () {
     console.log(`Download completed: flv ${videoId}`);
 
+    // run ffmpeg to create tmp png file, then run convert to add transperancy
     var ffmpegCommand = 'ffmpeg -i ' + flvFile + ' -filter_complex "[0:a]aformat=channel_layouts=mono, \
     compand=gain=-1, showwavespic=s=1850x250:colors=#555555[fg]; color=s=1850x250:color=#ffffff[bg]; \
     [bg][fg]overlay=format=rgb" -vframes 1 ' + tmpPngFile
@@ -73,11 +74,17 @@ export function loadYoutubeWave(req, res, next) {
         console.error(`exec error: ${error}`);
         return;
       }
+
+      // run convert to add transperancy then return json with wave URL
       var pngCommand = `convert ${tmpPngFile} -transparent white ${pngFile}`;
       console.log(pngCommand);
-      exec.exec(pngCommand);
+      exec.exec(pngCommand, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`);
+          return;
+        });
+        res.json({ waveUrl: `/wave/wave_${videoId}.png` });
     });
-    res.json({ waveUrl: `/wave/wave_${videoId}.png` });
   });
   stream.pipe(fs.createWriteStream(flvFile));
 }
