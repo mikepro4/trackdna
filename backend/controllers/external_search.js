@@ -68,12 +68,15 @@ export function loadYoutubeWave(req, res, next) {
     compand=gain=-1, showwavespic=s=1850x250:colors=#555555[fg]; color=s=1850x250:color=#ffffff[bg]; \
     [bg][fg]overlay=format=rgb" -vframes 1 ' + tmpPngFile
     console.log(ffmpegCommand);
-    exec.exec(ffmpegCommand);
-
-    var pngCommand = `convert ${tmpPngFile} -transparent white ${pngFile}`;
-    console.log(pngCommand);
-    exec.exec(pngCommand);
-
+    exec.exec(ffmpegCommand, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      var pngCommand = `convert ${tmpPngFile} -transparent white ${pngFile}`;
+      console.log(pngCommand);
+      exec.exec(pngCommand);
+    });
     res.json({ waveUrl: `/wave/wave_${videoId}.png` });
   });
   stream.pipe(fs.createWriteStream(flvFile));
