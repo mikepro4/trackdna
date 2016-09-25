@@ -52,6 +52,7 @@ export function loadYoutubeWave(req, res, next) {
   var url = `http://www.youtube.com/watch?v=${videoId}`;
   var base = __dirname + "/../../frontend/static";
   var flvFile = `${base}/flv/video_${videoId}.flv`;
+  var tmpPngFile = `${base}/wave/tmp_wave_${videoId}.png`;
   var pngFile = `${base}/wave/wave_${videoId}.png`;
   if (fs.existsSync(pngFile)) {
     console.log(`Wave already there: ${pngFile}`);
@@ -65,11 +66,13 @@ export function loadYoutubeWave(req, res, next) {
 
     var command = 'ffmpeg -i ' + flvFile + ' -filter_complex "[0:a]aformat=channel_layouts=mono, \
     compand=gain=-1, showwavespic=s=1850x250:colors=#555555[fg]; color=s=1850x250:color=#ffffff[bg]; \
-    [bg][fg]overlay=format=rgb" -vframes 1 ' + pngFile
+    [bg][fg]overlay=format=rgb" -vframes 1 ' + tmpPngFile
 
-     console.log(command);
-     exec.exec(command);
-     res.json({ waveUrl: `/wave/wave_${videoId}.png` });
+    console.log(command);
+    exec.exec(command);
+    exec.exec(`convert ${tmpPngFile} -transparent white ${pngFile}`);
+
+    res.json({ waveUrl: `/wave/wave_${videoId}.png` });
   });
   stream.pipe(fs.createWriteStream(flvFile));
 }
