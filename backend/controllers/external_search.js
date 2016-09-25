@@ -82,8 +82,9 @@ export function loadYoutubeWave(req, res, next) {
         if (error) {
           console.error(`exec error: ${error}`);
           return;
-        });
+        }
         res.json({ waveUrl: `/wave/wave_${videoId}.png` });
+      });
     });
   });
   stream.pipe(fs.createWriteStream(flvFile));
