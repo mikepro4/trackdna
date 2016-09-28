@@ -3,6 +3,7 @@ import OAuth from 'oauth-1.0a'
 import ytdl from 'ytdl-core'
 import exec from 'child_process';
 import fs from 'fs';
+import s3 from 's3';
 
 const YOUTUBE_API_KEY = 'AIzaSyDQ_kgowJCa-mH5wnjnQ1mOE4nBqQIGij8'
 const oauth = OAuth({
@@ -83,11 +84,49 @@ export function loadYoutubeWave(req, res, next) {
           console.error(`exec error: ${error}`);
           return;
         }
+        upload2s3(pngFile, videoId);
         res.json({ waveUrl: `/wave/wave_${videoId}.png` });
       });
     });
   });
   stream.pipe(fs.createWriteStream(flvFile));
+}
+
+function upload2s3 (localPngFile, videoId) {
+  var s3 = require('s3');
+  var client = s3.createClient({
+    maxAsyncS3: 20,     // this is the default
+    s3RetryCount: 3,    // this is the default
+    s3RetryDelay: 1000, // this is the default
+    multipartUploadThreshold: 20971520, // this is the default (20 MB)
+    multipartUploadSize: 15728640, // this is the default (15 MB)
+    s3Options: {
+      accessKeyId: "AKIAJWCEMBIP574UIY5A",
+      secretAccessKey: "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"
+      // any other options are passed to new AWS.S3()
+      // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Config.html#constructor-property
+    }
+  });
+  var params = {
+    localFile: localPngFile,
+    s3Params: {
+      Bucket: "trackdna",
+      Key: `wave_${videoId}.png`
+      // other options supported by putObject, except Body and ContentLength.
+      // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property
+    }
+  };
+  var uploader = client.uploadFile(params);
+  uploader.on('error', function(err) {
+    console.error("unable to upload:", err.stack);
+  });
+  uploader.on('progress', function() {
+    console.log("progress", uploader.progressMd5Amount,
+              uploader.progressAmount, uploader.progressTotal);
+  });
+  uploader.on('end', function() {
+    console.log("done uploading");
+  });
 }
 
 export function searchBeatport(req, res, next) {
