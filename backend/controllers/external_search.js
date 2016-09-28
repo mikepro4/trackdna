@@ -85,7 +85,7 @@ export function loadYoutubeWave(req, res, next) {
           return;
         }
         upload2s3(pngFile, videoId);
-        res.json({ waveUrl: `/wave/wave_${videoId}.png` });
+        res.json({ waveUrl: `https://s3.amazonaws.com/trackdna/wave_${videoId}.png`});
       });
     });
   });
