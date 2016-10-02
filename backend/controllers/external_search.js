@@ -101,8 +101,8 @@ function upload2s3 (localPngFile, videoId) {
     multipartUploadThreshold: 20971520, // this is the default (20 MB)
     multipartUploadSize: 15728640, // this is the default (15 MB)
     s3Options: {
-      accessKeyId: "AKIAJWCEMBIP574UIY5A",
-      secretAccessKey: "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"
+      accessKeyId: "??",
+      secretAccessKey: "??"
       // any other options are passed to new AWS.S3()
       // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Config.html#constructor-property
     }
