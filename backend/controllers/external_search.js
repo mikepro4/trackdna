@@ -5,6 +5,9 @@ import exec from 'child_process';
 import fs from 'fs';
 import s3 from 's3';
 
+const apiKeys = require('../../../secret/api_keys');
+console.log(apiKeys);
+
 const YOUTUBE_API_KEY = 'AIzaSyDQ_kgowJCa-mH5wnjnQ1mOE4nBqQIGij8'
 const oauth = OAuth({
     consumer: {
@@ -101,8 +104,8 @@ function upload2s3 (localPngFile, videoId) {
     multipartUploadThreshold: 20971520, // this is the default (20 MB)
     multipartUploadSize: 15728640, // this is the default (15 MB)
     s3Options: {
-      accessKeyId: "??",
-      secretAccessKey: "??"
+      accessKeyId: apiKeys.s3.accessKeyId,
+      secretAccessKey: apiKeys.s3.secretAccessKey
       // any other options are passed to new AWS.S3()
       // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Config.html#constructor-property
     }
